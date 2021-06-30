@@ -1,0 +1,41 @@
+.pSpace{
+    padding-left: 0;
+    padding-right: 0;
+}
+.vert-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.carousel-fade .carousel-inner .item{
+    transition-property: opacity;
+}
+.carousel-fade .carousel-inner .item, .active.left, .active.right {
+    opacity: 0;
+}
+.carousel-fade .carousel-inner .active, .next.left, .prev.right{
+    opacity: 1;
+}
+.carousel-fade .carousel-inner .next, .prev, .active.left, .active.right {
+    left: 0;
+    transform: translate3d(0, 0, 0);
+}
+.carousel-inner .carousel-item img{
+    height: 100vh;
+}
+.formLogo img{
+    width: 150px;
+}
+@media (max-width: 991.98px) {
+    .formMain form{
+        width: 60%;
+    }
+    .formMain{
+        display: grid;
+        place-items: center;
+    }
+    .carousel-inner .carousel-item img{
+        height: auto;
+    }
+}

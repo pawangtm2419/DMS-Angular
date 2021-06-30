@@ -1,0 +1,56 @@
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <table class="table">
+                <thead class="text-white" style="background: #454397">
+                    <tr>
+                        <th>Sr. No.</th>
+                        <th>Customer Code</th>
+                        <th>Customer Name</th>
+                        <th>Father Name</th>
+                        <th>Customer DOB</th>
+                        <th>Marriage Date</th>
+                        <th>Customer Address</th>
+                        <th>State</th>
+                        <th>Tehsil</th>
+                        <th>Village Name</th>
+                        <th>Pin Code</th>
+                        <th>Mobile No.</th>
+                        <th>Email</th>
+                        <th>Aadhar No.</th>
+                        <th>Pan No.</th>
+                        <th>Created On</th>
+                        <th>Action</th>
+                      </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let customer of customersData | paginate: { itemsPerPage: 50, currentPage: p }; let i=index">
+                        <td data-title="Dealer Code">{{i+1}}</td>
+                        <td data-title="Sr. No.">{{customer.dealerCode}}</td>
+                        <td data-title="Sr. No.">{{customer.customerId}}</td>
+                        <td data-title="Owner's Name"><a (click)="viewFullInfo(customer)">{{customer.ownerName}}</a></td>
+                        <td data-title="Customer DOB">{{customer.customerDOB |  date:'dd-MM-yyyy'}}</td>
+                        <td data-title="Customer DOB">{{customer.weddingDate |  date:'dd-MM-yyyy'}}</td>
+                        <td data-title="Customer Address" style="width:20%">{{customer.address.customerAddress}}</td>
+                        <td data-title="Mobile No">{{customer.address.stateName}}</td>
+                        <td data-title="Mobile No">{{customer.address.tehsil}}</td>
+                        <td data-title="Mobile No">{{customer.address.villageName}}</td>
+                        <td data-title="Mobile No">{{customer.address.pinCode}}</td>
+                        <td data-title="Mobile No">{{customer.mobileNo}}</td>
+                        <td data-title="Email">{{customer.customerEmail}}</td>
+                        <td data-title="Aadhar No">{{customer.aadharNo}}</td>
+                        <td data-title="Pan No">{{customer.panNo}}</td>
+                        <td data-title="Created On">{{customer.CreatedDate |  date:'dd-MM-yyyy'}}</td>
+                        <td data-title="Options" class="text-center">
+                          <a class="btn bg-blue btn-xs radius_none" (click)="editCustomerIndo(customer)"><span class="fa fa-edit margin-right-0"></span></a>
+                          <a class="btn bg-red btn-xs radius_none" (click)="deleteCustomerIndo(customer._id)"><span class="fa fa-trash margin-right-0"></span></a>
+                         </td>
+                      </tr>
+                </tbody>
+            </table>
+            <div class="input-group-icon input-group-icon-right col-md-12">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</section>

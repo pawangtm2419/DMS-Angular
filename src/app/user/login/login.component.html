@@ -1,0 +1,49 @@
+<div class="container-fluid pSpace">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="slider">
+                <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="../../../../assets/images/loginBg1.jpg" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="../../../../assets/images/loginBg2.jpg" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="../../../../assets/images/loginBg3.jpg" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="../../../../assets/images/loginBg4.jpg" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="../../../../assets/images/loginBg5.jpg" class="d-block w-100" alt="...">
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="formLogo mt-4 text-center">
+                <img class="img-fluid" src="../../../../assets/images/SDF-logo.png">
+            </div>
+            <form class="mx-4" #loginForm="ngForm" (ngSubmit)="getUserInfo(loginForm)" novalidate>
+                <h2 class="mb-3 float-none mt-5">Login</h2>
+                <div class="form-group">
+                    <div class="mb-3">
+                        <label for="first" class="form-label">Employee ID:  </label>
+                        <input type="text" #empID="ngModel" ngModel class="form-control" name="empID" required>         
+                      </div>
+                      <div class="mb-3">
+                        <label for="pass" class="form-label">Password:  </label>
+                        <input type="password" #pass="ngModel" ngModel class="form-control" name="pass" required>
+                      </div>
+                      <div class="btnGroup text-center">
+                        <button type="submit" class="btn btn-primary mb-3" [disabled]="!loginForm.valid">Login</button>
+                        <p id="fPass" class="form-text">Forgot Password?</p>
+                      </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

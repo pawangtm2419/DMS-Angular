@@ -1,0 +1,164 @@
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <table class="table">
+                <thead class="text-white" style="background: #454397">
+                  <tr>
+                    <th>Sr. No.</th>
+                    <th>Depot Code</th>
+                    <th>Depot Name</th>
+                    <th>Address</th>
+                    <th>Depot Head</th>
+                    <th>Email ID</th>
+                    <th>Head Mobile</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let depot of depotData | paginate: { itemsPerPage: 50, currentPage: p }; let i = index">
+                    <td data-title="Sr. No.">{{50*(p-1)+i+1}}</td>
+                    <td data-title="Depot Code"><a class="table-href" data-bs-toggle="modal" data-bs-target="#depotinfo" (click)="viewFullInfo(depot)">{{depot.depotCode}}</a></td>
+                    <td data-title="Depot Name">{{depot.depotName}}</td>
+                    <td data-title="Address">{{depot.address.depotAddress | uppercase}}</td>
+                    <td data-title="Depot Head">{{depot.depotHead.name}}</td>
+                    <td data-title="Email ID">{{depot.depotEmail}}</td>
+                    <td data-title="Head Mobile">{{depot.depotHead.mobile}}</td>
+                    <td data-title="Status">{{depot.depotStatus}}</td>
+                    <td data-title="Options" class="text-center">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6 col-md-6">
+                                    <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" [routerLink]="['/master/edit-depot', depot._id]"><span class="fa fa-edit margin-right-0"></span></button>
+                                </div>
+                                <div class="col-6 col-md-6">
+                                    <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" (click)="depotDelete(depot.depotCode)"><span class="fa fa-trash margin-right-0"></span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="depotinfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" *ngFor="let depot of depotInfo">
+        <div class="modal-header" style="background: #454397">
+            <h4 class="modal-title text-white">{{depot.depotCode}} - {{depot.depotName}}</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+                <div class="col-6 col-md-6">
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Depot Code</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{depot.depotCode}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Created By</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{depot.depotCreatedBy}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Depot Email</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{depot.depotEmail}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Depot Code</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{depot.depotCode}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Depot GST</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{depot.depotGST}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Plant Depot Flag</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{depot.plantDepotFlag}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Depot Description</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{depot.depotDescription}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Depot Address</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{depot.address.depotAddress}}</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6">
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Depot (is Plant)</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{depot.isPlant ? "Yes" : "No"}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Depot Status</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{depot.isActive ? "Yes" : "No"}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Depot Latitude</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{depot.depotLatitude}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Depot Longitude</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{depot.depotLongitude}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Depot Remarks</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{depot.depotRemarks}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Depot FaxNum</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{depot.depotFaxNum}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Depot Tel No.</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{depot.depotTelNum}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Depot PAN</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{depot.depotPAN}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Depot CIN</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{depot.depotCIN}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Created Date</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{depot.depotCreatedDate}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Depot Head Details</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{depot.depotHead.name}} <br>{{depot.depotHead.email}} <br>{{depot.depotHead.mobile}}</div>
+                    </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

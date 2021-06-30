@@ -1,0 +1,137 @@
+<section>
+    <div class="container-fluid" style="padding-left:0;">
+        <div class="row">
+            <div class="col-12">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+                <div class="row" *ngFor="let depot of depotInfo">
+                    <div class="col-12 col-md-6">
+                        <div class="input-group mb-3">
+                            <label for="first" class="form-label">Depot Code:  </label>
+                            <input type="text" class="form-control" name="depotCode" [(ngModel)]="depot.depotCode" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">Depot Name:  </label>
+                            <input type="text" class="form-control" name="depotName" [(ngModel)]="depot.depotName" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">Description:  </label>
+                            <input type="text" class="form-control" name="depotDescription" [(ngModel)]="depot.depotDescription" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">Plant/Depot Flag:  </label>
+                            <input type="text" class="form-control" name="plantDepotFlag" [(ngModel)]="depot.plantDepotFlag" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">Address: </label>
+                            <input type="text" class="form-control" name="depotAddress" [(ngModel)]="depot.address.depotAddress" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">Country:  </label>
+                            <input type="text" class="form-control" name="countryName" [(ngModel)]="depot.address.countryName" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">Zone:  </label>
+                            <input type="text" class="form-control" name="zoneName" [(ngModel)]="depot.address.zoneName" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">State:  </label>
+                            <input type="text" class="form-control" name="stateName" [(ngModel)]="depot.address.stateName" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">City:  </label>
+                            <input type="text" class="form-control" name="cityName" [(ngModel)]="depot.address.cityName" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">Pin Code:  </label>
+                            <input type="text" class="form-control" name="pinCode" [(ngModel)]="depot.address.pinCode" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">Depot Head Name:  </label>
+                            <input type="text" class="form-control" name="depotHeadname" [(ngModel)]="depot.depotHead.name" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">Depot Head Mobile no.:  </label>
+                            <input type="text" class="form-control" name="depotHeadmobile" [(ngModel)]="depot.depotHead.mobile" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">Depot Head Email:  </label>
+                            <input type="text" class="form-control" name="depotHeademail" [(ngModel)]="depot.depotHead.email" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">Depot Email:  </label>
+                            <input type="text" class="form-control" name="depotEmail" [(ngModel)]="depot.depotEmail" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">Depot Tel. No.:  </label>
+                            <input type="text" class="form-control" name="depotTelNum" [(ngModel)]="depot.depotTelNum" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">Depot Fax no.:  </label>
+                            <input type="text" class="form-control" name="depotFaxNum" [(ngModel)]="depot.depotFaxNum" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">Remark:  </label>
+                            <input type="text" class="form-control" name="depotRemarks" [(ngModel)]="depot.depotRemarks" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">GST No.:  </label>
+                            <input type="text" class="form-control" name="depotGST" [(ngModel)]="depot.depotGST" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">CIN No.:  </label>
+                            <input type="text" class="form-control" name="depotCIN" [(ngModel)]="depot.depotCIN" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">PAN No.:  </label>
+                            <input type="text" class="form-control" name="depotPAN" [(ngModel)]="depot.depotPAN" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">Lease Period from Date:  </label>
+                            <input type="text" class="form-control" name="from" [(ngModel)]="depot.depotLeasePeriodDate.from" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">Lease Period to Date:  </label>
+                            <input type="text" class="form-control" name="to" [(ngModel)]="depot.depotLeasePeriodDate.to" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">Lease Period Renewal Date:  </label>
+                            <input type="text" class="form-control" name="renewal" [(ngModel)]="depot.depotLeasePeriodDate.renewal" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="last" class="form-label">Status:  </label>
+                            <input type="text" class="form-control" name="depotStatus" [(ngModel)]="depot.depotStatus" required>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                    </div>
+                </div>
+                <button>Submit</button>
+            </form>
+        </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,50 @@
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <table class="table">
+                <thead class="text-white" style="background: #454397">
+                    <tr>
+                        <th>Sr. No.</th>
+                        <th>Driver Code</th>
+                        <th>Driver Name</th>
+                        <th>Address</th>
+                        <th>Country</th>
+                        <th>State</th>
+                        <th>City</th>
+                        <th>License No.</th>
+                        <th>License Valid</th>
+                        <th>Action</th>
+                      </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let onPower of onPOwerData | paginate: { itemsPerPage: pageSize, currentPage: p }; let i = index">
+                        <td data-title="Sr. No.">{{pageSize*(p-1)+i+1}}</td>
+                        <td data-title="Driver Code">{{onPower.driverCode}}</td>
+                        <td data-title="Driver Name">{{onPower.driverName}}</td>
+                        <td data-title="Address"> <span *ngIf="onPower.address.driverAddress1">{{onPower.address.driverAddress1 | uppercase}}</span></td>
+                        <td data-title="Country"> <span *ngIf="onPower.address.countryName">{{onPower.address.countryName | uppercase}}</span></td>
+                        <td data-title="State">{{onPower.address.stateName}}</td>
+                        <td data-title="City">{{onPower.address.cityName}}</td>
+                        <td data-title="License No.">{{onPower.lisenceNo}}</td>
+                        <td data-title="License Valid">{{onPower.licensesValideUpTo | date:"dd-MM-yyyy"}}</td>
+                        <td data-title="Options" class="text-center">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-6 col-md-6">
+                                        <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" [routerLink]="['/master/edit-onPower', onPower._id]"><span class="fa fa-edit margin-right-0"></span></button>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                        <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" (click)="onPowerDelete(onPower._id)"><span class="fa fa-trash margin-right-0"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                      </tr>
+                </tbody>
+            </table>
+            <div class="input-group-icon input-group-icon-right col-md-12">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</section>

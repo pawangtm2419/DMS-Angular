@@ -1,0 +1,40 @@
+body { 
+    font-size: 13px !important;
+    font-weight: 500 !important;
+}
+.sidenav-space {
+    margin-left: 60px;
+}
+tbody, td, tfoot, th, thead, tr {
+    border: 1px solid #ccc;
+}
+@media (min-width: 768px) {
+    .col-md-1 {
+        flex: 0 0 auto;
+        width: 7%;
+    }
+}
+.sub-menu {
+    z-index: 1;
+}
+.row {
+    --bs-gutter-x: 0rem;
+}
+.modal-backdrop {
+    z-index: -1;
+}
+.tr {
+    background-color: #454397;
+}
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 1100px;
+    }
+    }
+    .btn-primary {
+        background: #454397;
+        border: none;
+    }
+    .table-href {
+        color: #454397;
+    }

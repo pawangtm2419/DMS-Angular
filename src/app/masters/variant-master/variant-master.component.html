@@ -1,0 +1,54 @@
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <table class="table">
+                <thead class="text-white" style="background: #454397">
+                    <tr>
+                        <th>Sr. No.</th>
+                        <th>Product Code</th>
+                        <th>Model Code</th>
+                        <th>Variant Code</th>
+                        <th>Specification</th>
+                        <th>NDP Exc. GST</th>
+                        <th>CGST</th>
+                        <th>SGST</th>
+                        <th>NDP Inc. GST</th>
+                        <th>Dealer Margin</th>
+                        <th>MRP</th>
+                        <th>Action</th>
+                      </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let variant of variantData | paginate: { itemsPerPage: pageSize, currentPage: p }; let i = index">
+                        <td data-title="Sr. No.">{{pageSize*(p-1)+i+1}}</td>
+                        <td data-title="Product Code">{{variant.productCode}}</td>
+                        <td data-title="Model Code">{{variant.modelCode}}</td>
+                        <td data-title="Variant Code">{{variant.variantCode}}</td>
+                        <td data-title="Specification">{{variant.specification}}</td>
+                        <td data-title="NDP Exc. GST">{{variant.currencyCode}} {{variant.NDP_withoutTax}}</td>
+                        <td data-title="CGST">{{variant.NDP_withoutTax * variant.gst/100}}</td>
+                        <td data-title="SGST">{{variant.NDP_withoutTax * variant.sst/100}}</td>
+                        <td data-title="NDP Inc. GST">{{variant.NDP_withoutTax + variant.NDP_withoutTax * variant.gst/100 + variant.NDP_withoutTax * variant.sst/100}}</td>
+                        <td data-title="Dealer Margin">{{variant.dealerMargin}}</td>
+                        <td data-title="MRP">{{variant.dealerMargin + variant.NDP_withoutTax + ((variant.dealerMargin + variant.NDP_withoutTax)* (variant.gst/100 + variant.sst/100 ))}}</td>
+                        <td data-title="Options" class="text-center">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-6 col-md-6">
+                                        <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" [routerLink]="['/master/edit-variant', variant._id]"><span class="fa fa-edit margin-right-0"></span></button>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                        <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" (click)="variantDelete(variant._id)"><span class="fa fa-trash margin-right-0"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                      </tr>
+                </tbody>
+            </table>
+            <div class="input-group-icon input-group-icon-right col-md-12">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</section>
