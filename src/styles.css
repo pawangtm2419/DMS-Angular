@@ -61,3 +61,7 @@ tbody, td, tfoot, th, thead, tr {
   border: 1px solid black;
   border-radius: 7px;
 }
+
+.table>:not(caption)>*>* {
+  padding: .2rem .4rem;
+}

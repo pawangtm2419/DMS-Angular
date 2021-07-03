@@ -1,7 +1,7 @@
 <section>
     <div class="container-fluid">
         <div class="row">
-            <table class="table">
+            <table class="table table-striped">
                 <thead class="text-white" style="background: #454397">
                     <tr>
                         <th>Sr. No.</th>
@@ -26,11 +26,11 @@
                         <td data-title="Variant Code">{{variant.variantCode}}</td>
                         <td data-title="Specification">{{variant.specification}}</td>
                         <td data-title="NDP Exc. GST">{{variant.currencyCode}} {{variant.NDP_withoutTax}}</td>
-                        <td data-title="CGST">{{variant.NDP_withoutTax * variant.gst/100}}</td>
-                        <td data-title="SGST">{{variant.NDP_withoutTax * variant.sst/100}}</td>
-                        <td data-title="NDP Inc. GST">{{variant.NDP_withoutTax + variant.NDP_withoutTax * variant.gst/100 + variant.NDP_withoutTax * variant.sst/100}}</td>
+                        <td data-title="CGST">{{variant.NDP_withoutTax * variant.gst/100 | number}}</td>
+                        <td data-title="SGST">{{variant.NDP_withoutTax * variant.sst/100 | number}}</td>
+                        <td data-title="NDP Inc. GST">{{variant.NDP_withoutTax + variant.NDP_withoutTax * variant.gst/100 + variant.NDP_withoutTax * variant.sst/100 | number}}</td>
                         <td data-title="Dealer Margin">{{variant.dealerMargin}}</td>
-                        <td data-title="MRP">{{variant.dealerMargin + variant.NDP_withoutTax + ((variant.dealerMargin + variant.NDP_withoutTax)* (variant.gst/100 + variant.sst/100 ))}}</td>
+                        <td data-title="MRP">{{variant.dealerMargin + variant.NDP_withoutTax + ((variant.dealerMargin + variant.NDP_withoutTax)* (variant.gst/100 + variant.sst/100 )) | number}}</td>
                         <td data-title="Options" class="text-center">
                             <div class="container">
                                 <div class="row">

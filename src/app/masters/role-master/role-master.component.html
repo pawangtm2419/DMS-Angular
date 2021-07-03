@@ -22,16 +22,7 @@
                         <td data-title="Status">{{role.status}}</td>
                         <td data-title="Created Date">{{role.CreatedDate | date:'dd-MM-yyyy'}}</td>
                         <td data-title="Options" class="text-center">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-6 col-md-6">
-                                        <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" [routerLink]="['/master/edit-role', role.roleCode]"><span class="fa fa-edit margin-right-0"></span></button>
-                                    </div>
-                                    <div class="col-6 col-md-6">
-                                        <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" (click)="roleDelete(role.roleCode)"><span class="fa fa-trash margin-right-0"></span></button>
-                                    </div>
-                                </div>
-                            </div>
+                          <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" [routerLink]="['/master/edit-role', role.roleCode]"><span class="fa fa-edit margin-right-0"></span></button>
                         </td>
                     </tr>
                 </tbody>
