@@ -33,10 +33,10 @@ export class LoginComponent implements OnInit {
           window.localStorage.setItem("token", JSON.stringify(res.token));
           await this.router.navigate(['home']);
         } else if(res.status == "false") {
-          console.log(res.data);
+          this.toaster.showError("Error", res.msg);
         }
       }, (error) => {
-        console.log(error.statusText);
+        this.toaster.showError("Error", error);
       });
     }
   }

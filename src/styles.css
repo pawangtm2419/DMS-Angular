@@ -1,6 +1,6 @@
-body { 
-    font-size: 13px !important;
-    font-weight: 500 !important;
+body {
+    font-size: 14px !important;
+    font-weight: 400 !important;
 }
 .sidenav-space {
     margin-left: 60px;
@@ -30,11 +30,34 @@ tbody, td, tfoot, th, thead, tr {
     .modal-dialog {
         max-width: 1100px;
     }
-    }
-    .btn-primary {
-        background: #454397;
-        border: none;
-    }
-    .table-href {
-        color: #454397;
-    }
+  }
+  .btn-primary {
+      background: #454397;
+      border: none;
+  }
+  .table-href {
+      color: #454397;
+  }
+  .table-responsive {
+    max-height: 500px;
+  }
+.btn {
+  padding: 0.2rem;
+}
+
+::-webkit-scrollbar {width: 10px; height: 8px;}
+::-webkit-scrollbar-track {background-color: #121212;}
+::-webkit-scrollbar-thumb {
+  background-color:#454397;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius:2px;border-radius: 2px;
+}
+::-webkit-scrollbar-button {display: none;}
+::-webkit-scrollbar-corner {background-color: #000000;}
+.ngx-pagination .current {
+  background: #454397 !important;
+  border: 1px solid black;
+  border-radius: 7px;
+}

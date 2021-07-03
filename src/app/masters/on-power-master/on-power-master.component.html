@@ -1,6 +1,12 @@
 <section>
     <div class="container-fluid">
         <div class="row">
+          <label for="cars">Data per page:
+            <select id="limit" name="limit" (click)="dataLimit()">
+              <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
+            </select>
+          </label>
+          <div class="table-responsive">
             <table class="table">
                 <thead class="text-white" style="background: #454397">
                     <tr>
@@ -17,8 +23,8 @@
                       </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let onPower of onPOwerData | paginate: { itemsPerPage: pageSize, currentPage: p }; let i = index">
-                        <td data-title="Sr. No.">{{pageSize*(p-1)+i+1}}</td>
+                    <tr *ngFor="let onPower of onPOwerData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
+                      <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
                         <td data-title="Driver Code">{{onPower.driverCode}}</td>
                         <td data-title="Driver Name">{{onPower.driverName}}</td>
                         <td data-title="Address"> <span *ngIf="onPower.address.driverAddress1">{{onPower.address.driverAddress1 | uppercase}}</span></td>
@@ -42,8 +48,9 @@
                       </tr>
                 </tbody>
             </table>
+            </div>
             <div class="input-group-icon input-group-icon-right col-md-12">
-                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                <pagination-controls (pageChange)="pageData = $event"></pagination-controls>
             </div>
         </div>
     </div>

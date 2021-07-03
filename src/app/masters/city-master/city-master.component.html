@@ -1,8 +1,13 @@
 <section>
     <div class="container-fluid wrapper">
         <div class="row">
-            <div class="col-12 col-pl">
-                <table class="table table-responsive">
+          <label for="cars">Data per page:
+            <select id="limit" name="limit" (click)="dataLimit()">
+              <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
+            </select>
+          </label>
+          <div class="table-responsive">
+                <table class="table">
                     <thead class="text-white tr">
                         <tr>
                           <th>Sr. No.</th>
@@ -14,8 +19,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let city of citiesData | paginate: { itemsPerPage: 50, currentPage: p }; let i = index">
-                            <td data-title="Sr. No.">{{50*(p-1)+i+1}}</td>
+                        <tr *ngFor="let city of citiesData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
+                          <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
                             <td data-title="City">{{city.city}}</td>
                             <td data-title="District Name">{{city.districtName}}</td>
                             <td data-title="City Code">{{city.cityCode}}</td>
@@ -33,11 +38,11 @@
                                     </div>
                                 </td>
                         </tr>
-                        <tr *ngIf="citiesData" class="text-center">Data Not Found</tr>
+                        <tr *ngIf="citiesData == 0" class="text-center">Data Not Found</tr>
                     </tbody>
                 </table>
                 <div class="input-group-icon input-group-icon-right col-md-12">
-                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    <pagination-controls (pageChange)="pageData = $event"></pagination-controls>
                 </div>
             </div>
         </div>

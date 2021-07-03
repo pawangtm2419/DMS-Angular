@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MastersService } from 'src/app/shared/services/masters.service';
+import { ToasterService } from 'src/app/shared/services/toster.service';
 
 @Component({
   selector: 'app-city-master',
@@ -8,9 +9,11 @@ import { MastersService } from 'src/app/shared/services/masters.service';
 })
 export class CityMasterComponent implements OnInit {
   citiesData: any;
-  p: number = 1;
+  pageData: number = 1;
+  limits: any;
+  limit: any = 10;
 
-  constructor(private master: MastersService) { }
+  constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
     this.getCityList();
@@ -18,9 +21,19 @@ export class CityMasterComponent implements OnInit {
   getCityList() {
     this.master.getCity().subscribe(res=> {
       this.citiesData = res.data;
+      this.limits = [{ "key": 10, "value": 10 }, { "key": 25, "value": 25 }, { "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { key: "ALL", value: this.citiesData.length }];
+      if(this.citiesData.length > 0) {
+        this.toaster.showSuccess("Data", "Report successfully Open.");
+      } else {
+        this.toaster.showInfo("Data", "No record found.");
+      }
     }, (error) => {
-      console.log(error);
+      this.toaster.showError("Error", error);
     });
+  }
+
+  dataLimit() {
+    this.limit = (<HTMLInputElement>document.getElementById("limit")).value;
   }
 
   cityDelete(id: any) {

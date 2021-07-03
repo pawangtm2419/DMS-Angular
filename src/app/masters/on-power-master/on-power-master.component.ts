@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MastersService } from 'src/app/shared/services/masters.service';
+import { ToasterService } from 'src/app/shared/services/toster.service';
 
 @Component({
   selector: 'app-on-power-master',
@@ -8,9 +9,10 @@ import { MastersService } from 'src/app/shared/services/masters.service';
 })
 export class OnPowerMasterComponent implements OnInit {
   onPOwerData: any;
-  p: number = 1;
-  pageSize = 50;
-  constructor(private master: MastersService) { }
+  pageData: number = 1;
+  limits: any;
+  limit: any = 10;
+  constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
     this.getOnPoweList();
@@ -18,12 +20,22 @@ export class OnPowerMasterComponent implements OnInit {
   getOnPoweList() {
     this.master.getOnPower().subscribe(res=> {
       this.onPOwerData=res.data;
+      this.limits = [{ "key": 10, "value": 10 }, { "key": 25, "value": 25 }, { "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { key: "ALL", value: this.onPOwerData.length }];
+      if(this.onPOwerData.length > 0) {
+        this.toaster.showSuccess("Data", "Report successfully Open.");
+      } else {
+        this.toaster.showInfo("Data", "No record found.");
+      }
     }, (error) => {
-      console.log(error);
+      this.toaster.showError("Error", error);
     });
   }
 
   onPowerDelete(code: String) {
     console.log(code);
+  }
+
+  dataLimit() {
+    this.limit = (<HTMLInputElement>document.getElementById("limit")).value;
   }
 }

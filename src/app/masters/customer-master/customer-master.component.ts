@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MastersService } from 'src/app/shared/services/masters.service';
+import { ToasterService } from 'src/app/shared/services/toster.service';
 
 @Component({
   selector: 'app-customer-master',
@@ -12,7 +13,7 @@ export class CustomerMasterComponent implements OnInit {
   limits: any;
   limit: any = 10;
 
-  constructor(private master: MastersService) { }
+  constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
     this.getCustomerList();
@@ -22,8 +23,13 @@ export class CustomerMasterComponent implements OnInit {
     this.master.getCustomers(data).subscribe(res=> {
       this.customersData=res.data;
       this.limits = [{ "key": 10, "value": 10 }, { "key": 25, "value": 25 }, { "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { key: "ALL", value: this.customersData.length }];
+      if(this.customersData.length > 0) {
+        this.toaster.showSuccess("Data", "Report successfully Open.");
+      } else {
+        this.toaster.showInfo("Data", "No record found.");
+      }
     }, (error) => {
-      console.log(error);
+      this.toaster.showError("Error", error);
     });
   }
 

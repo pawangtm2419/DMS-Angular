@@ -1,7 +1,13 @@
 <section>
     <div class="container-fluid">
         <div class="row">
-            <table class="table">
+          <label for="cars">Data per page:
+            <select id="limit" name="limit" (click)="dataLimit()">
+              <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
+            </select>
+          </label>
+          <div class="table-responsive sticky-table sticky-headers sticky-ltr-cells">
+            <table class="table table-responsive">
                 <thead class="text-white" style="background: #454397">
                   <tr>
                     <th>Sr. No.</th>
@@ -16,8 +22,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let depot of depotData | paginate: { itemsPerPage: 50, currentPage: p }; let i = index">
-                    <td data-title="Sr. No.">{{50*(p-1)+i+1}}</td>
+                  <tr *ngFor="let depot of depotData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
+                    <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
                     <td data-title="Depot Code"><a class="table-href" data-bs-toggle="modal" data-bs-target="#depotinfo" (click)="viewFullInfo(depot)">{{depot.depotCode}}</a></td>
                     <td data-title="Depot Name">{{depot.depotName}}</td>
                     <td data-title="Address">{{depot.address.depotAddress | uppercase}}</td>
@@ -40,6 +46,10 @@
                   </tr>
                 </tbody>
             </table>
+            </div>
+            <div class="input-group-icon input-group-icon-right col-md-12 mt-2">
+              <pagination-controls (pageChange)="pageData = $event"></pagination-controls>
+          </div>
         </div>
     </div>
 </section>
