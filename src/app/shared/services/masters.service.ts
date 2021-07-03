@@ -25,49 +25,49 @@ export class MastersService {
 /* Dealer Master */
   getDealers(data: any): Observable<any> {
     return this.http.post(`${environment.url}/dealer/dealers`, data, this.httpOptions)
-  } 
+  }
   /* Customer Master */
   getCustomers(data: any): Observable<any> {
     return this.http.post(`${environment.url}/viewCustomer`, data, this.httpOptions)
-  } 
+  }
   /* Roles Master */
   getRoles(): Observable<any> {
     return this.http.get(`${environment.url}/viewRoles`, this.httpOptions)
-  }   
+  }
   /* variant Master */
   getVariant(): Observable<any> {
     return this.http.get(`${environment.url}/viewVariant`, this.httpOptions)
-  } 
+  }
   /* On Power */
   getOnPower(): Observable<any> {
     return this.http.get(`${environment.url}/viewOnPower`, this.httpOptions)
-  } 
+  }
   /* viewTransporter */
   getTransporter(): Observable<any> {
     return this.http.get(`${environment.url}/viewTransporter`, this.httpOptions)
-  } 
+  }
   /* viewPart */
   getParts(): Observable<any> {
     return this.http.get(`${environment.url}/viewPart`, this.httpOptions)
-  } 
+  }
   /* usersList */
   getusers(): Observable<any> {
     return this.http.get(`${environment.url}/usersList`, this.httpOptions)
-  } 
+  }
   /* viewFinancialInst */
   getFinancialInst(): Observable<any> {
     return this.http.get(`${environment.url}/viewFinancialInst`, this.httpOptions)
-  } 
+  }
   /* viewStates */
   getState(): Observable<any> {
     return this.http.get(`${environment.url}/viewStates`, this.httpOptions)
-  } 
+  }
   /* zonesList */
   getzones(): Observable<any> {
     return this.http.get(`${environment.url}/zonesList`, this.httpOptions)
-  } 
+  }
   /* getCities */
   getCity(): Observable<any> {
     return this.http.get(`${environment.url}/getCities`, this.httpOptions)
-  } 
+  }
 }

@@ -1,11 +1,13 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ToasterService } from './toster.service';
+import { map, delay, catchError } from 'rxjs/operators';
+import { User } from '../model/indes';
 
-export interface User {
+export interface Users {
   empID: String;
   pass: string;
 }
@@ -15,14 +17,14 @@ export interface User {
 })
 export class UserService {
 
-  constructor(private http: HttpClient, private router: Router, public toaster: ToasterService) { }
+  constructor(private http: HttpClient, private router: Router, public toaster: ToasterService) {}
 
-  userUogIn(data: User): Observable<any> {
+  userUogIn(data: Users): Observable<any> {
     return this.http.post(`${environment.url}/authLog`, data);
   }
 
   gettoken() {
-    return !!localStorage.getItem("profile");
+    return (!!localStorage.getItem("profile") && !!localStorage.getItem("token"));
   }
 
   logout() {
@@ -31,4 +33,5 @@ export class UserService {
     this.toaster.showSuccess("Success", "Log out successfull");
     this.router.navigate(['/']);
   }
+
 }

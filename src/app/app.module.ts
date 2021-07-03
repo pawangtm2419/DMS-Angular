@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastrModule } from 'ngx-toastr';
 import { ToasterService } from './shared/services/toster.service';
+import { AppGuard } from './shared/app.guard';
+import { UserService } from './shared/services/user.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,7 @@ import { ToasterService } from './shared/services/toster.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ToasterService],
+  providers: [UserService, AppGuard, ToasterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

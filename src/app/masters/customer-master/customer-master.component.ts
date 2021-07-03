@@ -8,7 +8,10 @@ import { MastersService } from 'src/app/shared/services/masters.service';
 })
 export class CustomerMasterComponent implements OnInit {
   customersData: any;
-  p: number = 1;
+  pageData: number = 1;
+  limits: any;
+  limit: any = 10;
+
   constructor(private master: MastersService) { }
 
   ngOnInit(): void {
@@ -18,10 +21,16 @@ export class CustomerMasterComponent implements OnInit {
     let data = {useType: "ALL"};
     this.master.getCustomers(data).subscribe(res=> {
       this.customersData=res.data;
+      this.limits = [{ "key": 10, "value": 10 }, { "key": 25, "value": 25 }, { "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { key: "ALL", value: this.customersData.length }];
     }, (error) => {
       console.log(error);
     });
   }
+
+  dataLimit() {
+    this.limit = (<HTMLInputElement>document.getElementById("limit")).value;
+  }
+
   viewFullInfo(customer: any) {
     this.customersData = [customer];
     console.log(customer);

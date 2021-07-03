@@ -17,7 +17,7 @@ export class CityMasterComponent implements OnInit {
   }
   getCityList() {
     this.master.getCity().subscribe(res=> {
-      this.citiesData=res.data;
+      this.citiesData = res.data;
     }, (error) => {
       console.log(error);
     });

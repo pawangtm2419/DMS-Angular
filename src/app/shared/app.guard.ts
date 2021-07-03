@@ -14,11 +14,12 @@ export class AppGuard implements CanActivate, CanActivateChild, CanDeactivate<un
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (!this.service.gettoken()) {  
+      if (this.service.gettoken()) {
+        return true;
+      }  else {
         this.router.navigateByUrl("/");
         return false;
-      }  
-      return this.service.gettoken();
+      }
   }
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
