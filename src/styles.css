@@ -20,9 +20,6 @@ tbody, td, tfoot, th, thead, tr {
 .row {
     --bs-gutter-x: 0rem;
 }
-.modal-backdrop {
-    z-index: -1;
-}
 .tr {
     background-color: #454397;
 }

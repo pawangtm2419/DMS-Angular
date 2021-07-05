@@ -9,9 +9,11 @@ import { ToasterService } from 'src/app/shared/services/toster.service';
 })
 export class CustomerMasterComponent implements OnInit {
   customersData: any;
+  customersInfo: any;
   pageData: number = 1;
   limits: any;
   limit: any = 10;
+  loading: boolean = true;
 
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
@@ -22,6 +24,7 @@ export class CustomerMasterComponent implements OnInit {
     let data = {useType: "ALL"};
     this.master.getCustomers(data).subscribe(res=> {
       this.customersData=res.data;
+      this.loading = false;
       this.limits = [{ "key": 10, "value": 10 }, { "key": 25, "value": 25 }, { "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { key: "ALL", value: this.customersData.length }];
       if(this.customersData.length > 0) {
         this.toaster.showSuccess("Data", "Report successfully Open.");
@@ -38,13 +41,15 @@ export class CustomerMasterComponent implements OnInit {
   }
 
   viewFullInfo(customer: any) {
-    this.customersData = [customer];
-    console.log(customer);
+    this.customersInfo = [customer];
   }
-  editCustomerIndo(customer: any) {
-    console.log(customer);
+
+  editCustomerInfo(customer: any) {
+    console.log([customer]);
   }
-  deleteCustomerIndo(id: string) {
-    console.log(id);
+
+  deleteCustomerInfo(customer: any) {
+    console.log([customer]);
   }
+
 }

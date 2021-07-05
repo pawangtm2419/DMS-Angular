@@ -1,7 +1,7 @@
 <!-- nav -->
-<div class="row" *ngIf="user" style="height: 100%; position:sticky; bottom: 0;">
+<div class="row" style="height: 100%; position:sticky; bottom: 0;z-index: 99;">
     <div class="col-md-1 sub-menu" *ngIf="(router.url) !== '/'">
-        <div class="position-fixed" style="bottom: 0; top:0">
+        <div class="position-fixed top-0 bottom-0">
         <div class="row" style="position:absolute; bottom: 0; top:0" >
             <div class="col-md-10 mob-nav-cont" style="background: #454397;">
                 <app-menu></app-menu>
@@ -9,10 +9,10 @@
         </div>
         </div>
     </div>
-    <div class="col-md-11" style="background:#f2f2f2; right: 0px; bottom: 0; top:0;">
-        <app-header *ngIf="(router.url) !== '/'"></app-header>
+    <div class="col-md-11" *ngIf="(router.url) !== '/'" style="background:#f2f2f2; right: 0px; bottom: 0; top:0;">
+        <app-header></app-header>
         <router-outlet></router-outlet>
-        <app-footer *ngIf="(router.url) !== '/'"></app-footer>
+        <app-footer></app-footer>
     </div>
 </div>
 <div *ngIf="!user" style="position: fixed;">
