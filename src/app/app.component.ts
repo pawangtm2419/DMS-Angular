@@ -8,12 +8,8 @@ import { UserService } from './shared/services/user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'DMS-Angular';
-  user: any;
 
-  constructor(private service: UserService, public router: Router) { }
+  constructor(public router: Router) { }
 
-  ngOnInit(): void {
-    this.user = this.service.gettoken();
-  }
+  ngOnInit(): void { }
 }

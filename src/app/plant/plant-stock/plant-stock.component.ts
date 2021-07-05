@@ -17,7 +17,7 @@ export class PlantStockComponent implements OnInit {
     this.plantStockData();
   }
   plantStockData() {
-    let stock = {type: "PLANTSTOCK"};
+    var stock = {type: "PLANTSTOCK"};
     this.service.plantStock(stock, this.httpOptions).subscribe(res=> {
       this.plantStock=res.data;
       if(this.plantStock.length > 0) {
