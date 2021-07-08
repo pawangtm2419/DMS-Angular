@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MastersService } from 'src/app/shared/services/masters.service';
+import { MastersService, ToasterService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-part-master',
@@ -7,23 +7,39 @@ import { MastersService } from 'src/app/shared/services/masters.service';
   styleUrls: ['./part-master.component.css']
 })
 export class PartMasterComponent implements OnInit {
+  searchData: any;
   partsData: any;
-  p: number = 1;
-  pageSize = 50;
-  constructor(private master: MastersService) { }
+  partsInfo: any[] = [];
+  pageData: number = 1;
+  // pageSize = 10;
+  limits: any;
+  limit: any = 50;
+  constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
     this.getPartList();
   }
-  
+
   getPartList() {
     this.master.getParts().subscribe(res=> {
       this.partsData=res.data;
+      this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.partsData.length }];
+      if(this.partsData.length > 0) {
+        this.toaster.showSuccess("Data", "Report successfully Open.");
+      } else {
+        this.toaster.showInfo("Data", "No record found.");
+      }
     }, (error) => {
       console.log(error);
     });
   }
 
+  dataLimit() {
+    this.limit = (<HTMLInputElement>document.getElementById("limit")).value;
+  }
+  viewFullInfo(part: any) {
+    this.partsInfo = [part];
+  }
   partDelete(code: String) {
     console.log(code);
   }

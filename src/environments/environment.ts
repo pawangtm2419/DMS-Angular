@@ -4,9 +4,10 @@
 
 export const environment = {
   production: false,
-  url: "http://localhost:3039",
+  /* url: "http://localhost:3041", */
   /* url: "http://172.16.15.30:4000/" */
   /* url: "http://103.149.113.99:3041" */
+  url: "http://172.16.15.18:3041"
 };
 
 /*

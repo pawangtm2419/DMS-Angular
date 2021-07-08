@@ -1,1 +1,57 @@
-<p>plant-stock works!</p>
+<table class="table table-bordered table-striped table-condensed cf" id="plantstock">
+  <thead class="cf text_hd">
+    <tr class="sticky-row">
+      <th>Sr. No.</th>
+      <th>Plant Code</th>
+      <th>Plant Name</th>
+      <th>Product Code</th>
+      <th>Model Code</th>
+      <th>Variant Code</th>
+      <th>Chassis No.</th>
+      <th>Engine No.</th>
+      <th>Market</th>
+      <th>Production_Date</th>
+      <th>Status</th>
+      <th>Ageing</th>
+      <th>NDP_withoutTax</th>
+      <th>Tax</th>
+      <th>Action</th>
+      <th>Move to Capitalized</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pStock of plantStock | paginate: { itemsPerPage: limit, currentPage: pageData }; let i=index">
+      <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
+      <td data-title="Depot Code">{{pStock.plant.code }}</td>
+      <td data-title="Depot Code">{{pStock.plant.name }}</td>
+      <td data-title="Product Code">{{pStock.productCode}}</td>
+      <td data-title="Model">{{pStock.model}}</td>
+      <td data-title="Variant Code">{{pStock.variantCode}}</td>
+      <td data-title="Chasis No">{{pStock.chassisNo}}</td>
+      <td data-title="Engine No">{{pStock.engineNo}}</td>
+      <td data-title="Mkt">{{pStock.market}}</td>
+      <td data-title="Prod-Date">{{pStock.prodDate | date:"dd-MM-yyyy"}}</td>
+      <td data-title="Status">{{pStock.status | uppercase}}</td>
+      <td data-title="Ageing"> {{pStock.prodDate}}</td>
+      <td data-title="NDP_withoutTax">{{pStock.NDP}}</td>
+      <td data-title="Tax">{{pStock.SST +pStock.GST  }}</td>
+      <td data-title="Options" class="text-center">
+        <div ng-if="profile.empID=='admin'">
+          <a class="btn bg-blue btn-xs radius_none" href="" data-toggle="modal" (click)="removeChassis(pStock)">
+              <span class=" fa fa-trash margin-right-0"></span>
+          </a>
+        </div>
+        <a class="btn bg-blue btn-xs radius_none" href="" data-toggle="modal" (click)="form22(pStock)">
+          <span>Form 22</span>
+        </a>
+        <a class="btn bg-blue btn-xs radius_none" href="" data-toggle="modal" (click)="editDepotIndo(pStock)">
+          <span class="fa fa-edit margin-right-0"></span>
+        </a>
+      </td>
+      <td> <button value="Move" title="Move to Capital stock" ng-click="movetoCapital(pStock)">Move</button> </td>
+    </tr>
+  </tbody>
+</table>
+<div class="input-group-icon input-group-icon-right col-md-12 mt-2">
+  <pagination-controls (pageChange)="pageData = $event"></pagination-controls>
+</div>

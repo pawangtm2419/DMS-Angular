@@ -1,6 +1,5 @@
-import { ConditionalExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { MastersService } from 'src/app/shared/services/masters.service';
+import { MastersService, ToasterService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-transporter-master',
@@ -8,10 +7,13 @@ import { MastersService } from 'src/app/shared/services/masters.service';
   styleUrls: ['./transporter-master.component.css']
 })
 export class TransporterMasterComponent implements OnInit {
+  searchData: any;
   transporterData: any;
-  p: number = 1;
-  pageSize = 50;
-  constructor(private master: MastersService) { }
+  transportInfo: any[] = [];
+  pageData: number = 1;
+  limits: any;
+  limit: any = 50;
+  constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
     this.getTransporterList();
@@ -19,9 +21,21 @@ export class TransporterMasterComponent implements OnInit {
   getTransporterList() {
     this.master.getTransporter().subscribe(res=> {
       this.transporterData=res.data;
+      this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.transporterData.length }];
+      if(this.transporterData.length > 0) {
+        this.toaster.showSuccess("Data", "Report successfully Open.");
+      } else {
+        this.toaster.showInfo("Data", "No record found.");
+      }
     }, (error) => {
       console.log(error);
     });
+  }
+  dataLimit() {
+    this.limit = (<HTMLInputElement>document.getElementById("limit")).value;
+  }
+  viewFullInfo(transporter: any) {
+    this.transportInfo = [transporter];
   }
   transportDelete(code: String) {
     console.log(code);

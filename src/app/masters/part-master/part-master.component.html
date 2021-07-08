@@ -1,46 +1,134 @@
 <section>
     <div class="container-fluid">
         <div class="row">
-            <table class="table">
-                <thead class="text-white" style="background: #454397">
-                    <tr>
-                        <th>Sr. No.</th>
-                        <th>Parts Code</th>
-                        <th>Part Description</th>
-                        <th>HSN Code</th>
-                        <th>GST Tax %</th>
-                        <th>Basic Price (INR)</th>
-                        <th>Maximum Retail Price (INR)</th>
-                        <th>Action</th>
-                      </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let part of partsData | paginate: { itemsPerPage: pageSize, currentPage: p }; let i = index">
-                        <td data-title="Sr. No.">{{pageSize*(p-1)+i+1}}</td>
-                        <td data-title="Product Code">{{part.partsCode}}</td>
-                        <td data-title="Description">{{part.partsDescription | uppercase}}</td>
-                        <td data-title="HSN Code">{{part.hsnCode}}</td>
-                        <td data-title="GST Tax %">{{part.gstTax}}</td>
-                        <td data-title="Basic Price (INR)">{{part.basicPrice}}</td>
-                        <td data-title="Maximum Retail Price (INR)">{{part.maxRetailPrice}}</td>
-                        <td data-title="Options" class="text-center">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-6 col-md-6">
-                                        <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" [routerLink]="['/master/edit-part', part._id]"><span class="fa fa-edit margin-right-0"></span></button>
-                                    </div>
-                                    <div class="col-6 col-md-6">
-                                        <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" (click)="partDelete(part._id)"><span class="fa fa-trash margin-right-0"></span></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                      </tr>
-                </tbody>
-            </table>
-            <div class="input-group-icon input-group-icon-right col-md-12">
-                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            <div class="col-md-12">
+                <!-- searchbar-row -->
+                <div class="row mb-4">
+                    <div class="col-6">
+                        <ul class="model-menu">
+                            <li><a routerLink="">Master</a></li>/
+                            <li><a routerLink="/master/part">Part Master</a></li>
+                        </ul>
+                        <div class="searchBar mt-3 d-flex justify-content-center align-items-center">
+                            <i class="fas fa-search"></i><input class="form-control me-2" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
+                        </div>
+                    </div>
+                    <div class="col-3 align-self-end text-end">
+                        <div class="modelBtnMain">
+                            <button type="button" class="btn btn-primary text-uppercase">+ New</button>
+                        </div>
+                    </div>
+                    <div class="col-3 align-self-end text-end">
+                        
+                        <label for="cars">Data per page:
+                            <select id="limit" name="limit" (click)="dataLimit()">
+                            <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <!-- searchbar-row -->
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle">
+                        <thead class="text-white sticky-top theadbg">
+                            <tr>
+                                <th>#</th>
+                                <th>Parts Code</th>
+                                <th>Part Description</th>
+                                <th>HSN Code</th>
+                                <th>GST Tax %</th>
+                                <th>Basic Price (INR)</th>
+                                <th>Maximum Retail Price (INR)</th>
+                                <th>Action</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let part of partsData | paginate: { itemsPerPage: limit, currentPage: pageData } | filter: searchData; let i = index">
+                                <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
+                                <td data-title="Product Code"><a class="table-href" data-bs-toggle="modal" data-bs-target="#partsinfo" (click)="viewFullInfo(part)">{{part.partsCode}}</a></td>
+                                <td data-title="Description">{{part.partsDescription | uppercase}}</td>
+                                <td data-title="HSN Code">{{part.hsnCode}}</td>
+                                <td data-title="GST Tax %">{{part.gstTax}}</td>
+                                <td data-title="Basic Price (INR)">{{part.basicPrice}}</td>
+                                <td data-title="Maximum Retail Price (INR)">{{part.maxRetailPrice}}</td>
+                                <td data-title="Options" class="text-center">
+                                    <!-- <div class="container">
+                                        <div class="row">
+                                            <div class="col-6 col-md-6">
+                                                <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" [routerLink]="['/master/edit-part', part._id]"><span class="fa fa-edit margin-right-0"></span></button>
+                                            </div>
+                                            <div class="col-6 col-md-6">
+                                                <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" (click)="partDelete(part._id)"><span class="fa fa-trash margin-right-0"></span></button>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <a class="editIcon icon mb-1" [routerLink]="['/master/edit-part', part._id]"><i class="fa fa-edit"></i></a>
+                                    <a class="deleteIcon icon" (click)="partDelete(part._id)"><i class="fa fa-trash-alt"></i></a>
+                                </td>
+                              </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="input-group-icon input-group-icon-right col-md-12">
+                    <pagination-controls (pageChange)="pageData = $event"></pagination-controls>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+<!-- viewFullInfo modal -->
+<div class="modal fade" id="partsinfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" *ngFor="let part of partsInfo">
+        <div class="modal-header modalHeaderCenter" style="background: #454397">
+            <h4 class="modal-title text-white text-center">Part Code - {{part.partsCode}}</h4>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+          <a class="btn-close2" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+                <div class="col-6 col-md-6 p-2">
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Parts Code</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{part.partsCode}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>MPart Description</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{part.partsDescription | uppercase}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>HSN Code</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{part.hsnCode}}</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 p-2">
+                    <div class="row mt-1">
+                        <div class="col-5"><b>GST Tax %</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{part.gstTax}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Basic Price (INR)</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{part.basicPrice}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Maximum Retail Price (INR)</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{part.maxRetailPrice}}</div>
+                    </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer border-btm">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

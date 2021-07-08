@@ -14,20 +14,13 @@ import { ToastrModule } from 'ngx-toastr';
 import { ToasterService } from './shared/services/toster.service';
 import { AppGuard } from './shared/app.guard';
 import { UserService } from './shared/services/user.service';
-import { UserProfileComponent } from './user/user-profile/user-profile.component';
-import { ChangePassComponent } from './user/change-pass/change-pass.component';
-import { CloseDateComponent } from './user/close-date/close-date.component';
-import { UpdateVehicleComponent } from './user/update-vehicle/update-vehicle.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent,
-    UserProfileComponent,
-    ChangePassComponent,
-    CloseDateComponent,
-    UpdateVehicleComponent
+    LoginComponent
   ],
   imports: [
     SharedModule,
@@ -36,6 +29,7 @@ import { UpdateVehicleComponent } from './user/update-vehicle/update-vehicle.com
     NgxPaginationModule,
     BrowserModule,
     BrowserAnimationsModule,
+    Ng2SearchPipeModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',

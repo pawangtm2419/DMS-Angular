@@ -1,35 +1,117 @@
 <section>
     <div class="container-fluid">
         <div class="row">
-            <table class="table">
-                <thead class="text-white" style="background: #454397">
-                    <tr>
-                        <th>Sr. No.</th>
-                        <th>Role Code</th>
-                        <th>Role Name</th>
-                        <th>Description</th>
-                        <th>Status</th>
-                        <th>Created Date</th>
-                        <th>Action</th>
-                      </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let role of rolesData | paginate: { itemsPerPage: pageSize, currentPage: p }; let i = index">
-                        <td data-title="Sr. No.">{{pageSize*(p-1)+i+1}}</td>
-                        <td data-title="Role Code">{{role.roleCode}}</td>
-                        <td data-title="Role Name">{{role.roleName}}</td>
-                        <td data-title="Description">{{role.description}}</td>
-                        <td data-title="Status">{{role.status}}</td>
-                        <td data-title="Created Date">{{role.CreatedDate | date:'dd-MM-yyyy'}}</td>
-                        <td data-title="Options" class="text-center">
-                          <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" [routerLink]="['/master/edit-role', role.roleCode]"><span class="fa fa-edit margin-right-0"></span></button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="input-group-icon input-group-icon-right col-md-12">
-                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            <div class="col-md-12">
+                <!-- searchbar-row -->
+                <div class="row mb-4">
+                    <div class="col-6">
+                        <ul class="model-menu">
+                            <li><a routerLink="">Master</a></li>/
+                            <li><a routerLink="/master/role">Role Master</a></li>
+                        </ul>
+                        <div class="searchBar mt-3 d-flex justify-content-center align-items-center">
+                            <i class="fas fa-search"></i><input class="form-control me-2" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
+                        </div>
+                    </div>
+                    <div class="col-3 align-self-end text-end">
+                        <div class="modelBtnMain">
+                            <button type="button" class="btn btn-primary text-uppercase">+ New</button>
+                        </div>
+                    </div>
+                    <div class="col-3 align-self-end text-end">
+                        <label for="cars">Data per page:
+                            <select id="limit" name="limit" (click)="dataLimit()">
+                            <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <!-- searchbar-row -->
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle">
+                        <thead class="text-white sticky-top theadbg">
+                            <tr>
+                                <th>#</th>
+                                <th>Role Code</th>
+                                <th>Role Name</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <th>Created Date</th>
+                                <th>Action</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let role of rolesData | paginate: { itemsPerPage: limit, currentPage: pageData } | filter: searchData; let i = index">
+                                <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
+                                <td data-title="Role Code"><a class="table-href" data-bs-toggle="modal" data-bs-target="#rolesinfo" (click)="viewFullInfo(role)">{{role.roleCode}}</a></td>
+                                <td data-title="Role Name">{{role.roleName}}</td>
+                                <td data-title="Description">{{role.description}}</td>
+                                <td data-title="Status">{{role.status}}</td>
+                                <td data-title="Created Date">{{role.CreatedDate | date:'dd-MM-yyyy'}}</td>
+                                <td data-title="Options" class="text-center">
+                                  <!-- <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" [routerLink]="['/master/edit-role', role.roleCode]"><span class="fa fa-edit margin-right-0"></span></button> -->
+                                  <a class="editIcon icon mb-1" [routerLink]="['/master/edit-role', role.roleCode]"><i class="fa fa-edit"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="input-group-icon input-group-icon-right mt-2">
+                    <pagination-controls (pageChange)="pageData = $event"></pagination-controls>
+                </div>
             </div>
+            
         </div>
     </div>
 </section>
+<!-- viewFullInfo modal -->
+<div class="modal fade" id="rolesinfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" *ngFor="let role of rolesInfo">
+        <div class="modal-header modalHeaderCenter" style="background: #454397">
+            <h4 class="modal-title text-white text-center">{{role.roleCode}} - {{role.roleName}}</h4>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+          <a class="btn-close2" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+                <div class="col-6 col-md-6 p-2">
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Role Code</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{role.roleCode}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Role Name</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{role.roleName}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Description</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{role.description}}</div>
+                    </div>
+                    
+                </div>
+                <div class="col-6 col-md-6 p-2">
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Status</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{role.status}}</div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-5"><b>Created Date</b></div>
+                        <div class="col-1"><b>:</b></div>
+                        <div class="col-6">{{role.CreatedDate | date:'dd-MM-yyyy'}}</div>
+                    </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer border-btm">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

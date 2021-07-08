@@ -1,11 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ToasterService } from './toster.service';
-import { map } from 'rxjs/operators';
-
+import { map, delay, catchError } from 'rxjs/operators';
+import { User } from '../model/indes';
 
 export interface Users {
   empID: String;
@@ -19,11 +19,8 @@ export class UserService {
 
   constructor(private http: HttpClient, private router: Router, public toaster: ToasterService) {}
 
-  userUogIn(data: Users) : Observable<any> {
-    return this.http.post(`${environment.url}/authLog`, data).pipe(map(res => {
-        return res;
-      })
-    );
+  userUogIn(data: Users): Observable<any> {
+    return this.http.post(`${environment.url}/authLog`, data);
   }
 
   gettoken() {

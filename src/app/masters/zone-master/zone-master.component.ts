@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MastersService } from 'src/app/shared/services/masters.service';
+import { MastersService, ToasterService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-zone-master',
@@ -7,11 +7,12 @@ import { MastersService } from 'src/app/shared/services/masters.service';
   styleUrls: ['./zone-master.component.css']
 })
 export class ZoneMasterComponent implements OnInit {
+  searchData:any;
   zonesData: any;
-  p: number = 1;
-  pageSize = 50;
-
-  constructor(private master: MastersService) { }
+  pageData: number = 1;
+  limits: any;
+  limit: any = 50;
+  constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
     this.getzoneList();
@@ -19,11 +20,19 @@ export class ZoneMasterComponent implements OnInit {
   getzoneList() {
     this.master.getzones().subscribe(res=> {
       this.zonesData=res.zones;
+      this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.zonesData.length }];
+      if(this.zonesData.length > 0) {
+        this.toaster.showSuccess("Data", "Report successfully Open.");
+      } else {
+        this.toaster.showInfo("Data", "No record found.");
+      }
     }, (error) => {
       console.log(error);
     });
   }
-
+  dataLimit() {
+    this.limit = (<HTMLInputElement>document.getElementById("limit")).value;
+  }
   zoneDelete(code: String) {
     console.log(code);
   }

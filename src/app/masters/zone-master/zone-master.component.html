@@ -1,39 +1,70 @@
 <section>
     <div class="container-fluid">
         <div class="row">
-            <table class="table">
-                <thead class="text-white" style="background: #454397">
-                    <tr>
-                        <th>Sr. No.</th>
-                        <th>Country</th>
-                        <th>Zone</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                      </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let zone of zonesData | paginate: { itemsPerPage: pageSize, currentPage: p }; let i = index">
-                        <td data-title="Sr. No.">{{pageSize*(p-1)+i+1}}</td>
-                        <td data-title="Country">{{zone.countryName}}</td>
-                        <td data-title="Zone">{{zone.zone}}</td>
-                        <td data-title="Status">{{zone.status ? "Active" : "Inactive"}}</td>
-                        <td data-title="Options" class="text-center">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-6 col-md-6">
-                                        <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" [routerLink]="['/master/edit-zone', zone._id]"><span class="fa fa-edit margin-right-0"></span></button>
-                                    </div>
-                                    <div class="col-6 col-md-6">
-                                        <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" (click)="zoneDelete(zone._id)"><span class="fa fa-trash margin-right-0"></span></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="input-group-icon input-group-icon-right col-md-12">
-                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            <div class="col-md-12">
+                <!-- searchbar-row -->
+                <div class="row mb-4">
+                    <div class="col-6">
+                        <ul class="model-menu">
+                            <li><a routerLink="">Master</a></li>/
+                            <li><a routerLink="/master/zone">Zone Master</a></li>
+                        </ul>
+                        <div class="searchBar mt-3 d-flex justify-content-center align-items-center">
+                            <i class="fas fa-search"></i><input class="form-control me-2" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
+                        </div>
+                    </div>
+                    <div class="col-3 align-self-end text-end">
+                        <div class="modelBtnMain">
+                            <button type="button" class="btn btn-primary text-uppercase">+ New</button>
+                        </div>
+                    </div>
+                    <div class="col-3 align-self-end text-end">
+                        <label for="cars">Data per page:
+                            <select id="limit" name="limit" (click)="dataLimit()">
+                            <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <!-- searchbar-row -->
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle">
+                        <thead class="text-white sticky-top theadbg">
+                            <tr>
+                                <th>#</th>
+                                <th>Country</th>
+                                <th>Zone</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let zone of zonesData | paginate: { itemsPerPage: limit, currentPage: pageData } | filter: searchData; let i = index">
+                                <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
+                                <td data-title="Country">{{zone.countryName}}</td>
+                                <td data-title="Zone">{{zone.zone}}</td>
+                                <td data-title="Status">{{zone.status ? "Active" : "Inactive"}}</td>
+                                <td data-title="Options" class="text-center">
+                                    <!-- <div class="container">
+                                        <div class="row">
+                                            <div class="col-6 col-md-6">
+                                                <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" [routerLink]="['/master/edit-zone', zone._id]"><span class="fa fa-edit margin-right-0"></span></button>
+                                            </div>
+                                            <div class="col-6 col-md-6">
+                                                <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" (click)="zoneDelete(zone._id)"><span class="fa fa-trash margin-right-0"></span></button>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <a class="editIcon icon mb-1" [routerLink]="['/master/edit-zone', zone._id]"><i class="fa fa-edit"></i></a>
+                                    <a class="deleteIcon icon" (click)="zoneDelete(zone._id)"><i class="fa fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="input-group-icon input-group-icon-right mt-2">
+                    <pagination-controls (pageChange)="pageData = $event"></pagination-controls>
+                </div>
             </div>
         </div>
     </div>

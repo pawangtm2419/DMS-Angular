@@ -8,12 +8,12 @@ import { ToasterService } from 'src/app/shared/services/toster.service';
   styleUrls: ['./customer-master.component.css']
 })
 export class CustomerMasterComponent implements OnInit {
+  searchData: any;
   customersData: any;
-  customersInfo: any;
+  customersInfo: any[] = [];
   pageData: number = 1;
   limits: any;
-  limit: any = 10;
-  loading: boolean = true;
+  limit: any = 50;
 
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
@@ -24,8 +24,7 @@ export class CustomerMasterComponent implements OnInit {
     let data = {useType: "ALL"};
     this.master.getCustomers(data).subscribe(res=> {
       this.customersData=res.data;
-      this.loading = false;
-      this.limits = [{ "key": 10, "value": 10 }, { "key": 25, "value": 25 }, { "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { key: "ALL", value: this.customersData.length }];
+      this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.customersData.length }];
       if(this.customersData.length > 0) {
         this.toaster.showSuccess("Data", "Report successfully Open.");
       } else {
@@ -35,21 +34,18 @@ export class CustomerMasterComponent implements OnInit {
       this.toaster.showError("Error", error);
     });
   }
-
   dataLimit() {
     this.limit = (<HTMLInputElement>document.getElementById("limit")).value;
   }
 
   viewFullInfo(customer: any) {
     this.customersInfo = [customer];
+    console.log(customer);
   }
-
-  editCustomerInfo(customer: any) {
-    console.log([customer]);
+  editCustomerIndo(customer: any) {
+    console.log(customer);
   }
-
-  deleteCustomerInfo(customer: any) {
-    console.log([customer]);
+  deleteCustomerIndo(id: string) {
+    console.log(id);
   }
-
 }

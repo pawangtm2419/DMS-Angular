@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MastersService } from 'src/app/shared/services/masters.service';
-import { ToasterService } from 'src/app/shared/services/toster.service';
+import { MastersService, ToasterService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-city-master',
@@ -8,10 +7,11 @@ import { ToasterService } from 'src/app/shared/services/toster.service';
   styleUrls: ['./city-master.component.css']
 })
 export class CityMasterComponent implements OnInit {
+  searchData:any;
   citiesData: any;
   pageData: number = 1;
   limits: any;
-  limit: any = 10;
+  limit: any = 50;
 
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
@@ -21,7 +21,7 @@ export class CityMasterComponent implements OnInit {
   getCityList() {
     this.master.getCity().subscribe(res=> {
       this.citiesData = res.data;
-      this.limits = [{ "key": 10, "value": 10 }, { "key": 25, "value": 25 }, { "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { key: "ALL", value: this.citiesData.length }];
+      this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.citiesData.length }];
       if(this.citiesData.length > 0) {
         this.toaster.showSuccess("Data", "Report successfully Open.");
       } else {

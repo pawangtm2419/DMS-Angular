@@ -12,6 +12,8 @@ export class CapitalizedStockComponent implements OnInit {
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': JSON.parse(localStorage.getItem('token') || '{}')}) };
   cPlantStock: any;
   limits: any;
+  pageData: number = 1;
+  limit: any = 10;
   constructor(private service: PlantService, public toaster: ToasterService) { }
 
   ngOnInit(): void {

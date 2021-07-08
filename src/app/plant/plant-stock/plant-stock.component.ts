@@ -11,6 +11,8 @@ export class PlantStockComponent implements OnInit {
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': JSON.parse(localStorage.getItem('token') || '{}')}) };
   plantStock: any;
   limits: any;
+  pageData: number = 1;
+  limit: any = 10;
   constructor(private service: PlantService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -29,5 +31,17 @@ export class PlantStockComponent implements OnInit {
     }, (error) => {
       this.toaster.showError("Error", error);
     });
+  }
+
+  removeChassis(pStock: any) {
+    console.log([pStock]);
+  }
+
+  form22(pStock: any) {
+    console.log([pStock]);
+  }
+
+  editDepotIndo(pStock: any) {
+    console.log([pStock]);
   }
 }
