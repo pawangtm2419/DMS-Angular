@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
@@ -22,11 +22,15 @@ const routes: Routes = [
   { path: 'variant-master', loadChildren: () => import('./masters/variant-master/variant-master.module').then(m => m.VariantMasterModule), canActivate: [AppGuard] },
   { path: 'zone-master', loadChildren: () => import('./masters/zone-master/zone-master.module').then(m => m.ZoneMasterModule), canActivate: [AppGuard] },
   { path: 'user-master', loadChildren: () => import('./masters/user-master/user-master.module').then(m => m.UserMasterModule), canActivate: [AppGuard] },
+  { path: 'plant-stock', loadChildren: () => import('./plant/plant-stock/plant-stock.module').then(m => m.PlantStockModule), canActivate: [AppGuard] },
+  { path: 'c-stock', loadChildren: () => import('./plant/capitalized-stock/capitalized-stock.module').then(m => m.CapitalizedStockModule), canActivate: [AppGuard] },
+
+  //PlantStockModule
   { path: '**', component: PagenotfoundComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{preloadingStrategy: PreloadAllModules})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

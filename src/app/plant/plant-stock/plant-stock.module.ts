@@ -1,14 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { PlantStockComponent } from './plant-stock.component';
 
-import { PlantStockRoutingModule } from './plant-stock-routing.module';
-
+const routes: Routes = [
+  { path: '', component: PlantStockComponent }
+];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    PlantStockComponent
+  ],
   imports: [
     CommonModule,
-    PlantStockRoutingModule
-  ]
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(routes)
+  ],
+  exports: [RouterModule]
 })
 export class PlantStockModule { }
