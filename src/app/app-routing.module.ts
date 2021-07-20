@@ -60,6 +60,8 @@ const routes: Routes = [
   { path: 'ats-delivery', loadChildren: () => import('./dealer/ats-delivery/ats-delivery.module').then(m => m.AtsDeliveryModule), canActivate: [AppGuard] },
   { path: 'ats-insurance', loadChildren: () => import('./dealer/ats-insurance/ats-insurance.module').then(m => m.AtsInsuranceModule), canActivate: [AppGuard] },
   { path: 'ats-retail', loadChildren: () => import('./dealer/ats-retail/ats-retail.module').then(m => m.AtsRetailModule), canActivate: [AppGuard] },
+  //bgs /page in dealer module
+  { path: 'bgs-report', loadChildren: () => import('./dealer/bgs/bgs.module').then(m => m.BgsModule), canActivate: [AppGuard] },
   //page not found
   { path: '**', component: PagenotfoundComponent }
 ];
