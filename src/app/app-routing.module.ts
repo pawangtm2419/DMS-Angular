@@ -52,6 +52,11 @@ const routes: Routes = [
   { path: 'r-retail-return', loadChildren: () => import('./dealer/report-retail-return/report-retail-return.module').then(m => m.ReportRetailReturnModule), canActivate: [AppGuard] },
   { path: 'r-rts', loadChildren: () => import('./dealer/report-rts/report-rts.module').then(m => m.ReportRtsModule), canActivate: [AppGuard] },
   { path: 'r-tehsil-based', loadChildren: () => import('./dealer/report-tehsil-based/report-tehsil-based.module').then(m => m.ReportTehsilBasedModule), canActivate: [AppGuard] },
+  //return page modules
+  { path: 'advance-return', loadChildren: () => import('./dealer/return-advance/return-advance.module').then(m => m.ReturnAdvanceModule), canActivate: [AppGuard] },
+  { path: 'retail-return', loadChildren: () => import('./dealer/return-retail/return-retail.module').then(m => m.ReturnRetailModule), canActivate: [AppGuard] },
+  { path: 'sales-return', loadChildren: () => import('./dealer/return-sales/return-sales.module').then(m => m.ReturnSalesModule), canActivate: [AppGuard] },
+  //page not found
   { path: '**', component: PagenotfoundComponent }
 ];
 
