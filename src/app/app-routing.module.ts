@@ -56,6 +56,10 @@ const routes: Routes = [
   { path: 'advance-return', loadChildren: () => import('./dealer/return-advance/return-advance.module').then(m => m.ReturnAdvanceModule), canActivate: [AppGuard] },
   { path: 'retail-return', loadChildren: () => import('./dealer/return-retail/return-retail.module').then(m => m.ReturnRetailModule), canActivate: [AppGuard] },
   { path: 'sales-return', loadChildren: () => import('./dealer/return-sales/return-sales.module').then(m => m.ReturnSalesModule), canActivate: [AppGuard] },
+  //ats page in dealer module
+  { path: 'ats-delivery', loadChildren: () => import('./dealer/ats-delivery/ats-delivery.module').then(m => m.AtsDeliveryModule), canActivate: [AppGuard] },
+  { path: 'ats-insurance', loadChildren: () => import('./dealer/ats-insurance/ats-insurance.module').then(m => m.AtsInsuranceModule), canActivate: [AppGuard] },
+  { path: 'ats-retail', loadChildren: () => import('./dealer/ats-retail/ats-retail.module').then(m => m.AtsRetailModule), canActivate: [AppGuard] },
   //page not found
   { path: '**', component: PagenotfoundComponent }
 ];
