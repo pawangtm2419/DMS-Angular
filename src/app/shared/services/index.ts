@@ -3,3 +3,8 @@ export * from './user.service';
 export * from './plant.service';
 export * from './toster.service';
 export * from './depot.service';
+export * from './dealer-plan.service';
+export * from './dealer-report.service';
+export * from './dealer-return.service';
+export * from './dealer.service';
+export * from './depot.service';
