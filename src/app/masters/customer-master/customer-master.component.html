@@ -3,13 +3,13 @@
         <div class="row">
             <div class="col-md-12">
                 <!-- searchbar-row -->
-                <div class="row mb-3">
+                <div class="row mb-2">
                     <div class="col-6">
                         <ul class="model-menu">
                             <li><a routerLink="">Master</a></li>/
                             <li><a routerLink="/master/customer">Customer Master</a></li>
                         </ul>
-                        <div class="searchBar mt-3 d-flex justify-content-center align-items-center">
+                        <div class="searchBar mt-2 d-flex justify-content-center align-items-center">
                             <i class="fas fa-search"></i><input class="form-control me-2" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
 
                         </div>
@@ -60,7 +60,7 @@
                                 <td data-title="Owner's Name"><a (click)="viewFullInfo(customer)">{{customer.ownerName}}</a></td>
                                 <td data-title="Customer DOB">{{customer.customerDOB | date:'dd-MM-yyyy'}}</td>
                                 <td data-title="Customer DOB">{{customer.weddingDate | date:'dd-MM-yyyy'}}</td>
-                                <td data-title="Customer Address" style="width:20%">{{customer.address.customerAddress}}</td>
+                                <td data-title="Customer Address">{{customer.address.customerAddress}}</td>
                                 <td data-title="Mobile No">{{customer.address.stateName}}</td>
                                 <td data-title="Mobile No">{{customer.address.tehsil}}</td>
                                 <td data-title="Mobile No">{{customer.address.villageName}}</td>

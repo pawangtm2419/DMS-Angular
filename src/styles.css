@@ -1,6 +1,5 @@
 body {
   font-size: 14px !important;
-  font-weight: 400 !important;
   background-color: #f2f2f2;
 }
 .sidenav-space {
@@ -46,7 +45,7 @@ tbody, td, tfoot, th, thead, tr {
   color: #454397;
 }
 .table-responsive {
-  max-height: 500px;
+  max-height: 400px;
 }
 
 ::-webkit-scrollbar {

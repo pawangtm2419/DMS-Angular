@@ -15,12 +15,38 @@ import { ToasterService } from './shared/services/toster.service';
 import { AppGuard } from './shared/app.guard';
 import { UserService } from './shared/services/user.service';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SaleReturnReceiptListComponent } from './dealer/sale-return-receipt-list/sale-return-receipt-list.component';
+import { DealerCollectionEntryComponent } from './dealer/dealer-collection-entry/dealer-collection-entry.component';
+import { StatementUploadComponent } from './dealer/statement-upload/statement-upload.component';
+import { OpeningClosingSheetComponent } from './dealer/opening-closing-sheet/opening-closing-sheet.component';
+import { MonthlyStatementComponent } from './dealer/monthly-statement/monthly-statement.component';
+import { PlanSalePlanUploadComponent } from './dealer/plan-sale-plan-upload/plan-sale-plan-upload.component';
+import { PlanSalePlanReportComponent } from './dealer/plan-sale-plan-report/plan-sale-plan-report.component';
+import { PlanCollectionPlanUploadComponent } from './dealer/plan-collection-plan-upload/plan-collection-plan-upload.component';
+import { PlanCollectionPlanReportComponent } from './dealer/plan-collection-plan-report/plan-collection-plan-report.component';
+import { PlanDeliveryPlanReportComponent } from './dealer/plan-delivery-plan-report/plan-delivery-plan-report.component';
+import { PlanDeliveryPlanUploadComponent } from './dealer/plan-delivery-plan-upload/plan-delivery-plan-upload.component';
+import { PlanRetailPlanReportComponent } from './dealer/plan-retail-plan-report/plan-retail-plan-report.component';
+import { PlanRetailPlanUploadComponent } from './dealer/plan-retail-plan-upload/plan-retail-plan-upload.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    SaleReturnReceiptListComponent,
+    DealerCollectionEntryComponent,
+    StatementUploadComponent,
+    OpeningClosingSheetComponent,
+    MonthlyStatementComponent,
+    PlanSalePlanUploadComponent,
+    PlanSalePlanReportComponent,
+    PlanCollectionPlanUploadComponent,
+    PlanCollectionPlanReportComponent,
+    PlanDeliveryPlanReportComponent,
+    PlanDeliveryPlanUploadComponent,
+    PlanRetailPlanReportComponent,
+    PlanRetailPlanUploadComponent
   ],
   imports: [
     SharedModule,

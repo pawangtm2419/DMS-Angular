@@ -12,7 +12,7 @@ export class CustomerMasterComponent implements OnInit {
   customersData: any;
   customersInfo: any[] = [];
   pageData: number = 1;
-  limits: any;
+  limits = [{ "key": "50", "value": 50 }, { "key": "100", "value": 100 }, { "key": "250", "value": 250 }, { "key": "500", "value": 500 }];
   limit: any = 50;
 
   constructor(private master: MastersService, public toaster: ToasterService) { }
@@ -24,7 +24,7 @@ export class CustomerMasterComponent implements OnInit {
     let data = {useType: "ALL"};
     this.master.getCustomers(data).subscribe(res=> {
       this.customersData=res.data;
-      this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.customersData.length }];
+      this.limits.push({ "key": "ALL", value: this.customersData.length });
       if(this.customersData.length > 0) {
         this.toaster.showSuccess("Data", "Report successfully Open.");
       } else {
@@ -40,7 +40,6 @@ export class CustomerMasterComponent implements OnInit {
 
   viewFullInfo(customer: any) {
     this.customersInfo = [customer];
-    console.log(customer);
   }
   editCustomerIndo(customer: any) {
     console.log(customer);
