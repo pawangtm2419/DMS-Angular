@@ -9,6 +9,9 @@ import { LoginComponent } from './user/login/login.component';
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full', component: LoginComponent },
   { path: 'home', component: HomeComponent, canActivate: [AppGuard] },
+  //dashboard module page
+  { path: 'history-report', loadChildren: () => import('./dashboard/history-report/history-report.module').then(m => m.HistoryReportModule), canActivate: [AppGuard] },
+  { path: 'vehicle-history', loadChildren: () => import('./dashboard/vehicle-history/vehicle-history.module').then(m => m.VehicleHistoryModule), canActivate: [AppGuard] },
   //master's modules
   { path: 'm-city', loadChildren: () => import('./masters/city-master/city-master.module').then(m => m.CityMasterModule), canActivate: [AppGuard] },
   { path: 'm-customer', loadChildren: () => import('./masters/customer-master/customer-master.module').then(m => m.CustomerMasterModule), canActivate: [AppGuard] },
