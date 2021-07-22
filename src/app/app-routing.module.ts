@@ -65,6 +65,15 @@ const routes: Routes = [
   //invoice page in dealer module
   { path: 'invoices', loadChildren: () => import('./dealer/invoice/invoice.module').then(m => m.InvoiceModule), canActivate: [AppGuard] },
   { path: 'invoices-mtd', loadChildren: () => import('./dealer/invoice-mtd/invoice-mtd.module').then(m => m.InvoiceMtdModule), canActivate: [AppGuard] },
+  //plan page in dealer module
+  { path: 'r-collection-plan', loadChildren: () => import('./dealer/plan-collection-plan-report/plan-collection-plan-report.module').then(m => m.PlanCollectionPlanReportModule), canActivate: [AppGuard] },
+  { path: 'upload-collection-plan', loadChildren: () => import('./dealer/plan-collection-plan-upload/plan-collection-plan-upload.module').then(m => m.PlanCollectionPlanUploadModule), canActivate: [AppGuard] },
+  { path: 'r-delivery-plan', loadChildren: () => import('./dealer/plan-delivery-plan-report/plan-delivery-plan-report.module').then(m => m.PlanDeliveryPlanReportModule), canActivate: [AppGuard] },
+  { path: 'upload-delivery-plan', loadChildren: () => import('./dealer/plan-delivery-plan-upload/plan-delivery-plan-upload.module').then(m => m.PlanDeliveryPlanUploadModule), canActivate: [AppGuard] },
+  { path: 'r-retail-plan', loadChildren: () => import('./dealer/plan-retail-plan-report/plan-retail-plan-report.module').then(m => m.PlanRetailPlanReportModule), canActivate: [AppGuard] },
+  { path: 'upload-retail-plan', loadChildren: () => import('./dealer/plan-retail-plan-upload/plan-retail-plan-upload.module').then(m => m.PlanRetailPlanUploadModule), canActivate: [AppGuard] },
+  { path: 'r-sale-plan', loadChildren: () => import('./dealer/plan-sale-plan-report/plan-sale-plan-report.module').then(m => m.PlanSalePlanReportModule), canActivate: [AppGuard] },
+  { path: 'upload-sale-plan', loadChildren: () => import('./dealer/plan-sale-plan-upload/plan-sale-plan-upload.module').then(m => m.PlanSalePlanUploadModule), canActivate: [AppGuard] },
   //page not found
   { path: '**', component: PagenotfoundComponent }
 ];
