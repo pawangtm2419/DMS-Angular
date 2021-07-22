@@ -74,6 +74,13 @@ const routes: Routes = [
   { path: 'upload-retail-plan', loadChildren: () => import('./dealer/plan-retail-plan-upload/plan-retail-plan-upload.module').then(m => m.PlanRetailPlanUploadModule), canActivate: [AppGuard] },
   { path: 'r-sale-plan', loadChildren: () => import('./dealer/plan-sale-plan-report/plan-sale-plan-report.module').then(m => m.PlanSalePlanReportModule), canActivate: [AppGuard] },
   { path: 'upload-sale-plan', loadChildren: () => import('./dealer/plan-sale-plan-upload/plan-sale-plan-upload.module').then(m => m.PlanSalePlanUploadModule), canActivate: [AppGuard] },
+  //dealer collection page module
+  { path: 'monthly-statement', loadChildren: () => import('./dealer/monthly-statement/monthly-statement.module').then(m => m.MonthlyStatementModule), canActivate: [AppGuard] },
+  { path: 'opening-closing-sheet', loadChildren: () => import('./dealer/opening-closing-sheet/opening-closing-sheet.module').then(m => m.OpeningClosingSheetModule), canActivate: [AppGuard] },
+  { path: 'statement-upload', loadChildren: () => import('./dealer/statement-upload/statement-upload.module').then(m => m.StatementUploadModule), canActivate: [AppGuard] },
+  // dealer module page
+  { path: 'sale-return-receipt', loadChildren: () => import('./dealer/sale-return-receipt-list/sale-return-receipt-list.module').then(m => m.SaleReturnReceiptListModule), canActivate: [AppGuard] },
+  { path: 'dealer-collection-entry', loadChildren: () => import('./dealer/dealer-collection-entry/dealer-collection-entry.module').then(m => m.DealerCollectionEntryModule), canActivate: [AppGuard] },
   //page not found
   { path: '**', component: PagenotfoundComponent }
 ];
