@@ -41,7 +41,7 @@
                               </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let role of rolesData | paginate: { itemsPerPage: limit, currentPage: pageData } | filter: searchData; let i = index">
+                            <tr *ngFor="let role of rolesData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                                 <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
                                 <td data-title="Role Code"><a class="table-href" data-bs-toggle="modal" data-bs-target="#rolesinfo" (click)="viewFullInfo(role)">{{role.roleCode}}</a></td>
                                 <td data-title="Role Name">{{role.roleName}}</td>
@@ -60,7 +60,7 @@
                     <pagination-controls (pageChange)="pageData = $event"></pagination-controls>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </section>
@@ -92,7 +92,7 @@
                         <div class="col-1"><b>:</b></div>
                         <div class="col-6">{{role.description}}</div>
                     </div>
-                    
+
                 </div>
                 <div class="col-6 col-md-6 p-2">
                     <div class="row mt-1">

@@ -1,0 +1,78 @@
+export class Invoice {
+  "data": [
+    {
+      "_id": String,
+      "data": [
+        {
+          "_id": String,
+          "prodDate": Date,
+          "productCode": String,
+          "variantCode": String,
+          "hsnCode": Number,
+          "status": String,
+          "locationType": String,
+          "previousLocType": String,
+          "code": String,
+          "state": String,
+          "name": String,
+          "city": String,
+          "zone": String,
+          "invoiceNumber": Number,
+          "invoiceDate": Date,
+          "createdBy": String,
+          "engineNo": String,
+          "model": String,
+          "SST": Number,
+          "GST": Number,
+          "NDP": Number,
+          "dealer": {
+            "code": String,
+            "name": String,
+            "city": String,
+            "state":String,
+            "zone": String,
+            "head": String,
+            "email": String,
+            "mobile": Number,
+            "discountAmount": Number,
+            "PDIstatus": Boolean,
+            "damageControlStatus": Boolean,
+            "invoiceNumber":  Number,
+            "invoiceDate": Date,
+            "transport": {
+              "type": String,
+              "code": String,
+              "name": String,
+            },
+            "currency": String,
+            "SaleReturnInvoiceAmount": Number,
+            "invoiceAmount":  Number,
+            "pdiCount": Number,
+            "damagedCount": Number,
+          },
+          "isReturned": Boolean,
+          "currency": String,
+          "SaleReturnInvoiceAmount": Number,
+          "invoiceAmount": Number,
+          "createDate": Date,
+          "isDispatched": Boolean,
+          "PDIstatus": Boolean,
+          "insurance": [],
+          "previousState": {
+            "code": String,
+            "name": String,
+            "city": String,
+            "state": String,
+            "PDIstatus": Boolean,
+            "damageControlStatus": Boolean,
+          },
+          "recoveryPdiItems": [],
+          "checkPDI": [],
+          "damagedParts": [],
+          "recoveryParts": [],
+          "damageControlStatus": Boolean
+        }
+      ]
+    }
+  ]
+}

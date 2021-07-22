@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MastersService } from 'src/app/shared/services/masters.service';
-import { ToasterService } from 'src/app/shared/services/toster.service';
+import { MastersService } from 'src/app/shared/services';
+import { ToasterService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-customer-master',

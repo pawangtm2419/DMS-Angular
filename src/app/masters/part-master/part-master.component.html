@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     <div class="col-3 align-self-end text-end">
-                        
+
                         <label for="cars">Data per page:
                             <select id="limit" name="limit" (click)="dataLimit()">
                             <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
@@ -43,7 +43,7 @@
                               </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let part of partsData | paginate: { itemsPerPage: limit, currentPage: pageData } | filter: searchData; let i = index">
+                            <tr *ngFor="let part of partsData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                                 <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
                                 <td data-title="Product Code"><a class="table-href" data-bs-toggle="modal" data-bs-target="#partsinfo" (click)="viewFullInfo(part)">{{part.partsCode}}</a></td>
                                 <td data-title="Description">{{part.partsDescription | uppercase}}</td>

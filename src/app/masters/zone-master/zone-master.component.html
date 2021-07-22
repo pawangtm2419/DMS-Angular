@@ -39,7 +39,7 @@
                               </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let zone of zonesData | paginate: { itemsPerPage: limit, currentPage: pageData } | filter: searchData; let i = index">
+                            <tr *ngFor="let zone of zonesData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                                 <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
                                 <td data-title="Country">{{zone.countryName}}</td>
                                 <td data-title="Zone">{{zone.zone}}</td>
