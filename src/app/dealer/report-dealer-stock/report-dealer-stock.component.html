@@ -1,1 +1,83 @@
-<p>report-dealer-stock works!</p>
+<section>
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <!-- searchbar-row -->
+              <div class="sidebarMain mb-2">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <ul class="model-menu">
+                              <li><a routerLink="">Dealer</a></li>/
+                              <li><a routerLink="/dealer/viewReports/dealer-stock">Dealer Stock Data</a></li>
+                          </ul>
+                          <div class="searchBar d-flex justify-content-center align-items-center">
+                              <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData"  placeholder="Search" aria-label="Search">
+
+                          </div>
+                      </div>
+                      <div class="col-md-6 align-self-end text-end">
+                          <!-- <div class="modelBtnMain">
+                              <button type="button" data-bs-toggle="modal" data-bs-target="#addZone" class="btn btn-primary text-uppercase">+ Add Stock</button>
+                          </div> -->
+                          <label for="cars">
+                              <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
+                              <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
+                              </select>
+                          </label>
+                      </div>
+                  </div>
+              </div>
+              <!-- searchbar-row -->
+              <div class="table-responsive">
+                  <table class="table table-striped table-hover align-middle">
+                      <thead class="text-white sticky-top theadbg">
+                          <tr>
+                              <th>#</th>
+                              <th>Dealer Code</th>
+                              <th>Dealer Name</th>
+                              <th>Location</th>
+                              <th>State</th>
+                              <th>Product Code</th>
+                              <th>Model Code</th>
+                              <th>Variant Code</th>
+                              <th>Chassis No.</th>
+                              <th>Engine No.</th>
+                              <th>Market</th>
+                              <th>Production_Date</th>
+                              <th>Invoice Date</th>
+                              <th>Invoice Number</th>
+                              <th>Invoice Amount</th>
+                              <th>Ageing</th>
+                              <th>Status</th>
+                            </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let stock of stocksData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData } let i = index">
+                              <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
+                              <td data-title="Dealer Code">{{stock.dealer.code}}</td>
+                              <td data-title="Dealer Name">{{stock.dealer.name}}</td>
+                              <td data-title="Location">{{stock.dealer.city}}</td>
+                              <td data-title="State">{{stock.dealer.state}}</td>
+                              <td data-title="Product Code">{{stock.productCode}}</td>
+                              <td data-title="Model Code">{{stock.model}}</td>
+                              <td data-title="Variant Code">{{stock.variantCode}}</td>
+                              <td data-title="Chassis No.">{{stock.chassisNo}}</td>
+                              <td data-title="Engine No.">{{stock.engineNo}}</td>
+                              <td data-title="Market">{{stock.market}}</td>
+                              <td data-title="Production_Date">{{stock.prodDate | date:"dd-MM-yyyy"}}</td>
+                              <td data-title="Invoice Date">{{stock.dealer.invoiceDate | date:"dd-MM-yyyy"}}</td>
+                              <td data-title="Invoice Number">{{stock.dealer.invoiceNumber}}</td>
+                              <td data-title="Invoice Amount">{{stock.dealer.invoiceAmount}}</td>
+                              <td data-title="Ageing">{{stock.dealer.recivedDate | date:"dd-MM-yyyy"}}</td>
+                              <td data-title="Status">{{stock.status}}</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="input-group-icon input-group-icon-right mt-2">
+                  <pagination-controls (pageChange)="pageData = $event"></pagination-controls>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

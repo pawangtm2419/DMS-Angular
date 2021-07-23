@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DealerReportService, ToasterService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-report-rts',
@@ -7,9 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportRtsComponent implements OnInit {
 
-  constructor() { }
+  searchData:any;
+  rtsReports: any;
+  pageData: number = 1;
+  limits: any;
+  limit: any = 50;
+
+  constructor(private dealer: DealerReportService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
+    this.getrtsList();
+  }
+  getrtsList() {
+    let data = {"isRetailed":false,"useType":"ALL"};
+    this.dealer.getRtsReports(data).subscribe(res=> {
+      this.rtsReports=res.data;
+      console.log(this.rtsReports);
+      this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.rtsReports.length }];
+      if(this.rtsReports.length > 0) {
+        this.toaster.showSuccess("Data", "Report successfully Open.");
+      } else {
+        this.toaster.showInfo("Data", "No record found.");
+      }
+    }, (error) => {
+      // console.log(error);
+      this.toaster.showInfo("Data", error);
+    });
+  }
+  dataLimit() {
+    this.limit = (<HTMLInputElement>document.getElementById("limit")).value;
   }
 
 }
