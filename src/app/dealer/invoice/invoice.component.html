@@ -33,24 +33,27 @@
                 <div class="col-3">
                   <div class="row align-items-center">
                     <div class="col-auto">
-                      <label for="fromDate" class="col-form-label" style="padding-right: 50px;">From: </label>
+                      <label for="fromDate" class="col-form-label" style="padding-right: 20px;">From: </label>
                     </div>
                     <div class="col-auto">
-                      <input type="date" id="fromDate" class="form-control">
+                      <input type="date" id="fromDate" [ngModel]="fromDate | date:'yyyy-MM-dd'" max="{{currentDate}}" class="form-control">
                     </div>
                   </div>
                 </div>
                 <div class="col-3">
                   <div class="row align-items-center">
                     <div class="col-auto">
-                      <label for="toDate" class="col-form-label" style="padding-right: 50px;">To: </label>
+                      <label for="toDate" class="col-form-label" style="padding-right: 20px;">To: </label>
                     </div>
                     <div class="col-auto">
-                      <input type="date" id="toDate" class="form-control">
+                      <input type="date" id="toDate" [ngModel]="toDate | date:'yyyy-MM-dd'" max="{{currentDate}}" class="form-control">
                     </div>
                   </div>
                 </div>
-                <div class="col-3"></div>
+                <div class="col-1">
+                  <button class="btn btn-primary" (click)="getinvoiceData()">Search</button>
+                </div>
+                <div class="col-2"></div>
               </div>
             </div>
           </div>
