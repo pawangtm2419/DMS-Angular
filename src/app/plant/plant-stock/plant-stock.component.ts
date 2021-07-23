@@ -10,9 +10,10 @@ import { PlantService, ToasterService } from 'src/app/shared/services';
 export class PlantStockComponent implements OnInit {
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': JSON.parse(localStorage.getItem('token') || '{}')}) };
   plantStock: any;
-  limits: any;
+  searchData: any;
+  limits = [{ "key": "50", "value": 50 }, { "key": "100", "value": 100 }, { "key": "250", "value": 250 }, { "key": "500", "value": 500 }];
   pageData: number = 1;
-  limit: any = 10;
+  limit: any = 50;
   constructor(private service: PlantService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -24,13 +25,17 @@ export class PlantStockComponent implements OnInit {
       this.plantStock=res.data;
       if(this.plantStock.length > 0) {
         this.toaster.showSuccess("Data", "Report successfully Open.");
-        this.limits = [{ "key": 10, "value": 10 }, { "key": 25, "value": 25 }, { "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { key: "ALL", value: this.plantStock.length }];
+        this.limits.push({ "key": "ALL", value: this.plantStock.length });
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
     }, (error) => {
       this.toaster.showError("Error", error);
     });
+  }
+
+  dataLimit() {
+    this.limit = (<HTMLInputElement>document.getElementById("limit")).value;
   }
 
   removeChassis(pStock: any) {

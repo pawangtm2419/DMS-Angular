@@ -53,7 +53,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let customer of customersData | paginate: { itemsPerPage: limit, currentPage: pageData } | filter: searchData;let i=index">
+                            <tr *ngFor="let customer of customersData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i=index">
                                 <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
                                 <td data-title="Sr. No."><a class="table-href" data-bs-toggle="modal" data-bs-target="#customersinfo" (click)="viewFullInfo(customer)">{{customer.dealerCode}}</a></td>
                                 <td data-title="Sr. No.">{{customer.customerId}}</td>
