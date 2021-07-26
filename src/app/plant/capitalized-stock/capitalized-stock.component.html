@@ -6,8 +6,8 @@
               <div class="row mb-2">
                   <div class="col-6">
                       <ul class="model-menu">
-                          <li><a routerLink="">Master</a></li>/
-                          <li><a routerLink="/master/customer">Customer Master</a></li>
+                          <li><a routerLink="">Plant</a></li>/
+                          <li><a routerLink="/master/capitalizedStock">Capitalized Stock</a></li>
                       </ul>
                       <div class="searchBar mt-2 d-flex justify-content-center align-items-center">
                           <i class="fas fa-search"></i><input class="form-control me-2" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
@@ -53,7 +53,7 @@
                             <td data-title="Engine No">{{cStock.engineNo}}</td>
                             <td data-title="Prod-Date">{{cStock.prodDate | date:"dd-MM-yyyy"}}</td>
                             <td data-title="Mkt">{{cStock.market}}</td>
-                            <td> <button value="Move" title="move to plant stock" ng-click="movetoPlant(cStock)">Move</button> </td>
+                            <td> <button class="btn-rounded" value="Move" title="move to plant stock" ng-click="movetoPlant(cStock)">Move</button> </td>
                           </tr>
                       </tbody>
                   </table>
@@ -65,3 +65,4 @@
       </div>
   </div>
 </section>
+
