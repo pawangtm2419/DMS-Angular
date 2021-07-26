@@ -12,7 +12,7 @@ export class DealerMasterComponent implements OnInit {
   dealerInfo: any[] = [];
   title = "Dealer Master";
   pageData: number = 1;
-  limits: any;
+  limits: any = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
   limit: any = 50;
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
@@ -23,8 +23,8 @@ export class DealerMasterComponent implements OnInit {
     let data = {useType: "ALL"};
     this.master.getDealers(data).subscribe(res=> {
       this.dealerData = res.msg;
-      this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.dealerData.length }];
       if(this.dealerData.length > 0) {
+        this.limits.push({ "key": "ALL", value: this.dealerData.length });
         this.toaster.showSuccess("Data", "Report successfully Open.");
       } else {
         this.toaster.showInfo("Data", "No record found.");

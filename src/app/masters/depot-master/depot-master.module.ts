@@ -6,10 +6,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { DepotMasterComponent } from './depot-master.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { DealerMasterComponent } from '../dealer-master/dealer-master.component';
 
 const routes: Routes = [
-  { path: '', component: DealerMasterComponent }
+  { path: '', component: DepotMasterComponent }
 ];
 
 @NgModule({

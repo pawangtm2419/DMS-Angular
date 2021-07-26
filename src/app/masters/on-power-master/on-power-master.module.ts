@@ -6,10 +6,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { OnPowerMasterComponent } from './on-power-master.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { FinancialMasterComponent } from '../financial-master/financial-master.component';
 
 const routes: Routes = [
-  { path: '', component: FinancialMasterComponent }
+  { path: '', component: OnPowerMasterComponent }
 ];
 
 @NgModule({
