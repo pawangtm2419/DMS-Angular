@@ -1,1 +1,142 @@
-<p>report-retail works!</p>
+<section>
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <!-- searchbar-row -->
+              <div class="sidebarMain">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <ul class="model-menu">
+                              <li><a routerLink="">Dealer</a></li>/
+                              <li><a routerLink="/dealer/viewReports/retails">Retail Reports</a></li>
+                          </ul>
+                          <div class="searchBar d-flex justify-content-center align-items-center">
+                              <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
+
+                          </div>
+                      </div>
+                      <div class="col-md-6 align-self-end text-end">
+                          <!-- <div class="modelBtnMain">
+                              <button type="button" data-bs-toggle="modal" data-bs-target="#addRetail" class="btn btn-primary text-uppercase">+ Add Retail Reports</button>
+                          </div> -->
+                          <label for="cars">
+                              <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
+                              <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
+                              </select>
+                          </label>
+                      </div>
+                  </div>
+              </div>
+              <!-- searchbar-row -->
+              <div class="table-responsive">
+                  <table class="table table-striped table-hover align-middle">
+                      <thead class="text-white sticky-top theadbg">
+                          <tr>
+                              <th></th>
+                              <th colspan="4" class="text-center">Dealer</th>
+                              <th colspan="4" class="text-center">Customer</th>
+                              <th colspan="5" class="text-center">Vehicle</th>
+                              <th colspan="10" class="text-center">Price</th>
+                              <th colspan="7" class="text-center">Dates</th>
+                              <th></th>
+                              <th></th>
+                              <th colspan="2" class="text-center">Reversal</th>
+                          </tr>
+                          <tr>
+                              <th>Sr.No.</th>
+                              <th>Code</th>
+                              <th>Name</th>
+                              <th>Location</th>
+                              <th>State</th>
+
+                              <th>Name</th>
+                              <th>Contact</th>
+                              <th>Location</th>
+                              <th>State</th>
+
+                              <th>Model</th>
+                              <th>ProductCode</th>
+                              <th>Variant</th>
+                              <th>ChassisNo</th>
+                              <th>Engine No</th>
+
+                              <th>Financer Type</th>
+                              <th>Financer Name</th>
+                              <th>DealPrice</th>
+                              <th>Cash</th>
+                              <th>Old Tractor Price</th>
+                              <th>Finance Amount Received On</th>
+                              <th>Finance Amount Received</th>
+                              <th>ReceivedAmt</th>
+                              <th>BalanceAmt</th>
+                              <th>Quantity</th>
+
+                              <th>DeliveryDate</th>
+                              <th>RetailDate</th>
+                              <th>Tractor Ageing</th>
+                              <th>RCT</th>
+                              <th>Created By</th>
+                              <th>Created On</th>
+                              <th>Remarks1 (Advance)</th>
+
+                              <th>Remarks2 (Retail)</th>
+                              <th>Add Remarks</th>
+
+                              <th>Reversal QTY</th>
+                              <th>Reversal Date</th>
+                            </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let retail of retailData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
+                              <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
+                              <td data-title="Dealer Code">{{retail.dealer.code}}</td>
+                              <td data-title="Dealer Name">{{retail.dealer.name}}</td>
+                              <td data-title="Location">{{retail.dealer.city}}</td>
+                              <td data-title="State">{{retail.dealer.state}}</td>
+
+                              <td data-title="Customer Name">{{retail.customer.name}}</td>
+                              <td data-title="Contact">{{retail.customer.phone}}</td>
+                              <td data-title="Location">{{retail.customer.city}}</td>
+                              <td data-title="State">{{retail.customer.state}}</td>
+
+                              <td data-title="Model">{{retail.model}}</td>
+                              <td data-title="Product Code">{{retail.productCode}}</td>
+                              <td data-title="Variant">{{retail.variantCode}}</td>
+                              <td data-title="Chassis No.">{{retail.chassisNo}}</td>
+                              <td data-title="Engine No.">{{retail.engineNo}}</td>
+
+                              <td data-title="Financer Type">{{retail.finType}}</td>
+                              <td data-title="Financer Name">{{retail.financeDetails.bankName}}</td>
+                              <td data-title="DealPrice">{{retail.customer.dealPrice | currency: 'INR'}}</td>
+                              <td data-title="Cash">{{retail.cashAmount}}</td>
+                              <td data-title="Old Tractor Price">{{retail.customer.oldTractor.price}}</td>
+                              <td data-title="Finance Amount Received On">{{retail.customer.amountReceivedDate  | date:'dd-MM-yyyy'}}</td>
+                              <td data-title="Finance Amount Received">{{retail.financeAmount}}</td>
+                              <td data-title="ReceivedAmt">{{retail.customer.dealPrice - retail.customer.balanceAmount}}</td>
+                              <td data-title="BalanceAmt">{{retail.customer.balanceAmount | currency: 'INR'}}</td>
+                              <td data-title="Quantity">{{retail.isReversal}}</td>
+
+                              <td data-title="DeliveryDate">{{retail.customer.deliveryDate | date:'dd-MM-yyyy'}}</td>
+                              <td data-title="RetailDate">{{retail.customer.retailDate | date:'dd-MM-yyyy'}}</td>
+                              <td data-title="Tractor Ageing">{{retail}}</td>
+                              <td data-title="RCT">{{retail}}</td>
+                              <td data-title="Created By">{{retail.customer.createdBy}}</td>
+                              <td data-title="Created On">{{retail.customer.createDate | date:'dd-MM-yyyy'}}</td>
+                              <td data-title="Remarks1 (Advance)">{{retail}}</td>
+
+                              <td data-title="Remarks2 (Retail)">{{retail}}</td>
+                              <td data-title="Add Remarks"><i class="fa fa-plus" title="Add remarks"></i></td>
+
+                              <td data-title="Reversal QTY">{{retail.isReversal}}</td>
+                              <td data-title="Reversal Date">{{retail.reversalDate | date:'dd-MM-yyyy'}}</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="input-group-icon input-group-icon-right mt-2">
+                  <pagination-controls (pageChange)="pageData = $event"></pagination-controls>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

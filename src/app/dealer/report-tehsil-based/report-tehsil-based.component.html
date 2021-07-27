@@ -1,1 +1,75 @@
-<p>report-tehsil-based works!</p>
+<section>
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <!-- searchbar-row -->
+              <div class="sidebarMain">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <ul class="model-menu">
+                              <li><a routerLink="">Dealer</a></li>/
+                              <li><a routerLink="/dealer/viewReports/tehsilReport">Tehsil Report</a></li>
+                          </ul>
+                          <div class="searchBar d-flex justify-content-center align-items-center">
+                              <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
+
+                          </div>
+                      </div>
+                      <div class="col-md-6 align-self-end text-end">
+                          <!-- <div class="modelBtnMain">
+                              <button type="button" data-bs-toggle="modal" data-bs-target="#addTehsil" class="btn btn-primary text-uppercase">+ Add Tehsil Reports</button>
+                          </div> -->
+                          <label for="cars">
+                              <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
+                              <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
+                              </select>
+                          </label>
+                      </div>
+                  </div>
+              </div>
+              <!-- searchbar-row -->
+              <div class="table-responsive">
+                  <table class="table table-striped table-hover align-middle">
+                      <thead class="text-white sticky-top theadbg">
+                          <tr>
+                              <th></th>
+                              <th colspan="4" class="text-center">Dealer Details</th>
+                              <th colspan="3" class="text-center">Delivery Details</th>
+                              <th colspan="2" class="text-center">% Contribution</th>
+                          </tr>
+                          <tr>
+                              <th>Sr. No.</th>
+                              <th>Code</th>
+                              <th>Name</th>
+                              <th>Location</th>
+                              <th>State</th>
+                              <th>Tehsil Name</th>
+                              <th>MTD (Jul21)</th>
+                              <th>YTD (Jan 21 to Jul21)</th>
+                              <th>MTD in Dealership</th>
+                              <th>YTD in Dealership</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let tehsil of tehsilData | paginate: { itemsPerPage: limit, currentPage: pageData } | filter: searchData; let i = index">
+                              <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
+                              <td data-title="Code">{{tehsil.dealerCode}}</td>
+                              <td data-title="Name">{{tehsil.dealerName}}</td>
+                              <td data-title="Location">{{tehsil.dealerLocation}}</td>
+                              <td data-title="State">{{tehsil.dealerState}}</td>
+                              <td data-title="Tehsil Name">{{tehsil.tehsil}}</td>
+                              <td data-title="MTD (Jul21)">{{tehsil.monthActual}}</td>
+                              <td data-title="YTD (Jan 21 to Jul21)">{{tehsil.yearActual}}</td>
+                              <td data-title="MTD in Dealership">{{tehsil}}</td>
+                              <td data-title="YTD in Dealership">{{tehsil}}</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="input-group-icon input-group-icon-right mt-2">
+                  <pagination-controls (pageChange)="pageData = $event"></pagination-controls>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

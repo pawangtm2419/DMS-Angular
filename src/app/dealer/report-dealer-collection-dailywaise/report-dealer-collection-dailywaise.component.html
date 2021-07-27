@@ -1,1 +1,82 @@
-<p>report-dealer-collection-dailywaise works!</p>
+<section>
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <!-- searchbar-row -->
+              <div class="sidebarMain">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <ul class="model-menu">
+                              <li><a routerLink="">Dealer</a></li>/
+                              <li><a routerLink="/dealer/viewReports/dealerCollectionDaywise">Dealer Collection Daywise</a></li>
+                          </ul>
+                          <div class="searchBar d-flex justify-content-center align-items-center">
+                              <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
+
+                          </div>
+                      </div>
+                      <div class="col-md-6 align-self-end text-end">
+                          <!-- <div class="modelBtnMain">
+                              <button type="button" data-bs-toggle="modal" data-bs-target="#addCollection" class="btn btn-primary text-uppercase">+ Add Collection MTD</button>
+                          </div> -->
+                          <label for="cars">
+                              <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
+                              <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
+                              </select>
+                          </label>
+                      </div>
+                  </div>
+              </div>
+              <!-- searchbar-row -->
+              <div class="table-responsive">
+                  <table class="table table-striped table-hover align-middle">
+                      <thead class="text-white sticky-top theadbg">
+                          <tr>
+                              <th>#</th>
+                              <th>Action</th>
+                              <th>Finance Date</th>
+                              <th>Dealer Code</th>
+                              <th>Dealer Name</th>
+                              <th>Location</th>
+                              <th>State</th>
+                              <th>Doc Date</th>
+                              <th>Amount</th>
+                              <th>Mode</th>
+                              <th>Instrument No</th>
+                              <th>From Bank</th>
+                              <th>To Bank</th>
+                              <th>Status</th>
+                              <th>Remarks</th>
+                            </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let collection of collectionDaywises  | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
+                              <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
+                              <td data-title="Action">{{collection}}</td>
+                              <td data-title="Finance Date">{{collection.receivedOn | date:'dd-MM-yyyy'}}</td>
+                              <td data-title="Dealer Code">{{collection.code}}</td>
+                              <td data-title="Dealer Name">{{collection.name}}</td>
+                              <td data-title="Location">{{collection.city}}</td>
+                              <td data-title="State">{{collection.state}}</td>
+                              <td data-title="Doc Date">{{collection.receivedOn | date:'dd-MM-yyyy'}}</td>
+                              <td data-title="Amount">{{collection.amount}}</td>
+                              <td data-title="Mode">{{collection.paymentMode}}</td>
+                              <td data-title="Instrument No">{{collection.instrNo}}</td>
+                              <td data-title="From Bank">{{collection.bankFrom}}</td>
+                              <td data-title="To Bank">{{collection.bankTo}}</td>
+                              <td data-title="Status">{{collection.status}}</td>
+                              <td data-title="Remarks">{{collection.remarks}}</td>
+
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="input-group-icon input-group-icon-right mt-2">
+                  <pagination-controls (pageChange)="pageData = $event"></pagination-controls>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
