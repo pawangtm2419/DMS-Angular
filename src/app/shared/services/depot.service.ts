@@ -10,10 +10,6 @@ export class DepotService {
 
   constructor(private http: HttpClient) { }
   // depot filter data first filter
-  depotLocationFilter(): Observable<any> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
-    return this.http.get<any>(`${environment.url}/viewDepo`, httpOptions);
-  }
 
   getState(): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
@@ -36,14 +32,9 @@ export class DepotService {
     return this.http.post(`${environment.url}/vehicle/getVehicles`, data, httpOptions);
   }
 
-  viewDepot(): Observable<any> {
+  getFilteredDepotStock(data: any): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
-    return this.http.get(`${environment.url}/viewDepo`, httpOptions);
-  }
-
-  getModel(): Observable<any> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
-    return this.http.get(`${environment.url}/variant/models`, httpOptions);
+    return this.http.post(`${environment.url}/vehicle/getFilteredDepotStock`, data, httpOptions);
   }
 
   // Depot Stock Variant Wise

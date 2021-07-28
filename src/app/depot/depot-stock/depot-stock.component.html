@@ -36,33 +36,36 @@
                         <div class="d-downMain">
                           <div class="row" style="--bs-gutter-x: 1.5rem;">
                               <div class="col-md-3">
-                                  <select class="form-select" aria-label="Default select example">
-                                      <option selected>Select</option>
-                                      <option value="1">One</option>
-                                      <option value="2">Two</option>
-                                      <option value="3">Three</option>
-                                  </select>
+                                <div class="row align-items-center">
+                                  <div class="col-auto">
+                                    <label for="fromDate" class="col-form-label" style="padding-right: 20px;">From: </label>
+                                  </div>
+                                  <div class="col-auto">
+                                    <input list="depots" name="depotName" [(ngModel)] ="selectedDepotName" class="form-control">
+                                    <datalist id="depots">
+                                      <option *ngFor="let obj of depotList" value="{{obj.depotCode}}">
+                                    </datalist>
+                                  </div>
+                                </div>
                               </div>
                               <div class="col-md-3">
-                                  <select class="form-select" aria-label="Default select example">
-                                      <option selected>Select Model</option>
-                                      <option value="1">One</option>
-                                      <option value="2">Two</option>
-                                      <option value="3">Three</option>
-                                  </select>
+                                <div class="row align-items-center">
+                                  <div class="col-auto">
+                                    <label for="fromDate" class="col-form-label" style="padding-right: 20px;">Model: </label>
+                                  </div>
+                                  <div class="col-auto">
+                                    <input list="models" name="modelName" [(ngModel)] ="selectedModelName" class="form-control">
+                                    <datalist id="models">
+                                      <option *ngFor="let obj of modelList" value="{{obj}}">
+                                    </datalist>
+                                  </div>
+                                </div>
                               </div>
-                              <div class="col-md-3">
-                                  <select class="form-select" aria-label="Default select example">
-                                      <option selected>Select an option</option>
-                                      <option value="1">One</option>
-                                      <option value="2">Two</option>
-                                      <option value="3">Three</option>
-                                  </select>
-                              </div>
-                              <div class="col-md-3 align-self-end text-end">
+                              <div class="col-md-4"></div>
+                              <div class="col-md-2 align-self-end text-end">
                                   <div class="BtnMainGrp">
-                                      <button type="button" data-bs-toggle="modal" data-bs-target="#addZone" class="btn btn-primary me-2">Show Data</button>
-                                      <button type="button" data-bs-toggle="modal" data-bs-target="#addZone" class="btn btn-primary">Clear</button>
+                                      <button type="button" (click)="getFilteredDepotStockList()" class="btn btn-primary me-2">Show Data</button>
+                                      <button type="button" class="btn btn-primary">Clear</button>
                                   </div>
                               </div>
                           </div>

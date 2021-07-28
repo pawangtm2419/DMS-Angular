@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DepotService, ToasterService } from 'src/app/shared/services';
+import { CommonService, DepotService, ToasterService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-generate-transfer-note',
@@ -21,14 +21,14 @@ export class GenerateTransferNoteComponent implements OnInit {
   driverList: any;
   toLocation = ['dealer', 'depot'];
   transport = [ 'truck', 'road' ];
-  constructor(private depot: DepotService, public toaster: ToasterService) { }
+  constructor(private depot: DepotService, public toaster: ToasterService, public service: CommonService) { }
 
   ngOnInit(): void {
     this.getCityList();
   }
 
   getCityList() {
-    this.depot.depotLocationFilter().subscribe(res => {
+    this.service.viewDepot().subscribe(res => {
       this.depotList = res.data;
       if (this.depotList.length > 0) {
       } else {
@@ -87,5 +87,6 @@ export class GenerateTransferNoteComponent implements OnInit {
       });
     }
   }
+
 
 }

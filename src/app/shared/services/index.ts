@@ -8,3 +8,4 @@ export * from './dealer-report.service';
 export * from './dealer-return.service';
 export * from './dealer.service';
 export * from './depot.service';
+export * from './common.service';

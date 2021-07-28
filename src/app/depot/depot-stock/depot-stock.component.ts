@@ -1,6 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { DepotService, ToasterService } from 'src/app/shared/services';
+import { DepotService, ToasterService, CommonService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-depot-stock',
@@ -13,14 +13,20 @@ export class DepotStockComponent implements OnInit {
   pageData = 1;
   limits: any;
   limit: any = 50;
-  constructor(private dealer: DepotService, public toaster: ToasterService) { }
+  depotList: any;
+  selectedDepotName: any;
+  selectedModelName: any;
+  modelList: any;
+  data: any = {type: 'DEPOTSTOCK', useType: 'ALL'};
+  constructor(private depot: DepotService, public toaster: ToasterService,  public service: CommonService) { }
 
   ngOnInit(): void {
     this.getdepotStockList();
+    this.getCityList();
+    this.getModelList();
   }
   getdepotStockList() {
-    const data = {type: 'DEPOTSTOCK', useType: 'ALL'};
-    this.dealer.depotStock(data).subscribe(res => {
+    this.depot.depotStock(this.data).subscribe(res => {
       this.depotData = res.data;
       if (this.depotData.length > 0) {
         this.limits = [{ key: 50, value: 50 }, { key: 100, value: 100 }, { key: 250, value: 250 }, { key: 500, value: 500 }, { key: 'ALL', value: this.depotData.length }];
@@ -30,6 +36,53 @@ export class DepotStockComponent implements OnInit {
       }
     }, (error) => {
       this.toaster.showInfo('Data', error);
+    });
+  }
+
+  getFilteredDepotStockList() {
+    if (this.selectedDepotName) {
+      this.data = {depot: this.selectedDepotName};
+    }
+    if (this.selectedModelName) {
+      this.data = {model: this.selectedModelName};
+    }
+    if (this.selectedModelName && this.selectedDepotName) {
+      this.data = {depot: this.selectedDepotName,  model: this.selectedModelName};
+    }
+    console.log(this.data);
+    this.depot.getFilteredDepotStock(this.data).subscribe(res => {
+      this.depotData = res.data;
+      if (this.depotData.length > 0) {
+        this.limits = [{ key: 50, value: 50 }, { key: 100, value: 100 }, { key: 250, value: 250 }, { key: 500, value: 500 }, { key: 'ALL', value: this.depotData.length }];
+        this.toaster.showSuccess('Data', 'Report successfully Open.');
+      } else {
+        this.toaster.showInfo('Data', 'No record found.');
+      }
+    }, (error) => {
+      this.toaster.showInfo('Data', error);
+    });
+  }
+  getCityList() {
+    this.service.viewDepot().subscribe(res => {
+      this.depotList = res.data;
+      if (this.depotList.length > 0) {
+      } else {
+        this.toaster.showInfo('Data', 'No record found.');
+      }
+    }, (error) => {
+      this.toaster.showError('Error', error);
+    });
+  }
+
+  getModelList() {
+    this.service.getModel().subscribe(res => {
+      this.modelList = res.data;
+      if (this.modelList.length > 0) {
+      } else {
+        this.toaster.showInfo('Data', 'No record found.');
+      }
+    }, (error) => {
+      this.toaster.showError('Error', error);
     });
   }
 
