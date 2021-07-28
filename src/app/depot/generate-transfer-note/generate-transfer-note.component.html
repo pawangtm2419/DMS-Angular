@@ -1,1 +1,29 @@
-<p>generate-transfer-note works!</p>
+<select [(ngModel)] ="selectedToLocDepotName" name="valueCheck" (change)="onChangeName($event)">
+  <option *ngFor="let obj of depotList"  [ngValue]="obj.depotName"> {{obj.depotName | uppercase}} </option>
+</select>
+{{selectedToLocDepotName}}
+<select [(ngModel)] ="selectedToLocation" name="valueCheck" (change)="onChangeName($event)">
+  <option *ngFor="let obj of toLocation"  [ngValue]="obj"> {{obj | uppercase}} </option>
+</select>
+{{selectedToLocation}}
+<select [(ngModel)] ="selectedToDepotName" name="valueCheck" (change)="onChangeName($event)" *ngIf="selectedToLocation == 'depot'">
+  <option *ngFor="let obj of depotList"  [ngValue]="obj.depotName"> {{obj.depotName | uppercase}} </option>
+</select>
+{{selectedToDepotName}}
+<select [(ngModel)] ="selectedtransport" name="valueCheck" (change)="onChangeName($event)" *ngIf="selectedToLocation == 'depot'">
+  <option *ngFor="let obj of transport"  [ngValue]="obj"> {{obj | uppercase}} </option>
+</select>
+{{selectedtransport}}
+<select [(ngModel)] ="selectedDriverName" name="valueCheck" (change)="onChangeName($event)" *ngIf="selectedtransport == 'road'">
+  <option *ngFor="let obj of driverList"  [ngValue]="obj.driverName"> {{obj.driverName | uppercase}} </option>
+</select>
+{{selectedDriverName}}
+<select [(ngModel)] ="selectedTransportName" name="valueCheck" (change)="onChangeName($event)" *ngIf="selectedtransport == 'truck'">
+  <option *ngFor="let obj of transportList"  [ngValue]="obj.transName"> {{obj.transName | uppercase}} </option>
+</select>
+{{selectedTransportName}}
+<select [(ngModel)] ="selectedState" name="valueCheck" (change)="onChangeName($event)" *ngIf="selectedToLocation == 'dealer'">
+  <option *ngFor="let obj of stateName"  [ngValue]="obj"> {{obj | uppercase}} </option>
+</select>
+{{selectedState}}
+

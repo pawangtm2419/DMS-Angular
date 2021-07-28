@@ -7,67 +7,82 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class MastersService {
-  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': JSON.parse(localStorage.getItem('token') || '{}')}) };
   constructor(private http: HttpClient) { }
 /* Depot Master */
   depotMaster(data: any): Observable<any> {
-    return this.http.post(`${environment.url}/depot/depotsList`, data, this.httpOptions);
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.post(`${environment.url}/depot/depotsList`, data, httpOptions);
   }
   depotInfo(data: any): Observable<any> {
-    return this.http.post(`${environment.url}/depot/depotsList`, data, this.httpOptions);
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.post(`${environment.url}/depot/depotsList`, data, httpOptions);
   }
   deleteDepot(data: any): Observable<any> {
-    return this.http.post(`${environment.url}/depot/changeDepotStatus`, data, this.httpOptions)
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.post(`${environment.url}/depot/changeDepotStatus`, data, httpOptions);
   }
   updateDepot(data: any): Observable<any> {
-    return this.http.post(`${environment.url}/depot/updateDepot`, data, this.httpOptions)
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.post(`${environment.url}/depot/updateDepot`, data, httpOptions);
   }
 /* Dealer Master */
   getDealers(data: any): Observable<any> {
-    return this.http.post(`${environment.url}/dealer/dealers`, data, this.httpOptions)
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.post(`${environment.url}/dealer/dealers`, data, httpOptions);
   }
   /* Customer Master */
   getCustomers(data: any): Observable<any> {
-    return this.http.post(`${environment.url}/viewCustomer`, data, this.httpOptions)
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.post(`${environment.url}/viewCustomer`, data, httpOptions);
   }
   /* Roles Master */
   getRoles(): Observable<any> {
-    return this.http.get(`${environment.url}/viewRoles`, this.httpOptions)
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.get(`${environment.url}/viewRoles`, httpOptions);
   }
   /* variant Master */
   getVariant(): Observable<any> {
-    return this.http.get(`${environment.url}/viewVariant`, this.httpOptions)
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.get(`${environment.url}/viewVariant`, httpOptions);
   }
   /* On Power */
   getOnPower(): Observable<any> {
-    return this.http.get(`${environment.url}/viewOnPower`, this.httpOptions)
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.get(`${environment.url}/viewOnPower`, httpOptions);
   }
   /* viewTransporter */
   getTransporter(): Observable<any> {
-    return this.http.get(`${environment.url}/viewTransporter`, this.httpOptions)
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.get(`${environment.url}/viewTransporter`, httpOptions);
   }
   /* viewPart */
   getParts(): Observable<any> {
-    return this.http.get(`${environment.url}/viewPart`, this.httpOptions)
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.get(`${environment.url}/viewPart`, httpOptions);
   }
   /* usersList */
   getusers(): Observable<any> {
-    return this.http.get(`${environment.url}/usersList`, this.httpOptions)
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.get(`${environment.url}/usersList`, httpOptions);
   }
   /* viewFinancialInst */
   getFinancialInst(): Observable<any> {
-    return this.http.get(`${environment.url}/viewFinancialInst`, this.httpOptions)
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.get(`${environment.url}/viewFinancialInst`, httpOptions);
   }
   /* viewStates */
   getState(): Observable<any> {
-    return this.http.get(`${environment.url}/viewStates`, this.httpOptions)
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.get(`${environment.url}/viewStates`, httpOptions);
   }
   /* zonesList */
   getzones(): Observable<any> {
-    return this.http.get(`${environment.url}/zonesList`, this.httpOptions)
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.get(`${environment.url}/zonesList`, httpOptions);
   }
   /* getCities */
   getCity(): Observable<any> {
-    return this.http.get(`${environment.url}/getCities`, this.httpOptions)
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.get(`${environment.url}/getCities`, httpOptions);
   }
 }

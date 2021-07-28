@@ -12,7 +12,7 @@ export class DealerService {
   constructor(private http: HttpClient) { }
 
   invoiceReport(data: any): Observable<any> {
-    let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': JSON.parse(localStorage.getItem('token') || '{}')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
     return this.http.post<Invoice>(`${environment.url}/vehicle/dealerInvoicesReport`, data, httpOptions);
   }
 
