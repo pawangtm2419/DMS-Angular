@@ -20,9 +20,9 @@ export class LoginComponent implements OnInit {
     if (this.service.gettoken()) {
       this.router.navigate(['home']);
     }
-   }
+  }
 
-  getUserInfo(logIn: NgForm) {
+  getUserInfo(logIn: NgForm): void{
     if (logIn.valid) {
       this.submit = true;
     }
@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
       this.service.userUogIn(logIn.value).subscribe(async res => {
         if (res.status === 'true') {
           this.toaster.showSuccess('Success', 'Log in successfull');
-          window.localStorage.setItem('token', JSON.stringify(res.token));
           this.cookie.set('token', res.token);
           await this.router.navigate(['home']);
         } else if (res.status === 'false') {

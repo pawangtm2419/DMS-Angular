@@ -18,6 +18,7 @@ export class DepotStockComponent implements OnInit {
   selectedModelName: any;
   modelList: any;
   data: any = {type: 'DEPOTSTOCK', useType: 'ALL'};
+
   constructor(private depot: DepotService, public toaster: ToasterService,  public service: CommonService) { }
 
   ngOnInit(): void {
@@ -49,7 +50,6 @@ export class DepotStockComponent implements OnInit {
     if (this.selectedModelName && this.selectedDepotName) {
       this.data = {depot: this.selectedDepotName,  model: this.selectedModelName};
     }
-    console.log(this.data);
     this.depot.getFilteredDepotStock(this.data).subscribe(res => {
       this.depotData = res.data;
       if (this.depotData.length > 0) {

@@ -4,11 +4,10 @@
             <div class="col-md-12">
                 <!-- searchbar-row -->
                 <div class="sidebarMain">
-
                     <div class="row">
                         <div class="col-md-12">
                             <ul class="model-menu">
-                                <li><a routerLink="">Depot</a></li>/
+                                <li><a routerLink="/home">Depot</a></li>/
                                 <li><a routerLink="/depot-aging-recieved">Depot Aging from Received</a></li>
                             </ul>
                         </div>
@@ -17,60 +16,61 @@
                                 <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData"  placeholder="Search" aria-label="Search">
                             </div>
                         </div>
-                        <div class="col-4 align-self-end text-end"></div>
-                        <div class="col-1 align-self-end text-end">
-                          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#filter" aria-expanded="false" aria-controls="collapseExample"> <i class="fas fa-filter"></i> </button>
-                        </div>
-                        <div class="col-md-1 align-self-end text-end">
-                            <label for="cars">
+                        <div class="col-md-6 align-self-end text-end filterMain">
+                            <button class="btn btn-primary me-2" type="button" data-bs-toggle="collapse" data-bs-target="#filter" aria-expanded="false" aria-controls="collapseExample"> <i class="fas fa-filter"></i></button>
+                            <button type="button" class="btn btn-primary me-2"><i class="fa fa-download"></i></button>
+                            <label for="limit">
                                 <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
-                                <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
+                                  <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
                                 </select>
                             </label>
                         </div>
                     </div>
                 </div>
                 <div class="collapse mb-1" id="filter">
-                  <div class="card card-body">
-                    <div class="container">
-                      <div class="row">
-                        <div class="d-downMain">
-                          <div class="row" style="--bs-gutter-x: 1.5rem;">
-                              <div class="col-md-3">
-                                  <select class="form-select" aria-label="Default select example">
-                                      <option selected>Select</option>
-                                      <option value="1">One</option>
-                                      <option value="2">Two</option>
-                                      <option value="3">Three</option>
-                                  </select>
-                              </div>
-                              <div class="col-md-3">
-                                  <select class="form-select" aria-label="Default select example">
-                                      <option selected>Select Model</option>
-                                      <option value="1">One</option>
-                                      <option value="2">Two</option>
-                                      <option value="3">Three</option>
-                                  </select>
-                              </div>
-                              <div class="col-md-3">
-                                  <select class="form-select" aria-label="Default select example">
-                                      <option selected>Select an option</option>
-                                      <option value="1">One</option>
-                                      <option value="2">Two</option>
-                                      <option value="3">Three</option>
-                                  </select>
-                              </div>
-                              <div class="col-md-3 align-self-end text-end">
-                                  <div class="BtnMainGrp">
-                                      <button type="button" data-bs-toggle="modal" data-bs-target="#addZone" class="btn btn-primary me-2">Show Data</button>
-                                      <button type="button" data-bs-toggle="modal" data-bs-target="#addZone" class="btn btn-primary">Clear</button>
+                    <div class="card card-body">
+                      <div class="container">
+                        <div class="row">
+                          <div class="d-downMain">
+                            <div class="row" style="--bs-gutter-x: 1.5rem;">
+                                <div class="col-md-3">
+                                  <div class="row align-items-center">
+                                    <div class="col-auto">
+                                      <label for="fromDate" class="col-form-label" style="padding-right: 20px;">Variant: </label>
+                                    </div>
+                                    <div class="col-auto">
+                                      <input list="variants" name="variantName" [(ngModel)] ="selectedVariantName" class="form-control">
+                                      <datalist id="variants">
+                                        <option *ngFor="let obj of variantList" value="{{obj.variantCode}}">
+                                      </datalist>
+                                    </div>
                                   </div>
-                              </div>
-                          </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="row align-items-center">
+                                    <div class="col-auto">
+                                      <label for="fromDate" class="col-form-label" style="padding-right: 20px;">Model: </label>
+                                    </div>
+                                    <div class="col-auto">
+                                      <input list="models" name="modelName" [(ngModel)] ="selectedModelName" class="form-control">
+                                      <datalist id="models">
+                                        <option *ngFor="let obj of modelList" value="{{obj}}">
+                                      </datalist>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- <div class="col-md-4"></div> -->
+                                <div class="col-md-6 align-self-end text-end">
+                                    <div class="BtnMainGrp">
+                                        <button type="button" (click)="getagingRecList()" class="btn btn-primary me-2">Show Data</button>
+                                        <button type="button" class="btn btn-primary">Clear</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
                 </div>
                 <!-- searchbar-row -->
                 <div class="table-responsive">
@@ -104,13 +104,13 @@
                             </tr>
                             <tr class="fw-bold">
                                 <td colspan="3">Total </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{total.count30}}</td>
+                                <td>{{total.count3060}}</td>
+                                <td>{{total.count6090}}</td>
+                                <td>{{total.count90120}}</td>
+                                <td>{{total.count120180}}</td>
+                                <td>{{total.count180}}</td>
+                                <td>{{total.count}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -122,4 +122,4 @@
         </div>
     </div>
   </section>
-
+  

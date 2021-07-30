@@ -25,4 +25,10 @@ export class CommonService {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
     return this.http.get<any>(`${environment.url}/viewDepo`, httpOptions);
   }
+
+  getVariant(): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.get<any>(`${environment.url}/variant/getVariants`, httpOptions);
+  }
+
 }

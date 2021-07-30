@@ -22,7 +22,7 @@ export class UserService {
   public user: Observable<any>;
 
   constructor(private http: HttpClient, private router: Router, public toaster: ToasterService, private cookie: CookieService) {
-    this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('token') || '{}'));
+    this.userSubject = new BehaviorSubject<any>(this.cookie.get('token'));
     this.user = this.userSubject.asObservable();
   }
 
