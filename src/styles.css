@@ -74,7 +74,7 @@ tbody, td, tfoot, th, thead, tr {
 }
 .table-responsive {
   /* max-height: 500px; */
-  max-height: 420px;
+  max-height: 435px;
 }
 
 ::-webkit-scrollbar {

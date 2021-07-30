@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { ToasterService } from './toster.service';
 import { map } from 'rxjs/operators';
 import { User } from '../model';
+import { CookieService } from 'ngx-cookie-service';
 
 export interface Users {
   empID: string;
@@ -20,7 +21,7 @@ export class UserService {
   private userSubject: BehaviorSubject<any>;
   public user: Observable<any>;
 
-  constructor(private http: HttpClient, private router: Router, public toaster: ToasterService) {
+  constructor(private http: HttpClient, private router: Router, public toaster: ToasterService, private cookie: CookieService) {
     this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('token') || '{}'));
     this.user = this.userSubject.asObservable();
   }
@@ -34,17 +35,19 @@ export class UserService {
     }));
   }
 
-  gettoken() {
-    return (!!localStorage.getItem('user') && !!localStorage.getItem('token'));
+  gettoken(){
+    return (!!localStorage.getItem('user') && !!this.cookie.get('token'));
   }
 
   public get userValue(): User {
     return this.userSubject.value;
   }
 
-  logout() {
+  logout(): void{
     localStorage.removeItem('profile');
+    /* this.cookie.delete('token'); */
     localStorage.clear();
+    /* this.cookie.deleteAll(); */
     this.toaster.showSuccess('Success', 'Log out successfull');
     this.router.navigate(['/']);
   }

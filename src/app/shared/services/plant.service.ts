@@ -1,5 +1,6 @@
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -8,13 +9,15 @@ import { environment } from 'src/environments/environment';
 })
 export class PlantService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cookie: CookieService) { }
 
-  plantStock(data: any, header: any): Observable<any> {
-    return this.http.post(`${environment.url}/vehicle/getVehicles`, data, header);
+  plantStock(data: any): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this.http.post(`${environment.url}/vehicle/getVehicles`, data, httpOptions);
   }
 
-  cStock(data: any, header: any): Observable<any> {
-    return this.http.post(`${environment.url}/vehicle/getCVehicles`, data, header);
+  cStock(data: any): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this.http.post(`${environment.url}/vehicle/getCVehicles`, data, httpOptions);
   }
 }

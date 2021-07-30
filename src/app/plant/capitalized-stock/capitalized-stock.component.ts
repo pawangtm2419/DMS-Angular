@@ -9,7 +9,6 @@ import { PlantService, ToasterService } from 'src/app/shared/services';
 })
 export class CapitalizedStockComponent implements OnInit {
 
-  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
   cPlantStock: any;
   searchData: any;
   limits = [{ key: 50, value: 50 }, { key: 100, value: 100 }, { key: 250, value: 250 }, { key: '500', value: 500 }];
@@ -22,7 +21,7 @@ export class CapitalizedStockComponent implements OnInit {
   }
   capitalizeStockData() {
     const stock = {};
-    this.service.cStock(stock, this.httpOptions).subscribe(res => {
+    this.service.cStock(stock).subscribe(res => {
       this.cPlantStock = res.data;
       if (this.cPlantStock.length > 0) {
         this.toaster.showSuccess('Data', 'Report successfully Open.');

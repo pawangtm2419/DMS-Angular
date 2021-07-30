@@ -15,6 +15,7 @@ import { ToasterService } from './shared/services/toster.service';
 import { AppGuard } from './shared/app.guard';
 import { UserService } from './shared/services/user.service';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [UserService, AppGuard, ToasterService],
+  providers: [UserService, CookieService, AppGuard, ToasterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
