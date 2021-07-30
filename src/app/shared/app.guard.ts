@@ -17,7 +17,7 @@ export class AppGuard implements CanActivate, CanActivateChild, CanDeactivate<un
       if (this.service.gettoken()) {
         return true;
       }  else {
-        this.router.navigateByUrl("/");
+        this.router.navigateByUrl('/');
         return false;
       }
   }

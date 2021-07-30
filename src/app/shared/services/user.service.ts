@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 import { User } from '../model';
 
 export interface Users {
-  empID: String;
+  empID: string;
   pass: string;
 }
 
@@ -26,7 +26,7 @@ export class UserService {
   }
 
   userUogIn(data: Users): Observable<any> {
-    let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})};
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})};
     return this.http.post(`${environment.url}/authLog`, data, httpOptions).pipe(map(userData => {
       localStorage.setItem('user', JSON.stringify(userData));
       this.userSubject.next(userData);
@@ -35,7 +35,7 @@ export class UserService {
   }
 
   gettoken() {
-    return (!!localStorage.getItem("profile") && !!localStorage.getItem("token"));
+    return (!!localStorage.getItem('user') && !!localStorage.getItem('token'));
   }
 
   public get userValue(): User {
@@ -45,7 +45,7 @@ export class UserService {
   logout() {
     localStorage.removeItem('profile');
     localStorage.clear();
-    this.toaster.showSuccess("Success", "Log out successfull");
+    this.toaster.showSuccess('Success', 'Log out successfull');
     this.router.navigate(['/']);
   }
 

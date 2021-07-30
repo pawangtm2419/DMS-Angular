@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
 
   constructor(private service: UserService, public router: Router) {
     this.service.user.subscribe((x) => {
-      this.user = x
+      this.user = x;
     });
   }
 

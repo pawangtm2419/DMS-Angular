@@ -16,26 +16,26 @@ export class LoginComponent implements OnInit {
   constructor(private service: UserService, private router: Router, public toaster: ToasterService) { }
 
   ngOnInit(): void {
-    if(this.service.gettoken()) {
+    if (this.service.gettoken()) {
       this.router.navigate(['home']);
     }
    }
 
   getUserInfo(logIn: NgForm) {
-    if(logIn.valid) {
+    if (logIn.valid) {
       this.submit = true;
     }
-    if(this.submit) {
-      this.service.userUogIn(logIn.value).subscribe(async res=> {
-        if(res.status == "true") {
-          this.toaster.showSuccess("Success", "Log in successfull");
-          window.localStorage.setItem("token", JSON.stringify(res.token));
+    if (this.submit) {
+      this.service.userUogIn(logIn.value).subscribe(async res => {
+        if (res.status === 'true') {
+          this.toaster.showSuccess('Success', 'Log in successfull');
+          window.localStorage.setItem('token', JSON.stringify(res.token));
           await this.router.navigate(['home']);
-        } else if(res.status == "false") {
-          this.toaster.showError("Error", res.msg);
+        } else if (res.status === 'false') {
+          this.toaster.showError('Error', res.msg);
         }
       }, (error) => {
-        this.toaster.showError("Error", error);
+        this.toaster.showError('Error', error);
       });
     }
   }
