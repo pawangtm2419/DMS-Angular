@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
       this.service.userUogIn(logIn.value).subscribe(async res=> {
         if(res.status == "true") {
           this.toaster.showSuccess("Success", "Log in successfull");
-          window.localStorage.setItem("profile", JSON.stringify(res));
           window.localStorage.setItem("token", JSON.stringify(res.token));
           await this.router.navigate(['home']);
         } else if(res.status == "false") {
