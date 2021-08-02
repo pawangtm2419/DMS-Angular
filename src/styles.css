@@ -9,6 +9,22 @@ body {
 tbody, td, tfoot, th, thead, tr {
   border: 1px solid #ccc;
 }
+.btn-view{
+  display: inline-block;
+  padding: 0.2em 0.8em;
+  border: 0;
+  border-radius: 30px;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all .1s ease;
+  background-color: #61A706;
+  color: #fff;
+}
+.btn-view:hover{
+  box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15);
+}
 .btn-rounded{
   display: inline-block;
   padding: 0.2em 0.8em;
@@ -74,7 +90,7 @@ tbody, td, tfoot, th, thead, tr {
 }
 .table-responsive {
   /* max-height: 500px; */
-  max-height: 435px;
+  max-height: 440px;
 }
 
 ::-webkit-scrollbar {
@@ -133,7 +149,7 @@ tbody, td, tfoot, th, thead, tr {
 .model-menu {
   padding: 0;
   list-style: none;
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.5rem;
 }
 .model-menu li {
   display: inline-block;
@@ -150,7 +166,10 @@ tbody, td, tfoot, th, thead, tr {
   font-weight: 600;
 }
 .sidebarMain{
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
+}
+.sidebarMain .form-select, .btn-d-down .form-control{
+  background-color: #d9d9d9;
 }
 .searchBar input {
   background-color: #d9d9d9;
@@ -197,6 +216,7 @@ tbody, td, tfoot, th, thead, tr {
 .sidebarMain{
   margin-bottom: 1rem;
 }
+
 .modelBtnMain{
   float: left;
 }
@@ -240,8 +260,6 @@ tbody, td, tfoot, th, thead, tr {
 .add-custo .modal-body{
     margin: 1.2rem 0 1.2rem 0;
 }
-/* add-Madal css */
-
 
 /* added sidebar and page-content css */
 .page-content{
