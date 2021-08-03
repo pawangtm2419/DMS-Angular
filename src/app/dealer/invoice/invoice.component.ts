@@ -26,12 +26,12 @@ export class InvoiceComponent implements OnInit {
     this.convertDate();
   }
 
-  convertDate() {
+  convertDate(): void{
     function pad(s: string | number) { return (s < 10) ? '0' + s : s; }
     const d = new Date();
     this.currentDate = [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('-');
   }
-  getinvoiceData() {
+  getinvoiceData(): void{
     const data = {
       type: 'ALL',
       fromDate: (document.getElementById('fromDate') as HTMLInputElement).value + 'T00:00:00.000Z',
@@ -39,21 +39,23 @@ export class InvoiceComponent implements OnInit {
       page: 'report',
       useType: 'ALL'
     };
-    this.dealer.invoiceReport(data).subscribe(res => {
-      this.invoiceData = res.data;
-      this.limits.splice(4);
-      this.limits.push({ key: 'ALL', value: this.invoiceData.length });
-      if (this.invoiceData.length > 0) {
-        this.toaster.showSuccess('Data', 'Report successfully Open.');
-      } else {
-        this.toaster.showInfo('Data', 'No record found.');
-      }
-    }, (error) => {
-      this.toaster.showError('Error', error);
-    });
+    setTimeout(() => {
+      this.dealer.invoiceReport(data).subscribe(res => {
+        this.invoiceData = res.data;
+        this.limits.splice(4);
+        this.limits.push({ key: 'ALL', value: this.invoiceData.length });
+        if (this.invoiceData.length > 0) {
+          this.toaster.showSuccess('Data', 'Report successfully Open.');
+        } else {
+          this.toaster.showInfo('Data', 'No record found.');
+        }
+      }, (error) => {
+        this.toaster.showError('Error', error);
+      });
+    }, 3000);
   }
 
-  dataLimit() {
+  dataLimit(): void{
     this.limit = (document.getElementById('limit') as HTMLInputElement).value;
   }
 

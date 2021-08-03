@@ -28,14 +28,14 @@ export class UserService {
 
   userUogIn(data: Users): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})};
-    return this.http.post(`${environment.url}/authLog`, data, httpOptions).pipe(map(userData => {
+    return this.http.post(`${environment._url}/authLog`, data, httpOptions).pipe(map(userData => {
       localStorage.setItem('user', JSON.stringify(userData));
       this.userSubject.next(userData);
       return userData;
     }));
   }
 
-  gettoken(){
+  gettoken() {
     return (!!localStorage.getItem('user') && !!this.cookie.get('token'));
   }
 

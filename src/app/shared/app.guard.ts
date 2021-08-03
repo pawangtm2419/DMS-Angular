@@ -7,10 +7,8 @@ import { UserService } from './services/user.service';
   providedIn: 'root'
 })
 export class AppGuard implements CanActivate, CanActivateChild, CanDeactivate<unknown>, CanLoad {
-  constructor(
-    private router: Router,
-    private service: UserService
-) {}
+  user: any;
+  constructor( private router: Router, private service: UserService ) {  }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

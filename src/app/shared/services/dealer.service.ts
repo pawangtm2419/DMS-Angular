@@ -14,7 +14,7 @@ export class DealerService {
 
   invoiceReport(data: any): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.post<Invoice>(`${environment.url}/vehicle/dealerInvoicesReport`, data, httpOptions);
+    return this.http.post<Invoice>(`${environment._url}/vehicle/dealerInvoicesReport`, data, httpOptions);
   }
 
 }

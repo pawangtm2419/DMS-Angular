@@ -13,22 +13,22 @@ export class CommonService {
 
   viewDepot(): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.get(`${environment.url}/viewDepo`, httpOptions);
+    return this.http.get(`${environment._url}/viewDepo`, httpOptions);
   }
 
   getModel(): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.get(`${environment.url}/variant/models`, httpOptions);
+    return this.http.get(`${environment._url}/variant/models`, httpOptions);
   }
 
   depotLocationFilter(): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.get<any>(`${environment.url}/viewDepo`, httpOptions);
+    return this.http.get<any>(`${environment._url}/viewDepo`, httpOptions);
   }
 
   getVariant(): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
-    return this.http.get<any>(`${environment.url}/variant/getVariants`, httpOptions);
+    return this.http.get<any>(`${environment._url}/variant/getVariants`, httpOptions);
   }
 
 }

@@ -13,11 +13,11 @@ export class PlantService {
 
   plantStock(data: any): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.post(`${environment.url}/vehicle/getVehicles`, data, httpOptions);
+    return this.http.post(`${environment._url}/vehicle/getVehicles`, data, httpOptions);
   }
 
   cStock(data: any): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.post(`${environment.url}/vehicle/getCVehicles`, data, httpOptions);
+    return this.http.post(`${environment._url}/vehicle/getCVehicles`, data, httpOptions);
   }
 }

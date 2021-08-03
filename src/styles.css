@@ -90,7 +90,7 @@ tbody, td, tfoot, th, thead, tr {
 }
 .table-responsive {
   /* max-height: 500px; */
-  max-height: 440px;
+  max-height: 435px;
 }
 
 ::-webkit-scrollbar {
@@ -162,7 +162,7 @@ tbody, td, tfoot, th, thead, tr {
 .model-menu li a {
   color: #4d4d4d;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 600;
 }
 .sidebarMain{
