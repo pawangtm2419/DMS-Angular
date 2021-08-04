@@ -36,4 +36,13 @@ export class CommonService {
     return this.http.post(`${environment._url}/vehicle/getVehicleHistory`, data, httpOptions);
   }
 
+  getZones(): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.get<any>(`${environment._url}/zones`, httpOptions);
+  }
+  // /getStatesByZone?zoneCode=ZONE3
+  getStatesByZone(zoneCode: string): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.get<any>(`${environment._url}/getStatesByZone?zoneCode=${zoneCode}`, httpOptions);
+  }
 }

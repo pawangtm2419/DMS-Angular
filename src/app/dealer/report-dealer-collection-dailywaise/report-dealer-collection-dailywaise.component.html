@@ -52,7 +52,7 @@
                       <tbody>
                           <tr *ngFor="let collection of collectionDaywises  | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                               <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
-                              <td data-title="Action">{{collection}}</td>
+                              <td data-title="Action"><i class="fa fa-thumbs-down" style="color: red;"></i></td>
                               <td data-title="Finance Date">{{collection.receivedOn | date:'dd-MM-yyyy'}}</td>
                               <td data-title="Dealer Code">{{collection.code}}</td>
                               <td data-title="Dealer Name">{{collection.name}}</td>

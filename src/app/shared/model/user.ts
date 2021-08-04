@@ -1,4 +1,7 @@
 export class User {
+  subscribe(arg0: (user: any) => void) {
+    throw new Error('Method not implemented.');
+  }
   role: { type: String; required: 'Please select role'; } | undefined;
   useType: { type: String; required: "Please Select type"; enum: ["ALL", "MARKET", "ZONE", "STATE", "DEPOT", "DEALER", "CUSTOMER"]; } | undefined;
   userMarket:{ type: String; } | undefined;
