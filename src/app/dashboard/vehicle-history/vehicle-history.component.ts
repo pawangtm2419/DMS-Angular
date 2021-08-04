@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService, ToasterService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-vehicle-history',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VehicleHistoryComponent implements OnInit {
 
-  constructor() { }
+  chassisNo: any;
+  dataChassisNo: String = '';
+  vehiData: any;
+  location: String = '';
+  constructor(private service: CommonService, public toaster: ToasterService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  search(): void {
+    const data = {
+      chassisNo: this.chassisNo
+    }
+    if (this.chassisNo.length > 13) {
+      this.service.vehicleHist(data).subscribe(res => {
+        this.vehiData = res.data;
+        this.location = res.currentLocation;
+        this.dataChassisNo = this.chassisNo;
+      });
+    }
   }
-
 }

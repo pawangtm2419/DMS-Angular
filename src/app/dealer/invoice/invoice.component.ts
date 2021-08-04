@@ -52,7 +52,7 @@ export class InvoiceComponent implements OnInit {
       }, (error) => {
         this.toaster.showError('Error', error);
       });
-    }, 3000);
+    }, 1000);
   }
 
   dataLimit(): void{

@@ -19,7 +19,7 @@ export class CapitalizedStockComponent implements OnInit {
   ngOnInit(): void {
     this.capitalizeStockData();
   }
-  capitalizeStockData() {
+  capitalizeStockData(): void {
     const stock = {};
     this.service.cStock(stock).subscribe(res => {
       this.cPlantStock = res.data;
@@ -34,7 +34,7 @@ export class CapitalizedStockComponent implements OnInit {
     });
   }
 
-  dataLimit() {
+  dataLimit(): void {
     this.limit = ( document.getElementById('limit') as HTMLInputElement).value;
   }
 }

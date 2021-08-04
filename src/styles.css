@@ -285,5 +285,39 @@ padding-right: 1rem;
 .row {
   --bs-gutter-x: 1.2rem;
 }
+.btn-primary{
+  padding: .395rem .55rem !important;
+}
+.sidebarMain{
+  margin-bottom: 0.8rem;
+}
+.searchBar .fa-search, .logo img{
+  display: none;
+}
+.searchBar input{
+  font-size: 0.9rem;
+}
+.sidebarMain .form-select {
+  padding: .395rem 2.0rem .395rem .30rem;
+  font-size: 0.9rem;
+}
+.model-menu{
+  margin-bottom: 0.7rem;
+}
+.searchBar{
+  margin-bottom: 0.8rem;
+}
+.model-menu li {
+  display: inline-block;
+  padding: 0 4px 0 4px;
+}
 }
 /* added sidebar and page-content css end */
+@media (max-width: 575.98px) {
+  .sidebarMain{
+      margin-bottom: 0rem;
+  }
+  .sidebarMain .align-self-end{
+      align-self: end !important;
+  }
+}

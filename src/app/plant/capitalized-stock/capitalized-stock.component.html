@@ -3,25 +3,27 @@
       <div class="row">
           <div class="col-md-12">
               <!-- searchbar-row -->
-              <div class="row mb-2">
-                  <div class="col-6">
-                      <ul class="model-menu">
-                          <li><a routerLink="">Plant</a></li>/
-                          <li><a routerLink="/master/capitalizedStock">Capitalized Stock</a></li>
-                      </ul>
-                      <div class="searchBar mt-2 d-flex justify-content-center align-items-center">
-                          <i class="fas fa-search"></i><input class="form-control me-2" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
-
-                      </div>
-                  </div>
-                  <div class="col-5 align-self-end text-end"></div>
-                  <div class="col-1 align-self-end text-end">
-                      <label for="limit" style="width: -webkit-fill-available; padding-left: 10px;">
-                          <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
-                          <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
-                          </select>
-                      </label>
-                  </div>
+              <div class="sidebarMain">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="model-menu">
+                            <li><a routerLink="/home">Plant</a></li>/
+                            <li><a routerLink="/c-stock">Capitalized Stock</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-9">
+                        <div class="searchBar d-flex justify-content-center align-items-center">
+                            <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-3 align-self-end text-end">
+                        <label for="limit">
+                            <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
+                                <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
               </div>
               <!-- searchbar-row -->
               <div class="table-responsive">

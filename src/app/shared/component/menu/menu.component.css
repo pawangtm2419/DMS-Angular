@@ -1,178 +1,295 @@
 .sidebar-main{
-    position: relative;
-    margin: 0;
-    padding: 0px 0;
-    clear: both;
+  position: relative;
+  margin: 0;
+  padding: 0px 0;
+  clear: both;
+}
+.mobile-top-navbar, .mobile-btm-menubar{
+  display: none;
 }
 .sideBarMenu{
-    position: relative;
-    background: #454397;
-    width: 4.5rem;
-    height: 100vh;
-    border-radius: 0px 10px 10px 0px;
-    box-shadow: 3px 3px 12px -4px rgba(0,0,0,0.46);
-    -webkit-box-shadow: 3px 3px 12px -4px rgba(0,0,0,0.46);
-    -moz-box-shadow: 3px 3px 12px -4px rgba(0,0,0,0.46);
+  /* position: relative; */
+  position: fixed;
+  z-index: 5;
+  background: #454397;
+  width: 4.5rem;
+  height: 100vh;
+  border-radius: 0px 10px 10px 0px;
+  box-shadow: 3px 3px 12px -4px rgba(0,0,0,0.46);
+  -webkit-box-shadow: 3px 3px 12px -4px rgba(0,0,0,0.46);
+  -moz-box-shadow: 3px 3px 12px -4px rgba(0,0,0,0.46);
 }
 .sideBarMenu ul li .fa, .settingArea a .fa{
-    -webkit-transition: all 0.3s ease-in-out;
-	-moz-transition: all 0.3s ease-in-out;
-	-ms-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-ms-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .sideBarMenu ul li .fa:hover, .settingArea a .fa:hover {
-    -webkit-transform: scale(1.3);
-	-moz-transform: scale(1.3);
-	-ms-transform: scale(1.3);
-	-o-transform: scale(1.3);
-    transform: scale(1.3);
-    color: #000;
+  -webkit-transform: scale(1.3);
+-moz-transform: scale(1.3);
+-ms-transform: scale(1.3);
+-o-transform: scale(1.3);
+  transform: scale(1.3);
+  color: #000;
 }
 .profileArea{
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 .profileArea li{
-    position: relative;
+  position: relative;
 }
 .profileArea li a{
-    text-align: center;
-    /* border-bottom: 1px solid #ddd; */
-    display: block;
-    text-decoration: none;
-    padding: 12px 20px;
-    color: #fff;
+  text-align: center;
+  /* border-bottom: 1px solid #ddd; */
+  display: block;
+  text-decoration: none;
+  padding: 12px 20px;
+  color: #fff;
 }
 .profileArea li a i.fa{
-    display: block;
-    text-transform: uppercase;
-    font-size: 20px;
-    letter-spacing: 3px;
+  display: block;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 3px;
 }
 .menu-area{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .menu-area ul, .menu-area li ul {
-    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
-    border: 1px solid rgba(0,0,0,.15) !important;
-    border-radius: .25rem;
-    box-shadow: 0px 2px 6px -4px rgba(0,0,0,0.51);
-    -webkit-box-shadow: 0px 2px 6px -4px rgba(0,0,0,0.51);
-    -moz-box-shadow: 0px 2px 6px -4px rgba(0,0,0,0.51);
+  /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+  border: 1px solid rgba(0,0,0,.15) !important;
+  border-radius: .25rem;
+  box-shadow: 0px 2px 6px -4px rgba(0,0,0,0.51);
+  -webkit-box-shadow: 0px 2px 6px -4px rgba(0,0,0,0.51);
+  -moz-box-shadow: 0px 2px 6px -4px rgba(0,0,0,0.51);
+}
+.menu-area .menuTxt{
+  display: none !important;
 }
 .menu-area li{
-    position: relative;
+  position: relative;
 }
 ul.menu-area li a{
-    text-align: center;
-    display: block;
-    text-decoration: none;
-    padding: 12px 20px;
-    color: #000;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  padding: 12px 20px;
+  color: #000;
 }
 .menu-area li a i{
-    display: block;
-    text-transform: uppercase;
-    font-size: 20px;
-    letter-spacing: 3px;
-    color: #fff;
+  display: block;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: #fff;
 }
 .menu-area li a i:hover{
-    color: #000;
+  color: #000;
 }
 .menu-area li:hover > a{
-    color: #fff;
+  color: #fff;
 }
 .menu-area li ul, .menu-area li ul li ul{
-    background: #fff;
-    opacity: 0;
-    visibility: hidden;
-    transition: 300ms;
-    z-index: 999;
-    left: 280px;
-    top: 0;
-    list-style: none;
-    position: absolute;
-    height: auto;
-    min-width: 215px;
-    padding: 0;
-    margin: 0;
+  background: #fff;
+  opacity: 0;
+  visibility: hidden;
+  transition: 300ms;
+  z-index: 999;
+  left: 280px;
+  top: 0;
+  list-style: none;
+  position: absolute;
+  height: auto;
+  min-width: 215px;
+  padding: 0;
+  margin: 0;
 }
 .menu-area li ul li:hover{
-    background: #454397;
+  background: #454397;
 }
 .menu-area li:hover > ul{
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    left: 4.4rem;
-    transition: 0.5s ease-in-out;
-    position: absolute;
-    top: 50%;
-    transform: translateX(-50%);
-    transform: translateY(-42%);
-    z-index: 1025;
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  left: 4.4rem;
+  transition: 0.5s ease-in-out;
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%);
+  transform: translateY(-42%);
+  z-index: 1025;
 }
 .menu-area li ul li:hover > ul{
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    left: 215px;
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  left: 215px;
 }
 .menu-area li ul li a{
-    font-size: 14px;
-    padding: 4px 3px;
-    text-align: center;
-    border: 0;
-    border-bottom: 1px solid #ddd;
-    height: auto;
+  font-size: 14px;
+  padding: 4px 3px;
+  text-align: center;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+  height: auto;
 }
 .menu-area li ul li ul{
-    left: 230px;
-    top: 0;
-    border: 0;
+  left: 230px;
+  top: 0;
+  border: 0;
 }
 .menu-area ul .rgt-arrow{
-    font-size: 15px;
-    float: right;
+  font-size: 15px;
+  float: right;
 }
 .settingArea{
-    list-style: none;
-    padding: 0;
-    margin: 0 auto;
-    position: absolute;
-    bottom: 0;
-    left: 6%;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 0;
+  left: 6%;
 }
 .settingArea a{
-    text-align: center;
-    display: block;
-    text-decoration: none;
-    padding: 7px 20px;
-    color: #000;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  padding: 7px 20px;
+  color: #000;
 }
 .settingArea a i{
-    display: block;
-    text-transform: uppercase;
-    font-size: 20px;
-    letter-spacing: 3px;
-    color: #fff;
-} 
+  display: block;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: #fff;
+}
 .dropend .dropdown-toggle::after{
-    display: none;
+  display: none;
 }
 .settingArea .dropdown-menu{
-    padding: 0rem 0;
+  padding: 0rem 0;
 }
 .settingArea .dropdown-menu li a:hover{
-    background: #454397;
-    color: #fff;
+  background: #454397;
+  color: #fff;
+}
+.sm-masterMenu, .sm-dashboardMenu, .sm-plantMenu, .sm-depotMenu, .sm-dealerMenu{
+  display: none;
+}
+@media (max-width: 575.98px) {
+  body{
+      margin: 0px 0px 57px 0px !important;
+  }
+  .logoSm img{
+      width: 85px;
+  }
+  .mobile-top-navbar{
+      display: block;
+      background-color: #454397;
+      padding-top: 1px;
+      padding-bottom: 1px;
+  }
+  .mobile-top-navbar .navbar-nav li a .fa{
+      font-size: 17px;
+      color: #fff;
+  }
+  .sideBarMenu{
+      display: none;
+  }
+  .mobile-btm-menubar{
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      border-radius: 0;
+      height: 57px;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+      background-color: #454397;
+      display: flex;
+      overflow-x: auto;
+  }
+  .navLink{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      min-width: 50px;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 13px;
+      color: #fff;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: background-color 0.1s ease-in-out;
+  }
+  .navLink:hover{
+      background-color: #000;
+  }
+  .navLink .fa{
+      font-size: 16px;
+  }
+  .sm-masterMenu, .sm-dashboardMenu, .sm-plantMenu, .sm-depotMenu, .sm-dealerMenu{
+      display: block;
+      height: 100%;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 0px;
+      margin-top: 57px;
+      margin-bottom: 57px;
+      background: #454397f5;
+      transition: all 0.4s ease;
+      overflow-x: hidden;
+  }
+  .menu{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+  }
+  .menu li{
+      color: #fff;
+      border-bottom: 1px solid rgb(255 255 255 / 46%);
+  }
+  .menu li a{
+      font-size: 13px;
+      color: #fff;
+      display: block;
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 7px;
+  }
+  /* .dropdown-menu css */
+  .dropdown-menu{
+      padding: 0;
+      margin-left: 1rem !important;
+      min-width: 100%;
+      background-color: transparent;
+      border: none;
+  }
+  .menu .left-arrow{
+      padding-right: 0.2rem;
+  }
+  .dealers li ul{
+      list-style: none;
+      padding-left: 1rem;
+  }
+  .rgt-arrow{
+      font-size: 8px;
+      padding-right: 0.2rem;
+  }
+  .d-arrow{
+      font-size: 9px;
+      padding-left: 0.4rem;
+  }
 }

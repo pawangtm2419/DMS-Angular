@@ -1,0 +1,10 @@
+.headerMain{
+  margin: .5rem 0;
+}
+@media (max-width: 575.98px) {
+  .headerMain{
+      margin-top: 0.8rem;
+      margin-bottom: 0;
+  }
+
+}

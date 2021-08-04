@@ -1,125 +1,277 @@
-<nav class="sideBarMenu">
-    <ul class="profileArea">
-         <li><a routerLink="/" title="Profile"><i class="fa fa-user"></i></a></li>
-    </ul>
-    <ul class="menu-area">
-         <li>
-             <a title="Dashboard"><i class="fa fa-th-large"></i></a>
-             <ul>
-                 <li><a routerLink="/vehicle-history">Vehicle History</a></li>
-                 <li><a routerLink="/history-report">History Report</a></li>
-             </ul>
-         </li>
-         <li><a title="Masters"><i class="fa fa-users"></i></a>
-             <ul>
-                 <li><a routerLink="/m-depot">Depot Master</a></li>
-                 <li><a routerLink="/m-dealer">Dealer Master</a></li>
-                 <li><a routerLink="/m-variant">Variant Master</a></li>
-                 <li><a routerLink="/m-on-power">On-Power Master</a></li>
-                 <li><a routerLink="/m-transport">Transporter Master</a></li>
-                 <li><a routerLink="/m-part">Parts Master</a></li>
-                 <li><a routerLink="/m-user">Users Master</a></li>
-                 <li><a routerLink="/m-financial">Financial Institution Master</a></li>
-                 <li><a routerLink="/m-customer">Customer Master</a></li>
-                 <li><a routerLink="/m-roles">Roles Master</a></li>
-                 <li><a routerLink="/m-state">State Master</a></li>
-                 <li><a routerLink="/m-zone">Zone Master</a></li>
-                 <li><a routerLink="/m-city">City Master</a></li>
-             </ul>
-         </li>
-         <li>
-             <a title="Plant"><i class="fa fa-industry"></i></a>
-             <ul>
-                 <li><a routerLink="/plant-stock">Plant Stock</a></li>
-                 <li><a routerLink="/c-stock">Capitalized Stock</a></li>
-             </ul>
-         </li>
-         <li>
-             <a title="Depot"><i class="fa fa-cube"></i></a>
-             <ul>
-                 <li><a routerLink="/gr-note">Generate Transfer Note</a></li>
-                 <li><a routerLink="/depot-stock">Depot Stock</a></li>
-                 <li><a routerLink="/depot-stock-variantWise">Depot Stock Variant Wise</a></li>
-                 <li><a>View Report<span class="rgt-arrow">&rsaquo;</span></a>
-                     <ul>
-                         <li><a routerLink="/depot-depot-invoice">Depot - Depot Invoice</a></li>
-                         <li><a routerLink="/depot-dealer-invoice">Depot - Dealer Invoice</a></li>
-                         <li><a routerLink="/sales-return-invoice">Sale Return Invoice</a></li>
-                         <li><a routerLink="/depot-aging-production">Aging From Production</a></li>
-                         <li><a routerLink="/depot-aging-recieved">Aging From Received</a></li>
-                     </ul>
-                 </li>
-             </ul>
-         </li>
-         <li>
-             <a title="Dealers"><i class="fa fa-cubes"></i></a>
-             <ul>
-                 <li><a>View Reports<span class="rgt-arrow">&rsaquo;</span></a>
-                     <ul>
-                         <li><a routerLink="/r-dealer-stock">Dealer Stock</a></li>
-                         <li><a routerLink="/r-dealer-stock-variantwise">Dealer Stock Variant Wise</a></li>
-                         <li><a routerLink="/r-dealer-collection">Dealer Collection MTD</a></li>
-                         <li><a routerLink="/r-dealer-daily-collection">Dealer Collection Daywise</a></li>
-                         <li><a routerLink="/r-ats">ATS Reports</a></li>
-                         <li><a routerLink="/r-rts">RTS Reports</a></li>
-                         <li><a routerLink="/r-delivery">Delivery Reports</a></li>
-                         <li><a routerLink="/r-retail">Retail Reports</a></li>
-                         <li><a routerLink="/r-retail-return">Reversal Report</a></li>
-                         <li><a routerLink="/r-advance">Advance Reports</a></li>
-                         <li><a routerLink="/r-bd-sd">BG/SD Monitoring</a></li>
-                         <li><a routerLink="/r-old-tractor">Old Tractor Exchange</a></li>
-                         <li><a routerLink="/r-tehsil-based">Tehsil Based Report</a></li>
-                         <li><a routerLink="/r-exppected-disbursement">Expected Disbursement Report</a></li>
-                         <li><a routerLink="/r-aging-from-production">Aging From Production</a></li>
-                         <li><a routerLink="/r-aging-from-recieved">Aging From Received</a></li>
-                     </ul>
-                 </li>
-                 <li><a>Invoices<span class="rgt-arrow">&rsaquo;</span></a>
-                     <ul>
-                         <li><a routerLink="/invoices">Invoices</a></li>
-                         <li><a routerLink="/invoices-mtd">Dealer Invoice MTD</a></li>
-                     </ul>
-                 </li>
-                 <li><a>Retrun<span class="rgt-arrow">&rsaquo;</span></a>
-                  <ul>
-                    <li><a routerLink="/advance-return">Advance Return</a></li>
-                    <li><a routerLink="/sales-return">Sale Return</a></li>
-                    <li><a routerLink="/retail-return">Retail Return</a></li>
-                  </ul>
-              </li>
-                 <li><a routerLink="/sale-return-receipt">Sale Return Receipt List</a></li>
-                 <li><a routerLink="/dealer-collection-entry">Dealer Collection Entry</a></li>
-                 <li><a>Dealer Statement<span class="rgt-arrow">&rsaquo;</span></a>
-                     <ul>
-                         <li><a routerLink="/statement-upload">Statement Upload</a></li>
-                         <li><a routerLink="/opening-closing-sheet">Opening/Closing Sheet</a></li>
-                         <li><a routerLink="/monthly-statement">Monthly Statement</a></li>
-                     </ul>
-                 </li>
-                 <li><a>Plans<span class="rgt-arrow">&rsaquo;</span></a>
-                     <ul>
-                         <li><a routerLink="/upload-sale-plan">Sale Plan Upload</a></li>
-                         <li><a routerLink="/r-sale-plan">Sale Plan Report</a></li>
-                         <li><a routerLink="/upload-collection-plan">Collection Plan Upload</a></li>
-                         <li><a routerLink="/r-collection-plan">Collection Plan Report</a></li>
-                         <li><a routerLink="/upload-delivery-plan">Delivery Plan Upload</a></li>
-                         <li><a routerLink="/r-delivery-plan">Delivery Plan Report</a></li>
-                         <li><a routerLink="/upload-retail-plan">Retail Plan Upload</a></li>
-                         <li><a routerLink="/r-retail-plan">Retail Plan Report</a></li>
-                     </ul>
-                 </li>
-                 <li><a>ATS<span class="rgt-arrow">&rsaquo;</span></a>
-                     <ul>
-                         <li><a routerLink="/ats-delivery">Delivery</a></li>
-                         <li><a routerLink="/ats-retail">Retail</a></li>
-                         <li><a routerLink="/ats-insurance">Insurance</a></li>
-                     </ul>
-                 </li>
-                 <li><a routerLink="/bgs-report">BGS</a></li>
-             </ul>
-         </li>
-    </ul>
-     <div class="settingArea">
-         <a type="button" (click)="getLogout()"><i class="fa fa-power-off"></i></a>
-     </div>
-</nav>
+<div class="sidebar-main">
+  <!-- mobile-view -->
+  <nav class="navbar navbar-expand-lg navbar-light mobile-top-navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand logoSm" href="#"><img class="img-fluid" src="../../../../assets/images/SDF-logo.png"></a>
+        <div class="">
+          <ul class="navbar-nav justify-content-end w-100">
+            <li class="nav-item">
+              <a class="nav-link" href="#" (click)="getLogout()"><i class="fa fa-power-off"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </nav>
+  <div #dealerNav class="sm-dealerMenu">
+      <ul class="dealers menu">
+          <li><a (click)="showReports()" data-bs-target="viewReports" data-bs-toggle="collapse" aria-expanded="false">View Reports <i class="d-arrow fa fa-chevron-down"></i></a>
+              <ul #showRep class="collapse" id="viewReports">
+                  <li><a routerLink="/r-dealer-stock"><i class="rgt-arrow fa fa-chevron-right"></i> Dealer Stock</a></li>
+                  <li><a routerLink="/r-dealer-stock-variantwise"><i class="rgt-arrow fa fa-chevron-right"></i> Dealer Stock Variant Wise</a></li>
+                  <li><a routerLink="/r-dealer-collection"><i class="rgt-arrow fa fa-chevron-right"></i> Dealer Collection MTD</a></li>
+                  <li><a routerLink="/r-dealer-daily-collection"><i class="rgt-arrow fa fa-chevron-right"></i> Dealer Collection Daywise</a></li>
+                  <li><a routerLink="/r-ats"><i class="rgt-arrow fa fa-chevron-right"></i> ATS Reports</a></li>
+                  <li><a routerLink="/r-rts"><i class="rgt-arrow fa fa-chevron-right"></i> RTS Reports</a></li>
+                  <li><a routerLink="/r-delivery"><i class="rgt-arrow fa fa-chevron-right"></i> Delivery Reports</a></li>
+                  <li><a routerLink="/r-retail"><i class="rgt-arrow fa fa-chevron-right"></i> Retail Reports</a></li>
+                  <li><a routerLink="/r-retail-return"><i class="rgt-arrow fa fa-chevron-right"></i> Reversal Report</a></li>
+                  <li><a routerLink="/r-advance"><i class="rgt-arrow fa fa-chevron-right"></i> Advance Reports</a></li>
+                  <li><a routerLink="/r-bd-sd"><i class="rgt-arrow fa fa-chevron-right"></i> BG/SD Monitoring</a></li>
+                  <li><a routerLink="/r-old-tractor"><i class="rgt-arrow fa fa-chevron-right"></i> Old Tractor Exchange</a></li>
+                  <li><a routerLink="/r-tehsil-based"><i class="rgt-arrow fa fa-chevron-right"></i> Tehsil Based Report</a></li>
+                  <li><a routerLink="/r-exppected-disbursement"><i class="rgt-arrow fa fa-chevron-right"></i> Expected Disbursement Report</a></li>
+                  <li><a routerLink="/r-aging-from-production"><i class="rgt-arrow fa fa-chevron-right"></i> Aging From Production</a></li>
+                  <li><a routerLink="/r-aging-from-recieved"><i class="rgt-arrow fa fa-chevron-right"></i> Aging From Received</a></li>
+              </ul>
+          </li>
+          <li><a (click)="invReports()" data-bs-target="invReports" data-bs-toggle="collapse" aria-expanded="false">Invoices <i class="d-arrow fa fa-chevron-down"></i></a>
+              <ul #showInv class="collapse" id="invReports">
+                  <li><a routerLink="/invoices"><i class="rgt-arrow fa fa-chevron-right"></i> Invoices</a></li>
+                  <li><a routerLink="/invoices-mtd"><i class="rgt-arrow fa fa-chevron-right"></i> Dealer Invoice MTD</a></li>
+              </ul>
+          </li>
+          <li><a (click)="rtnReports()" data-bs-target="rtnReports" data-bs-toggle="collapse" aria-expanded="false">Retrun <i class="d-arrow fa fa-chevron-down"></i></a>
+           <ul #showRtn class="collapse" id="rtnReports">
+             <li><a routerLink="/advance-return"><i class="rgt-arrow fa fa-chevron-right"></i> Advance Return</a></li>
+             <li><a routerLink="/sales-return"><i class="rgt-arrow fa fa-chevron-right"></i> Sale Return</a></li>
+             <li><a routerLink="/retail-return"><i class="rgt-arrow fa fa-chevron-right"></i> Retail Return</a></li>
+           </ul>
+       </li>
+          <li><a routerLink="/sale-return-receipt">Sale Return Receipt List</a></li>
+          <li><a routerLink="/dealer-collection-entry">Dealer Collection Entry</a></li>
+          <li><a (click)="delStatement()" data-bs-target="delStat" data-bs-toggle="collapse" aria-expanded="false">Dealer Statement <i class="d-arrow fa fa-chevron-down"></i></a>
+              <ul #showStat class="collapse" id="delStat">
+                  <li><a routerLink="/statement-upload"><i class="rgt-arrow fa fa-chevron-right"></i> Statement Upload</a></li>
+                  <li><a routerLink="/opening-closing-sheet"><i class="rgt-arrow fa fa-chevron-right"></i> Opening/Closing Sheet</a></li>
+                  <li><a routerLink="/monthly-statement"><i class="rgt-arrow fa fa-chevron-right"></i> Monthly Statement</a></li>
+              </ul>
+          </li>
+          <li><a (click)="plansRep()" data-bs-target="planR" data-bs-toggle="collapse" aria-expanded="false">Plans <i class="d-arrow fa fa-chevron-down"></i></a>
+              <ul #showPlans class="collapse" id="planR">
+                  <li><a routerLink="/upload-sale-plan"><i class="rgt-arrow fa fa-chevron-right"></i> Sale Plan Upload</a></li>
+                  <li><a routerLink="/r-sale-plan"><i class="rgt-arrow fa fa-chevron-right"></i> Sale Plan Report</a></li>
+                  <li><a routerLink="/upload-collection-plan"><i class="rgt-arrow fa fa-chevron-right"></i> Collection Plan Upload</a></li>
+                  <li><a routerLink="/r-collection-plan"><i class="rgt-arrow fa fa-chevron-right"></i> Collection Plan Report</a></li>
+                  <li><a routerLink="/upload-delivery-plan"><i class="rgt-arrow fa fa-chevron-right"></i> Delivery Plan Upload</a></li>
+                  <li><a routerLink="/r-delivery-plan"><i class="rgt-arrow fa fa-chevron-right"></i> Delivery Plan Report</a></li>
+                  <li><a routerLink="/upload-retail-plan"><i class="rgt-arrow fa fa-chevron-right"></i> Retail Plan Upload</a></li>
+                  <li><a routerLink="/r-retail-plan"><i class="rgt-arrow fa fa-chevron-right"></i> Retail Plan Report</a></li>
+              </ul>
+          </li>
+          <li><a (click)="atsRep()" data-bs-target="atsR" data-bs-toggle="collapse" aria-expanded="false">ATS <i class="d-arrow fa fa-chevron-down"></i></a>
+              <ul #showAts class="collapse" id="atsR">
+                  <li><a routerLink="/ats-delivery"><i class="rgt-arrow fa fa-chevron-right"></i> Delivery</a></li>
+                  <li><a routerLink="/ats-retail"><i class="rgt-arrow fa fa-chevron-right"></i> Retail</a></li>
+                  <li><a routerLink="/ats-insurance"><i class="rgt-arrow fa fa-chevron-right"></i> Insurance</a></li>
+              </ul>
+          </li>
+          <li><a routerLink="/bgs-report">BGS</a></li>
+      </ul>
+  </div>
+  <div #depotNav class="sm-depotMenu">
+      <ul class="depots menu">
+          <li><a routerLink="/gr-note">Generate Transfer Note</a></li>
+          <li><a routerLink="/depot-stock">Depot Stock</a></li>
+          <li><a routerLink="/depot-stock-variantWise">Depot Stock Variant Wise</a></li>
+          <li class="dropdown"><a id="dsvDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">View Report <i class="d-arrow fa fa-chevron-down"></i></a>
+              <ul class="dropdown-menu" aria-labelledby="dsvDropdown">
+                  <li><a routerLink="/depot-depot-invoice"><i class="rgt-arrow fa fa-chevron-right"></i> Depot - Depot Invoice</a></li>
+                  <li><a routerLink="/depot-dealer-invoice"><i class="rgt-arrow fa fa-chevron-right"></i> Depot - Dealer Invoice</a></li>
+                  <li><a routerLink="/sales-return-invoice"><i class="rgt-arrow fa fa-chevron-right"></i> Sale Return Invoice</a></li>
+                  <li><a routerLink="/depot-aging-production"><i class="rgt-arrow fa fa-chevron-right"></i> Aging From Production</a></li>
+                  <li><a routerLink="/depot-aging-recieved"><i class="rgt-arrow fa fa-chevron-right"></i> Aging From Received</a></li>
+              </ul>
+          </li>
+      </ul>
+  </div>
+  <div #plantNav class="sm-plantMenu">
+      <ul class="plants menu">
+          <li><a routerLink="/plant-stock">Plant Stock</a></li>
+          <li><a routerLink="/c-stock">Capitalized Stock</a></li>
+      </ul>
+  </div>
+  <div #dashNav class="sm-dashboardMenu">
+      <ul class="dashboard menu">
+          <li><a routerLink="/vehicle-history">Vehicle History</a></li>
+          <li><a routerLink="/history-report">History Report</a></li>
+      </ul>
+  </div>
+  <div #masterNav class="sm-masterMenu">
+      <!-- <ul #dashboard class="dashboard menu">
+          <li><a routerLink="/vehicle-history">Vehicle History</a></li>
+          <li><a routerLink="/history-report">History Report</a></li>
+      </ul> -->
+      <ul #masters class="masters menu">
+          <li><a routerLink="/m-depot">Depot Master</a></li>
+          <li><a routerLink="/m-dealer">Dealer Master</a></li>
+          <li><a routerLink="/m-variant">Variant Master</a></li>
+          <li><a routerLink="/m-on-power">On-Power Master</a></li>
+          <li><a routerLink="/m-transport">Transporter Master</a></li>
+          <li><a routerLink="/m-part">Parts Master</a></li>
+          <li><a routerLink="/m-user">Users Master</a></li>
+          <li><a routerLink="/m-financial">Financial Institution Master</a></li>
+          <li><a routerLink="/m-customer">Customer Master</a></li>
+          <li><a routerLink="/m-roles">Roles Master</a></li>
+          <li><a routerLink="/m-state">State Master</a></li>
+          <li><a routerLink="/m-zone">Zone Master</a></li>
+          <li><a routerLink="/m-city">City Master</a></li>
+      </ul>
+  </div>
+  <nav class="mobile-btm-menubar">
+      <a class="navLink dashboard" (click)="openDashboardNav()" title="Dashboard"><i class="fa fa-th-large"></i>
+          <span class="d-block menuTxt">Dashboard</span>
+      </a>
+      <a class="navLink masters" (click)="openMasterNav()" title="Masters"><i class="fa fa-users"></i>
+          <!-- <input type="checkbox" id="openSidebarMenu">
+          <label for="openSidebarMenu" class="sidebarIconToggle"></label>   -->
+          <span class="d-block menuTxt">Master</span>
+
+      </a>
+      <a class="navLink plant" (click)="openPlantNav()" title="Plant"><i class="fa fa-industry"></i>
+          <span class="d-block menuTxt">Plant</span>
+      </a>
+      <a class="navLink depot" (click)="openDepotNav()" title="Depot"><i class="fa fa-cube"></i>
+          <span class="d-block menuTxt">Depot</span>
+      </a>
+      <a class="navLink dealers" (click)="openDealerNav()" title="Dealers"><i class="fa fa-cubes"></i>
+          <span class="d-block menuTxt">Dealers</span>
+       </a>
+  </nav>
+  <!-- mobile-view -->
+  <nav class="sideBarMenu">
+      <ul class="profileArea">
+           <li><a routerLink="/" title="Profile"><i class="fa fa-user"></i></a></li>
+      </ul>
+      <ul class="menu-area">
+           <li>
+               <a title="Dashboard"><i class="fa fa-th-large"></i></a>
+               <ul>
+                   <li><a routerLink="/vehicle-history">Vehicle History</a></li>
+                   <li><a routerLink="/history-report">History Report</a></li>
+               </ul>
+           </li>
+           <li><a title="Masters"><i class="fa fa-users"></i></a>
+               <ul>
+                   <li><a routerLink="/m-depot">Depot Master</a></li>
+                   <li><a routerLink="/m-dealer">Dealer Master</a></li>
+                   <li><a routerLink="/m-variant">Variant Master</a></li>
+                   <li><a routerLink="/m-on-power">On-Power Master</a></li>
+                   <li><a routerLink="/m-transport">Transporter Master</a></li>
+                   <li><a routerLink="/m-part">Parts Master</a></li>
+                   <li><a routerLink="/m-user">Users Master</a></li>
+                   <li><a routerLink="/m-financial">Financial Institution Master</a></li>
+                   <li><a routerLink="/m-customer">Customer Master</a></li>
+                   <li><a routerLink="/m-roles">Roles Master</a></li>
+                   <li><a routerLink="/m-state">State Master</a></li>
+                   <li><a routerLink="/m-zone">Zone Master</a></li>
+                   <li><a routerLink="/m-city">City Master</a></li>
+               </ul>
+           </li>
+           <li>
+               <a title="Plant"><i class="fa fa-industry"></i></a>
+               <ul>
+                   <li><a routerLink="/plant-stock">Plant Stock</a></li>
+                   <li><a routerLink="/c-stock">Capitalized Stock</a></li>
+               </ul>
+           </li>
+           <li>
+               <a title="Depot"><i class="fa fa-cube"></i></a>
+               <ul>
+                   <li><a routerLink="/gr-note">Generate Transfer Note</a></li>
+                   <li><a routerLink="/depot-stock">Depot Stock</a></li>
+                   <li><a routerLink="/depot-stock-variantWise">Depot Stock Variant Wise</a></li>
+                   <li><a>View Report<span class="rgt-arrow">&rsaquo;</span></a>
+                       <ul>
+                           <li><a routerLink="/depot-depot-invoice">Depot - Depot Invoice</a></li>
+                           <li><a routerLink="/depot-dealer-invoice">Depot - Dealer Invoice</a></li>
+                           <li><a routerLink="/sales-return-invoice">Sale Return Invoice</a></li>
+                           <li><a routerLink="/depot-aging-production">Aging From Production</a></li>
+                           <li><a routerLink="/depot-aging-recieved">Aging From Received</a></li>
+                       </ul>
+                   </li>
+               </ul>
+           </li>
+           <li>
+               <a title="Dealers"><i class="fa fa-cubes"></i></a>
+               <ul>
+                   <li><a>View Reports<span class="rgt-arrow">&rsaquo;</span></a>
+                       <ul>
+                           <li><a routerLink="/r-dealer-stock">Dealer Stock</a></li>
+                           <li><a routerLink="/r-dealer-stock-variantwise">Dealer Stock Variant Wise</a></li>
+                           <li><a routerLink="/r-dealer-collection">Dealer Collection MTD</a></li>
+                           <li><a routerLink="/r-dealer-daily-collection">Dealer Collection Daywise</a></li>
+                           <li><a routerLink="/r-ats">ATS Reports</a></li>
+                           <li><a routerLink="/r-rts">RTS Reports</a></li>
+                           <li><a routerLink="/r-delivery">Delivery Reports</a></li>
+                           <li><a routerLink="/r-retail">Retail Reports</a></li>
+                           <li><a routerLink="/r-retail-return">Reversal Report</a></li>
+                           <li><a routerLink="/r-advance">Advance Reports</a></li>
+                           <li><a routerLink="/r-bd-sd">BG/SD Monitoring</a></li>
+                           <li><a routerLink="/r-old-tractor">Old Tractor Exchange</a></li>
+                           <li><a routerLink="/r-tehsil-based">Tehsil Based Report</a></li>
+                           <li><a routerLink="/r-exppected-disbursement">Expected Disbursement Report</a></li>
+                           <li><a routerLink="/r-aging-from-production">Aging From Production</a></li>
+                           <li><a routerLink="/r-aging-from-recieved">Aging From Received</a></li>
+                       </ul>
+                   </li>
+                   <li><a>Invoices<span class="rgt-arrow">&rsaquo;</span></a>
+                       <ul>
+                           <li><a routerLink="/invoices">Invoices</a></li>
+                           <li><a routerLink="/invoices-mtd">Dealer Invoice MTD</a></li>
+                       </ul>
+                   </li>
+                   <li><a>Retrun<span class="rgt-arrow">&rsaquo;</span></a>
+                    <ul>
+                      <li><a routerLink="/advance-return">Advance Return</a></li>
+                      <li><a routerLink="/sales-return">Sale Return</a></li>
+                      <li><a routerLink="/retail-return">Retail Return</a></li>
+                    </ul>
+                </li>
+                   <li><a routerLink="/sale-return-receipt">Sale Return Receipt List</a></li>
+                   <li><a routerLink="/dealer-collection-entry">Dealer Collection Entry</a></li>
+                   <li><a>Dealer Statement<span class="rgt-arrow">&rsaquo;</span></a>
+                       <ul>
+                           <li><a routerLink="/statement-upload">Statement Upload</a></li>
+                           <li><a routerLink="/opening-closing-sheet">Opening/Closing Sheet</a></li>
+                           <li><a routerLink="/monthly-statement">Monthly Statement</a></li>
+                       </ul>
+                   </li>
+                   <li><a>Plans<span class="rgt-arrow">&rsaquo;</span></a>
+                       <ul>
+                           <li><a routerLink="/upload-sale-plan">Sale Plan Upload</a></li>
+                           <li><a routerLink="/r-sale-plan">Sale Plan Report</a></li>
+                           <li><a routerLink="/upload-collection-plan">Collection Plan Upload</a></li>
+                           <li><a routerLink="/r-collection-plan">Collection Plan Report</a></li>
+                           <li><a routerLink="/upload-delivery-plan">Delivery Plan Upload</a></li>
+                           <li><a routerLink="/r-delivery-plan">Delivery Plan Report</a></li>
+                           <li><a routerLink="/upload-retail-plan">Retail Plan Upload</a></li>
+                           <li><a routerLink="/r-retail-plan">Retail Plan Report</a></li>
+                       </ul>
+                   </li>
+                   <li><a>ATS<span class="rgt-arrow">&rsaquo;</span></a>
+                       <ul>
+                           <li><a routerLink="/ats-delivery">Delivery</a></li>
+                           <li><a routerLink="/ats-retail">Retail</a></li>
+                           <li><a routerLink="/ats-insurance">Insurance</a></li>
+                       </ul>
+                   </li>
+                   <li><a routerLink="/bgs-report">BGS</a></li>
+               </ul>
+           </li>
+      </ul>
+       <div class="settingArea">
+           <a type="button" (click)="getLogout()"><i class="fa fa-power-off"></i></a>
+       </div>
+  </nav>
+</div>
+

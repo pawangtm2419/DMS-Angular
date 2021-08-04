@@ -31,4 +31,9 @@ export class CommonService {
     return this.http.get<any>(`${environment._url}/variant/getVariants`, httpOptions);
   }
 
+  vehicleHist(data: any): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    return this.http.post(`${environment._url}/vehicle/getVehicleHistory`, data, httpOptions);
+  }
+
 }

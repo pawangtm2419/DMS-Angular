@@ -8,16 +8,16 @@ import { UserService } from './services/user.service';
 })
 export class AppGuard implements CanActivate, CanActivateChild, CanDeactivate<unknown>, CanLoad {
   user: any;
-  constructor( private router: Router, private service: UserService ) {  }
+  constructor(private router: Router, private service: UserService) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (this.service.gettoken()) {
-        return true;
-      }  else {
-        this.router.navigateByUrl('/');
-        return false;
-      }
+    if (this.service.gettoken()) {
+      return true;
+    } else {
+      this.router.navigateByUrl('/');
+      return false;
+    }
   }
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,

@@ -38,7 +38,6 @@
                                 <th>Customer Name</th>
                                 <th>Father Name</th>
                                 <th>Customer DOB</th>
-                                <th>Marriage Date</th>
                                 <th>Customer Address</th>
                                 <th>State</th>
                                 <th>Tehsil</th>
@@ -59,7 +58,6 @@
                                 <td data-title="Sr. No.">{{customer.customerId}}</td>
                                 <td data-title="Owner's Name"><a (click)="viewFullInfo(customer)">{{customer.ownerName}}</a></td>
                                 <td data-title="Customer DOB">{{customer.customerDOB | date:'dd-MM-yyyy'}}</td>
-                                <td data-title="Customer DOB">{{customer.weddingDate | date:'dd-MM-yyyy'}}</td>
                                 <td data-title="Customer Address">{{customer.address.customerAddress}}</td>
                                 <td data-title="Mobile No">{{customer.address.stateName}}</td>
                                 <td data-title="Mobile No">{{customer.address.tehsil}}</td>
