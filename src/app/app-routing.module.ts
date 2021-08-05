@@ -6,12 +6,8 @@ import { AppGuard } from './shared/app.guard';
 import { LoginComponent } from './user/login/login.component';
 
 const routes: Routes = [
-  {
-    path: '', redirectTo: '', pathMatch: 'full', component: LoginComponent
-  }, {
-    path: 'home', component: HomeComponent,
-    canActivate: [AppGuard]
-  },
+  { path: '', redirectTo: '', pathMatch: 'full', component: LoginComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AppGuard] },
   // dashboard module page
   {
     path: 'history-report',
@@ -289,15 +285,13 @@ const routes: Routes = [
     canActivate: [AppGuard]
   },
   // page not found
-  {
-    path: '**', component: PagenotfoundComponent
-  }
+  { path: '**', component: PagenotfoundComponent }
 ];
 
 @NgModule({
-  // imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})],
+  imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})],
   // imports: [RouterModule.forRoot(routes,{ useHash: true })],
-  imports: [RouterModule.forRoot(routes)],
+  // imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
