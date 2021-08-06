@@ -23,9 +23,7 @@ export class GenerateTransferNoteComponent implements OnInit {
   transport = [ 'truck', 'road' ];
   constructor(private depot: DepotService, public toaster: ToasterService, public service: CommonService) { }
 
-  ngOnInit(): void {
-    this.getCityList();
-  }
+  ngOnInit(): void { }
 
   getCityList() {
     this.service.viewDepot().subscribe(res => {
@@ -39,9 +37,6 @@ export class GenerateTransferNoteComponent implements OnInit {
     });
   }
 
-  onChangeName(event: any) {
-    console.log(event);
-  }
 
   getStateList() {
     if (this.selectedToLocation === 'dealer') {

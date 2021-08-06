@@ -1,28 +1,35 @@
-<select [(ngModel)] ="selectedToLocDepotName" name="valueCheck" (change)="onChangeName($event)">
+<select [(ngModel)] ="selectedToLocDepotName" name="valueCheck" (click)="getCityList()">
+  <option value="">From location</option>
   <option *ngFor="let obj of depotList"  [ngValue]="obj.depotName"> {{obj.depotName | uppercase}} </option>
 </select>
 {{selectedToLocDepotName}}
-<select [(ngModel)] ="selectedToLocation" name="valueCheck" (change)="onChangeName($event)">
+<select [(ngModel)] ="selectedToLocation" name="valueCheck" >
+  <option value="">To location</option>
   <option *ngFor="let obj of toLocation"  [ngValue]="obj"> {{obj | uppercase}} </option>
 </select>
 {{selectedToLocation}}
-<select [(ngModel)] ="selectedToDepotName" name="valueCheck" (change)="onChangeName($event)" *ngIf="selectedToLocation == 'depot'">
+<select [(ngModel)] ="selectedToDepotName" name="valueCheck"  *ngIf="selectedToLocation == 'depot'">
+  <option value="">Select</option>
   <option *ngFor="let obj of depotList"  [ngValue]="obj.depotName"> {{obj.depotName | uppercase}} </option>
 </select>
 {{selectedToDepotName}}
-<select [(ngModel)] ="selectedtransport" name="valueCheck" (change)="onChangeName($event)" *ngIf="selectedToLocation == 'depot'">
+<select [(ngModel)] ="selectedtransport" name="valueCheck">
+  <option value="">Select transport mode</option>
   <option *ngFor="let obj of transport"  [ngValue]="obj"> {{obj | uppercase}} </option>
 </select>
 {{selectedtransport}}
-<select [(ngModel)] ="selectedDriverName" name="valueCheck" (change)="onChangeName($event)" *ngIf="selectedtransport == 'road'">
+<select [(ngModel)] ="selectedDriverName" name="valueCheck"  *ngIf="selectedtransport == 'road'">
+  <option value="">Select</option>
   <option *ngFor="let obj of driverList"  [ngValue]="obj.driverName"> {{obj.driverName | uppercase}} </option>
 </select>
 {{selectedDriverName}}
-<select [(ngModel)] ="selectedTransportName" name="valueCheck" (change)="onChangeName($event)" *ngIf="selectedtransport == 'truck'">
+<select [(ngModel)] ="selectedTransportName" name="valueCheck"  *ngIf="selectedtransport == 'truck'">
+  <option value="">Select</option>
   <option *ngFor="let obj of transportList"  [ngValue]="obj.transName"> {{obj.transName | uppercase}} </option>
 </select>
 {{selectedTransportName}}
-<select [(ngModel)] ="selectedState" name="valueCheck" (change)="onChangeName($event)" *ngIf="selectedToLocation == 'dealer'">
+<select [(ngModel)] ="selectedState" name="valueCheck"  *ngIf="selectedToLocation == 'dealer'">
+  <option value="">Select</option>
   <option *ngFor="let obj of stateName"  [ngValue]="obj"> {{obj | uppercase}} </option>
 </select>
 {{selectedState}}

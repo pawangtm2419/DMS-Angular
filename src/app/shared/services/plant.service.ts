@@ -20,4 +20,14 @@ export class PlantService {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
     return this.http.post(`${environment._url}/vehicle/getCVehicles`, data, httpOptions);
   }
+
+  moveToCapital(data: any): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this.http.post(`${environment._url}/vehicle/movetoCapital`, data, httpOptions);
+  }
+
+  moveToPlant(data: any): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this.http.post(`${environment._url}/vehicle/movetoPlant`, data, httpOptions);
+  }
 }

@@ -31,6 +31,7 @@
                       <thead class="text-white sticky-top theadbg">
                           <tr>
                             <th>#.</th>
+                            <th>Move To Plant </th>
                             <th>Plant Code</th>
                             <th>Plant Name</th>
                             <th>Product Code</th>
@@ -40,12 +41,12 @@
                             <th>Engine No.</th>
                             <th>Production_Date</th>
                             <th>Location</th>
-                            <th>Move To Plant </th>
                           </tr>
                       </thead>
                       <tbody>
-                          <tr  *ngFor="let cStock of cPlantStock | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i=index">
+                          <tr *ngFor="let cStock of cPlantStock | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i=index">
                             <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
+                            <td> <button class="btn-rounded" value="Move" title="move to plant stock" (click)="goPlantStock(cStock)">Move</button> </td>
                             <td data-title="Depot Code">{{cStock.plant.code }}</td>
                             <td data-title="Depot Code">{{cStock.plant.name }}</td>
                             <td data-title="Product Code">{{cStock.productCode}}</td>
@@ -55,7 +56,6 @@
                             <td data-title="Engine No">{{cStock.engineNo}}</td>
                             <td data-title="Prod-Date">{{cStock.prodDate | date:"dd-MM-yyyy"}}</td>
                             <td data-title="Mkt">{{cStock.market}}</td>
-                            <td> <button class="btn-rounded" value="Move" title="move to plant stock" ng-click="movetoPlant(cStock)">Move</button> </td>
                           </tr>
                       </tbody>
                   </table>

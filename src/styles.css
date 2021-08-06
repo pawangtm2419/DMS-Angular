@@ -52,8 +52,6 @@ tbody, td, tfoot, th, thead, tr {
   font-size: 14px;
   text-decoration: none;
   display: block;
-  width: 4rem;
-  margin: 0.7rem 0;
 }
 .txt-link:hover{
   color: #000;
