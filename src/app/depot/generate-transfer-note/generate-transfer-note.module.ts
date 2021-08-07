@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { PipePipe } from 'src/app/shared/pipe.pipe';
 
 const routes: Routes = [
   { path: '', component: GenerateTransferNoteComponent }
@@ -12,7 +13,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    GenerateTransferNoteComponent
+    GenerateTransferNoteComponent,
+    PipePipe
   ],
   imports: [
     CommonModule,

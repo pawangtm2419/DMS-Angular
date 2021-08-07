@@ -15,10 +15,6 @@
               <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
             </div>
           </div>
-          <!-- <div class="col-3 align-self-end text-end"></div>
-          <div class="col-2 align-self-end text-end">
-            
-          </div> -->
           <div class="col-md-6 col-12 align-self-end text-end filterMain">
             <button class="btn btn-primary me-2" type="button" data-bs-toggle="collapse" title="Filter" data-bs-target="#filter" aria-expanded="false" aria-controls="collapseExample"> <i class="fas fa-filter"></i> </button>
             <button type="button" class="btn btn-primary me-2" *ngIf="invoiceData.length > 0" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>

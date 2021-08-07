@@ -8,17 +8,15 @@ import { CommonService, DepotService, ToasterService } from 'src/app/shared/serv
 })
 export class GenerateTransferNoteComponent implements OnInit {
   depotList: any;
-  depotCode: any = '';
+  vehicleList: any;
+  toDepotlist: any;
+  searchData: any;
+  pageData = 1;
+  limits: any = [{ key: 50, value: 50 }];
+  limit: any = 50;
   selectedToLocDepotName: any = '';
   selectedToLocation: any = '';
-  selectedToDepotName: any = '';
-  selectedtransport: any = '';
-  selectedDriverName: any = '';
-  selectedTransportName: any = '';
-  stateName: any;
-  selectedState: any = '';
-  transportList: any;
-  driverList: any;
+  selectedToDepot: any = '';
   toLocation = ['dealer', 'depot'];
   transport = [ 'truck', 'road' ];
   constructor(private depot: DepotService, public toaster: ToasterService, public service: CommonService) { }
@@ -37,13 +35,26 @@ export class GenerateTransferNoteComponent implements OnInit {
     });
   }
 
+  gettoDtpotList() {
+    this.toDepotlist = this.depotList.filter( (item: any) => {
+      return item.depotCode !== this.selectedToLocDepotName;
+    });
+  }
 
-  getStateList() {
-    if (this.selectedToLocation === 'dealer') {
-      this.depot.getState().subscribe(res => {
-        this.stateName = res.data;
-        if (this.stateName.length > 0) {
-          console.log(this.stateName);
+  getVehicleList() {
+    const data = {
+      'locationCode': this.selectedToLocDepotName,
+      'locationType': this.selectedToLocation.toUpperCase()
+    }
+    if (data.locationCode === 'WAREHOUSE') {
+      data.locationType = 'PLANT';
+    }
+    if (data.locationCode && data.locationType) {
+      this.depot.viewVehicle(data).subscribe((res) => {
+        this.vehicleList = res.data;
+        if (this.vehicleList.length > 0) {
+          this.limits = [{ key: 50, value: 50 }, { key: 100, value: 100 }, { key: 250, value: 250 }, { key: 500, value: 500 }, { key: 'ALL', value: this.vehicleList.length }];
+          this.toaster.showSuccess('Data', 'Data report open.');
         } else {
           this.toaster.showInfo('Data', 'No record found.');
         }
@@ -53,35 +64,8 @@ export class GenerateTransferNoteComponent implements OnInit {
     }
   }
 
-  getTransportList() {
-    if (this.selectedtransport === 'truck') {
-      this.depot.getTransport().subscribe(res => {
-        this.transportList = res.data;
-        if (this.transportList.length > 0) {
-          console.log(this.transportList);
-        } else {
-          this.toaster.showInfo('Data', 'No record found.');
-        }
-      }, (error) => {
-        this.toaster.showError('Error', error);
-      });
-    }
+  dataLimit() {
+    this.limit = (document.getElementById('limit') as HTMLInputElement).value;
   }
-
-  getDriverList() {
-    if (this.selectedtransport === 'truck') {
-      this.depot.getDriver().subscribe(res => {
-        this.driverList = res.data;
-        if (this.driverList.length > 0) {
-          console.log(this.driverList);
-        } else {
-          this.toaster.showInfo('Data', 'No record found.');
-        }
-      }, (error) => {
-        this.toaster.showError('Error', error);
-      });
-    }
-  }
-
 
 }

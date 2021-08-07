@@ -93,4 +93,13 @@ export class DepotService {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
     return this._http.get(`${environment._url}/variant/models`, httpOptions);
   }
+
+  viewVehicle(data: any): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this._http.get(`${environment._url}/vehicle/getStockForSTN`, { params: data });
+
+    /* let params = new HttpParams().set('logNamespace', logNamespace);
+
+    return this._HttpClient.get(`${API_URL}/api/v1/data/logs`, { params: params }) */
+  }
 }
