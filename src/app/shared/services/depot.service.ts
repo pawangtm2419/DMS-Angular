@@ -10,22 +10,6 @@ import { environment } from 'src/environments/environment';
 export class DepotService {
 
   constructor(private _http: HttpClient, private cookie: CookieService) { }
-  // depot filter data first filter
-
-  getState(): Observable<any> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this._http.get<any>(`${environment._url}/getStates`, httpOptions);
-  }
-
-  getTransport(): Observable<any> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this._http.get<any>(`${environment._url}/viewTransporter`, httpOptions);
-  }
-
-  getDriver(): Observable<any> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this._http.get<any>(`${environment._url}/viewOnPower`, httpOptions);
-  }
 
   /* Depot stock */
   depotStock(data: any): Observable<any> {
@@ -68,16 +52,6 @@ export class DepotService {
     return this._http.post(`${environment._url}/vehicle/vehicleAging`, data, httpOptions);
   }
 
-  getAgeProVariantList(): Observable<any> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this._http.get(`${environment._url}/variant/getVariants`, httpOptions);
-  }
-
-  getAgeProModel(): Observable<any> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this._http.get(`${environment._url}/variant/models`, httpOptions);
-  }
-
   // Depot Aging from Received
   agingFromRec(data: any): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
@@ -95,11 +69,7 @@ export class DepotService {
   }
 
   viewVehicle(data: any): Observable<any> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this._http.get(`${environment._url}/vehicle/getStockForSTN`, { params: data });
-
-    /* let params = new HttpParams().set('logNamespace', logNamespace);
-
-    return this._HttpClient.get(`${API_URL}/api/v1/data/logs`, { params: params }) */
+    const httpOptions = new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')});
+    return this._http.get(`${environment._url}/vehicle/getStockForSTN`, { params: data, headers: httpOptions });
   }
 }

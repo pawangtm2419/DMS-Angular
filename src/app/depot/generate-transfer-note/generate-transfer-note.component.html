@@ -48,30 +48,36 @@
                         </select>
                       </div>
                     </div>
-                    <div class="col-md-2 mbSm">
-                      <select [(ngModel)]="selectedToDepot" name="valueCheck" (click)="gettoDtpotList()">
-                        <option value="">To depot</option>
-                        <option *ngFor="let obj of toDepotlist" [ngValue]="obj.depotCode"> {{obj.depotName}} </option>
-                      </select>
+                    <div class="col-md-2 mbSm" *ngIf="selectedToLocation == 'depot'">
+                      <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
+                        <select [(ngModel)]="selectedToDepot" name="valueCheck" (click)="gettoDtpotList()">
+                          <option value="">To depot</option>
+                          <option *ngFor="let obj of toDepotlist" [ngValue]="obj.depotCode"> {{obj.depotName}} </option>
+                        </select>
+                      </div>
                     </div>
                     <div class="col-md-2 mbSm">
-                      <select [(ngModel)]="selectedTransport" name="valueCheck">
-                        <option value="">Transport Mode</option>
-                        <option *ngFor="let obj of transport" [ngValue]="obj"> {{obj}} </option>
-                      </select>
-                    </div>
-                    <div class="col-md-2 mbSm">
-                      <div *ngIf="selectedTransport === 'truck'">
-                        <select [(ngModel)]="selectedTransportName" name="valueCheck">
-                          <option value="">Transport Name</option>
+                      <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
+                        <select [(ngModel)]="selectedTransport" name="valueCheck">
+                          <option value="">Transport Mode</option>
                           <option *ngFor="let obj of transport" [ngValue]="obj"> {{obj}} </option>
                         </select>
                       </div>
-                      <div *ngIf="selectedTransport === 'road'">
-                        <select [(ngModel)]="selectedDriverName" name="valueCheck">
-                          <option value="">Driver Name</option>
-                          <option *ngFor="let obj of transport" [ngValue]="obj"> {{obj}} </option>
-                        </select>
+                    </div>
+                    <div class="col-md-2 mbSm">
+                      <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
+                        <div *ngIf="selectedTransport === 'truck'" (click)="getTransportList()">
+                          <select [(ngModel)]="selectedTransportName" name="valueCheck">
+                            <option value="">Transport Name</option>
+                            <option *ngFor="let obj of transportList" [ngValue]="obj.transCode"> {{obj.transName}} </option>
+                          </select>
+                        </div>
+                        <div *ngIf="selectedTransport === 'road'">
+                          <select [(ngModel)]="selectedDriverName" name="valueCheck" (click)="getDriverList()">
+                            <option value="">Driver Name</option>
+                            <option *ngFor="let obj of driverNameList" [ngValue]="obj.driverCode"> {{obj.driverName}} </option>
+                          </select>
+                        </div>
                       </div>
                     </div>
                     <div class="col-md-2 align-self-end text-end">

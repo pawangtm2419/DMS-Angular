@@ -24,6 +24,8 @@ export class GenerateTransferNoteComponent implements OnInit {
   toLocation = ['dealer', 'depot'];
   transport = [ 'truck', 'road' ];
   selectedChassisNo : string[] = [];
+  driverNameList: any;
+  transportList: any;
   constructor(private depot: DepotService, public toaster: ToasterService, public service: CommonService) { }
 
   ngOnInit(): void { }
@@ -83,6 +85,23 @@ export class GenerateTransferNoteComponent implements OnInit {
       return selectedChassis._id !== item._id;
     });
     console.log(this.selectedChassisNo);
+  }
+
+  getDriverList() {
+    this.service.getDriver().subscribe(res => {
+      this.driverNameList = res.data;
+    }, (error) => {
+      this.toaster.showError('Error', error);
+    });
+  }
+
+  // viewTransporter
+  getTransportList() {
+    this.service.getTransport().subscribe(res => {
+      this.transportList = res.data;
+    }, (error) => {
+      this.toaster.showError('Error', error);
+    });
   }
 
   dataLimit() {

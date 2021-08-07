@@ -9,40 +9,55 @@ import { environment } from 'src/environments/environment';
 })
 export class CommonService {
 
-  constructor(private http: HttpClient, private cookie: CookieService) { }
+  constructor(private _http: HttpClient, private cookie: CookieService) { }
 
   viewDepot(): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.get(`${environment._url}/viewDepo`, httpOptions);
+    return this._http.get(`${environment._url}/viewDepo`, httpOptions);
   }
 
   getModel(): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.get(`${environment._url}/variant/models`, httpOptions);
+    return this._http.get(`${environment._url}/variant/models`, httpOptions);
   }
 
   depotLocationFilter(): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.get<any>(`${environment._url}/viewDepo`, httpOptions);
+    return this._http.get<any>(`${environment._url}/viewDepo`, httpOptions);
   }
 
   getVariant(): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
-    return this.http.get<any>(`${environment._url}/variant/getVariants`, httpOptions);
+    return this._http.get<any>(`${environment._url}/variant/getVariants`, httpOptions);
   }
 
   vehicleHist(data: any): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
-    return this.http.post(`${environment._url}/vehicle/getVehicleHistory`, data, httpOptions);
+    return this._http.post(`${environment._url}/vehicle/getVehicleHistory`, data, httpOptions);
   }
 
   getZones(): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
-    return this.http.get<any>(`${environment._url}/zones`, httpOptions);
+    return this._http.get<any>(`${environment._url}/zones`, httpOptions);
   }
   // /getStatesByZone?zoneCode=ZONE3
   getStatesByZone(zoneCode: string): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
-    return this.http.get<any>(`${environment._url}/getStatesByZone?zoneCode=${zoneCode}`, httpOptions);
+    return this._http.get<any>(`${environment._url}/getStatesByZone?zoneCode=${zoneCode}`, httpOptions);
+  }
+
+  getState(): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this._http.get<any>(`${environment._url}/getStates`, httpOptions);
+  }
+
+  getTransport(): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this._http.get<any>(`${environment._url}/viewTransporter`, httpOptions);
+  }
+
+  getDriver(): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this._http.get<any>(`${environment._url}/viewOnPower`, httpOptions);
   }
 }
