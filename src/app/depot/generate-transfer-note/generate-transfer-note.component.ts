@@ -11,14 +11,19 @@ export class GenerateTransferNoteComponent implements OnInit {
   vehicleList: any;
   toDepotlist: any;
   searchData: any;
+  searchItem: any;
   pageData = 1;
   limits: any = [{ key: 50, value: 50 }];
   limit: any = 50;
   selectedToLocDepotName: any = '';
   selectedToLocation: any = '';
   selectedToDepot: any = '';
+  selectedTransport: any = '';
+  selectedTransportName: any = '';
+  selectedDriverName: any = '';
   toLocation = ['dealer', 'depot'];
   transport = [ 'truck', 'road' ];
+  selectedChassisNo : string[] = [];
   constructor(private depot: DepotService, public toaster: ToasterService, public service: CommonService) { }
 
   ngOnInit(): void { }
@@ -62,6 +67,22 @@ export class GenerateTransferNoteComponent implements OnInit {
         this.toaster.showError('Error', error);
       });
     }
+  }
+
+  generateInvoiceList(selectedChassis: any) {
+    this.selectedChassisNo.push(selectedChassis);
+    this.vehicleList = this.vehicleList.filter((item: any) => {
+      return selectedChassis._id !== item._id;
+    });
+    console.log(this.selectedChassisNo);
+  }
+
+  rmItemInvoiceList(selectedChassis: any) {
+    this.vehicleList.push(selectedChassis);
+    this.selectedChassisNo = this.selectedChassisNo.filter((item: any) => {
+      return selectedChassis._id !== item._id;
+    });
+    console.log(this.selectedChassisNo);
   }
 
   dataLimit() {
