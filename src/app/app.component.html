@@ -1,4 +1,4 @@
-<div class="container-fluid px-0" *ngIf="user">
+<!-- <div class="container-fluid px-0" *ngIf="user">
   <div class="row" style="height: 100%; bottom: 0">
     <div class="col-md-1 sub-menu" *ngIf="router.url !== '/'">
       <div class="position-fixed">
@@ -18,4 +18,31 @@
 </div>
 <div *ngIf="!user">
   <router-outlet></router-outlet>
+</div> -->
+
+<!-- nav -->
+<div class="container-fluid px-0 wrapMain" *ngIf="user">
+  <div class="row" style="height: 100%; bottom: 0">
+    <div class="sub-menu" *ngIf="router.url !== '/'">
+      <div class="sidebar_menu">
+        <!-- position-fixed -->
+        <div class="row">
+          <div class="col-md-10 mob-nav-cont">
+            <app-menu></app-menu>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="col-md-12 content-space">
+        <app-header *ngIf="router.url !== '/'"></app-header>
+        <router-outlet></router-outlet>
+        <app-footer *ngIf="router.url !== '/'"></app-footer>
+      </div>
+    </div>
+  </div>
 </div>
+<div *ngIf="!user">
+  <router-outlet></router-outlet>
+</div>
+

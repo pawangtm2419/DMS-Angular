@@ -9,7 +9,7 @@ import * as XLSX from 'xlsx';
 })
 export class InvoiceComponent implements OnInit {
   searchData: any;
-  invoiceData: String[] = [];
+  invoiceData: any;
   pageData = 1;
   limits = [{ key: '50', value: 50 }, { key: '100', value: 100 }, { key: '250', value: 250 }, { key: '500', value: 500 }];
   limit: any = 50;
@@ -62,8 +62,7 @@ export class InvoiceComponent implements OnInit {
 
   download(): void {
     let wb = XLSX.utils.table_to_book(document.getElementById('export'), { display: false, raw: true });
-    let downloadDate = new Date().toLocaleString();
-    XLSX.writeFile(wb, "invoiceReport "+downloadDate+".xlsx");
+    XLSX.writeFile(wb, "invoiceReport.xlsx");
   }
 
 }

@@ -7,7 +7,6 @@ import { UserService } from './services';
   providedIn: 'root'
 })
 export class AppGuard implements CanActivate, CanActivateChild, CanDeactivate<unknown>, CanLoad {
-  user: any;
   constructor(private router: Router, private service: UserService) { }
   canActivate(
     route: ActivatedRouteSnapshot,

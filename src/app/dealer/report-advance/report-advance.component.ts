@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService, DealerReportService, ToasterService } from 'src/app/shared/services';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-report-advance',
@@ -74,5 +75,9 @@ export class ReportAdvanceComponent implements OnInit {
     }, (error) => {
       this.toaster.showInfo('Data', error);
     });
+  }
+  download(): void {
+    let wb = XLSX.utils.table_to_book(document.getElementById('export'), { display: false, raw: true });
+    XLSX.writeFile(wb, "advanceReport.xlsx");
   }
 }

@@ -2,6 +2,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Component, OnInit } from '@angular/core';
 import { MastersService } from 'src/app/shared/services';
 import { ToasterService } from 'src/app/shared/services';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-customer-master',
@@ -47,5 +48,9 @@ export class CustomerMasterComponent implements OnInit {
   }
   deleteCustomerIndo(id: string): void{
     console.log(id);
+  }
+  download(): void {
+    let wb = XLSX.utils.table_to_book(document.getElementById('export'), { display: false, raw: true });
+    XLSX.writeFile(wb, "customerReport.xlsx");
   }
 }

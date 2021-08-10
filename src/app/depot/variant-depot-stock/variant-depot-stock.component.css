@@ -1,0 +1,8 @@
+@media (max-width: 768px) {
+    .sidebarMain{
+        margin-bottom: 0.5rem;
+    }
+    .sidebarMain .align-self-end{
+        align-self: end !important;
+    }
+}

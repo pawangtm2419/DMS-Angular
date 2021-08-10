@@ -1,6 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { DepotService, ToasterService, CommonService } from 'src/app/shared/services';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-depot-stock',
@@ -101,5 +102,8 @@ export class DepotStockComponent implements OnInit {
   editDepotIndo(pStock: any) {
     console.log([pStock]);
   }
-
+  download(): void {
+    let wb = XLSX.utils.table_to_book(document.getElementById('export'), { display: false, raw: true });
+    XLSX.writeFile(wb, "depotStockReport.xlsx");
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MastersService, ToasterService } from 'src/app/shared/services';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-part-master',
@@ -41,5 +42,9 @@ export class PartMasterComponent implements OnInit {
   }
   partDelete(code: String) {
     console.log(code);
+  }
+  download(): void {
+    let wb = XLSX.utils.table_to_book(document.getElementById('export'), { display: false, raw: true });
+    XLSX.writeFile(wb, "partReport.xlsx");
   }
 }

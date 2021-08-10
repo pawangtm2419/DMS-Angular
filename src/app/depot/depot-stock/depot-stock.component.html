@@ -18,7 +18,7 @@
             </div>
             <div class="col-md-6 align-self-end text-end filterMain">
               <button class="btn btn-primary me-2" type="button" data-bs-toggle="collapse" data-bs-target="#filter" aria-expanded="false" aria-controls="collapseExample"> <i class="fa fa-filter"></i> </button>
-              <button type="button" class="btn btn-primary me-2"><i class="fa fa-download"></i></button>
+              <button type="button" class="btn btn-primary me-2" *ngIf="depotData.length > 0" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
               <label for="limit">
                 <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
                   <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
@@ -49,7 +49,38 @@
                         </datalist>
                       </div>
                     </div>
-                    <div class="col-md-6 mbSm"></div>
+                    <div class="col-md-2 mbSm">
+                      <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
+                        <select name="valueCheck" class="form-select">
+                          <option value="">To depot</option>
+                          <option> depot Name</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-2 mbSm">
+                      <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
+                        <select name="valueCheck" class="form-select">
+                          <option value="">Transport Mode</option>
+                          <option>Transport Name</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-2 mbSm">
+                      <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
+                        <div>
+                          <select name="valueCheck" class="form-select">
+                            <option value="">Transport Name</option>
+                            <option> Transport Name</option>
+                          </select>
+                        </div>
+                        <!-- <div>
+                          <select name="valueCheck" class="form-select">
+                            <option value="">Driver Name</option>
+                            <option> driver Name </option>
+                          </select>
+                        </div> -->
+                      </div>
+                    </div>
                     <div class="col-md-2 align-self-end text-end">
                       <div class="BtnMainGrp">
                         <button type="button" (click)="getFilteredDepotStockList()" class="btn btn-primary me-2">Show Data</button>
@@ -64,7 +95,7 @@
         </div>
         <!-- searchbar-row -->
         <div class="table-responsive">
-          <table class="table table-striped table-hover align-middle">
+          <table class="table table-striped table-hover align-middle" id="export">
             <thead class="text-white sticky-top theadbg">
               <tr>
                 <th>#.</th>

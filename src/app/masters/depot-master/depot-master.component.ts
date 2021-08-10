@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MastersService, ToasterService } from 'src/app/shared/services';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-depot-master',
@@ -52,6 +53,10 @@ export class DepotMasterComponent implements OnInit {
     }, (error) => {
       console.log(error);
     });
+  }
+  download(): void {
+    let wb = XLSX.utils.table_to_book(document.getElementById('export'), { display: false, raw: true });
+    XLSX.writeFile(wb, "depotReport.xlsx");
   }
 
 }

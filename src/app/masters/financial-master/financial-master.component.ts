@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MastersService, ToasterService } from 'src/app/shared/services';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-financial-master',
@@ -37,5 +38,9 @@ export class FinancialMasterComponent implements OnInit {
 
   financeDelete(code: String) {
     console.log(code);
+  }
+  download(): void {
+    let wb = XLSX.utils.table_to_book(document.getElementById('export'), { display: false, raw: true });
+    XLSX.writeFile(wb, "financialReport.xlsx");
   }
 }

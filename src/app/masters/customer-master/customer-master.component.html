@@ -3,34 +3,35 @@
         <div class="row">
             <div class="col-md-12">
                 <!-- searchbar-row -->
-                <div class="row mb-2">
-                    <div class="col-6">
-                        <ul class="model-menu">
-                            <li><a routerLink="">Master</a></li>/
-                            <li><a routerLink="/master/customer">Customer Master</a></li>
-                        </ul>
-                        <div class="searchBar mt-2 d-flex justify-content-center align-items-center">
-                            <i class="fas fa-search"></i><input class="form-control me-2" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
-
+                <div class="sidebarMain">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="model-menu">
+                                <li><a routerLink="/home">Master</a></li>/
+                                <li><a routerLink="/m-customer">Customer Master</a></li>
+                            </ul>
                         </div>
-                    </div>
-                    <div class="col-3 align-self-end text-end"></div>
-                    <div class="col-2 align-self-end text-end">
-                        <div class="modelBtnMain">
-                            <button type="button" class="btn btn-primary text-uppercase">+ Add Customer</button>
+                        <div class="col-md-6">
+                            <div class="searchBar d-flex justify-content-center align-items-center">
+                                <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search"> 
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-1 align-self-end text-end">
-                        <label for="limit" style="width: -webkit-fill-available; padding-left: 10px;">
-                            <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
-                              <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
-                            </select>
-                        </label>
+                        <div class="col-md-6 align-self-end text-end"> 
+                            <div class="modelBtnMain">
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#addCity" class="btn btn-primary text-uppercase me-2">+ Add Customer</button>
+                                <button type="button" class="btn btn-primary" *ngIf="customersData.length > 0" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
+                            </div>
+                            <label for="limit">
+                                <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
+                                    <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
+                                </select>
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <!-- searchbar-row -->
                 <div class="table-responsive">
-                    <table class="table table-striped table-hover align-middle">
+                    <table class="table table-striped table-hover align-middle" id="export">
                         <thead class="text-white sticky-top theadbg">
                             <tr>
                                 <th>#</th>

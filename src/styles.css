@@ -25,7 +25,7 @@ tbody, td, tfoot, th, thead, tr {
 .btn-view:hover{
   box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15);
 }
-.btn {
+.btn, #filter .form-control {
   padding: .275rem .75rem;
 }
 .btn-rounded{
@@ -201,7 +201,7 @@ tbody, td, tfoot, th, thead, tr {
 }
 .modelBtnMain{
   display: inline-block;
-  padding-right: 0.7rem;
+  padding-right: 0.5rem;
 }
 @media (max-width: 768px) {
   .btn-primary{
@@ -216,17 +216,21 @@ tbody, td, tfoot, th, thead, tr {
   .model-menu, .searchBar{
     margin-bottom: 0.8rem;
   }
-  .sidebarMain{
-    margin-bottom: 1rem;
-  }
   .modelBtnMain{
-    float: left;
+    text-align: right;
+    /* float: left; */
   }
   .searchBar input{
     font-size: 0.9rem;
   }
   #filter .mbSm{
     margin-bottom: 0.5rem;
+  }
+  .searchBtnMain{
+    text-align: right;
+  }
+  .searDateBtn .btn-primary{
+    float: right;
   }
 }
 /* header */
@@ -297,7 +301,7 @@ padding-right: 1rem;
     padding: .395rem .55rem !important;
   }
   .sidebarMain{
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.7rem;
   }
   .searchBar .fa-search, .logo img{
     display: none;
@@ -322,15 +326,12 @@ padding-right: 1rem;
   #filter .card-body{
     padding: 1rem 0rem;
   }
-  .filterMain .fa{
+  .filterMain .fa, .fa-filter{
     font-size: 14px;
   }
 }
 /* added sidebar and page-content css end */
 @media (max-width: 575.98px) {
-  .sidebarMain{
-      margin-bottom: 0rem;
-  }
   .sidebarMain .align-self-end{
       align-self: end !important;
   }
