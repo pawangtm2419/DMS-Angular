@@ -1,28 +1,22 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './home/home.component';
 import { SharedModule } from './shared/component/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './user/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastrModule } from 'ngx-toastr';
 import { ToasterService } from './shared/services/toster.service';
 import { AppGuard } from './shared/app.guard';
-import { UserService } from './shared/services/user.service';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    LoginComponent
+    AppComponent
   ],
   imports: [
     SharedModule,
@@ -43,7 +37,7 @@ import { CookieService } from 'ngx-cookie-service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [UserService, CookieService, AppGuard, ToasterService],
+  providers: [CookieService, AppGuard, ToasterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
