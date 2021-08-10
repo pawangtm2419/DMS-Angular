@@ -36,6 +36,10 @@ const routes: Routes = [
     loadChildren: () => import('./masters/depot-master/depot-master.module').then(m => m.DepotMasterModule),
     canActivate: [AppGuard]
   }, {
+    path: 'm-hsn-code',
+    loadChildren: () => import('./masters/hsn-master/hsn-master.module').then(m => m.HsnMasterModule),
+    canActivate: [AppGuard]
+  }, {
     path: 'm-financial',
     loadChildren: () => import('./masters/financial-master/financial-master.module').then(m => m.FinancialMasterModule),
     canActivate: [AppGuard]
