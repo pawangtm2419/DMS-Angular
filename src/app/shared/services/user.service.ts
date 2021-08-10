@@ -17,7 +17,6 @@ export interface Users {
   providedIn: 'root'
 })
 export class UserService {
-  private isLoginInfo = new BehaviorSubject<boolean>(false);
   private userSubject: BehaviorSubject<any>;
   public user: Observable<any>;
 
@@ -31,28 +30,23 @@ export class UserService {
     return this.http.post(`${environment._url}/authLog`, data, httpOptions).pipe(map(userData => {
       localStorage.setItem('user', JSON.stringify(userData));
       this.userSubject.next(userData);
-      this.isLoginInfo.next(true);
       return userData;
     }));
   }
 
   gettoken() {
-    return (!!localStorage.getItem('user') && !!this.cookie.get('token') && this.isLoginInfo.asObservable());
+    return (!!localStorage.getItem('user') && !!this.cookie.get('token'));
   }
 
   public get userValue(): User {
     return this.userSubject.value;
-  }
-  get isLoggedIn(): Observable<boolean> {
-    return this.isLoginInfo.asObservable().pipe(map(isLogin => {
-      return isLogin;
-    }));
   }
 
   logout(): void{
     localStorage.removeItem('profile');
     /* this.cookie.delete('token'); */
     localStorage.clear();
+    this.userSubject.next(null);
     /* this.cookie.deleteAll(); */
     this.toaster.showSuccess('Success', 'Log out successfull');
     this.router.navigate(['/']);

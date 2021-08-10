@@ -5,7 +5,6 @@ import { AppGuard } from './shared/app.guard';
 import { LoginComponent } from './user/login/login.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full', loadChildren: () => import('./user/login/login.module').then(m => m.LoginModule) },
   { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule), canActivate: [AppGuard] },
   // dashboard module page
   { path: 'history-report', loadChildren: () => import('./dashboard/history-report/history-report.module').then(m => m.HistoryReportModule), canActivate: [AppGuard] }, 
@@ -88,7 +87,8 @@ const routes: Routes = [
   { path: 'update-vehicle', loadChildren: () => import('./user/update-vehicle/update-vehicle.module').then(m => m.UpdateVehicleModule), canActivate: [AppGuard] },
   { path: 'user-profile', loadChildren: () => import('./user/user-profile/user-profile.module').then(m => m.UserProfileModule), canActivate: [AppGuard] },
   // page not found
-  { path: '**', component: PagenotfoundComponent }
+  { path: '', loadChildren: () => import('./user/login/login.module').then(m => m.LoginModule) },
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({

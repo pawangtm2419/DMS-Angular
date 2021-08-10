@@ -27,11 +27,11 @@ export class LoginComponent implements OnInit {
       this.submit = true;
     }
     if (this.submit) {
-      this.service.userUogIn(logIn.value).subscribe(async res => {
+      this.service.userUogIn(logIn.value).subscribe(res => {
         if (res.status === 'true') {
           this.toaster.showSuccess('Success', 'Log in successfull');
           this.cookie.set('token', res.token);
-          await this.router.navigate(['home']);
+          this.router.navigate(['home']);
         } else if (res.status === 'false') {
           this.toaster.showError('Error', res.msg);
         }
