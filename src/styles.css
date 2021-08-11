@@ -10,6 +10,20 @@ tbody, td, tfoot, th, thead, tr {
   border: 1px solid #ccc;
   font-size: small;
 }
+
+.btn-check:focus+.btn-primary, .btn-primary:focus {
+  color: #fff;
+  background-color: #454397;
+  border-color: #454397;
+  box-shadow: 0 0 0 0.25rem rgb(69 67 151 / 26%);
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+  color: #fff;
+  background-color: #454397;
+  border-color: #454397;
+}
+
 .btn-view{
   display: inline-block;
   padding: 0.2em 0.8em;
