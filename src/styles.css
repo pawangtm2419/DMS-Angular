@@ -8,6 +8,7 @@ body {
 }
 tbody, td, tfoot, th, thead, tr {
   border: 1px solid #ccc;
+  font-size: small;
 }
 .btn-view{
   display: inline-block;

@@ -60,6 +60,7 @@ export class GenerateTransferNoteComponent implements OnInit {
     if (data.locationCode && data.locationType) {
       this.depot.viewVehicle(data).subscribe((res) => {
         this.vehicleList = res.data;
+        this.selectedChassisNo = [];
         if (this.vehicleList.length > 0) {
           this.limits = [{ key: 50, value: 50 }, { key: 100, value: 100 }, { key: 250, value: 250 }, { key: 500, value: 500 }, { key: 'ALL', value: this.vehicleList.length }];
           this.toaster.showSuccess('Data', 'Data report open.');
@@ -77,7 +78,6 @@ export class GenerateTransferNoteComponent implements OnInit {
     this.vehicleList = this.vehicleList.filter((item: any) => {
       return selectedChassis._id !== item._id;
     });
-    console.log(this.selectedChassisNo);
   }
 
   rmItemInvoiceList(selectedChassis: any) {
@@ -85,7 +85,6 @@ export class GenerateTransferNoteComponent implements OnInit {
     this.selectedChassisNo = this.selectedChassisNo.filter((item: any) => {
       return selectedChassis._id !== item._id;
     });
-    console.log(this.selectedChassisNo);
   }
 
   getDriverList() {
@@ -103,6 +102,44 @@ export class GenerateTransferNoteComponent implements OnInit {
     }, (error) => {
       this.toaster.showError('Error', error);
     });
+  }
+
+  invoiceGenrate(): void {
+    console.log(this.selectedChassisNo);
+  }
+  genratesrn(): void {
+    console.log(this.selectedChassisNo);
+    const invoiceData = {
+      "action": "UPDATE",
+      "actionType": "STN",
+      "code": "DEPOT12",
+      "name": "LUCKNOW",
+      "city": "Lucknow",
+      "state": "Uttar Pradesh",
+      "zone": "ZONE1",
+      "head": "Rajiv Dwivedi",
+      "email": "rajiv.d@sdfgroup.com",
+      "mobile": "7408233330",
+      "status": "READY",
+      "PDIstatus": false,
+      "damageControlStatus": false,
+      "transport": {
+        "type": "TRUCK",
+        "code": "9S1051",
+        "name": "Shivasakti Roadlines"
+      },
+      "invoiceNumber": "hgcjdsbg87e2wr",
+      "vehicles": this.selectedChassisNo,
+      "createdBy": "EMP0001",
+      "locationType": "DEPOT",
+      "invoiceDate": "2021-08-10T00:00:00.000Z"
+    }
+    console.log(invoiceData);
+    /* this.depot.updateVehicleDetails(invoiceData).subscribe((res: any) => {
+      if(res.status === 'true') {
+        this.toaster.showSuccess('Success', 'Generate transfer note successfully.');
+      }
+    }); */
   }
 
   dataLimit() {
