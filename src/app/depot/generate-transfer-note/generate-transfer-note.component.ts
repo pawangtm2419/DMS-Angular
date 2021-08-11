@@ -204,7 +204,7 @@ export class GenerateTransferNoteComponent implements OnInit {
             this.toaster.showSuccess('Success', res.msg.msg);
             setTimeout(() => {
               window.location.reload();
-            }, 3000);          
+            }, 3000);
           }
         }), (error: any) => {
           this.toaster.showError('Error', error);

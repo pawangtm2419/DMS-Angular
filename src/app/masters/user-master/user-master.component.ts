@@ -9,7 +9,7 @@ import * as XLSX from 'xlsx';
 })
 export class UserMasterComponent implements OnInit {
   searchData:any;
-  usersData: any;
+  usersData: string[] = [];
   usersInfo: any[] = [];
   pageData: number = 1;
   limits: any = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
@@ -22,7 +22,7 @@ export class UserMasterComponent implements OnInit {
   }
 
   getUserList() {
-    this.master.getusers().subscribe(res=> {
+    this.master.getusers().subscribe((res) => {
       this.usersData=res.data;
       if(this.usersData.length > 0) {
         this.limits.push({ "key": "ALL", value: this.usersData.length });

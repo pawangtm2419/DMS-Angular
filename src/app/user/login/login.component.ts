@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
         if (res.status === 'true') {
           this.toaster.showSuccess('Success', 'Log in successfull');
           this.cookie.set('token', res.token);
+          window.location.reload();
           this.router.navigate(['home']);
         } else if (res.status === 'false') {
           this.toaster.showError('Error', res.msg);
