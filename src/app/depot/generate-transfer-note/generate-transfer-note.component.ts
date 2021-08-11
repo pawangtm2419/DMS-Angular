@@ -108,7 +108,7 @@ export class GenerateTransferNoteComponent implements OnInit {
     console.log(this.selectedChassisNo);
   }
   genratesrn(): void {
-    console.log(this.selectedChassisNo);
+    console.log(this.selectedDriverName);
     const invoiceData = {
       "action": "UPDATE",
       "actionType": "STN",
@@ -123,18 +123,35 @@ export class GenerateTransferNoteComponent implements OnInit {
       "status": "READY",
       "PDIstatus": false,
       "damageControlStatus": false,
-      "transport": {
-        "type": "TRUCK",
-        "code": "9S1051",
-        "name": "Shivasakti Roadlines"
-      },
+      "transport": {},
+      "grNo": "",
       "invoiceNumber": "hgcjdsbg87e2wr",
+      "invoiceDate": "2021-08-10T00:00:00.000Z",
       "vehicles": this.selectedChassisNo,
       "createdBy": "EMP0001",
-      "locationType": "DEPOT",
-      "invoiceDate": "2021-08-10T00:00:00.000Z"
+      "locationType": ""
     }
-    console.log(invoiceData);
+    if(this.selectedToLocation === 'depot') {
+      invoiceData.locationType = "DEPOT";
+    } else {
+      invoiceData.locationType = "DEALER";
+    }
+    if(this.selectedTransport === 'truck') {
+      const trans = {
+        "type": "TRUCK",
+        "code": this.selectedTransportName.transCode,
+        "name": this.selectedTransportName.transName
+      }
+      invoiceData.transport = trans;
+    } else {
+      const trans = {
+        "type": "ROAD",
+        "code": this.selectedDriverName.driverCode,
+        "name": this.selectedDriverName.driverName
+      }
+      invoiceData.transport = trans;
+    }
+    this.depot.updateVehicleDetails(invoiceData);
     /* this.depot.updateVehicleDetails(invoiceData).subscribe((res: any) => {
       if(res.status === 'true') {
         this.toaster.showSuccess('Success', 'Generate transfer note successfully.');

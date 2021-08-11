@@ -73,8 +73,13 @@ export class DepotService {
     return this._http.get(`${environment._url}/vehicle/getStockForSTN`, { params: data, headers: httpOptions });
   }
 
-  updateVehicleDetails(data: any): Observable<any> {
+  updateVehicleDetails(data: any) {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')})};
+    console.log(data);
+    //return this._http.post(`${environment._url}/vehicle/updateVehicleDetails`, data, httpOptions);
+  }
+  /* updateVehicleDetails(data: any): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')})};
     return this._http.post(`${environment._url}/vehicle/updateVehicleDetails`, data, httpOptions);
-  }
+  } */
 }

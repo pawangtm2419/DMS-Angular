@@ -53,7 +53,7 @@
                       <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
                         <select [(ngModel)]="selectedToDepot" name="valueCheck" (click)="gettoDtpotList()" class="form-select">
                           <option value="">To depot</option>
-                          <option *ngFor="let obj of toDepotlist" [ngValue]="obj.depotCode"> {{obj.depotName}} </option>
+                          <option *ngFor="let obj of toDepotlist" [ngValue]="obj"> {{obj.depotName}} </option>
                         </select>
                       </div>
                     </div>
@@ -70,13 +70,13 @@
                         <div *ngIf="selectedTransport === 'truck'" (click)="getTransportList()">
                           <select [(ngModel)]="selectedTransportName" name="valueCheck" class="form-select">
                             <option value="">Transport Name</option>
-                            <option *ngFor="let obj of transportList" [ngValue]="obj.transCode"> {{obj.transName}} </option>
+                            <option *ngFor="let obj of transportList" [ngValue]="obj"> {{obj.transName}} </option>
                           </select>
                         </div>
                         <div *ngIf="selectedTransport === 'road'">
                           <select [(ngModel)]="selectedDriverName" name="valueCheck" (click)="getDriverList()" class="form-select">
                             <option value="">Driver Name</option>
-                            <option *ngFor="let obj of driverNameList" [ngValue]="obj.driverCode"> {{obj.driverName}} </option>
+                            <option *ngFor="let obj of driverNameList" [ngValue]="obj"> {{obj.driverName}} </option>
                           </select>
                         </div>
                       </div>
@@ -140,7 +140,7 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header modalHeaderCenter" style="background: #454397">
-              <h4 class="modal-title text-white text-center">Verify STN - <strong>{{selectedToDepot}}</strong> </h4>
+              <h4 class="modal-title text-white text-center">Verify STN - <strong>{{selectedToDepot.depotName}}</strong> </h4>
               <a class="btn-close2" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></a>
             </div>
             <div class="modal-body">
