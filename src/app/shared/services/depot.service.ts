@@ -75,11 +75,6 @@ export class DepotService {
 
   updateVehicleDetails(data: any) {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')})};
-    console.log(data);
-    //return this._http.post(`${environment._url}/vehicle/updateVehicleDetails`, data, httpOptions);
-  }
-  /* updateVehicleDetails(data: any): Observable<any> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')})};
     return this._http.post(`${environment._url}/vehicle/updateVehicleDetails`, data, httpOptions);
-  } */
+  }
 }

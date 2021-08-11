@@ -27,9 +27,18 @@ export class GenerateTransferNoteComponent implements OnInit {
   selectedChassisNo : string[] = [];
   driverNameList: any;
   transportList: any;
+  invoiceNumber: any;
+  grNumber: any;
+  invoiceDate: any;
+  currentDate: any;
   constructor(private depot: DepotService, public toaster: ToasterService, public service: CommonService) { }
 
   ngOnInit(): void { }
+  convertDate(): void{
+    function pad(s: string | number) { return (s < 10) ? '0' + s : s; }
+    const d = new Date();
+    this.currentDate = [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('-');
+  }
 
   getCityList() {
     this.service.viewDepot().subscribe(res => {
@@ -105,28 +114,28 @@ export class GenerateTransferNoteComponent implements OnInit {
   }
 
   invoiceGenrate(): void {
+    this.convertDate();
     console.log(this.selectedChassisNo);
   }
   genratesrn(): void {
-    console.log(this.selectedDriverName);
     const invoiceData = {
       "action": "UPDATE",
       "actionType": "STN",
-      "code": "DEPOT12",
-      "name": "LUCKNOW",
-      "city": "Lucknow",
-      "state": "Uttar Pradesh",
-      "zone": "ZONE1",
-      "head": "Rajiv Dwivedi",
-      "email": "rajiv.d@sdfgroup.com",
-      "mobile": "7408233330",
+      "code": "",
+      "name": "",
+      "city": "",
+      "state": "",
+      "zone": "",
+      "head": "",
+      "email": "",
+      "mobile": "",
       "status": "READY",
       "PDIstatus": false,
       "damageControlStatus": false,
       "transport": {},
       "grNo": "",
-      "invoiceNumber": "hgcjdsbg87e2wr",
-      "invoiceDate": "2021-08-10T00:00:00.000Z",
+      "invoiceNumber": "",
+      "invoiceDate": "",
       "vehicles": this.selectedChassisNo,
       "createdBy": "EMP0001",
       "locationType": ""
@@ -135,6 +144,17 @@ export class GenerateTransferNoteComponent implements OnInit {
       invoiceData.locationType = "DEPOT";
     } else {
       invoiceData.locationType = "DEALER";
+    }
+    console.log(this.selectedToDepot);
+    if(this.selectedToDepot) {
+      invoiceData.code = this.selectedToDepot.depotCode;
+      invoiceData.name = this.selectedToDepot.depotName;
+      invoiceData.state = this.selectedToDepot.address.stateName;
+      invoiceData.city = this.selectedToDepot.address.cityName;
+      invoiceData.zone = this.selectedToDepot.address.zoneName;
+      invoiceData.head = this.selectedToDepot.depotHead.name;
+      invoiceData.email = this.selectedToDepot.depotHead.email;
+      invoiceData.mobile = this.selectedToDepot.depotHead.mobile;
     }
     if(this.selectedTransport === 'truck') {
       const trans = {
@@ -151,12 +171,23 @@ export class GenerateTransferNoteComponent implements OnInit {
       }
       invoiceData.transport = trans;
     }
+    this.invoiceDate = (document.getElementById('invoiceDate') as HTMLInputElement).value;
+    if(this.invoiceNumber && this.invoiceDate) {
+      invoiceData.invoiceNumber = this.invoiceNumber;
+      invoiceData.invoiceDate = this.invoiceDate + 'T00:00:00.000Z';
+    }
+    if(this.grNumber) {
+      invoiceData.grNo = this.grNumber;
+    }
     this.depot.updateVehicleDetails(invoiceData);
-    /* this.depot.updateVehicleDetails(invoiceData).subscribe((res: any) => {
-      if(res.status === 'true') {
-        this.toaster.showSuccess('Success', 'Generate transfer note successfully.');
+    this.depot.updateVehicleDetails(invoiceData).subscribe((res: any) => {
+      if(res.status) {
+        this.toaster.showSuccess('Success', res.msg.msg);
+        window.location.reload();
       }
-    }); */
+    }), (error: any) => {
+      this.toaster.showError('Error', error);
+    }
   }
 
   dataLimit() {
