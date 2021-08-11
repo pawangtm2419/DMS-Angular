@@ -16,7 +16,7 @@
               </div>
             </div>
             <div class="col-md-6 align-self-end text-end filterMain">
-              <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#stnverify" type="button" *ngIf="selectedChassisNo.length > 0" (click)="invoiceGenrate()"> Verify STN </button>
+              <button class="btn btn-primary me-2" [disabled]="!vehicletransportdriverSelected" data-bs-toggle="modal" data-bs-target="#stnverify" type="button" *ngIf="selectedChassisNo.length > 0" (click)="invoiceGenrate()"> Verify STN </button>
               <button class="btn btn-primary me-2" type="button" data-bs-toggle="collapse" data-bs-target="#filter" aria-expanded="false" aria-controls="collapseExample"> <i class="fa fa-filter"></i> </button>
               <!-- <button type="button" class="btn btn-primary me-2" *ngIf="vehicleList.length > 0" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button> -->
               <label for="limit">
@@ -35,7 +35,7 @@
                   <div class="row" style="--bs-gutter-x: 1.5rem;">
                     <div class="col-md-2 mbSm">
                       <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
-                        <select [(ngModel)]="selectedToLocDepotName" name="valueCheck" class="form-select" (click)="getCityList()">
+                        <select [(ngModel)]="selectedToLocDepotName" class="form-select" (click)="getCityList()">
                           <option value="">From location</option>
                           <option *ngFor="let obj of depotList" [ngValue]="obj.depotCode"> {{obj.depotName}} </option>
                         </select>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-md-2 mbSm">
                       <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
-                        <select [(ngModel)]="selectedToLocation" name="valueCheck" class="form-select">
+                        <select [(ngModel)]="selectedToLocation" class="form-select">
                           <option value="">To location</option>
                           <option *ngFor="let obj of toLocation" [ngValue]="obj"> {{obj}} </option>
                         </select>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="col-md-2 mbSm" *ngIf="selectedToLocation == 'depot'">
                       <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
-                        <select [(ngModel)]="selectedToDepot" name="valueCheck" (click)="gettoDtpotList()" class="form-select">
+                        <select [(ngModel)]="selectedToDepot" (click)="gettoDtpotList()" class="form-select">
                           <option value="">To depot</option>
                           <option *ngFor="let obj of toDepotlist" [ngValue]="obj"> {{obj.depotName}} </option>
                         </select>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-md-2 mbSm">
                       <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
-                        <select [(ngModel)]="selectedTransport" name="valueCheck" class="form-select">
+                        <select [(ngModel)]="selectedTransport" class="form-select">
                           <option value="">Transport Mode</option>
                           <option *ngFor="let obj of transport" [ngValue]="obj"> {{obj}} </option>
                         </select>
@@ -68,13 +68,13 @@
                     <div class="col-md-2 mbSm">
                       <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
                         <div *ngIf="selectedTransport === 'truck'" (click)="getTransportList()">
-                          <select [(ngModel)]="selectedTransportName" name="valueCheck" class="form-select">
+                          <select [(ngModel)]="selectedTransportName" class="form-select" (ngModelChange)="selectionTransport()">
                             <option value="">Transport Name</option>
                             <option *ngFor="let obj of transportList" [ngValue]="obj"> {{obj.transName}} </option>
                           </select>
                         </div>
                         <div *ngIf="selectedTransport === 'road'">
-                          <select [(ngModel)]="selectedDriverName" name="valueCheck" (click)="getDriverList()" class="form-select">
+                          <select [(ngModel)]="selectedDriverName" (click)="getDriverList()" class="form-select" (ngModelChange)="selectionTransport()">
                             <option value="">Driver Name</option>
                             <option *ngFor="let obj of driverNameList" [ngValue]="obj"> {{obj.driverName}} </option>
                           </select>
@@ -188,7 +188,7 @@
             </div>
             <div class="modal-footer border-btm">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" (click)="genratesrn()">Generate STN</button>
+              <button type="button" class="btn btn-primary" [disabled]="!genrateRetailNote" (click)="genratesrn()">Generate STN</button>
             </div>
           </div>
         </div>

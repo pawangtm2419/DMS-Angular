@@ -31,6 +31,10 @@ export class GenerateTransferNoteComponent implements OnInit {
   grNumber: any;
   invoiceDate: any;
   currentDate: any;
+  vehicletransportdriverSelected: boolean = false;
+  genrateRetailNote: boolean = false;
+  transportData: any;
+  driverData: any;
   constructor(private depot: DepotService, public toaster: ToasterService, public service: CommonService) { }
 
   ngOnInit(): void { }
@@ -39,7 +43,19 @@ export class GenerateTransferNoteComponent implements OnInit {
     const d = new Date();
     this.currentDate = [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('-');
   }
-
+  selectionTransport() {
+    if(this.selectedTransportName) {
+      this.selectedTransportName = this.selectedTransportName.transName;
+      this.transportData = this.selectedTransportName;
+    }
+    if(this.selectedDriverName) {
+      this.selectedDriverName = this.selectedDriverName.driverName;
+      this.driverData = this.selectedDriverName;
+    }
+    if(this.driverData || this.transportData) {
+      this.vehicletransportdriverSelected = true;
+    }
+  }
   getCityList() {
     this.service.viewDepot().subscribe(res => {
       this.depotList = res.data;
@@ -115,78 +131,85 @@ export class GenerateTransferNoteComponent implements OnInit {
 
   invoiceGenrate(): void {
     this.convertDate();
+    this.vehicletransportdriverSelected = true;
     console.log(this.selectedChassisNo);
   }
   genratesrn(): void {
-    const invoiceData = {
-      "action": "UPDATE",
-      "actionType": "STN",
-      "code": "",
-      "name": "",
-      "city": "",
-      "state": "",
-      "zone": "",
-      "head": "",
-      "email": "",
-      "mobile": "",
-      "status": "READY",
-      "PDIstatus": false,
-      "damageControlStatus": false,
-      "transport": {},
-      "grNo": "",
-      "invoiceNumber": "",
-      "invoiceDate": "",
-      "vehicles": this.selectedChassisNo,
-      "createdBy": "EMP0001",
-      "locationType": ""
-    }
-    if(this.selectedToLocation === 'depot') {
-      invoiceData.locationType = "DEPOT";
-    } else {
-      invoiceData.locationType = "DEALER";
-    }
-    console.log(this.selectedToDepot);
-    if(this.selectedToDepot) {
-      invoiceData.code = this.selectedToDepot.depotCode;
-      invoiceData.name = this.selectedToDepot.depotName;
-      invoiceData.state = this.selectedToDepot.address.stateName;
-      invoiceData.city = this.selectedToDepot.address.cityName;
-      invoiceData.zone = this.selectedToDepot.address.zoneName;
-      invoiceData.head = this.selectedToDepot.depotHead.name;
-      invoiceData.email = this.selectedToDepot.depotHead.email;
-      invoiceData.mobile = this.selectedToDepot.depotHead.mobile;
-    }
-    if(this.selectedTransport === 'truck') {
-      const trans = {
-        "type": "TRUCK",
-        "code": this.selectedTransportName.transCode,
-        "name": this.selectedTransportName.transName
+    if(this.vehicletransportdriverSelected) {
+      const invoiceData = {
+        "action": "UPDATE",
+        "actionType": "STN",
+        "code": "",
+        "name": "",
+        "city": "",
+        "state": "",
+        "zone": "",
+        "head": "",
+        "email": "",
+        "mobile": "",
+        "status": "READY",
+        "PDIstatus": false,
+        "damageControlStatus": false,
+        "transport": {},
+        "grNo": "",
+        "invoiceNumber": "",
+        "invoiceDate": "",
+        "vehicles": this.selectedChassisNo,
+        "createdBy": "EMP0001",
+        "locationType": ""
       }
-      invoiceData.transport = trans;
-    } else {
-      const trans = {
-        "type": "ROAD",
-        "code": this.selectedDriverName.driverCode,
-        "name": this.selectedDriverName.driverName
+      if(this.selectedToLocation === 'depot') {
+        invoiceData.locationType = "DEPOT";
+      } else {
+        invoiceData.locationType = "DEALER";
       }
-      invoiceData.transport = trans;
-    }
-    this.invoiceDate = (document.getElementById('invoiceDate') as HTMLInputElement).value;
-    if(this.invoiceNumber && this.invoiceDate) {
-      invoiceData.invoiceNumber = this.invoiceNumber;
-      invoiceData.invoiceDate = this.invoiceDate + 'T00:00:00.000Z';
-    }
-    if(this.grNumber) {
-      invoiceData.grNo = this.grNumber;
-    }
-    this.depot.updateVehicleDetails(invoiceData);
-    this.depot.updateVehicleDetails(invoiceData).subscribe((res: any) => {
-      if(res.status) {
-        this.toaster.showSuccess('Success', res.msg.msg);
-        window.location.reload();
+      console.log(this.selectedToDepot);
+      if(this.selectedToDepot) {
+        invoiceData.code = this.selectedToDepot.depotCode;
+        invoiceData.name = this.selectedToDepot.depotName;
+        invoiceData.state = this.selectedToDepot.address.stateName;
+        invoiceData.city = this.selectedToDepot.address.cityName;
+        invoiceData.zone = this.selectedToDepot.address.zoneName;
+        invoiceData.head = this.selectedToDepot.depotHead.name;
+        invoiceData.email = this.selectedToDepot.depotHead.email;
+        invoiceData.mobile = this.selectedToDepot.depotHead.mobile;
       }
-    }), (error: any) => {
-      this.toaster.showError('Error', error);
+      if(this.selectedTransport === 'truck') {
+        const trans = {
+          "type": "TRUCK",
+          "code": this.transportData.transCode,
+          "name": this.transportData.transName
+        }
+        invoiceData.transport = trans;
+      } else {
+        const trans = {
+          "type": "ROAD",
+          "code": this.driverData.driverCode,
+          "name": this.driverData.driverName
+        }
+        invoiceData.transport = trans;
+      }
+      this.invoiceDate = (document.getElementById('invoiceDate') as HTMLInputElement).value;
+      if(this.invoiceNumber && this.invoiceDate) {
+        invoiceData.invoiceNumber = this.invoiceNumber;
+        invoiceData.invoiceDate = this.invoiceDate + 'T00:00:00.000Z';
+        this.genrateRetailNote = true;
+      }
+      if(this.grNumber) {
+        invoiceData.grNo = this.grNumber;
+      }
+      if(this.genrateRetailNote) {
+        this.depot.updateVehicleDetails(invoiceData).subscribe((res: any) => {
+          if(res.status) {
+            this.toaster.showSuccess('Success', res.msg.msg);
+            setTimeout(() => {
+              window.location.reload();
+            }, 3000);          
+          }
+        }), (error: any) => {
+          this.toaster.showError('Error', error);
+        }
+      }
     }
   }
 
