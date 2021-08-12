@@ -49,12 +49,30 @@
                         </select>
                       </div>
                     </div>
-                    <div class="col-md-2 mbSm" *ngIf="selectedToLocation == 'depot'">
+                    <div class="col-md-2 mbSm" *ngIf="selectedToLocation === 'depot'">
                       <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
                         <select [(ngModel)]="selectedToDepot" (click)="gettoDtpotList()" class="form-select">
                           <option value="">To depot</option>
                           <option *ngFor="let obj of toDepotlist" [ngValue]="obj"> {{obj.depotName}} </option>
                         </select>
+                      </div>
+                    </div>
+                    <div class="col-md-2 mbSm" *ngIf="selectedToLocation === 'dealer'">
+                      <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
+                        <select [(ngModel)]="selectedDealerState" (click)="getDealerStatesList()" class="form-select">
+                          <option value="">Select State</option>
+                          <option *ngFor="let obj of dealerStateList" [ngValue]="obj"> {{obj}} </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-2 mbSm" *ngIf="selectedToLocation === 'dealer' && selectedDealerState">
+                      <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
+                        <div (click)="getDealerListData()">
+                          <select [(ngModel)]="selectedDealer" class="form-select" (ngModelChange)="dealerDataArray()">
+                            <option value="">Select Dealer</option>
+                            <option *ngFor="let obj of toDepotlist" [ngValue]="obj"> {{obj.code}} - {{obj.name}} - {{obj.cityName}} </option>
+                          </select>
+                        </div>
                       </div>
                     </div>
                     <div class="col-md-2 mbSm">
@@ -188,7 +206,7 @@
             </div>
             <div class="modal-footer border-btm">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" [disabled]="!genrateRetailNote" (click)="genratesrn()">Generate STN</button>
+              <button type="button" class="btn btn-primary" (click)="genratesrn()">Generate STN</button>
             </div>
           </div>
         </div>

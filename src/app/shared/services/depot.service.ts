@@ -77,4 +77,10 @@ export class DepotService {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')})};
     return this._http.post(`${environment._url}/vehicle/updateVehicleDetails`, data, httpOptions);
   }
+
+  // /vehicle/checkInvoiceNumber
+  checkInvoiceNumber(data: any): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this._http.post(`${environment._url}/vehicle/checkInvoiceNumber`, data, httpOptions);
+  }
 }

@@ -25,6 +25,8 @@ export class GenerateTransferNoteComponent implements OnInit {
   toLocation = ['dealer', 'depot'];
   transport = [ 'truck', 'road' ];
   selectedChassisNo : string[] = [];
+  dealerStateList: string[] = [];
+  resultInvoice: string[] = [];
   driverNameList: any;
   transportList: any;
   invoiceNumber: any;
@@ -35,9 +37,14 @@ export class GenerateTransferNoteComponent implements OnInit {
   genrateRetailNote: boolean = false;
   transportData: any;
   driverData: any;
+  selectedDealerState: any;
+  selectedDealer: any;
+  selectedDealerData: any;
   constructor(private depot: DepotService, public toaster: ToasterService, public service: CommonService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.checkInvoiceNo();
+  }
   convertDate(): void{
     function pad(s: string | number) { return (s < 10) ? '0' + s : s; }
     const d = new Date();
@@ -45,15 +52,21 @@ export class GenerateTransferNoteComponent implements OnInit {
   }
   selectionTransport() {
     if(this.selectedTransportName) {
-      this.selectedTransportName = this.selectedTransportName.transName;
       this.transportData = this.selectedTransportName;
+      this.selectedTransportName = this.transportData.transName;
     }
     if(this.selectedDriverName) {
-      this.selectedDriverName = this.selectedDriverName.driverName;
       this.driverData = this.selectedDriverName;
+      this.selectedDriverName = this.driverData.driverName;
     }
     if(this.driverData || this.transportData) {
       this.vehicletransportdriverSelected = true;
+    }
+  }
+  dealerDataArray(): void {
+    if (this.selectedDealer) {
+      this.selectedDealerData = this.selectedDealer;
+      this.selectedDealer = this.selectedDealerData.name;
     }
   }
   getCityList() {
@@ -120,7 +133,6 @@ export class GenerateTransferNoteComponent implements OnInit {
     });
   }
 
-  // viewTransporter
   getTransportList() {
     this.service.getTransport().subscribe(res => {
       this.transportList = res.data;
@@ -134,83 +146,132 @@ export class GenerateTransferNoteComponent implements OnInit {
     this.vehicletransportdriverSelected = true;
     console.log(this.selectedChassisNo);
   }
+
+  getDealerStatesList(): void {
+    this.service.getState().subscribe((res: any) => {
+      this.dealerStateList = res.data;
+    });
+  }
+
+  getDealerListData(): void {
+    this.service.getDealerList(this.selectedDealerState).subscribe((res: any) => {
+      this.toDepotlist = res.msg;
+    });
+  }
   genratesrn(): void {
-    if(this.vehicletransportdriverSelected) {
-      const invoiceData = {
-        "action": "UPDATE",
-        "actionType": "STN",
-        "code": "",
-        "name": "",
-        "city": "",
-        "state": "",
-        "zone": "",
-        "head": "",
-        "email": "",
-        "mobile": "",
-        "status": "READY",
-        "PDIstatus": false,
-        "damageControlStatus": false,
-        "transport": {},
-        "grNo": "",
-        "invoiceNumber": "",
-        "invoiceDate": "",
-        "vehicles": this.selectedChassisNo,
-        "createdBy": "EMP0001",
-        "locationType": ""
-      }
-      if(this.selectedToLocation === 'depot') {
-        invoiceData.locationType = "DEPOT";
-      } else {
-        invoiceData.locationType = "DEALER";
-      }
-      console.log(this.selectedToDepot);
-      if(this.selectedToDepot) {
-        invoiceData.code = this.selectedToDepot.depotCode;
-        invoiceData.name = this.selectedToDepot.depotName;
-        invoiceData.state = this.selectedToDepot.address.stateName;
-        invoiceData.city = this.selectedToDepot.address.cityName;
-        invoiceData.zone = this.selectedToDepot.address.zoneName;
-        invoiceData.head = this.selectedToDepot.depotHead.name;
-        invoiceData.email = this.selectedToDepot.depotHead.email;
-        invoiceData.mobile = this.selectedToDepot.depotHead.mobile;
-      }
-      if(this.selectedTransport === 'truck') {
-        const trans = {
-          "type": "TRUCK",
-          "code": this.transportData.transCode,
-          "name": this.transportData.transName
+    var invo = this.resultInvoice.filter((obj) => {
+      return obj == this.invoiceNumber;
+    });
+    if (invo.length > 0) {
+      this.toaster.showError('Error', "Invoice Number already exists.");
+    } else {
+      if(this.vehicletransportdriverSelected) {
+        const invoiceData = {
+          "action": "UPDATE",
+          "actionType": "STN",
+          "code": "",
+          "name": "",
+          "city": "",
+          "state": "",
+          "zone": "",
+          "head": "",
+          "email": "",
+          "mobile": "",
+          "status": "READY",
+          "PDIstatus": false,
+          "damageControlStatus": false,
+          "transport": {},
+          "grNo": "",
+          "invoiceNumber": "",
+          "invoiceDate": "",
+          "vehicles": this.selectedChassisNo,
+          "createdBy": "EMP0001",
+          "locationType": ""
         }
-        invoiceData.transport = trans;
-      } else {
-        const trans = {
-          "type": "ROAD",
-          "code": this.driverData.driverCode,
-          "name": this.driverData.driverName
+        if(this.selectedToLocation === 'depot') {
+          invoiceData.locationType = "DEPOT";
+        } else {
+          invoiceData.locationType = "DEALER";
         }
-        invoiceData.transport = trans;
-      }
-      this.invoiceDate = (document.getElementById('invoiceDate') as HTMLInputElement).value;
-      if(this.invoiceNumber && this.invoiceDate) {
-        invoiceData.invoiceNumber = this.invoiceNumber;
-        invoiceData.invoiceDate = this.invoiceDate + 'T00:00:00.000Z';
-        this.genrateRetailNote = true;
-      }
-      if(this.grNumber) {
-        invoiceData.grNo = this.grNumber;
-      }
-      if(this.genrateRetailNote) {
-        this.depot.updateVehicleDetails(invoiceData).subscribe((res: any) => {
-          if(res.status) {
-            this.toaster.showSuccess('Success', res.msg.msg);
-            setTimeout(() => {
-              window.location.reload();
-            }, 3000);
+        if(this.selectedToDepot && invoiceData.locationType === "DEPOT") {
+          invoiceData.code = this.selectedToDepot.depotCode;
+          invoiceData.name = this.selectedToDepot.depotName;
+          invoiceData.state = this.selectedToDepot.address.stateName;
+          invoiceData.city = this.selectedToDepot.address.cityName;
+          invoiceData.zone = this.selectedToDepot.address.zoneName;
+          invoiceData.head = this.selectedToDepot.depotHead.name;
+          invoiceData.email = this.selectedToDepot.depotHead.email;
+          invoiceData.mobile = this.selectedToDepot.depotHead.mobile;
+        }
+        if(this.selectedDealerData && invoiceData.locationType === "DEALER") {
+          invoiceData.code = this.selectedDealerData.code;
+          invoiceData.name = this.selectedDealerData.name;
+          invoiceData.state = this.selectedDealerData.stateName;
+          invoiceData.city = this.selectedDealerData.cityName;
+          invoiceData.zone = this.selectedDealerData.zone;
+          invoiceData.head = this.selectedDealerData.dealerHead;
+          invoiceData.email = this.selectedDealerData.email;
+          invoiceData.mobile = this.selectedDealerData.mobile;
+        }
+        if(this.selectedTransport === 'truck') {
+          const trans = {
+            "type": "TRUCK",
+            "code": this.transportData.transCode,
+            "name": this.transportData.transName
           }
-        }), (error: any) => {
-          this.toaster.showError('Error', error);
+          invoiceData.transport = trans;
+        } else {
+          const trans = {
+            "type": "ROAD",
+            "code": this.driverData.driverCode,
+            "name": this.driverData.driverName
+          }
+          invoiceData.transport = trans;
         }
+        this.invoiceDate = (document.getElementById('invoiceDate') as HTMLInputElement).value;        
+        if(this.invoiceNumber && this.invoiceDate) {
+          invoiceData.invoiceNumber = this.invoiceNumber;
+          invoiceData.invoiceDate = this.invoiceDate + 'T00:00:00.000Z';
+          this.genrateRetailNote = true;
+        } else {
+          this.toaster.showError('Error', "Invoice Number and Date.");
+        }
+        if(this.grNumber) {
+          invoiceData.grNo = this.grNumber;
+        }
+        if(this.genrateRetailNote) {
+          this.depot.updateVehicleDetails(invoiceData).subscribe((res: any) => {
+            if(res.status) {
+              this.toaster.showSuccess('Success', res.msg.msg);
+              /* setTimeout(() => {
+                window.location.reload();
+              }, 3000); */
+            }
+          }), (error: any) => {
+            this.toaster.showError('Error', error);
+          }
+        }
+      } else {
+        this.toaster.showError('Error', "Please select all details.");
       }
     }
+  }
+
+  checkInvoiceNo(): void {
+    const data = { loctype: 'DEALER' };
+    this.depot.checkInvoiceNumber(data).subscribe((res: any) => {
+      if(res.status) {
+        if (res.data.length > 0) {
+          var d = res.data.map((inv: any) => {
+            if (inv.invoiceNumbers.length > 0) {
+              var dat = inv.invoiceNumbers.map( (numbers: any) => {
+                this.resultInvoice.push(numbers);
+              })
+            }
+          })
+        }
+      }
+    });
   }
 
   dataLimit() {
