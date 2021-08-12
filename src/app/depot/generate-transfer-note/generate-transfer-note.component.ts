@@ -40,7 +40,6 @@ export class GenerateTransferNoteComponent implements OnInit {
   selectedDealerState: any;
   selectedDealer: any;
   selectedDealerData: any;
-  discountAmount: any;
   constructor(private depot: DepotService, public toaster: ToasterService, public service: CommonService) { }
 
   ngOnInit(): void { 
@@ -51,25 +50,23 @@ export class GenerateTransferNoteComponent implements OnInit {
     const d = new Date();
     this.currentDate = [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('-');
   }
-  selectionTransport() {
-    if(this.selectedTransportName) {
-      this.transportData = this.selectedTransportName;
-      this.selectedTransportName = this.transportData.transName;
-    }
-    if(this.selectedDriverName) {
-      this.driverData = this.selectedDriverName;
-      this.selectedDriverName = this.driverData.driverName;
-    }
-    if(this.driverData || this.transportData) {
-      this.vehicletransportdriverSelected = true;
-    }
+  selectionTransport(data: any) {
+    this.transportData = this.transportList.filter( (item: any) => {
+      return item.transName === data;
+    });
+    this.transportData = this.transportData[0];
   }
-  dealerDataArray(): void {
-    if (this.selectedDealer) {
-      console.log(this.selectedDealer);
-      this.selectedDealerData = this.selectedDealer;
-      this.selectedDealer = this.selectedDealerData.code;
-    }
+  selectionDriverName(data: any) {
+    this.driverData = this.driverNameList.filter( (item: any) => {
+      return item.driverName === data;
+    });
+    this.driverData = this.driverData[0];
+  }
+  dealerDataArray(obj: any): void {
+    this.selectedDealerData = this.toDepotlist.filter( (item: any) => {
+      return item.code === obj;
+    });
+    this.selectedDealerData = this.selectedDealerData[0];
   }
   getCityList() {
     this.service.viewDepot().subscribe(res => {
@@ -206,6 +203,7 @@ export class GenerateTransferNoteComponent implements OnInit {
           invoiceData.email = this.selectedToDepot.depotHead.email;
           invoiceData.mobile = this.selectedToDepot.depotHead.mobile;
         }
+        debugger;
         if(this.selectedDealerData && invoiceData.locationType === "DEALER") {
           invoiceData.code = this.selectedDealerData.code;
           invoiceData.name = this.selectedDealerData.name;
@@ -276,11 +274,8 @@ export class GenerateTransferNoteComponent implements OnInit {
       }
     });
   }
-
-  disEnable(index: any): void {
-    console.log(index);
-  }
-
+  /* discountCheck({amount, discountAmount) {
+  } */
   dataLimit() {
     this.limit = (document.getElementById('limit') as HTMLInputElement).value;
   }

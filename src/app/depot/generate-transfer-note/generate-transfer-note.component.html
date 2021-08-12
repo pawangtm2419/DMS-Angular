@@ -16,7 +16,7 @@
               </div>
             </div>
             <div class="col-md-6 align-self-end text-end filterMain">
-              <button class="btn btn-primary me-2" [disabled]="!vehicletransportdriverSelected" data-bs-toggle="modal" data-bs-target="#stnverify" type="button" *ngIf="selectedChassisNo.length > 0" (click)="invoiceGenrate()"> Verify STN </button>
+              <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#stnverify" type="button" *ngIf="selectedChassisNo.length > 0" (click)="invoiceGenrate()"> Verify STN </button>
               <button class="btn btn-primary me-2" type="button" data-bs-toggle="collapse" data-bs-target="#filter" aria-expanded="false" aria-controls="collapseExample"> <i class="fa fa-filter"></i> </button>
               <!-- <button type="button" class="btn btn-primary me-2" *ngIf="vehicleList.length > 0" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button> -->
               <label for="limit">
@@ -68,9 +68,9 @@
                     <div class="col-md-2 mbSm" *ngIf="selectedToLocation === 'dealer' && selectedDealerState">
                       <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
                         <div (click)="getDealerListData()">
-                          <select [(ngModel)]="selectedDealer" name="selectedDealer" class="form-select" (ngModelChange)="dealerDataArray()">
+                          <select [(ngModel)]="selectedDealer" name="selectedDealer" class="form-select" (ngModelChange)="dealerDataArray(selectedDealer)">
                             <option value="">Select Dealer</option>
-                            <option *ngFor="let obj of toDepotlist" [ngValue]="obj"> {{obj.code}} - {{obj.name}} - {{obj.cityName}} </option>
+                            <option *ngFor="let obj of toDepotlist" [ngValue]="obj.code"> {{obj.code}} - {{obj.name}} - {{obj.cityName}} </option>
                           </select>
                         </div>
                       </div>
@@ -86,15 +86,15 @@
                     <div class="col-md-2 mbSm">
                       <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
                         <div *ngIf="selectedTransport === 'truck'" (click)="getTransportList()">
-                          <select [(ngModel)]="selectedTransportName" class="form-select" (ngModelChange)="selectionTransport()">
+                          <select [(ngModel)]="selectedTransportName" class="form-select" (ngModelChange)="selectionTransport(selectedTransportName)">
                             <option value="">Transport Name</option>
-                            <option *ngFor="let obj of transportList" [ngValue]="obj"> {{obj.transName}} </option>
+                            <option *ngFor="let obj of transportList" [ngValue]="obj.transName"> {{obj.transName}} </option>
                           </select>
                         </div>
                         <div *ngIf="selectedTransport === 'road'">
-                          <select [(ngModel)]="selectedDriverName" (click)="getDriverList()" class="form-select" (ngModelChange)="selectionTransport()">
+                          <select [(ngModel)]="selectedDriverName" (click)="getDriverList()" class="form-select" (ngModelChange)="selectionDriverName(selectedDriverName)">
                             <option value="">Driver Name</option>
-                            <option *ngFor="let obj of driverNameList" [ngValue]="obj"> {{obj.driverName}} </option>
+                            <option *ngFor="let obj of driverNameList" [ngValue]="obj.driverName"> {{obj.driverName}} </option>
                           </select>
                         </div>
                       </div>
@@ -255,8 +255,8 @@
                           <td>{{stock.variantCode}}</td>
                           <td>{{stock.chassisNo }}</td>
                           <td>{{stock.NDP }}</td>
-                          <td> <input type="number" [(ngModel)]="stock.discountAmount"> </td>
-                          <td>{{stock.NDP - stock.discountAmount}}</td>
+                          <td> <input type="number" [(ngModel)]="stock.discountAmount"></td>
+                          <td> <span *ngIf="stock.discountAmount"> {{stock.NDP - stock.discountAmount}} </span><span *ngIf="!stock.discountAmount"> {{stock.NDP}} </span> </td>
                           <td>{{stock.prodDate | diffDate }}</td>
                         </tr>
                       </tbody>
