@@ -40,6 +40,7 @@ export class GenerateTransferNoteComponent implements OnInit {
   selectedDealerState: any;
   selectedDealer: any;
   selectedDealerData: any;
+  discountAmount: any;
   constructor(private depot: DepotService, public toaster: ToasterService, public service: CommonService) { }
 
   ngOnInit(): void { 
@@ -65,8 +66,9 @@ export class GenerateTransferNoteComponent implements OnInit {
   }
   dealerDataArray(): void {
     if (this.selectedDealer) {
+      console.log(this.selectedDealer);
       this.selectedDealerData = this.selectedDealer;
-      this.selectedDealer = this.selectedDealerData.name;
+      this.selectedDealer = this.selectedDealerData.code;
     }
   }
   getCityList() {
@@ -119,6 +121,7 @@ export class GenerateTransferNoteComponent implements OnInit {
   }
 
   rmItemInvoiceList(selectedChassis: any) {
+    debugger;
     this.vehicleList.push(selectedChassis);
     this.selectedChassisNo = this.selectedChassisNo.filter((item: any) => {
       return selectedChassis._id !== item._id;
@@ -272,6 +275,10 @@ export class GenerateTransferNoteComponent implements OnInit {
         }
       }
     });
+  }
+
+  disEnable(index: any): void {
+    console.log(index);
   }
 
   dataLimit() {
