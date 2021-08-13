@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CommonService, DepotService, ToasterService } from 'src/app/shared/services';
 import * as XLSX from 'xlsx';
 
+interface InvoiceObject {
+  [key: string]: any
+}
+
 @Component({
   selector: 'app-generate-transfer-note',
   templateUrl: './generate-transfer-note.component.html',
@@ -24,7 +28,7 @@ export class GenerateTransferNoteComponent implements OnInit {
   selectedDriverName: any = '';
   toLocation = ['dealer', 'depot'];
   transport = [ 'truck', 'road' ];
-  selectedChassisNo : string[] = [];
+  selectedChassisNo : InvoiceObject = {};
   dealerStateList: string[] = [];
   resultInvoice: string[] = [];
   driverNameList: any;
@@ -295,11 +299,13 @@ export class GenerateTransferNoteComponent implements OnInit {
     if (stock.locationType == "DEPOT") {
       state = stock.depot.state;
     }
-   /*  if (this.selectedDealerData.zone === "ZSAARC") {
-      this.selectedChassisNo[i].invoiceAmount = parseInt(invoiceAmount);
-      if (this.isDollerCheckBox && this.dollarvalue > 0) this.selectedChassisNo[i].invoiceAmount = parseInt(invoiceAmount) / this.dollarvalue;
-    } */
-    console.log(invoiceAmount);
+    if (this.selectedDealerData.zone === "ZSAARC") {
+      this.selectedChassisNo[i]['invoiceAmount'] = invoiceAmount;
+      if (this.isDollerCheckBox && this.dollarvalue > 0) {
+        this.selectedChassisNo[i]['invoiceAmount'] = invoiceAmount / this.dollarvalue;
+      }
+    }
+    console.log(this.selectedChassisNo);
   }
 /*   $scope.calculateInvAmt = function(stnDetails, index) {
     $scope.invoiceAmount = 0;
