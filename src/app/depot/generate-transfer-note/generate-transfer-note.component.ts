@@ -251,14 +251,14 @@ export class GenerateTransferNoteComponent implements OnInit {
         if(this.grNumber) {
           invoiceData.grNo = this.grNumber;
         }
-        if(this.isDiscountAmount) {
+        if(this.isDiscountAmount || this.selectedToLocation === 'depot') {
           if(this.genrateRetailNote) {
             this.depot.updateVehicleDetails(invoiceData).subscribe((res: any) => {
               if(res.status) {
                 this.toaster.showSuccess('Success', res.msg.msg);
-                /* setTimeout(() => {
+                setTimeout(() => {
                   window.location.reload();
-                }, 3000); */
+                }, 3000);
               }
             }), (error: any) => {
               this.toaster.showError('Error', error);
@@ -302,37 +302,15 @@ export class GenerateTransferNoteComponent implements OnInit {
     if (this.selectedDealerData.zone === "ZSAARC") {
       this.selectedChassisNo[i]['invoiceAmount'] = invoiceAmount;
       if (this.isDollerCheckBox && this.dollarvalue > 0) {
-        this.selectedChassisNo[i]['invoiceAmount'] = invoiceAmount / this.dollarvalue;
+        this.selectedChassisNo[i]['invoiceAmount'] = (invoiceAmount / this.dollarvalue).toFixed(2);
       }
-    }
+    } else {
+      tax = ((stock.SST) + (stock.GST)) / 100;
+      const pricet = invoiceAmount * tax;
+      this.selectedChassisNo[i]['invoiceAmount'] = (pricet + invoiceAmount).toFixed(2);
+  }
     console.log(this.selectedChassisNo);
   }
-/*   $scope.calculateInvAmt = function(stnDetails, index) {
-    $scope.invoiceAmount = 0;
-    var obj = stnDetails.plant.state;
-    var discount = stnDetails.discountAmount || 0;
-    var price = stnDetails.NDP - discount;
-    if (stnDetails.locationType == "DEPOT") {
-        obj = stnDetails.depot.state;
-    }
-    var tax = 0;
-    if ($scope.toDepotDealer.zone == "ZSAARC") {
-        tax = 0;
-        $scope.selectedItems[index].invoiceAmount = parseInt(price);
-        if ($scope.isShowDollarBox && $scope.stn1.dollarvalue > 0) $scope.selectedItems[index].invoiceAmount = parseInt(price) / $scope.stn1.dollarvalue;
-    }
-    // else if(obj==$scope.toDepotDealer.stateName && stnDetails.locationType=='PLANT' ){
-    //   tax=parseFloat(stnDetails.GST/100);
-    //   pricet=price*tax;
-    //   $scope.selectedItems[index].invoiceAmount=parseInt(price + price*tax);
-    // }
-    else {
-        tax = parseFloat(
-            (parseInt(stnDetails.SST) + parseInt(stnDetails.GST)) / 100);
-        pricet = price * tax;
-        $scope.selectedItems[index].invoiceAmount = parseInt(price + pricet);
-    }
-  }; */
 
   checkAmount(discountAmount: any, NDP: any): void {
     if(discountAmount > NDP || discountAmount < 0) {
