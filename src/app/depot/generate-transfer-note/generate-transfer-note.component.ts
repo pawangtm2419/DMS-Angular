@@ -40,6 +40,10 @@ export class GenerateTransferNoteComponent implements OnInit {
   selectedDealerState: any;
   selectedDealer: any;
   selectedDealerData: any;
+  isDiscountAmount: boolean = false;
+  dollar: any;
+  isDollerCheckBox: boolean = false;
+  dollarvalue: any;
   constructor(private depot: DepotService, public toaster: ToasterService, public service: CommonService) { }
 
   ngOnInit(): void { 
@@ -49,6 +53,9 @@ export class GenerateTransferNoteComponent implements OnInit {
     function pad(s: string | number) { return (s < 10) ? '0' + s : s; }
     const d = new Date();
     this.currentDate = [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('-');
+  }
+  showDollar(): void {
+    this.isDollerCheckBox = !this.isDollerCheckBox;
   }
   selectionTransport(data: any) {
     this.transportData = this.transportList.filter( (item: any) => {
@@ -67,6 +74,7 @@ export class GenerateTransferNoteComponent implements OnInit {
       return item.code === obj;
     });
     this.selectedDealerData = this.selectedDealerData[0];
+    console.log(this.selectedDealerData);
   }
   getCityList() {
     this.service.viewDepot().subscribe(res => {
@@ -118,7 +126,6 @@ export class GenerateTransferNoteComponent implements OnInit {
   }
 
   rmItemInvoiceList(selectedChassis: any) {
-    debugger;
     this.vehicleList.push(selectedChassis);
     this.selectedChassisNo = this.selectedChassisNo.filter((item: any) => {
       return selectedChassis._id !== item._id;
@@ -240,17 +247,21 @@ export class GenerateTransferNoteComponent implements OnInit {
         if(this.grNumber) {
           invoiceData.grNo = this.grNumber;
         }
-        if(this.genrateRetailNote) {
-          this.depot.updateVehicleDetails(invoiceData).subscribe((res: any) => {
-            if(res.status) {
-              this.toaster.showSuccess('Success', res.msg.msg);
-              /* setTimeout(() => {
-                window.location.reload();
-              }, 3000); */
+        if(this.isDiscountAmount) {
+          if(this.genrateRetailNote) {
+            this.depot.updateVehicleDetails(invoiceData).subscribe((res: any) => {
+              if(res.status) {
+                this.toaster.showSuccess('Success', res.msg.msg);
+                /* setTimeout(() => {
+                  window.location.reload();
+                }, 3000); */
+              }
+            }), (error: any) => {
+              this.toaster.showError('Error', error);
             }
-          }), (error: any) => {
-            this.toaster.showError('Error', error);
           }
+        } else {
+          this.toaster.showError('Error', "Please correct discount amount.");
         }
       } else {
         this.toaster.showError('Error', "Please select all details.");
@@ -274,8 +285,56 @@ export class GenerateTransferNoteComponent implements OnInit {
       }
     });
   }
-  /* discountCheck({amount, discountAmount) {
-  } */
+  discountCheck(discountAmount: any, stock: any, i: any): void {
+    if(!discountAmount) {
+      discountAmount = 0;
+    }
+    var tax = 0;
+    var state = stock.plant.state;
+    const invoiceAmount = stock.NDP - discountAmount;
+    if (stock.locationType == "DEPOT") {
+      state = stock.depot.state;
+    }
+   /*  if (this.selectedDealerData.zone === "ZSAARC") {
+      this.selectedChassisNo[i].invoiceAmount = parseInt(invoiceAmount);
+      if (this.isDollerCheckBox && this.dollarvalue > 0) this.selectedChassisNo[i].invoiceAmount = parseInt(invoiceAmount) / this.dollarvalue;
+    } */
+    console.log(invoiceAmount);
+  }
+/*   $scope.calculateInvAmt = function(stnDetails, index) {
+    $scope.invoiceAmount = 0;
+    var obj = stnDetails.plant.state;
+    var discount = stnDetails.discountAmount || 0;
+    var price = stnDetails.NDP - discount;
+    if (stnDetails.locationType == "DEPOT") {
+        obj = stnDetails.depot.state;
+    }
+    var tax = 0;
+    if ($scope.toDepotDealer.zone == "ZSAARC") {
+        tax = 0;
+        $scope.selectedItems[index].invoiceAmount = parseInt(price);
+        if ($scope.isShowDollarBox && $scope.stn1.dollarvalue > 0) $scope.selectedItems[index].invoiceAmount = parseInt(price) / $scope.stn1.dollarvalue;
+    }
+    // else if(obj==$scope.toDepotDealer.stateName && stnDetails.locationType=='PLANT' ){
+    //   tax=parseFloat(stnDetails.GST/100);
+    //   pricet=price*tax;
+    //   $scope.selectedItems[index].invoiceAmount=parseInt(price + price*tax);
+    // }
+    else {
+        tax = parseFloat(
+            (parseInt(stnDetails.SST) + parseInt(stnDetails.GST)) / 100);
+        pricet = price * tax;
+        $scope.selectedItems[index].invoiceAmount = parseInt(price + pricet);
+    }
+  }; */
+
+  checkAmount(discountAmount: any, NDP: any): void {
+    if(discountAmount > NDP || discountAmount < 0) {
+      this.isDiscountAmount = false;
+      this.toaster.showError('Error', "Please correct discount amount.");
+    }
+    this.isDiscountAmount = true;
+  }
   dataLimit() {
     this.limit = (document.getElementById('limit') as HTMLInputElement).value;
   }
