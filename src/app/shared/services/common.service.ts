@@ -11,6 +11,11 @@ export class CommonService {
 
   constructor(private _http: HttpClient, private cookie: CookieService) { }
 
+  getVehicleDetails(data: any): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this._http.post(`${environment._url}/vehicle/getVehicles`, data, httpOptions);
+  }
+
   viewDepot(): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
     return this._http.get(`${environment._url}/viewDepo`, httpOptions);
@@ -40,7 +45,6 @@ export class CommonService {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
     return this._http.get<any>(`${environment._url}/zones`, httpOptions);
   }
-  // /getStatesByZone?zoneCode=ZONE3
   getStatesByZone(zoneCode: string): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
     return this._http.get<any>(`${environment._url}/getStatesByZone?zoneCode=${zoneCode}`, httpOptions);

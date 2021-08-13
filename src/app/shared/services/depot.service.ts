@@ -11,12 +11,6 @@ export class DepotService {
 
   constructor(private _http: HttpClient, private cookie: CookieService) { }
 
-  /* Depot stock */
-  depotStock(data: any): Observable<any> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this._http.post(`${environment._url}/vehicle/getVehicles`, data, httpOptions);
-  }
-
   getFilteredDepotStock(data: any): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
     return this._http.post(`${environment._url}/vehicle/getFilteredDepotStock`, data, httpOptions);

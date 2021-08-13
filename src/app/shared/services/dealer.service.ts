@@ -16,5 +16,8 @@ export class DealerService {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
     return this.http.post<Invoice>(`${environment._url}/vehicle/dealerInvoicesReport`, data, httpOptions);
   }
-
+  getvehInsurance(data: any): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this.http.post(`${environment._url}/ats/ATSDetails`, data, httpOptions);
+  }
 }

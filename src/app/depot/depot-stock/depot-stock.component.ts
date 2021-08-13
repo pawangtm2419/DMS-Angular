@@ -28,7 +28,7 @@ export class DepotStockComponent implements OnInit {
     this.getModelList();
   }
   getdepotStockList() {
-    this.depot.depotStock(this.data).subscribe(res => {
+    this.service.getVehicleDetails(this.data).subscribe(res => {
       this.depotData = res.data;
       if (this.depotData.length > 0) {
         this.limits = [{ key: 50, value: 50 }, { key: 100, value: 100 }, { key: 250, value: 250 }, { key: 500, value: 500 }, { key: 'ALL', value: this.depotData.length }];
