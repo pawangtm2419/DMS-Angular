@@ -18,7 +18,7 @@
               </div>
               <div class="col-md-6 align-self-end text-end filterMain">
                 <button class="btn btn-primary me-2" type="button" data-bs-toggle="collapse" data-bs-target="#filter" aria-expanded="false" aria-controls="collapseExample"> <i class="fa fa-filter"></i> </button>
-                <button type="button" class="btn btn-primary me-2" *ngIf="InsuranceData.length > 0" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
+                <button type="button" class="btn btn-primary me-2" *ngIf="isInsuranceData" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
                 <label for="limit">
                   <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
                     <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
@@ -31,52 +31,54 @@
             <div class="card card-body">
               <div class="container-fluid">
                 <div class="row">
-                  <div class="d-downMain">
-                    <div class="row" style="--bs-gutter-x: 1.5rem;">
-                      <div class="col-md-2 mbSm">
-                        <div>
-                          <input list="zones" name="zoneName" placeholder="Select Zone" class="form-control">
-                          <datalist id="zones">
-                            <option value="Zone 1">
-                          </datalist>
+                  <form #atsFilterForm="ngForm" (ngSubmit)="getAtsInsuList(atsFilterForm)" novalidate>
+                    <div class="d-downMain">
+                      <div class="row" style="--bs-gutter-x: 1.5rem;">
+                        <div class="col-md-2 mbSm">
+                          <div>
+                            <select name="zoneCode" ngModel [(ngModel)]="selectedZoneName" class="form-control" (click)="getStateList(selectedZoneName)">
+                              <option value="" selected>Select Zone</option>
+                              <option *ngFor="let obj of zoneList" [ngValue]="obj.zoneCode"> {{obj.zoneCode}} </option>
+                            </select>
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-md-2 mbSm">
-                        <div>
-                          <input list="states" name="stateName" placeholder="Select State" class="form-control">
-                          <datalist id="states">
-                            <option value="Goa">
-                          </datalist>
+                        <div class="col-md-2 mbSm">
+                          <div>
+                            <select name="stateName" ngModel [(ngModel)]="selectedStateName" class="form-control" (click)="getDealers(selectedStateName)">
+                              <option value="" selected>Select state</option>
+                              <option *ngFor="let obj of stateListData" [ngValue]="obj"> {{obj}} </option>
+                            </select>
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-md-2 mbSm">
-                        <div>
-                            <input list="dealers" name="dealerName" placeholder="Search dealer" class="form-control">
-                            <datalist id="dealers">
-                              <option value="dealer">
-                            </datalist>
+                        <div class="col-md-2 mbSm">
+                          <div>
+                            <select name="dealerCode" ngModel class="form-control">
+                              <option value="" selected>Select Dealer</option>
+                              <option *ngFor="let obj of dealerListData" [ngValue]="obj.code"> {{obj.code}} </option>
+                            </select>
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-md-2 mbSm">
-                        <div class="inline-el">
-                            <span class="me-2">From:</span> 
-                            <input type="date" name="" placeholder="Invoice From date" class="form-control">
+                        <div class="col-md-2 mbSm">
+                          <div class="inline-el">
+                              <span class="me-2">From:</span> 
+                              <input type="date" placeholder="Invoice From date" name="fromDate" [ngModel]="fromDate | date:'yyyy-MM-dd'" max="{{currentDate}}" ngModel class="form-control">
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-md-2 mbSm">
-                        <div class="inline-el">
-                            <span class="me-2">To:</span>
-                            <input type="date" name="" placeholder="Invoice To date" class="form-control">
+                        <div class="col-md-2 mbSm">
+                          <div class="inline-el">
+                              <span class="me-2">To:</span>
+                              <input type="date" placeholder="Invoice To date" name="toDate" [ngModel]="toDate | date:'yyyy-MM-dd'" max="{{currentDate}}" ngModel class="form-control">
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-md-2 align-self-end text-end">
-                        <div class="BtnMainGrp">
-                          <button type="button" class="btn btn-primary me-2">Show Data</button>
-                          <!-- <button type="button" class="btn btn-primary">Clear</button> -->
+                        <div class="col-md-2 align-self-end text-end">
+                          <div class="BtnMainGrp">
+                            <input type="submit" class="btn btn-primary" value="Show Data">
+                            <!-- <button type="button" class="btn btn-primary">Clear</button> -->
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -129,11 +131,11 @@
 
                         <td data-title="Chassis No">{{ats.chassisNo}}</td>
                         <td data-title="Variant">{{ats.variantCode}}</td>
-                        <td data-title="Delivery Date">{{ats.customer.deliveryDate | date:'dd-MM-yyyy'}}</td>
-                        <td data-title="Retailed Date">{{ats.customer.retailDate || 'NA' | date:'dd-MM-yyyy'}}</td>
+                        <td data-title="Delivery Date">{{ats.customer.deliveryDate | date:"dd-MM-yyyy"}}</td>
+                        <td data-title="Retailed Date">{{ats.customer.retailDate | date:"dd-MM-yyyy"}}</td>
 
-                        <td data-title="EffectiveFrom">{{ats.insurance.effectiveFrom | date:'dd-MM-yyyy}}</td>
-                        <td data-title="EffectiveTill">{{ats.insurance.effectiveTill | date:'dd-MM-yyyy'}}</td>
+                        <td data-title="EffectiveFrom">{{ats}}</td>
+                        <td data-title="EffectiveTill">{{ats}}</td>
                         <td data-title="Action/History" class="text-center">
                           <button class="btn-add" value="add">Add</button>
                         </td>
