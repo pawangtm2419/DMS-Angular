@@ -13,7 +13,6 @@ import { AppGuard } from './shared/app.guard';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CookieService } from 'ngx-cookie-service';
 
-
 @NgModule({
   declarations: [
     AppComponent
