@@ -19,9 +19,17 @@ export class MenuComponent implements OnInit {
   @ViewChild('showStat') showStat!: ElementRef;
   @ViewChild('showPlans') showPlans!: ElementRef;
   @ViewChild('showAts') showAts!: ElementRef;
+  roles: any;
   constructor(private service: UserService,  private router: Router, private elref: ElementRef) { }
 
   ngOnInit(): void {
+    this.roleData();
+  }
+  roleData(): void {
+    const role = { role: JSON.parse(localStorage.getItem('user') || '{}').data.role };
+    this.service.getRoleData(role).subscribe((res) => {
+      this.roles = res.data[0];
+    });
   }
   getLogout(): void {
    this.service.logout();
