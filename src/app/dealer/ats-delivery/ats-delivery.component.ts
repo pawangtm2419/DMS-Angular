@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { CommonService, ToasterService } from 'src/app/shared/services';
 import * as XLSX from 'xlsx';
 
@@ -85,7 +84,7 @@ export class AtsDeliveryComponent implements OnInit {
       this.data['fromDate'] = atsFilter.fromDate+"T00:00:00.000Z";
       this.data['toDate'] = atsFilter.toDate+"T00:00:00.000Z";
     }
-    this.service.getVehicleDetails(this.data).subscribe((res: any) => {
+     const deliveryData = this.service.getVehicleDetails(this.data).subscribe((res: any) => {
       this.atsDelData = res.data;
       if (this.atsDelData.length > 0) {
         this.limits = [{ key: 50, value: 50 }, { key: 100, value: 100 }, { key: 250, value: 250 }, { key: 500, value: 500 }, { key: 'ALL', value: this.atsDelData.length }];
@@ -96,6 +95,9 @@ export class AtsDeliveryComponent implements OnInit {
     }, (error) => {
       this.toaster.showInfo('Data', error);
     });
+    setTimeout(() => {
+      deliveryData.unsubscribe();
+    }, 10000);
   }
   dataLimit() {
     this.limit = (document.getElementById('limit') as HTMLInputElement).value;
