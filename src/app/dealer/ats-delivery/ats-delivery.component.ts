@@ -27,7 +27,7 @@ export class AtsDeliveryComponent implements OnInit {
   fromDate: string;
   toDate: string;
   currentDate: any;
-  constructor(private service: CommonService, public toaster: ToasterService) { 
+  constructor(private service: CommonService, public toaster: ToasterService) {
     this.fromDate =  new Date(new Date().getFullYear(), new Date().getMonth(), 1, 0, 0, 0, 0).toISOString();
     this.toDate =  new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0, 0, 0, 0).toISOString();
   }
@@ -80,10 +80,8 @@ export class AtsDeliveryComponent implements OnInit {
     if(atsFilter.dealerCode) {
       this.data['code'] = atsFilter.dealerCode;
     }
-    if(atsFilter.fromDate) {
+    if(atsFilter.fromDate && atsFilter.toDate) {
       this.data['fromDate'] = atsFilter.fromDate+"T00:00:00.000Z";
-    }
-    if(atsFilter.toDate) {
       this.data['toDate'] = atsFilter.toDate+"T00:00:00.000Z";
     }
     this.service.getVehicleDetails(this.data).subscribe((res: any) => {
