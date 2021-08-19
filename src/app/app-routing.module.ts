@@ -40,6 +40,7 @@ const routes: Routes = [
   // dealer report's modules
   { path: 'r-advance', loadChildren: () => import('./dealer/report-advance/report-advance.module').then(m => m.ReportAdvanceModule), canActivate: [AppGuard] },
   { path: 'r-aging-from-production', loadChildren: () => import('./dealer/report-aging-from-production/report-aging-from-production.module').then(m => m.ReportAgingFromProductionModule), canActivate: [AppGuard] },
+  { path: 'r-dealer-collection-statewise', loadChildren: () => import('./dealer/report-dealer-collection-mtd/dealer-collection-statewise/dealer-collection-statewise.module').then(m => m.DealerCollectionStatewiseModule), canActivate: [AppGuard] },
   { path: 'r-aging-from-recieved', loadChildren: () => import('./dealer/report-aging-from-recieved/report-aging-from-recieved.module').then(m => m.ReportAgingFromRecievedModule), canActivate: [AppGuard] },
   { path: 'r-ats', loadChildren: () => import('./dealer/report-ats/report-ats.module').then(m => m.ReportAtsModule), canActivate: [AppGuard] },
   { path: 'r-bd-sd', loadChildren: () => import('./dealer/report-bg-sd/report-bg-sd.module').then(m => m.ReportBgSdModule), canActivate: [AppGuard] },

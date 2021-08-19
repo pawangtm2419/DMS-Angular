@@ -4,17 +4,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { ReportDealerCollectionMTDComponent } from './report-dealer-collection-mtd.component';
-import { inlakhsPipe } from 'src/app/shared/inlakhs.pipe';
+import { DealerCollectionStatewiseComponent } from './dealer-collection-statewise.component';
 
 const routes: Routes = [
-  { path: '', component: ReportDealerCollectionMTDComponent }
+  { path: '', component: DealerCollectionStatewiseComponent }
 ];
 
 @NgModule({
   declarations: [
-    ReportDealerCollectionMTDComponent,
-    inlakhsPipe
+    DealerCollectionStatewiseComponent
   ],
   imports: [
     CommonModule,
@@ -25,4 +23,4 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ]
 })
-export class ReportDealerCollectionMTDModule { }
+export class DealerCollectionStatewiseModule { }

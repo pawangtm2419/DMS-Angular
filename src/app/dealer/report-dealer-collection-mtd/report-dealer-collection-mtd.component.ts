@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DealerReportService, ToasterService } from 'src/app/shared/services';
 import * as XLSX from 'xlsx';
@@ -16,8 +17,9 @@ export class ReportDealerCollectionMTDComponent implements OnInit {
   limit: any = 50;
   year: number = new Date().getFullYear();
   month: number = new Date().getMonth() + 1;
+  isExcelDownload: boolean = false;
 
-  constructor(private dealer: DealerReportService, public toaster: ToasterService) { }
+  constructor(private dealer: DealerReportService, public toaster: ToasterService, private route: Router) { }
 
   ngOnInit(): void {
     this.getCollectionList();
@@ -28,6 +30,7 @@ export class ReportDealerCollectionMTDComponent implements OnInit {
       this.collectionMtds = res.data;
       this.limits = [{ key: 50, value: 50 }, { key: 100, value: 100 }, { key: 250, value: 250 }, { key: 500, value: 500 }, { key: 'ALL', value: this.collectionMtds.length }];
       if (this.collectionMtds.length > 0) {
+        this.isExcelDownload = true;
         this.toaster.showSuccess('Data', 'Report successfully Open.');
       } else {
         this.toaster.showInfo('Data', 'No record found.');
@@ -36,6 +39,15 @@ export class ReportDealerCollectionMTDComponent implements OnInit {
       this.toaster.showInfo('Data', error);
     });
   }
+
+  getStatewiseCollection(state: any): void {
+    const date = new Date();
+    localStorage.setItem("currentState", JSON.stringify(state));
+    localStorage.setItem("currentMonth", JSON.stringify(this.month));
+    localStorage.setItem("currentYear", JSON.stringify(this.year));
+    this.route.navigate(['/r-dealer-collection-statewise']);
+  }
+
   dataLimit(): void {
     this.limit = ( document.getElementById('limit') as HTMLInputElement).value;
   }

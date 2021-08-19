@@ -61,7 +61,7 @@
                               <td data-title="Product Code">{{stock.productCode}}</td>
                               <td data-title="Model Code">{{stock.model}}</td>
                               <td data-title="Variant Code">{{stock.variantCode}}</td>
-                              <td data-title="Chassis No.">{{stock.chassisNo}}</td>
+                              <td data-title="Chassis No."><a routerLink="/advanceDeliveryDetails/{{stock.chassisNo}}" routerLinkActive="active">{{stock.chassisNo}}</a></td>
                               <td data-title="Engine No.">{{stock.engineNo}}</td>
                               <td data-title="Market">{{stock.market}}</td>
                               <td data-title="Production_Date">{{stock.prodDate | date:"dd-MM-yyyy"}}</td>

@@ -87,7 +87,7 @@ tbody, td, tfoot, th, thead, tr {
   z-index: -1;
 }
 .theadbg {
-  background-color: #454397;
+  background-color: #333333;
 }
 @media (min-width: 576px) {
   .modal-dialog {
