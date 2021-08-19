@@ -60,7 +60,7 @@
                         </div>
                         <div class="col-md-2">
                           <div class="inline-el">
-                              <span class="me-2">From:</span> 
+                              <span class="me-2">From:</span>
                               <input type="date" placeholder="Invoice From date" name="fromDate" [ngModel]="fromDate | date:'yyyy-MM-dd'" max="{{currentDate}}" ngModel class="form-control">
                           </div>
                         </div>
@@ -116,7 +116,7 @@
                   <td data-title="Invoice Date">{{atsDel.dealer.invoiceDate | date:"dd-MM-yyyy"}}</td>
                   <td data-title="Model Code">{{atsDel.model}}</td>
                   <td data-title="Variant Code">{{atsDel.variantCode}}</td>
-                  <td data-title="Chassis No">{{atsDel.chassisNo}}</td>
+                  <td data-title="Chassis No"><a routerLink="/advanceDeliveryDetails/{{atsDel.chassisNo}}" routerLinkActive="active">{{atsDel.chassisNo}}</a></td>
                   <td data-title="Product Code">{{atsDel.productCode}}</td>
                   <td data-title="Net Dealer Price">{{atsDel.NDP-atsDel.dealer.discountAmount | currency : 'INR'}}</td>
                   <td data-title="Date of Received">{{atsDel.dealer.recivedDate | date:"dd-MM-yyyy"}}</td>

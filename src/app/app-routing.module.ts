@@ -7,26 +7,26 @@ import { LoginComponent } from './user/login/login.component';
 const routes: Routes = [
   { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule), canActivate: [AppGuard] },
   // dashboard module page
-  { path: 'history-report', loadChildren: () => import('./dashboard/history-report/history-report.module').then(m => m.HistoryReportModule), canActivate: [AppGuard] }, 
+  { path: 'history-report', loadChildren: () => import('./dashboard/history-report/history-report.module').then(m => m.HistoryReportModule), canActivate: [AppGuard] },
   { path: 'vehicle-history', loadChildren: () => import('./dashboard/vehicle-history/vehicle-history.module').then(m => m.VehicleHistoryModule), canActivate: [AppGuard] },
   // master's modules
-  { path: 'm-city', loadChildren: () => import('./masters/city-master/city-master.module').then(m => m.CityMasterModule), canActivate: [AppGuard] }, 
-  { path: 'm-customer', loadChildren: () => import('./masters/customer-master/customer-master.module').then(m => m.CustomerMasterModule), canActivate: [AppGuard] }, 
-  { path: 'm-dealer', loadChildren: () => import('./masters/dealer-master/dealer-master.module').then(m => m.DealerMasterModule), canActivate: [AppGuard] }, 
-  { path: 'm-depot', loadChildren: () => import('./masters/depot-master/depot-master.module').then(m => m.DepotMasterModule), canActivate: [AppGuard] }, 
-  { path: 'm-hsn-code', loadChildren: () => import('./masters/hsn-master/hsn-master.module').then(m => m.HsnMasterModule), canActivate: [AppGuard] }, 
-  { path: 'm-financial', loadChildren: () => import('./masters/financial-master/financial-master.module').then(m => m.FinancialMasterModule), canActivate: [AppGuard] }, 
-  { path: 'm-on-power', loadChildren: () => import('./masters/on-power-master/on-power-master.module').then(m => m.OnPowerMasterModule), canActivate: [AppGuard] }, 
-  { path: 'm-part', loadChildren: () => import('./masters/part-master/part-master.module').then(m => m.PartMasterModule), canActivate: [AppGuard] }, 
-  { path: 'm-roles', loadChildren: () => import('./masters/role-master/role-master.module').then(m => m.RoleMasterModule), canActivate: [AppGuard] }, 
-  { path: 'm-state', loadChildren: () => import('./masters/state-master/state-master.module').then(m => m.StateMasterModule), canActivate: [AppGuard] }, 
+  { path: 'm-city', loadChildren: () => import('./masters/city-master/city-master.module').then(m => m.CityMasterModule), canActivate: [AppGuard] },
+  { path: 'm-customer', loadChildren: () => import('./masters/customer-master/customer-master.module').then(m => m.CustomerMasterModule), canActivate: [AppGuard] },
+  { path: 'm-dealer', loadChildren: () => import('./masters/dealer-master/dealer-master.module').then(m => m.DealerMasterModule), canActivate: [AppGuard] },
+  { path: 'm-depot', loadChildren: () => import('./masters/depot-master/depot-master.module').then(m => m.DepotMasterModule), canActivate: [AppGuard] },
+  { path: 'm-hsn-code', loadChildren: () => import('./masters/hsn-master/hsn-master.module').then(m => m.HsnMasterModule), canActivate: [AppGuard] },
+  { path: 'm-financial', loadChildren: () => import('./masters/financial-master/financial-master.module').then(m => m.FinancialMasterModule), canActivate: [AppGuard] },
+  { path: 'm-on-power', loadChildren: () => import('./masters/on-power-master/on-power-master.module').then(m => m.OnPowerMasterModule), canActivate: [AppGuard] },
+  { path: 'm-part', loadChildren: () => import('./masters/part-master/part-master.module').then(m => m.PartMasterModule), canActivate: [AppGuard] },
+  { path: 'm-roles', loadChildren: () => import('./masters/role-master/role-master.module').then(m => m.RoleMasterModule), canActivate: [AppGuard] },
+  { path: 'm-state', loadChildren: () => import('./masters/state-master/state-master.module').then(m => m.StateMasterModule), canActivate: [AppGuard] },
   { path: 'm-user', loadChildren: () => import('./masters/user-master/user-master.module').then(m => m.UserMasterModule), canActivate: [AppGuard] },
-  { path: 'm-transport', loadChildren: () => import('./masters/transporter-master/transporter-master.module').then(m => m.TransporterMasterModule), canActivate: [AppGuard] }, 
+  { path: 'm-transport', loadChildren: () => import('./masters/transporter-master/transporter-master.module').then(m => m.TransporterMasterModule), canActivate: [AppGuard] },
   { path: 'm-variant', loadChildren: () => import('./masters/variant-master/variant-master.module').then(m => m.VariantMasterModule), canActivate: [AppGuard] },
-  { path: 'm-zone', loadChildren: () => import('./masters/zone-master/zone-master.module').then(m => m.ZoneMasterModule), canActivate: [AppGuard] }, 
+  { path: 'm-zone', loadChildren: () => import('./masters/zone-master/zone-master.module').then(m => m.ZoneMasterModule), canActivate: [AppGuard] },
   { path: 'm-user', loadChildren: () => import('./masters/user-master/user-master.module').then(m => m.UserMasterModule), canActivate: [AppGuard] },
   // plant's module
-  { path: 'plant-stock', loadChildren: () => import('./plant/plant-stock/plant-stock.module').then(m => m.PlantStockModule), canActivate: [AppGuard] }, 
+  { path: 'plant-stock', loadChildren: () => import('./plant/plant-stock/plant-stock.module').then(m => m.PlantStockModule), canActivate: [AppGuard] },
   { path: 'c-stock', loadChildren: () => import('./plant/capitalized-stock/capitalized-stock.module').then(m => m.CapitalizedStockModule), canActivate: [AppGuard] },
   // depot's modules
   { path: 'depot-aging-production', loadChildren: () => import('./depot/aging-from-production/aging-from-production.module').then(m => m.AgingFromProductionModule), canActivate: [AppGuard] },
@@ -60,6 +60,7 @@ const routes: Routes = [
   { path: 'sales-return', loadChildren: () => import('./dealer/return-sales/return-sales.module').then(m => m.ReturnSalesModule), canActivate: [AppGuard] },
   // ats page in dealer module
   { path: 'ats-delivery', loadChildren: () => import('./dealer/ats-delivery/ats-delivery.module').then(m => m.AtsDeliveryModule), canActivate: [AppGuard] },
+  { path: 'advanceDeliveryDetails/:id', loadChildren: () => import('./dealer/ats-delivery/advance-delivery-details/advance-delivery-details.module').then(m => m.AdvanceDeliveryDetailsModule), canActivate: [AppGuard] },
   { path: 'ats-insurance', loadChildren: () => import('./dealer/ats-insurance/ats-insurance.module').then(m => m.AtsInsuranceModule), canActivate: [AppGuard] },
   { path: 'ats-retail', loadChildren: () => import('./dealer/ats-retail/ats-retail.module').then(m => m.AtsRetailModule), canActivate: [AppGuard] },
   // bgs /page in dealer module
