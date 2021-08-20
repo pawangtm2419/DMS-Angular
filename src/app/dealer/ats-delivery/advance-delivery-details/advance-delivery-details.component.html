@@ -1,1 +1,180 @@
-<p>advance-delivery-details works!</p>
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="sidebarMain">
+          <div class="row">
+            <div class="col-md-12">
+              <ul class="model-menu">
+                <li><a routerLink="/home">Home</a></li>/
+                <li><a routerLink="/ats-delivery">Dealer Physical Stock</a></li>/
+                <li>Advance Delivery Details</li>
+                <ng-container>
+                    <div class="card mt-2">
+                      <div class="row p-2" *ngFor="let vehicle of vehicleDetails">
+                        <div class="col-md-5">
+                          <div class="row align-items-center">
+                            <div class="col-md-3 col-3">
+                              <label for="delerDetail" class="col-form-label">Dealer: </label>
+                            </div>
+                            <div class="col-md-8 col-8">
+                              <p id="delerDetail"> {{vehicle.dealer.code}}/ {{vehicle.dealer.name}}</p>
+                            </div>
+                            <div class="col-md-1 col-1"></div>
+                          </div>
+                          <div class="row align-items-center">
+                            <div class="col-md-3 col-3">
+                              <label for="fromDate" class="col-form-label">From: </label>
+                            </div>
+                            <div class="col-md-8 col-8">
+                              <input type="date" id="fromDate" [ngModel]="fromDate | date:'yyyy-MM-dd'" max="{{currentDate}}" class="form-control">
+                            </div>
+                            <div class="col-md-1 col-1"></div>
+                          </div>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="row align-items-center">
+                            <div class="col-md-3 col-3">
+                              <label for="fromDate" class="col-form-label">Invoice Details: </label>
+                            </div>
+                            <div class="col-md-8 col-8">
+                              {{vehicle.dealer.invoiceNumber}} / {{vehicle.dealer.invoiceDate | date: 'dd-MM-yyyy'}}
+                            </div>
+                            <div class="col-md-1 col-1"></div>
+                          </div>
+                          <div class="row align-items-center">
+                            <div class="col-md-3 col-3">
+                              <label for="fromDate" class="col-form-label">Chassis No.: </label>
+                            </div>
+                            <div class="col-md-8 col-8">
+                              {{vehicle.chassisNo}}
+                            </div>
+                            <div class="col-md-1 col-1"></div>
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          <button class="btn btn-primary">Add Customer</button>
+                        </div>
+                      </div>
+                    </div>
+                </ng-container>
+                <div class="row p-2">
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="row align-items-center">
+                          <div class="col-md-3 col-3">
+                            <label for="fromDate" class="col-form-label">Customer: </label>
+                          </div>
+                          <div class="col-md-8 col-8">
+                            <select [(ngModel)]="customerCode" class="form-control" (ngModelChange)="select()">
+                              <option value="" selected>Select Dealer</option>
+                              <option *ngFor="let obj of customerList" [ngValue]="obj"> {{obj.ownerName}} </option>
+                            </select>
+                          </div>
+                          <div class="col-md-1 col-1"></div>
+                        </div>
+                      </div>
+                      <div class="col-md-4" *ngIf="isCustomerSelect">
+                        <div class="row align-items-center">
+                          <div class="col-md-3 col-3">
+                            <label for="fromDate" class="col-form-label">Village Name: </label>
+                          </div>
+                          <div class="col-md-8 col-8">
+                            {{customerCode?.address?.villageName}}
+                          </div>
+                          <div class="col-md-1 col-1"></div>
+                        </div>
+                      </div>
+                      <div class="col-md-4" *ngIf="isCustomerSelect">
+                        <div class="row align-items-center">
+                          <div class="col-md-3 col-3">
+                            <label for="fromDate" class="col-form-label">Aaadhar No.: </label>
+                          </div>
+                          <div class="col-md-8 col-8">
+                            {{customerCode?.aadharNo}}
+                          </div>
+                          <div class="col-md-1 col-1"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4" *ngIf="isCustomerSelect">
+                        <div class="row align-items-center">
+                          <div class="col-md-3 col-3">
+                            <label for="fromDate" class="col-form-label">Tehsil : </label>
+                          </div>
+                          <div class="col-md-8 col-8">
+                            {{customerCode?.address?.tehsil}}
+                          </div>
+                          <div class="col-md-1 col-1"></div>
+                        </div>
+                      </div>
+                      <div class="col-md-4" *ngIf="isCustomerSelect">
+                        <div class="row align-items-center">
+                          <div class="col-md-3 col-3">
+                            <label for="fromDate" class="col-form-label">District : </label>
+                          </div>
+                          <div class="col-md-8 col-8">
+                            {{customerCode?.address?.district}}
+                          </div>
+                          <div class="col-md-1 col-1"></div>
+                        </div>
+                      </div>
+                      <div class="col-md-4" *ngIf="isCustomerSelect">
+                        <div class="row align-items-center">
+                          <div class="col-md-3 col-3">
+                            <label for="fromDate" class="col-form-label">State : </label>
+                          </div>
+                          <div class="col-md-8 col-8">
+                            {{customerCode?.address?.state}}
+                          </div>
+                          <div class="col-md-1 col-1"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4" *ngIf="isCustomerSelect">
+                        <div class="row align-items-center">
+                          <div class="col-md-3 col-3">
+                            <label for="fromDate" class="col-form-label">Pincode : </label>
+                          </div>
+                          <div class="col-md-8 col-8">
+                            {{customerCode?.address?.pinCode}}
+                          </div>
+                          <div class="col-md-1 col-1"></div>
+                        </div>
+                      </div>
+                      <div class="col-md-4" *ngIf="isCustomerSelect">
+                        <div class="row align-items-center">
+                          <div class="col-md-3 col-3">
+                            <label for="fromDate" class="col-form-label">Contact : </label>
+                          </div>
+                          <div class="col-md-8 col-8">
+                            {{customerCode?.mobileNo}}
+                          </div>
+                          <div class="col-md-1 col-1"></div>
+                        </div>
+                      </div>
+                      <div class="col-md-4" *ngIf="isCustomerSelect">
+                        <div class="row align-items-center">
+                          <div class="col-md-3 col-3">
+                            <label for="fromDate" class="col-form-label">Price (NDP) : </label>
+                          </div>
+                          <div class="col-md-8 col-8">
+                            {{customerCode?.tractorPrice}}
+                          </div>
+                          <div class="col-md-1 col-1"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

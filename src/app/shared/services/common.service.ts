@@ -73,4 +73,9 @@ export class CommonService {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
     return this._http.post(`${environment._url}/ats/ATSDetails`, data, httpOptions);
   }
+
+  getBankCategories(): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this._http.get<any>(`${environment._url}/financial/getBankCategories`, httpOptions);
+  }
 }

@@ -20,4 +20,16 @@ export class DealerService {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
     return this.http.post(`${environment._url}/ats/ATSDetails`, data, httpOptions);
   }
+  getTransactionClose(data: any): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this.http.post(`${environment._url}/systemSetting/getTransactionClose`, data, httpOptions);
+  }
+  getCustomerByDealer(data: any): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this.http.get(`${environment._url}/customer/customersByDealer?dealerCode=${data}`, httpOptions);
+  }
+  updateVehicleDetails(data: any): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this.http.post(`${environment._url}/vehicle/updateVehicleDetails`, data, httpOptions);
+  }
 }
