@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { CommonService, DealerService } from 'src/app/shared/services';
+import { CommonService, DealerService, ToasterService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-advance-delivery-details',
@@ -11,15 +11,30 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
   params!: Params;
   vehicleDetails: any;
   transactionList: any;
-  bankList: any;
+  bankCategoryList: any;
   fromDate: string;
   toDate: string;
   currentDate!: string;
   customerList: any;
   customerCode: any;
   isCustomerSelect: boolean = false;
+  price: any;
+  tractorPrice: any;
+  dealerPrice: any;
+  balancePrice: any;
+  paymentType: any;
+  paymentTypeSelected: boolean = false;
+  bankCategorySelected: any;
+  bankDataList: any;
+  bankSelected: any;
+  loanSanctionDate: any;
+  oldTractor: any;
+  yesOldTractor: boolean = false;
+  oldTractorPrice: any;
+  make: any;
+  modelEntry: any;
 
-  constructor(private route: ActivatedRoute, private service: CommonService, private dealer: DealerService) {
+  constructor(private route: ActivatedRoute, private service: CommonService, private dealer: DealerService, public toaster: ToasterService) {
     this.route.params.subscribe((params: Params) => {
       this.params = params;
     });
@@ -36,10 +51,32 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
   select(): void {
     if(this.customerCode) {
       this.isCustomerSelect = true;
-      console.log(this.customerCode);
     } else {
       this.isCustomerSelect = false;
     }
+  }
+
+  selectPayment() {
+    if (this.paymentType === 'finance') {
+      this.paymentTypeSelected = true;
+    } else {
+      this.paymentTypeSelected = false;
+    }
+  }
+  isOldTractor(): void {
+    if(this.oldTractor === 'yes') {
+      this.yesOldTractor = true;
+    } else {
+      this.yesOldTractor = false;
+    }
+  }
+  bankListData(): void {
+    console.log(this.bankCategorySelected);
+    this.dealer.getFinancialInstitutionsList(this.bankCategorySelected).subscribe(res => {
+      if(res.status) {
+        this.bankDataList = res.data;
+      }
+    });
   }
 
   convertDate(): void{
@@ -54,6 +91,16 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
       if(res.status === "true"){
         this.vehicleDetails = res.data;
         this.customerDataByDealer();
+        if (this.vehicleDetails[0].locationType == "DEALER") {
+          this.price = this.vehicleDetails[0].NDP - this.vehicleDetails[0].dealer.discountAmount;
+          if(this.vehicleDetails[0].dealer.zone=='ZSAARC') {
+            this.tractorPrice = this.price;
+          } else {
+            this.tractorPrice = this.price + this.price * (this.vehicleDetails[0].GST + this.vehicleDetails[0].SST) / 100;
+          }
+        } else {
+          this.toaster.showInfo('Data', 'No record found.');
+        }
       }
     });
   }
@@ -70,7 +117,7 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
   getBankCategoryData(): void {
     this.service.getBankCategories().subscribe(res => {
       if(res.status === "true"){
-        this.bankList = res.data;
+        this.bankCategoryList = res.data;
       }
     });
   }
