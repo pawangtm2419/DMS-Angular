@@ -7,7 +7,7 @@ body {
   margin-left: 60px;
 }
 tbody, td, tfoot, th, thead, tr {
-  border: 1px solid #ccc;
+  border: 1px solid hsla(206, 6%, 23%, 0.30);
   font-size: small;
 }
 label {
@@ -88,8 +88,11 @@ label {
 .modal-backdrop {
   z-index: -1;
 }
+.table{
+  border-color: #373b3e !important;
+}
 .theadbg {
-  background-color: #333333;
+  background-color: #212529e8;
 }
 @media (min-width: 576px) {
   .modal-dialog {
@@ -97,11 +100,11 @@ label {
   }
 }
 .btn-primary {
-  background: #454397;
+  background: #212529;
   border: none;
 }
 .btn-primary:hover {
-  background: #454397;
+  background: #373b3e;
 }
 .btn-primary:active {
   background: #454397;
@@ -121,7 +124,7 @@ label {
   background-color: #121212;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #454397;
+  background-color: #373b3e;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   -ms-border-radius: 2px;

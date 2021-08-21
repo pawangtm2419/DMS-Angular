@@ -44,7 +44,6 @@
 }
 .profileArea li a{
   text-align: center;
-  /* border-bottom: 1px solid #ddd; */
   display: block;
   text-decoration: none;
   padding: 12px 20px;
@@ -57,6 +56,7 @@
   letter-spacing: 3px;
 }
 .menu-area{
+  width: 100%;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -66,12 +66,10 @@
   transform: translate(-50%, -50%);
 }
 .menu-area ul, .menu-area li ul {
-  /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
-  border: 1px solid rgba(0,0,0,.15) !important;
-  border-radius: .25rem;
-  box-shadow: 0px 2px 6px -4px rgba(0,0,0,0.51);
-  -webkit-box-shadow: 0px 2px 6px -4px rgba(0,0,0,0.51);
-  -moz-box-shadow: 0px 2px 6px -4px rgba(0,0,0,0.51);
+  border: 1px solid #ccc !important;
+  border-radius: .50rem;
+  box-shadow: 0px 5px 5px 10px rgb(69 67 151 / 15%);
+  background-clip: padding-box;
 }
 .menu-area .menuTxt{
   display: none !important;
@@ -84,7 +82,7 @@ ul.menu-area li a{
   display: block;
   text-decoration: none;
   padding: 12px 20px;
-  color: #000;
+  color: #2A2B2D;
 }
 .menu-area li a i{
   display: block;
@@ -96,13 +94,8 @@ ul.menu-area li a{
 .menu-area li a i:hover{
   color: #000;
 }
-.menu-area li:hover > a{
-  color: #fff;
-}
 .menu-area li ul, .menu-area li ul li ul{
   background: #fff;
-  opacity: 0;
-  visibility: hidden;
   transition: 300ms;
   z-index: 999;
   left: 280px;
@@ -115,12 +108,10 @@ ul.menu-area li a{
   margin: 0;
 }
 .menu-area li ul li:hover{
-  background: #454397;
+  background: #e9ecef;
+  color: #2A2B2D;
 }
-.menu-area li:hover > ul{
-  display: block;
-  opacity: 1;
-  visibility: visible;
+.menu-area li > ul{
   left: 4.4rem;
   transition: 0.5s ease-in-out;
   position: absolute;
@@ -129,16 +120,38 @@ ul.menu-area li a{
   transform: translateY(-42%);
   z-index: 1025;
 }
+.drop-down01{
+  position: relative !important;
+
+}
+.sub-menu01{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-42%)!important;
+  inset: initial !important;
+}
+.sub-menu02{
+  transform: translateY(-67%)!important;
+}
+.drop-down01 .sub-menu01, .drop-down01 .sub-menu02{
+  position: absolute !important;
+  left: 100% !important;
+  top: 0 !important;
+}
+
+.menu-area li ul li > ul{
+  opacity: 0;
+  visibility: hidden;
+}
 .menu-area li ul li:hover > ul{
-  display: block;
   opacity: 1;
   visibility: visible;
   left: 215px;
 }
 .menu-area li ul li a{
   font-size: 14px;
-  padding: 4px 3px;
-  text-align: center;
+  padding: 4px 8px;
+  text-align: left;
   border: 0;
   border-bottom: 1px solid #ddd;
   height: auto;
