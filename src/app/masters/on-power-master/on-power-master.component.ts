@@ -14,6 +14,7 @@ export class OnPowerMasterComponent implements OnInit {
   pageData: number = 1;
   limits: any = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
   limit: any = 50;
+  isExcelDownload: boolean = false;
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -23,6 +24,7 @@ export class OnPowerMasterComponent implements OnInit {
     this.master.getOnPower().subscribe(res=> {
       this.onPOwerData=res.data;
       if(this.onPOwerData.length > 0) {
+        this.isExcelDownload = true;
         this.limits.push({ "key": "ALL", value: this.onPOwerData.length });
         this.toaster.showSuccess("Data", "Report successfully Open.");
       } else {

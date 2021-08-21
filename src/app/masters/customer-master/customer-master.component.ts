@@ -16,6 +16,7 @@ export class CustomerMasterComponent implements OnInit {
   pageData = 1;
   limits = [{ key: '50', value: 50 }, { key: '100', value: 100 }, { key: '250', value: 250 }, { key: '500', value: 500 }];
   limit: any = 50;
+  isExcelDownload: boolean = false;
 
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
@@ -28,6 +29,7 @@ export class CustomerMasterComponent implements OnInit {
       this.customersData = res.data;
       this.limits.push({ key: 'ALL', value: this.customersData.length });
       if (this.customersData.length > 0) {
+        this.isExcelDownload = true;
         this.toaster.showSuccess('Data', 'Report successfully Open.');
       } else {
         this.toaster.showInfo('Data', 'No record found.');

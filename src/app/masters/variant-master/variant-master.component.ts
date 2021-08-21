@@ -14,6 +14,7 @@ export class VariantMasterComponent implements OnInit {
   pageData: number = 1;
   limits: any = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
   limit: any = 50;
+  isExcelDownload: boolean = false;
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -23,6 +24,7 @@ export class VariantMasterComponent implements OnInit {
     this.master.getVariant().subscribe(res=> {
       this.variantData=res.data;
       if(this.variantData.length > 0) {
+        this.isExcelDownload = true;
         this.limits.push({ "key": "ALL", value: this.variantData.length });
         this.toaster.showSuccess("Data", "Report successfully Open.");
       } else {

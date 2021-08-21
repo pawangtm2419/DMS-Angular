@@ -15,6 +15,7 @@ export class DealerMasterComponent implements OnInit {
   limits: any = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
   limit: any = 50;
   currentdate= new Date();
+  isExcelDownload:boolean = false;
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -25,6 +26,7 @@ export class DealerMasterComponent implements OnInit {
     this.master.getDealers(data).subscribe(res=> {
       this.dealerData = res.msg;
       if(this.dealerData.length > 0) {
+        this.isExcelDownload = true;
         this.limits.push({ "key": "ALL", value: this.dealerData.length });
         this.toaster.showSuccess("Data", "Report successfully Open.");
       } else {
