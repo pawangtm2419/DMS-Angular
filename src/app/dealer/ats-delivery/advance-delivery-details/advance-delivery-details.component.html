@@ -9,298 +9,340 @@
                 <li><a routerLink="/home">Home</a></li>/
                 <li><a routerLink="/ats-delivery">Dealer Physical Stock</a></li>/
                 <li>Advance Delivery Details</li>
-                <ng-container>
-                    <div class="card mt-2">
-                      <div class="row p-2" *ngFor="let vehicle of vehicleDetails">
-                        <div class="col-md-5">
-                          <div class="row align-items-center">
-                            <div class="col-md-4 col-4">
-                              <label for="delerDetail" class="col-form-label">Dealer: </label>
-                            </div>
-                            <div class="col-md-7 col-7">
-                              <p id="delerDetail"> {{vehicle.dealer.code}}/ {{vehicle.dealer.name}}</p>
-                            </div>
-                            <div class="col-md-1 col-1"></div>
-                          </div>
-                          <div class="row align-items-center">
-                            <div class="col-md-4 col-4">
-                              <label class="col-form-label">From: </label>
-                            </div>
-                            <div class="col-md-7 col-7">
-                              <input type="date" id="fromDate" [ngModel]="fromDate | date:'yyyy-MM-dd'" max="{{currentDate}}" class="form-control">
-                            </div>
-                            <div class="col-md-1 col-1"></div>
-                          </div>
-                        </div>
-                        <div class="col-md-5">
-                          <div class="row align-items-center">
-                            <div class="col-md-4 col-4">
-                              <label class="col-form-label">Invoice Details: </label>
-                            </div>
-                            <div class="col-md-7 col-7">
-                              {{vehicle.dealer.invoiceNumber}} / {{vehicle.dealer.invoiceDate | date: 'dd-MM-yyyy'}}
-                            </div>
-                            <div class="col-md-1 col-1"></div>
-                          </div>
-                          <div class="row align-items-center">
-                            <div class="col-md-4 col-4">
-                              <label class="col-form-label">Chassis No.: </label>
-                            </div>
-                            <div class="col-md-7 col-7">
-                              {{vehicle.chassisNo}}
-                            </div>
-                            <div class="col-md-1 col-1"></div>
-                          </div>
-                        </div>
-                        <div class="col-md-2">
-                          <button class="btn btn-primary">Add Customer</button>
-                        </div>
-                      </div>
-                    </div>
-                </ng-container>
-                <div class="row p-2">
-                  <div class="col-md-12">
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="row align-items-center">
-                          <div class="col-md-4 col-4">
-                            <label class="col-form-label">Customer: </label>
-                          </div>
-                          <div class="col-md-7 col-7">
-                            <select [(ngModel)]="customerCode" class="form-control" (ngModelChange)="select()">
-                              <option value="" selected>Select Dealer</option>
-                              <option *ngFor="let obj of customerList" [ngValue]="obj"> {{obj.ownerName}} </option>
-                            </select>
-                          </div>
-                          <div class="col-md-1 col-1"></div>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="row align-items-center">
-                          <div class="col-md-4 col-4">
-                            <label class="col-form-label">Deal Price : </label>
-                          </div>
-                          <div class="col-md-7 col-7">
-                            <input type="number" [(ngModel)]="dealerPrice" min="0" class="form-control">
-                          </div>
-                          <div class="col-md-1 col-1"></div>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="row align-items-center">
-                          <div class="col-md-4 col-4">
-                            <label class="col-form-label">Balance Price : </label>
-                          </div>
-                          <div class="col-md-7 col-7">
-                            <input type="number" readonly [(ngModel)]="balancePrice" value="{{dealerPrice-oldTractorPrice}}" class="form-control" disabled>
-                          </div>
-                          <div class="col-md-1 col-1"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-3" *ngIf="isCustomerSelect">
-                        <div class="row align-items-center">
-                          <div class="col-md-4 col-4">
-                            <label class="col-form-label">Village Name: </label>
-                          </div>
-                          <div class="col-md-7 col-7">
-                            {{customerCode?.address?.villageName}}
-                          </div>
-                          <div class="col-md-1 col-1"></div>
-                        </div>
-                      </div>
-                      <div class="col-md-3" *ngIf="isCustomerSelect">
-                        <div class="row align-items-center">
-                          <div class="col-md-4 col-4">
-                            <label class="col-form-label">Tehsil : </label>
-                          </div>
-                          <div class="col-md-7 col-7">
-                            {{customerCode?.address?.tehsil}}
-                          </div>
-                          <div class="col-md-1 col-1"></div>
-                        </div>
-                      </div>
-                      <div class="col-md-3" *ngIf="isCustomerSelect">
-                        <div class="row align-items-center">
-                          <div class="col-md-4 col-4">
-                            <label class="col-form-label">District : </label>
-                          </div>
-                          <div class="col-md-7 col-7">
-                            {{customerCode?.address?.district}}
-                          </div>
-                          <div class="col-md-1 col-1"></div>
-                        </div>
-                      </div>
-                      <div class="col-md-3" *ngIf="isCustomerSelect">
-                        <div class="row align-items-center">
-                          <div class="col-md-4 col-4">
-                            <label class="col-form-label">State : </label>
-                          </div>
-                          <div class="col-md-7 col-7">
-                            {{customerCode?.address?.state}}
-                          </div>
-                          <div class="col-md-1 col-1"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-3" *ngIf="isCustomerSelect">
-                        <div class="row align-items-center">
-                          <div class="col-md-4 col-4">
-                            <label class="col-form-label">Aaadhar No.: </label>
-                          </div>
-                          <div class="col-md-7 col-7">
-                            {{customerCode?.aadharNo}}
-                          </div>
-                          <div class="col-md-1 col-1"></div>
-                        </div>
-                      </div>
-                      <div class="col-md-3" *ngIf="isCustomerSelect">
-                        <div class="row align-items-center">
-                          <div class="col-md-4 col-4">
-                            <label class="col-form-label">Pincode : </label>
-                          </div>
-                          <div class="col-md-7 col-7">
-                            {{customerCode?.address?.pinCode}}
-                          </div>
-                          <div class="col-md-1 col-1"></div>
-                        </div>
-                      </div>
-                      <div class="col-md-3" *ngIf="isCustomerSelect">
-                        <div class="row align-items-center">
-                          <div class="col-md-4 col-4">
-                            <label class="col-form-label">Contact : </label>
-                          </div>
-                          <div class="col-md-7 col-7">
-                            {{customerCode?.mobileNo}}
-                          </div>
-                          <div class="col-md-1 col-1"></div>
-                        </div>
-                      </div>
-                      <div class="col-md-3" *ngIf="isCustomerSelect">
-                        <div class="row align-items-center">
-                          <div class="col-md-4 col-4">
-                            <label class="col-form-label">Price (NDP) : </label>
-                          </div>
-                          <div class="col-md-7 col-7">
-                            {{tractorPrice | currency : 'INR'}}
-                          </div>
-                          <div class="col-md-1 col-1"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-3">
-                        <div class="row align-items-center">
-                          <div class="col-md-4 col-4">
-                            <label class="col-form-label">Payment Type : </label>
-                          </div>
-                          <div class="col-md-7 col-7">
-                            <select [(ngModel)]="paymentType" class="form-control" (ngModelChange)="selectPayment()">
-                              <option value="cash" selected>Cash</option>
-                              <option value="finance">Finance</option>
-                            </select>
-                          </div>
-                          <div class="col-md-1 col-1"></div>
-                        </div>
-                      </div>
-                      <div class="col-md-3" *ngIf="paymentTypeSelected">
-                        <div class="row align-items-center">
-                          <div class="col-md-4 col-4">
-                            <label class="col-form-label">Bank Category : </label>
-                          </div>
-                          <div class="col-md-7 col-7">
-                            <select [(ngModel)]="bankCategorySelected" class="form-control" (ngModelChange)="bankListData()">
-                              <option value="" selected>Select Bank Category</option>
-                              <option *ngFor="let obj of bankCategoryList" [ngValue]="obj"> {{obj}} </option>
-                            </select>
-                          </div>
-                          <div class="col-md-1 col-1"></div>
-                        </div>
-                      </div>
-                      <div class="col-md-3" *ngIf="paymentTypeSelected">
-                        <div class="row align-items-center">
-                          <div class="col-md-4 col-4">
-                            <label class="col-form-label">Bank Name : </label>
-                          </div>
-                          <div class="col-md-7 col-7">
-                            <select [(ngModel)]="bankSelected" class="form-control">
-                              <option value="" selected>Select Bank</option>
-                              <option *ngFor="let obj of bankDataList" [ngValue]="obj"> {{obj.instName}} </option>
-                            </select>
-                          </div>
-                          <div class="col-md-1 col-1"></div>
-                        </div>
-                      </div>
-                      <div class="col-md-3" *ngIf="paymentTypeSelected">
-                        <div class="row align-items-center">
-                          <div class="col-md-4 col-4">
-                            <label class="col-form-label">Expected Loan Sanction Date : </label>
-                          </div>
-                          <div class="col-md-7 col-7">
-                            <input type="date" [(ngModel)]="loanSanctionDate" min="{{currentDate}}" class="form-control">
-                          </div>
-                          <div class="col-md-1 col-1"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-3">
-                        <div class="row align-items-center">
-                          <div class="col-md-4 col-4">
-                            <label class="col-form-label">Old Tractor : </label>
-                          </div>
-                          <div class="col-md-7 col-7">
-                            <select [(ngModel)]="oldTractor" class="form-control" (ngModelChange)="isOldTractor()">
-                              <option value="yes" selected>Yes</option>
-                              <option value="no">No</option>
-                            </select>
-                          </div>
-                          <div class="col-md-1 col-1"></div>
-                        </div>
-                      </div>
-                      <div class="col-md-3" *ngIf="yesOldTractor">
-                        <div class="row align-items-center">
-                          <div class="col-md-4 col-4">
-                            <label class="col-form-label">Old Tractor Price: </label>
-                          </div>
-                          <div class="col-md-7 col-7">
-                            <input type="number" [(ngModel)]="oldTractorPrice" min="0" class="form-control">
-                          </div>
-                          <div class="col-md-1 col-1"></div>
-                        </div>
-                      </div>
-                      <div class="col-md-3" *ngIf="yesOldTractor">
-                        <div class="row align-items-center">
-                          <div class="col-md-4 col-4">
-                            <label class="col-form-label">Make : </label>
-                          </div>
-                          <div class="col-md-7 col-7">
-                            <input type="text" [(ngModel)]="make" class="form-control">
-                          </div>
-                          <div class="col-md-1 col-1"></div>
-                        </div>
-                      </div>
-                      <div class="col-md-3" *ngIf="yesOldTractor">
-                        <div class="row align-items-center">
-                          <div class="col-md-4 col-4">
-                            <label class="col-form-label">Model : </label>
-                          </div>
-                          <div class="col-md-7 col-7">
-                            <input type="text" [(ngModel)]="modelEntry" class="form-control">
-                          </div>
-                          <div class="col-md-1 col-1"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </ul>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <ng-container>
+          <div class="card mt-2">
+            <div class="row p-2" *ngFor="let vehicle of vehicleDetails">
+              <div class="col-md-5">
+                <div class="row align-items-center">
+                  <div class="col-md-4 col-4">
+                    <label for="delerDetail" class="col-form-label">Dealer: </label>
+                  </div>
+                  <div class="col-md-8 col-8 pe-2">
+                    <p id="delerDetail"> {{vehicle.dealer.code}}/ {{vehicle.dealer.name}}</p>
+                  </div>
+                </div>
+                <div class="row align-items-center">
+                  <div class="col-md-4 col-4">
+                    <label class="col-form-label">Delivery Date: </label>
+                  </div>
+                  <div class="col-md-8 col-8 pe-2">
+                    <input type="date" id="fromDate" [ngModel]="deliveryDate" min="{{fromDate}}" max="{{currentDate}}" class="form-control">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="row align-items-center">
+                  <div class="col-md-4 col-4">
+                    <label class="col-form-label">Invoice Details: </label>
+                  </div>
+                  <div class="col-md-8 col-8 pe-2">
+                    {{vehicle.dealer.invoiceNumber}} / {{vehicle.dealer.invoiceDate | date: 'dd-MM-yyyy'}}
+                  </div>
+                </div>
+                <div class="row align-items-center">
+                  <div class="col-md-4 col-4">
+                    <label class="col-form-label">Chassis No.: </label>
+                  </div>
+                  <div class="col-md-8 col-8 pe-2">
+                    {{vehicle.chassisNo}}
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <button class="btn btn-primary">Add Customer</button>
+              </div>
+            </div>
+          </div>
+      </ng-container>
+      <div class="row p-2">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="row align-items-center">
+                <div class="col-md-4 col-4">
+                  <label class="col-form-label">Customer: </label>
+                </div>
+                <div class="col-md-8 col-8 pe-2">
+                  <select [(ngModel)]="customerCode" class="form-control" (ngModelChange)="select()">
+                    <option value="">Select Customer</option>
+                    <option *ngFor="let obj of customerList" [ngValue]="obj"> {{obj.ownerName}} </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="row align-items-center">
+                <div class="col-md-4 col-4">
+                  <label class="col-form-label">Deal Price:</label>
+                </div>
+                <div class="col-md-8 col-8 pe-2">
+                  <input type="number" [(ngModel)]="dealerPrice" min="0" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="row align-items-center">
+                <div class="col-md-4 col-4">
+                  <label class="col-form-label">Balance Price:</label>
+                </div>
+                <div class="col-md-8 col-8 pe-2">
+                  <input type="number" readonly [(ngModel)]="balancePrice" value="{{dealerPrice-oldTractorPrice}}" class="form-control" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mt-2" *ngIf="isCustomerSelect">
+              <div class="row align-items-center">
+                <div class="col-md-4 col-4">
+                  <label class="col-form-label">Village Name: </label>
+                </div>
+                <div class="col-md-8 col-8 pe-2">
+                  {{customerCode?.address?.villageName}}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mt-2" *ngIf="isCustomerSelect">
+              <div class="row align-items-center">
+                <div class="col-md-4 col-4">
+                  <label class="col-form-label">Tehsil:</label>
+                </div>
+                <div class="col-md-8 col-8 pe-2">
+                  {{customerCode?.address?.tehsil}}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mt-2" *ngIf="isCustomerSelect">
+              <div class="row align-items-center">
+                <div class="col-md-4 col-4">
+                  <label class="col-form-label">District:</label>
+                </div>
+                <div class="col-md-8 col-8 pe-2">
+                  {{customerCode?.address?.district}}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mt-2" *ngIf="isCustomerSelect">
+              <div class="row align-items-center">
+                <div class="col-md-4 col-4">
+                  <label class="col-form-label">State:</label>
+                </div>
+                <div class="col-md-8 col-8 pe-2">
+                  {{customerCode?.address?.state}}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mt-2" *ngIf="isCustomerSelect">
+              <div class="row align-items-center">
+                <div class="col-md-4 col-4">
+                  <label class="col-form-label">Aaadhar No.: </label>
+                </div>
+                <div class="col-md-8 col-8 pe-2">
+                  {{customerCode?.aadharNo}}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mt-2" *ngIf="isCustomerSelect">
+              <div class="row align-items-center">
+                <div class="col-md-4 col-4">
+                  <label class="col-form-label">Pincode:</label>
+                </div>
+                <div class="col-md-8 col-8 pe-2">
+                  {{customerCode?.address?.pinCode}}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mt-2" *ngIf="isCustomerSelect">
+              <div class="row align-items-center">
+                <div class="col-md-4 col-4">
+                  <label class="col-form-label">Contact:</label>
+                </div>
+                <div class="col-md-8 col-8 pe-2">
+                  {{customerCode?.mobileNo}}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mt-2" *ngIf="isCustomerSelect">
+              <div class="row align-items-center">
+                <div class="col-md-4 col-4">
+                  <label class="col-form-label">Price (NDP):</label>
+                </div>
+                <div class="col-md-8 col-8 pe-2">
+                  {{tractorPrice | currency : 'INR'}}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mt-2">
+              <div class="row align-items-center">
+                <div class="col-md-4 col-4">
+                  <label class="col-form-label">Payment Type:</label>
+                </div>
+                <div class="col-md-8 col-8 pe-2">
+                  <select [(ngModel)]="paymentType" class="form-control" (ngModelChange)="selectPayment()">
+                    <option value="cash" selected>Cash</option>
+                    <option value="finance">Finance</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mt-2" *ngIf="paymentTypeSelected">
+              <div class="row align-items-center">
+                <div class="col-md-4 col-4">
+                  <label class="col-form-label">Bank Category:</label>
+                </div>
+                <div class="col-md-8 col-8 pe-2">
+                  <select [(ngModel)]="bankCategorySelected" class="form-control" (ngModelChange)="bankListData()">
+                    <option value="" selected>Select Bank Category</option>
+                    <option *ngFor="let obj of bankCategoryList" [ngValue]="obj"> {{obj}} </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mt-2" *ngIf="paymentTypeSelected">
+              <div class="row align-items-center">
+                <div class="col-md-4 col-4">
+                  <label class="col-form-label">Bank Name:</label>
+                </div>
+                <div class="col-md-8 col-8 pe-2">
+                  <select [(ngModel)]="bankSelected" class="form-control">
+                    <option value="" selected>Select Bank</option>
+                    <option *ngFor="let obj of bankDataList" [ngValue]="obj"> {{obj.instName}} </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mt-2" *ngIf="paymentTypeSelected">
+              <div class="row align-items-center">
+                <div class="col-md-4 col-4">
+                  <label class="col-form-label">Expected Loan Sanction Date:</label>
+                </div>
+                <div class="col-md-8 col-8 pe-2">
+                  <input type="date" [(ngModel)]="loanSanctionDate" min="{{currentDate}}" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mt-2">
+              <div class="row align-items-center">
+                <div class="col-md-4 col-4">
+                  <label class="col-form-label">Old Tractor:</label>
+                </div>
+                <div class="col-md-8 col-8 pe-2">
+                  <select [(ngModel)]="oldTractor" class="form-control" (ngModelChange)="isOldTractor()">
+                    <option value="yes" selected>Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mt-2" *ngIf="yesOldTractor">
+              <div class="row align-items-center">
+                <div class="col-md-4 col-4">
+                  <label class="col-form-label">Old Tractor Price: </label>
+                </div>
+                <div class="col-md-8 col-8 pe-2">
+                  <input type="number" [(ngModel)]="oldTractorPrice" min="0" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mt-2" *ngIf="yesOldTractor">
+              <div class="row align-items-center">
+                <div class="col-md-4 col-4">
+                  <label class="col-form-label">Make:</label>
+                </div>
+                <div class="col-md-8 col-8 pe-2">
+                  <input type="text" placeholder="Enter..." [(ngModel)]="make" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mt-2" *ngIf="yesOldTractor">
+              <div class="row align-items-center">
+                <div class="col-md-4 col-4">
+                  <label class="col-form-label">Model:</label>
+                </div>
+                <div class="col-md-8 col-8 pe-2">
+                  <input type="text" placeholder="Enter..." [(ngModel)]="modelEntry" class="form-control">
+                </div>
+              </div>
+            </div>
+          <div class="col-md-3 mt-2">
+            <div class="row align-items-center">
+              <div class="col-md-4 col-4">
+                <label class="col-form-label">Margin Collected: </label>
+              </div>
+              <div class="col-md-8 col-8 pe-2">
+                <input type="text" placeholder="Enter..." [(ngModel)]="oldTractorPrice" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mt-2">
+            <div class="row align-items-center">
+              <div class="col-md-4 col-4">
+                <label class="col-form-label">Date of Margin Collected: </label>
+              </div>
+              <div class="col-md-8 col-8 pe-2">
+                <input type="date" [(ngModel)]="marginCollectedDate" min="{{fromDate}}" max="{{currentDate}}" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mt-2">
+            <div class="row align-items-center">
+              <div class="col-md-4 col-4">
+                <label class="col-form-label">Doc. Reference No:</label>
+              </div>
+              <div class="col-md-8 col-8 pe-2">
+                <input type="text" placeholder="Enter..." [(ngModel)]="make" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mt-2">
+            <div class="row align-items-center">
+              <div class="col-md-4 col-4">
+                <label class="col-form-label">Expected Disbursement Date:</label>
+              </div>
+              <div class="col-md-8 col-8 pe-2">
+                <input type="date" [(ngModel)]="modelEntry" min="{{currentDate}}" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mt-2" *ngIf="paymentTypeSelected">
+            <div class="row align-items-center">
+              <div class="col-md-4 col-4">
+                <label class="col-form-label">Proposed Finance Amount:</label>
+              </div>
+              <div class="col-md-8 col-8 pe-2">
+                <input type="text" placeholder="Enter..." [(ngModel)]="make" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mt-2">
+            <div class="row align-items-center">
+              <div class="col-md-4 col-4">
+                <label class="col-form-label">Remarks:</label>
+              </div>
+              <div class="col-md-8 col-8 pe-2">
+                <input type="text" placeholder="Enter..." [(ngModel)]="make" class="form-control">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-md-5"></div>
+      <div class="col-md-2">
+        <button class="btn btn-primary" (click)="postVehicleDetails()">Submit</button>
+      </div>
+      <div class="col-md-5"></div>
     </div>
   </div>
 </section>

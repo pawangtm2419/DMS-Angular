@@ -356,3 +356,6 @@ padding-right: 1rem;
       align-self: end !important;
   }
 }
+.form-control {
+  padding: .250rem .75rem !important;
+}

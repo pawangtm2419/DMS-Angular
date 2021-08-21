@@ -13,6 +13,7 @@ export class ReportDealerStockComponent implements OnInit {
   pageData: number = 1;
   limits = [{ "key": "50", "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
   limit: any = 50;
+  isExcelDownload: boolean = false;
 
   constructor(private dealer: DealerReportService, public toaster: ToasterService) { }
 
@@ -23,8 +24,9 @@ export class ReportDealerStockComponent implements OnInit {
     let data = {"type":"DEALERSTOCK","useType":"ALL"};
     this.dealer.getStocks(data).subscribe(res=> {
       this.stocksData=res.data;
-      this.limits.push({ "key": "ALL", "value": this.stocksData.length });
       if(this.stocksData.length > 0) {
+        this.isExcelDownload = true;
+        this.limits.push({ "key": "ALL", "value": this.stocksData.length });
         this.toaster.showSuccess("Data", "Report successfully Open.");
       } else {
         this.toaster.showInfo("Data", "No record found.");

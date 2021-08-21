@@ -30,6 +30,7 @@ import { CookieService } from 'ngx-cookie-service';
       positionClass: 'toast-top-right',
       preventDuplicates: false,
       newestOnTop: true,
+      tapToDismiss: true,
       progressBar: true,
       progressAnimation: 'increasing'
     }),
