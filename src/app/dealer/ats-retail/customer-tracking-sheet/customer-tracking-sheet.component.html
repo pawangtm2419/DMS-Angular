@@ -1,1 +1,32 @@
-<p>customer-tracking-sheet works!</p>
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="sidebarMain">
+          <div class="row">
+            <div class="col-md-12">
+              <ul class="model-menu">
+                <li><a routerLink="/home">Home</a></li>/
+                <li><a routerLink="/ats-retail">Dealer Retail Stock</a></li>/
+                <li>Customer Tracking Sheet</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <ng-container>
+          <div class="card mt-2">
+            <div class="row p-2" *ngFor="let vehicle of vehicleDetails">
+
+            </div>
+          </div>
+      </ng-container>
+    </div>
+  </div>
+</section>

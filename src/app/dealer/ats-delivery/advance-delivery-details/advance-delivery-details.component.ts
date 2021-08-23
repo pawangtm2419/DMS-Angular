@@ -131,7 +131,7 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
       }
     });
   }
-  // getCustomerByDealer
+
   customerDataByDealer(): void {
     const data = this.vehicleDetails[0].dealer.code;
     this.dealer.getCustomerByDealer(data).subscribe(res => {

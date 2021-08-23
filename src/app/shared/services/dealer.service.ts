@@ -36,4 +36,8 @@ export class DealerService {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
     return this.http.get(`${environment._url}/financial/getFinancialInstitutionsList?category=${data}`, httpOptions);
   }
+  getPayments(data: any): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this.http.post(`${environment._url}/customer/payments`, data, httpOptions);
+  }
 }
