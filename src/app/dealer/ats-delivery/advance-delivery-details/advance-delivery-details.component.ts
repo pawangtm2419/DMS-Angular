@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CommonService, DealerService, ToasterService } from 'src/app/shared/services';
 
 @Component({
@@ -29,7 +29,7 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
   bankDataList: any;
   bankSelected: any;
   loanSanctionDate: any;
-  oldTractor: any;
+  isOldTractorReq: any;
   yesOldTractor: boolean = false;
   oldTractorPrice: any;
   make: any;
@@ -42,7 +42,13 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
   proposedFinanceAmount: any;
   remark: any;
 
-  constructor(private route: ActivatedRoute, private service: CommonService, private dealer: DealerService, public toaster: ToasterService) {
+  constructor(
+    private route: ActivatedRoute,
+    private service: CommonService,
+    private dealer: DealerService,
+    public toaster: ToasterService,
+    private router: Router
+  ) {
     this.route.params.subscribe((params: Params) => {
       this.params = params;
     });
@@ -75,7 +81,7 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
     }
   }
   isOldTractor(): void {
-    if(this.oldTractor === 'yes') {
+    if(this.isOldTractorReq === 'yes') {
       this.yesOldTractor = true;
     } else {
       this.yesOldTractor = false;
@@ -135,116 +141,102 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
     });
   }
   postVehicleDetails(): void {
+    if(this.dealerPrice < this.oldTractorPrice/2 || this.dealerPrice > this.oldTractorPrice*3) {
+      this.toaster.showInfo('Data', 'Invalid Dealer Price');
+      return;
+    }
     const oldTractorObj = {
-      price: (this.oldTractor === 'yes' ? this.oldTractorPrice : 0),
-      make: (this.oldTractor === 'yes' ? this.make : ''),
-      model: (this.oldTractor === 'yes' ? this.modelEntry : ''),
+      price: (this.isOldTractorReq === 'yes' ? this.oldTractorPrice : '0'),
+      make: (this.isOldTractorReq === 'yes' ? this.make : ''),
+      model: (this.isOldTractorReq === 'yes' ? this.modelEntry : ''),
+    };
+    const customerData = {
+      code: this.customerCode.customerId,
+      phone: this.customerCode.mobileNo,
+      state: this.customerCode.address.stateName,
+      city: this.customerCode.address.district,
+      tehsil: this.customerCode.address.tehsil,
+      "invoiceNumber": this.vehicleDetails[0].dealer.invoiceNumber,
+      "invoiceDate": this.deliveryDate,
+      "deliveryDate": this.deliveryDate,
+      "expDisbDate": this.expectedDisbursementDate,
+      "name": this.customerCode.ownerName,
+      "dealPrice": this.dealerPrice,
+      "balanceAmount": (this.dealerPrice - (this.marginCollected || 0) - (this.isOldTractorReq === 'yes' ? this.oldTractorPrice : 0)),
+      "amountReceived": this.marginCollected,
+      "amountReceivedDate": this.marginCollectedDate,
+      "hasOldTractor": (this.isOldTractorReq === 'Yes' ? 'Yes' : 'No'),
+      "oldTractor": oldTractorObj,
+      "receivedRemarks": this.remark,
+      "paymentType": (this.paymentType === 'finance') ? 'Finance' : 'Cash',
+    };
+    const history = {
+      chassisNo: this.params.id,
+      engineNo: this.vehicleDetails[0].engineNo,
+      code: this.customerCode.customerId,
+      status: "RECEIVED",
+      "locationType": "CUSTOMER",
+      "previousLocType": this.vehicleDetails[0].locationType,
+      "previousState": this.vehicleDetails[0].dealer,
+      "phone": this.customerCode.mobileNo,
+      "state": this.customerCode.address.stateName,
+      city: this.customerCode.address.district,
+      villageName: this.customerCode.address.villageName,
+      tehsil: this.customerCode.address.tehsil,
+      "invoiceNumber": this.vehicleDetails[0].dealer.invoiceNumber,
+      "invoiceDate": this.deliveryDate,
+      "receivedOn": this.deliveryDate,
+      "variantCode": this.vehicleDetails[0].variantCode,
+      "NDP": this.vehicleDetails[0].NDP,
+      "SST": this.vehicleDetails[0].SST,
+      "GST": this.vehicleDetails[0].GST,
+      "prodDate": this.vehicleDetails[0].prodDate,
+      "dealerMargin": this.vehicleDetails[0].dealerMargin,
+      "model": this.vehicleDetails[0].model,
+      "productCode": this.vehicleDetails[0].productCode,
+      "name": this.customerCode.ownerName,
+      "purchaseType": (this.paymentType === 'finance') ? 'Finance' : 'Cash',
+      "paymentType": (this.paymentType === 'finance') ? 'Finance' : 'Cash',
+      "customer": customerData,
+      "dealer": this.vehicleDetails[0].dealer,
+      "createdBy": "EMP0001"
     };
     const dataAPI = {
       action: "ADVANCE",
       lactionType: "ADVANCE",
       chassisNo: this.params.id,
-      historyObj: {
-        chassisNo: this.params.id,
-        engineNo: this.vehicleDetails[0].engineNo,
-        code: this.customerCode.customerId,
-        status: "RECEIVED",
-        "locationType": "CUSTOMER",
-        "previousLocType": this.vehicleDetails[0].locationType,
-        "previousState": this.vehicleDetails[0].dealer,
-        "phone": this.customerCode.mobileNo,
-        "state": this.customerCode.address.stateName,
-        city: this.customerCode.address.district,
-        villageName: this.customerCode.address.villageName,
-        tehsil: this.customerCode.address.tehsil,
-        "invoiceNumber": this.vehicleDetails[0].dealer.invoiceNumber,
-        "invoiceDate": this.deliveryDate,
-        "receivedOn": this.deliveryDate,
-        "variantCode": this.vehicleDetails[0].variantCode,
-        "NDP": this.vehicleDetails[0].NDP,
-        "SST": this.vehicleDetails[0].SST,
-        "GST": this.vehicleDetails[0].GST,
-        "prodDate": this.vehicleDetails[0].prodDate,
-        "dealerMargin": this.vehicleDetails[0].dealerMargin,
-        "model": this.vehicleDetails[0].model,
-        "productCode": this.vehicleDetails[0].productCode,
-        "name": this.customerCode.ownerName,
-        "purchaseType": this.paymentType,
-        "paymentType": this.paymentType,
-        "customer": {
-          "code": this.customerCode.customerId,
-          "phone": this.customerCode.mobileNo,
-          "state": this.customerCode.address.stateName,
-          city: this.customerCode.address.district,
-          tehsil: this.customerCode.address.tehsil,
-          "invoiceNumber": this.vehicleDetails[0].dealer.invoiceNumber,
-          "invoiceDate": this.deliveryDate,
-          "deliveryDate": this.deliveryDate,
-          "expDisbDate": this.expectedDisbursementDate,
-          "name": this.customerCode.ownerName,
-          "dealPrice": this.dealerPrice,
-          "balanceAmount": (this.dealerPrice - (this.marginCollected || 0) - (this.oldTractor === 'yes' ? this.oldTractorPrice : 0)),
-          "amountReceived": this.marginCollected,
-          "amountReceivedDate": this.marginCollectedDate,
-          "hasOldTractor": this.oldTractor,
-          "oldTractor": oldTractorObj,
-          "receivedRemarks": this.remark,
-          "paymentType": this.paymentType
-        },
-        "dealer": this.vehicleDetails[0].dealer,
-        "createdBy": "EMP0001"
-      },
+      historyObj: history,
       "paymentObj": {
-        "hasOldTractor": this.oldTractor,
-        "paymentType": this.paymentType,
+        "hasOldTractor": (this.isOldTractorReq === 'Yes' ? 'Yes' : 'No'),
+        "paymentType": (this.paymentType === 'finance') ? 'Finance' : 'Cash',
         "oldTractor": oldTractorObj,
         "expDisbDate": this.expectedDisbursementDate,
         "amountReceived": this.marginCollected,
         "amountReceivedDate": this.marginCollectedDate,
         "deliveryDate": this.deliveryDate,
         "dealPrice": this.dealerPrice,
-        "balanceAmount": (this.dealerPrice - (this.marginCollected || 0) - (this.oldTractor === 'yes' ? this.oldTractorPrice : 0)),
+        "balanceAmount": (this.dealerPrice - (this.marginCollected || 0) - (this.isOldTractorReq === 'yes' ? this.oldTractorPrice : 0)),
         "transactionNo": this.docReferenceNo,
         "remarks": this.remark,
-        "createdBy": "9515151953",
         customerId: this.customerCode.customerId,
         dealerCode: this.vehicleDetails[0].dealer.code,
         "invoiceNumber": this.vehicleDetails[0].dealer.invoiceNumber,
         "invoiceDate": this.vehicleDetails[0].dealer.invoiceDate,
         "chassisNo": this.params.id
       },
-      "customerObj": {
-        code: this.customerCode.customerId,
-        phone: this.customerCode.mobileNo,
-        state: this.customerCode.address.stateName,
-        city: this.customerCode.address.district,
-        tehsil: this.customerCode.address.tehsil,
-        "invoiceNumber": this.vehicleDetails[0].dealer.invoiceNumber,
-        "invoiceDate": this.deliveryDate,
-        "deliveryDate": this.deliveryDate,
-        "expDisbDate": this.expectedDisbursementDate,
-        "name": this.customerCode.ownerName,
-        "dealPrice": this.dealerPrice,
-        "balanceAmount": (this.dealerPrice - (this.marginCollected || 0) - (this.oldTractor === 'yes' ? this.oldTractorPrice : 0)),
-        "amountReceived": this.marginCollected,
-        "amountReceivedDate": this.marginCollectedDate,
-        "hasOldTractor": this.oldTractor,
-        "oldTractor": oldTractorObj,
-        "receivedRemarks": this.remark,
-        "paymentType": this.paymentType
-      },
+      "customerObj": customerData,
       "finObj": {
-        "expLoanSanctionDate": this.loanSanctionDate,
-        "bankCategory": this.bankCategorySelected,
-        "bankName": this.bankSelected.instName,
-        "amount": this.proposedFinanceAmount
+        "expLoanSanctionDate": (this.paymentType === 'finance') ? this.loanSanctionDate : '',
+        "bankCategory": (this.paymentType === 'finance') ? this.bankCategorySelected : '',
+        "bankName": (this.paymentType === 'finance') ? this.bankSelected.instName : '',
+        "amount": (this.paymentType === 'finance') ? this.proposedFinanceAmount : ''
       },
       "dealer": this.vehicleDetails[0].dealer,
       "emailId": "shallu.judge@sdfgroup.com"
     }
-   this.dealer.updateVehicleDetails(dataAPI).subscribe((res: any) => {
-      if(res.status){
-        this.vehicleData();
+    this.dealer.updateVehicleDetails(dataAPI).subscribe((res: any) => {
+      if(res.status) {
+        this.router.navigate(['/ats-delivery']);
       }
     });
   }

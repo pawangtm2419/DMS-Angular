@@ -64,6 +64,7 @@ const routes: Routes = [
   { path: 'advanceDeliveryDetails/:id', loadChildren: () => import('./dealer/ats-delivery/advance-delivery-details/advance-delivery-details.module').then(m => m.AdvanceDeliveryDetailsModule), canActivate: [AppGuard] },
   { path: 'ats-insurance', loadChildren: () => import('./dealer/ats-insurance/ats-insurance.module').then(m => m.AtsInsuranceModule), canActivate: [AppGuard] },
   { path: 'ats-retail', loadChildren: () => import('./dealer/ats-retail/ats-retail.module').then(m => m.AtsRetailModule), canActivate: [AppGuard] },
+  { path: 'customerTrackingSheet/:id', loadChildren: () => import('./dealer/ats-retail/customer-tracking-sheet/customer-tracking-sheet.module').then(m => m.CustomerTrackingSheetModule), canActivate: [AppGuard] },
   // bgs /page in dealer module
   { path: 'bgs-report', loadChildren: () => import('./dealer/bgs/bgs.module').then(m => m.BgsModule), canActivate: [AppGuard] },
   // invoice page in dealer module
