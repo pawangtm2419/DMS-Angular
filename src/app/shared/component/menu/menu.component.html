@@ -209,6 +209,27 @@
            <li class="dropdown drop-down01">
                <a title="Dealers" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-cubes"></i></a>
                <ul class="dropdown-menu sub-menu01">
+                <li>
+                  <a>View Report<span class="rgt-arrow">&rsaquo;</span></a>
+                  <ul>
+                    <li><a routerLink="/r-dealer-stock">Dealer Stock</a></li>
+                    <li><a routerLink="/r-dealer-stock-variantwise">Dealer Stock Variant Wise</a></li>
+                    <li><a routerLink="/r-dealer-collection">Dealer Collection MTD</a></li>
+                    <li><a routerLink="/r-dealer-daily-collection">Dealer Collection Daywise</a></li>
+                    <li><a routerLink="/r-ats">ATS Reports</a></li>
+                    <li><a routerLink="/r-rts">RTS Reports</a></li>
+                    <li><a routerLink="/r-delivery">Delivery Reports</a></li>
+                    <li><a routerLink="/r-retail">Retail Reports</a></li>
+                    <li><a routerLink="/r-retail-return">Reversal Report</a></li>
+                    <li><a routerLink="/r-advance">Advance Reports</a></li>
+                    <li><a routerLink="/r-bd-sd">BG/SD Monitoring</a></li>
+                    <li><a routerLink="/r-old-tractor">Old Tractor Exchange</a></li>
+                    <li><a routerLink="/r-tehsil-based">Tehsil Based Report</a></li>
+                    <li><a routerLink="/r-exppected-disbursement">Expected Disbursement Report</a></li>
+                    <li><a routerLink="/r-aging-from-production">Aging From Production</a></li>
+                    <li><a routerLink="/r-aging-from-recieved">Aging From Received</a></li>
+                  </ul>
+                </li>
                    <li>
                        <a>Invoices<span class="rgt-arrow">&rsaquo;</span></a>
                        <ul>
@@ -255,27 +276,6 @@
                    <li><a routerLink="/bgs-report">BGS</a></li>
                </ul>
            </li>
-           <li class="dropdown drop-down01">
-               <a title="Reports" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-chart-bar"></i></a>
-                <ul class="dropdown-menu sub-menu02">
-                    <li><a routerLink="/r-dealer-stock">Dealer Stock</a></li>
-                    <li><a routerLink="/r-dealer-stock-variantwise">Dealer Stock Variant Wise</a></li>
-                    <li><a routerLink="/r-dealer-collection">Dealer Collection MTD</a></li>
-                    <li><a routerLink="/r-dealer-daily-collection">Dealer Collection Daywise</a></li>
-                    <li><a routerLink="/r-ats">ATS Reports</a></li>
-                    <li><a routerLink="/r-rts">RTS Reports</a></li>
-                    <li><a routerLink="/r-delivery">Delivery Reports</a></li>
-                    <li><a routerLink="/r-retail">Retail Reports</a></li>
-                    <li><a routerLink="/r-retail-return">Reversal Report</a></li>
-                    <li><a routerLink="/r-advance">Advance Reports</a></li>
-                    <li><a routerLink="/r-bd-sd">BG/SD Monitoring</a></li>
-                    <li><a routerLink="/r-old-tractor">Old Tractor Exchange</a></li>
-                    <li><a routerLink="/r-tehsil-based">Tehsil Based Report</a></li>
-                    <li><a routerLink="/r-exppected-disbursement">Expected Disbursement Report</a></li>
-                    <li><a routerLink="/r-aging-from-production">Aging From Production</a></li>
-                    <li><a routerLink="/r-aging-from-recieved">Aging From Received</a></li>
-                </ul>
-            </li>
       </ul>
        <div class="settingArea">
            <a type="button" (click)="getLogout()"><i class="fa fa-power-off"></i></a>
