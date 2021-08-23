@@ -97,7 +97,7 @@
                   <label class="col-form-label">Balance Price:</label>
                 </div>
                 <div class="col-md-8 col-8 pe-2">
-                  <input type="number" readonly [(ngModel)]="balancePrice" value="{{dealerPrice-oldTractorPrice}}" class="form-control" disabled>
+                  <input type="number" readonly [(ngModel)]="balancePrice" value="{{dealerPrice-(oldTractorPrice || 0)-(this.marginCollected || 0)}}" class="form-control" disabled>
                 </div>
               </div>
             </div>
@@ -279,7 +279,7 @@
                 <label class="col-form-label">Margin Collected: </label>
               </div>
               <div class="col-md-8 col-8 pe-2">
-                <input type="text" placeholder="Enter..." [(ngModel)]="oldTractorPrice" class="form-control">
+                <input type="text" placeholder="Enter..." [(ngModel)]="marginCollected" class="form-control">
               </div>
             </div>
           </div>
@@ -299,7 +299,7 @@
                 <label class="col-form-label">Doc. Reference No:</label>
               </div>
               <div class="col-md-8 col-8 pe-2">
-                <input type="text" placeholder="Enter..." [(ngModel)]="make" class="form-control">
+                <input type="text" placeholder="Enter..." [(ngModel)]="docReferenceNo" class="form-control">
               </div>
             </div>
           </div>
@@ -309,7 +309,7 @@
                 <label class="col-form-label">Expected Disbursement Date:</label>
               </div>
               <div class="col-md-8 col-8 pe-2">
-                <input type="date" [(ngModel)]="modelEntry" min="{{currentDate}}" class="form-control">
+                <input type="date" [(ngModel)]="expectedDisbursementDate" min="{{currentDate}}" class="form-control">
               </div>
             </div>
           </div>
@@ -319,7 +319,7 @@
                 <label class="col-form-label">Proposed Finance Amount:</label>
               </div>
               <div class="col-md-8 col-8 pe-2">
-                <input type="text" placeholder="Enter..." [(ngModel)]="make" class="form-control">
+                <input type="text" placeholder="Enter..." [(ngModel)]="proposedFinanceAmount" class="form-control">
               </div>
             </div>
           </div>
@@ -329,7 +329,7 @@
                 <label class="col-form-label">Remarks:</label>
               </div>
               <div class="col-md-8 col-8 pe-2">
-                <input type="text" placeholder="Enter..." [(ngModel)]="make" class="form-control">
+                <input type="text" placeholder="Enter..." [(ngModel)]="remark" class="form-control">
               </div>
             </div>
           </div>
