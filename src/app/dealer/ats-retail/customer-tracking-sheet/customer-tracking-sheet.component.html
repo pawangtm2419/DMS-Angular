@@ -21,7 +21,7 @@
   <div class="container-fluid">
     <div class="row">
       <ng-container>
-          <div class="card mt-2">
+          <div class="card">
             <div class="row p-2" *ngFor="let vehicle of vehicleDetails">
               <div class="col-md-4">
                 <div class="row align-items-center">
@@ -29,7 +29,7 @@
                     <label for="customerName" class="col-form-label">Customer : </label>
                   </div>
                   <div class="col-md-8 col-8 pe-2">
-                    <p id="customerName">{{vehicle.customer.name}}</p>
+                    <p id="customerName">{{vehicle?.customer?.name}}</p>
                   </div>
                 </div>
               </div>
@@ -39,7 +39,7 @@
                     <label class="col-form-label">Dealer : </label>
                   </div>
                   <div class="col-md-8 col-8 pe-2">
-                    <p> {{vehicle.dealer.code}}/ {{vehicle.dealer.name}}</p>
+                    <p> {{vehicle?.dealer?.code}}/ {{vehicle?.dealer?.name}}</p>
                   </div>
                 </div>
               </div>
@@ -49,7 +49,7 @@
                     <label class="col-form-label">Deal Price : </label>
                   </div>
                   <div class="col-md-8 col-8 pe-2">
-                    <p> {{vehicle.customer.dealPrice | currency : 'INR'}}</p>
+                    <p> {{vehicle?.customer?.dealPrice | currency : 'INR'}}</p>
                   </div>
                 </div>
               </div>
@@ -59,7 +59,7 @@
                     <label class="col-form-label">Address : </label>
                   </div>
                   <div class="col-md-8 col-8 pe-2">
-                    <p> {{vehicle.customer.city}}, {{vehicle.customer.state}}</p>
+                    <p> {{vehicle?.customer?.city}}, {{vehicle?.customer?.state}}</p>
                   </div>
                 </div>
               </div>
@@ -69,7 +69,7 @@
                     <label class="col-form-label">Address : </label>
                   </div>
                   <div class="col-md-8 col-8 pe-2">
-                    <p> {{vehicle.dealer.city}}/ {{vehicle.dealer.state}}</p>
+                    <p> {{vehicle?.dealer?.city}}/ {{vehicle?.dealer?.state}}</p>
                   </div>
                 </div>
               </div>
@@ -79,7 +79,7 @@
                     <label class="col-form-label">Old Tractor Price: </label>
                   </div>
                   <div class="col-md-8 col-8 pe-2">
-                    <p> <span *ngIf="vehicle.customer.hasOldTractor ==='No'">0</span><span *ngIf="vehicle.customer.hasOldTractor ==='Yes'">{{vehicle.customer.oldTractor.price | currency : 'INR'}}</span> </p>
+                    <p> <span *ngIf="vehicle?.customer?.hasOldTractor ==='No'">0</span><span *ngIf="vehicle?.customer?.hasOldTractor ==='Yes'">{{vehicle?.customer?.oldTractor?.price | currency : 'INR'}}</span> </p>
                   </div>
                 </div>
               </div>
@@ -89,7 +89,7 @@
                     <label class="col-form-label">Contact : </label>
                   </div>
                   <div class="col-md-8 col-8 pe-2">
-                    <p> {{vehicle.customer.phone}}</p>
+                    <p> {{vehicle?.customer?.phone}}</p>
                   </div>
                 </div>
               </div>
@@ -99,7 +99,7 @@
                     <label class="col-form-label">Chassis No: </label>
                   </div>
                   <div class="col-md-8 col-8 pe-2">
-                    <p> {{vehicle.chassisNo}}</p>
+                    <p> {{vehicle?.chassisNo}}</p>
                   </div>
                 </div>
               </div>
@@ -109,7 +109,7 @@
                     <label class="col-form-label">Received Amount: </label>
                   </div>
                   <div class="col-md-8 col-8 pe-2">
-                    <p> {{vehicle.customer.amountReceived | currency : 'INR'}}</p>
+                    <p> {{vehicle?.customer?.amountReceived | currency : 'INR'}}</p>
                   </div>
                 </div>
               </div>
@@ -119,7 +119,7 @@
                     <label class="col-form-label">Delivery Date: </label>
                   </div>
                   <div class="col-md-8 col-8 pe-2">
-                    <p> {{vehicle.customer.deliveryDate | date: 'dd-MM-yyyy'}}</p>
+                    <p> {{vehicle?.customer?.deliveryDate | date: 'dd-MM-yyyy'}}</p>
                   </div>
                 </div>
               </div>
@@ -129,7 +129,7 @@
                     <label class="col-form-label">NDP(without tax): </label>
                   </div>
                   <div class="col-md-8 col-8 pe-2">
-                    <p> {{vehicle.NDP | currency : 'INR'}}</p>
+                    <p> {{vehicle?.NDP | currency : 'INR'}}</p>
                   </div>
                 </div>
               </div>
@@ -139,7 +139,7 @@
                     <label class="col-form-label">Balance Amount: </label>
                   </div>
                   <div class="col-md-8 col-8 pe-2">
-                    <p> {{vehicle.customer.balanceAmount | currency : 'INR'}}</p>
+                    <p> {{vehicle?.customer?.balanceAmount | currency : 'INR'}}</p>
                   </div>
                 </div>
               </div>
@@ -149,7 +149,7 @@
                     <label class="col-form-label">Bank Name: </label>
                   </div>
                   <div class="col-md-8 col-8 pe-2">
-                    <p> </p>
+                    <p>{{vehicle?.financeDetails?.bankName}}</p>
                   </div>
                 </div>
               </div>
@@ -159,7 +159,7 @@
     </div>
   </div>
 </section>
-<section class="mt-2 mb-3">
+<section class="mt-2 mb-2">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-4 mb-2">
@@ -206,7 +206,7 @@
             <label class="col-form-label">Reference No: </label>
           </div>
           <div class="col-md-8 col-8 pe-2">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" [(ngModel)]="referanceNo">
           </div>
         </div>
       </div>
@@ -216,7 +216,7 @@
             <label class="col-form-label">Date Received: </label>
           </div>
           <div class="col-md-8 col-8 pe-2">
-            <input type="date" class="form-control">
+            <input type="date" class="form-control" [(ngModel)]="amountReceivedDate">
           </div>
         </div>
       </div>
@@ -226,7 +226,7 @@
             <label class="col-form-label">Amount Received: </label>
           </div>
           <div class="col-md-8 col-8 pe-2">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" [(ngModel)]="amountRecived">
           </div>
         </div>
       </div>
@@ -236,7 +236,7 @@
             <label class="col-form-label">Remarks: </label>
           </div>
           <div class="col-md-8 col-8 pe-2">
-            <textarea class="form-control" rows="2"></textarea>
+            <textarea class="form-control" rows="2" [(ngModel)]="paymentRemark"></textarea>
           </div>
         </div>
       </div>
@@ -249,7 +249,54 @@
           <div class="col-md-7 col-7 ps-3"></div>
           <div class="col-md-5 col-5 pe-2">
             <div class="d-grid gap-2">
-              <button class="btn btn-primary"><i class="fas fa-money-check-alt"></i> Add Payment</button>
+              <button class="btn btn-primary" (click)="postPaymentData()"><i class="fas fa-money-check-alt"></i> Add Payment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle" id="export">
+          <thead class="text-white sticky-top theadbg">
+            <tr>
+              <th>#</th>
+              <th>Date Received</th>
+              <th>Payment Type</th>
+              <th>Reference No</th>
+              <th>Institution Type</th>
+              <th>Institution Name</th>
+              <th>Remarks</th>
+              <th>Amount Received</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let payment of transactionList; let i=index">
+              <td>{{i+1}}</td>
+              <td>{{payment?.amountReceivedDate | date: 'dd-MM-yyyy'}}</td>
+              <td>{{payment?.paymentType}}</td>
+              <td>{{payment?.transactionNo}}</td>
+              <td>{{payment?.financeDetails?.bankCategory}}</td>
+              <td>{{payment?.financeDetails?.bankName}}</td>
+              <td>{{payment?.remarks}}</td>
+              <td>{{payment?.amountReceived | currency : 'INR'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row align-items-center mb-2">
+      <div class="col-md-8 mb-2"></div>
+      <div class="col-md-4 mb-2">
+        <div class="row align-items-center">
+          <div class="col-md-7 col-7 ps-3"></div>
+          <div class="col-md-5 col-5">
+            <div class="d-grid gap-2">
+              <button class="btn btn-primary" (click)="getRetailSave()"><i class="fas fa-money-check-alt"></i> Retail</button>
             </div>
           </div>
         </div>

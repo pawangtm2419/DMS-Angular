@@ -10,6 +10,7 @@ import { CommonService, DealerService, ToasterService } from 'src/app/shared/ser
 export class CustomerTrackingSheetComponent implements OnInit {
   date: Date = new Date();
   params!: Params;
+  userData = JSON.parse(localStorage.getItem('user') || '{}').data;
   fromDate: string;
   toDate: string;
   currentDate: string;
@@ -22,6 +23,10 @@ export class CustomerTrackingSheetComponent implements OnInit {
   selectPaymentInstitution: any = '';
   bankDataList: any;
   selectPaymentInstitutionName: any;
+  referanceNo: any;
+  amountRecived: any;
+  paymentRemark: any;
+  amountReceivedDate: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,6 +45,7 @@ export class CustomerTrackingSheetComponent implements OnInit {
 
   ngOnInit(): void {
     this.vehicleData();
+    this.getTransaction();
   }
 
   vehicleData(): void {
@@ -47,10 +53,8 @@ export class CustomerTrackingSheetComponent implements OnInit {
     this.service.getVehicleDetails(data).subscribe(res => {
       if(res.status === "true"){
         this.vehicleDetails = res.data;
-        console.log(this.vehicleDetails[0]);
         this.getPaymentsList(this.vehicleDetails[0].chassisNo, this.vehicleDetails[0].customer.code, this.vehicleDetails[0].customer.invoiceNumber);
         this.getBankCategoryData();
-        this.getTransaction();
       }
     });
   }
@@ -63,7 +67,7 @@ export class CustomerTrackingSheetComponent implements OnInit {
     };
     this.dealer.getPayments(data).subscribe((res: any) => {
       if(res.status === "true"){
-        this.transactionList = res.data[0];
+        this.transactionList = res.data;
       }
     });
   }
@@ -91,5 +95,51 @@ export class CustomerTrackingSheetComponent implements OnInit {
         this.bankDataList = res.data;
       }
     });
+  }
+
+  postPaymentData(): void {
+    const data = {
+      "action": "UPDATE",
+      "actionType": "CUSTOMERPAYMENT",
+      "chassisNo": this.vehicleDetails[0].chassisNo,
+      "paymentObj": {
+        "paymentMode": "Cash",
+        "chassisNo": this.vehicleDetails[0].chassisNo,
+        "dealerCode": this.vehicleDetails[0].dealer.code,
+        "customerId": this.vehicleDetails[0].customer.code,
+        "dealPrice": this.vehicleDetails[0].customer.dealPrice,
+        "invoiceNumber": this.vehicleDetails[0].customer.invoiceNumber,
+        "amountReceivedDate": this.amountReceivedDate,
+        "createdBy": this.userData.empID,
+        "paymentType": this.selectPaymentType,
+        "financeDetails": {
+          "bankCategory": this.selectPaymentInstitution,
+          "bankName": this.selectPaymentInstitutionName,
+        },
+        "transactionNo": this.referanceNo,
+        "amountReceived": this.amountRecived,
+        "remarks": this.paymentRemark,
+        "balanceAmount": (this.vehicleDetails[0].customer.dealPrice - this.amountRecived)
+      }
+    };
+    this.dealer.savePayment(data).subscribe((res: any) => {
+      if(res.status) {
+        this.toaster.showSuccess("Success" , res.message);
+      }
+    });
+  }
+  getRetailSave(): void {
+    const data = {
+      "chassisNo": this.vehicleDetails[0].chassisNo,
+      "retailDate": "2021-08-24T00:00:00.000Z",
+      "createdBy": this.userData.empID,
+      "emailId": this.userData.email
+    };
+    console.log(data);
+    /* this.dealer.saveRetail(data).subscribe((res: any) => {
+      if(res.status) {
+        this.toaster.showSuccess("Success" , res.message);
+      }
+    }); */
   }
 }

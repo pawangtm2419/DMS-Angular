@@ -40,4 +40,12 @@ export class DealerService {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
     return this.http.post(`${environment._url}/customer/payments`, data, httpOptions);
   }
+  savePayment(data: any): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this.http.post(`${environment._url}/vehicle/customerPayment`, data, httpOptions);
+  }
+  saveRetail(data: any) {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this.http.post(`${environment._url}/vehicle/retailVehicle`, data, httpOptions);
+  }
 }
