@@ -27,6 +27,9 @@ export class CustomerTrackingSheetComponent implements OnInit {
   amountRecived: any;
   paymentRemark: any;
   amountReceivedDate: any;
+  paymentsList: any;
+  retailDate: any;
+  amtReceived: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,7 +43,7 @@ export class CustomerTrackingSheetComponent implements OnInit {
     var month = 1+this.date.getMonth();
     var year = this.date.getFullYear();
     this.fromDate =  year+"-"+(month<9?'0':'')+month+"-"+'01';
-    this.toDate = this.currentDate =  year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
+    this.retailDate = this.toDate = this.currentDate =  year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
   }
 
   ngOnInit(): void {
@@ -53,6 +56,14 @@ export class CustomerTrackingSheetComponent implements OnInit {
     this.service.getVehicleDetails(data).subscribe(res => {
       if(res.status === "true"){
         this.vehicleDetails = res.data;
+        if (this.vehicleDetails.isRetailed === false) {
+          this.amtReceived = this.vehicleDetails.customer.dealPrice - this.vehicleDetails.customer.balanceAmount;
+        } else {
+          this.toaster.showInfo("Info", "This is a retail vehicle");
+          setTimeout(() => {
+            this.router.navigate(['/ats-retail']);
+          }, 3000);
+      }
         this.getPaymentsList(this.vehicleDetails[0].chassisNo, this.vehicleDetails[0].customer.code, this.vehicleDetails[0].customer.invoiceNumber);
         this.getBankCategoryData();
       }
@@ -67,7 +78,7 @@ export class CustomerTrackingSheetComponent implements OnInit {
     };
     this.dealer.getPayments(data).subscribe((res: any) => {
       if(res.status === "true"){
-        this.transactionList = res.data;
+        this.paymentsList = res.data;
       }
     });
   }
@@ -124,22 +135,30 @@ export class CustomerTrackingSheetComponent implements OnInit {
     };
     this.dealer.savePayment(data).subscribe((res: any) => {
       if(res.status) {
+        this.ngOnInit();
         this.toaster.showSuccess("Success" , res.message);
       }
     });
   }
   getRetailSave(): void {
+    if(this.paymentsList.length > 0) {
+     for(let i = 0; i< this.paymentsList.length; i++) {
+       this.retailDate = this.paymentsList[i].amountReceivedDate;
+     }
+    }
     const data = {
       "chassisNo": this.vehicleDetails[0].chassisNo,
-      "retailDate": "2021-08-24T00:00:00.000Z",
+      "retailDate": this.retailDate,
       "createdBy": this.userData.empID,
       "emailId": this.userData.email
     };
-    console.log(data);
-    /* this.dealer.saveRetail(data).subscribe((res: any) => {
+    this.dealer.saveRetail(data).subscribe((res: any) => {
       if(res.status) {
         this.toaster.showSuccess("Success" , res.message);
+        setTimeout(() => {
+          this.router.navigate(['/ats-retail']);
+        }, 3000);
       }
-    }); */
+    });
   }
 }

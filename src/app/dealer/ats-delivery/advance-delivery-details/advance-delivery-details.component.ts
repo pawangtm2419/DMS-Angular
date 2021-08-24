@@ -236,7 +236,10 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
     }
     this.dealer.updateVehicleDetails(dataAPI).subscribe((res: any) => {
       if(res.status) {
-        this.router.navigate(['/ats-delivery']);
+        this.toaster.showSuccess("Success", "Vehicle has been successfully delivered.");
+        setTimeout(() => {
+          this.router.navigate(['/ats-delivery']);
+        }, 3000);
       }
     });
   }

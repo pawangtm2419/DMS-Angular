@@ -275,7 +275,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let payment of transactionList; let i=index">
+            <tr *ngFor="let payment of paymentsList; let i=index">
               <td>{{i+1}}</td>
               <td>{{payment?.amountReceivedDate | date: 'dd-MM-yyyy'}}</td>
               <td>{{payment?.paymentType}}</td>

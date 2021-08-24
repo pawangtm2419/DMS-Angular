@@ -50,24 +50,24 @@
                       <tbody>
                           <tr *ngFor="let vehicle of vehiData; let i = index">
                               <td data-title="Sr. No.">{{i+1}}</td>
-                              <td data-title="Model Code">{{vehicle.model}}</td>
-                              <td data-title="Variant Code">{{vehicle.variantCode}}</td>
-                              <td data-title="Creation Date">{{vehicle.createDate | date:"dd-MM-yyyy"}}</td>
-                              <td data-title="Product Code">{{vehicle.productCode}}</td>
-                              <td data-title="Chassis No">{{vehicle.chassisNo}}</td>
-                              <td data-title="Engine No">{{vehicle.engineNo}}</td>
-                              <td data-title="Prod Date">{{vehicle.prodDate | date:"dd-MM-yyyy"}}</td>
-                              <td data-title="From Code">{{vehicle.previousState.code}}</td>
-                              <td data-title="From Name">{{vehicle.previousState.name}}</td>
-                              <td data-title="From Location">{{vehicle.previousState.city}}</td>
-                              <td data-title="To Code">{{vehicle.code}}</td>
-                              <td data-title="To Name">{{vehicle.name}}</td>
-                              <td data-title="To Location">{{vehicle.city}}</td>
-                              <td data-title="Invoice Number">{{vehicle.invoiceNumber}}</td>
-                              <td data-title="Invoice Date">{{vehicle.invoiceDate | date:"dd-MM-yyyy"}}</td>
-                              <td data-title="Invoice Amount">{{vehicle.invoiceAmount}}</td>
-                              <td data-title="Location">{{vehicle.locationType}}</td>
-                              <td data-title="Status">{{vehicle.status}}</td>
+                              <td data-title="Model Code">{{vehicle?.model}}</td>
+                              <td data-title="Variant Code">{{vehicle?.variantCode}}</td>
+                              <td data-title="Creation Date">{{vehicle?.createDate | date:"dd-MM-yyyy"}}</td>
+                              <td data-title="Product Code">{{vehicle?.productCode}}</td>
+                              <td data-title="Chassis No">{{vehicle?.chassisNo}}</td>
+                              <td data-title="Engine No">{{vehicle?.engineNo}}</td>
+                              <td data-title="Prod Date">{{vehicle?.prodDate | date:"dd-MM-yyyy"}}</td>
+                              <td data-title="From Code">{{vehicle?.previousState.code}}</td>
+                              <td data-title="From Name">{{vehicle?.previousState.name}}</td>
+                              <td data-title="From Location">{{vehicle?.previousState.city}}</td>
+                              <td data-title="To Code">{{vehicle?.code}}</td>
+                              <td data-title="To Name">{{vehicle?.name}}</td>
+                              <td data-title="To Location">{{vehicle?.city}}</td>
+                              <td data-title="Invoice Number">{{vehicle?.invoiceNumber}}</td>
+                              <td data-title="Invoice Date">{{vehicle?.invoiceDate | date:"dd-MM-yyyy"}}</td>
+                              <td data-title="Invoice Amount">{{vehicle?.invoiceAmount}}</td>
+                              <td data-title="Location">{{vehicle?.locationType}}</td>
+                              <td data-title="Status">{{vehicle?.status}}</td>
                             </tr>
                       </tbody>
                   </table>
