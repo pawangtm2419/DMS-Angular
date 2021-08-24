@@ -63,7 +63,7 @@ export class CustomerTrackingSheetComponent implements OnInit {
           setTimeout(() => {
             this.router.navigate(['/ats-retail']);
           }, 3000);
-      }
+        }
         this.getPaymentsList(this.vehicleDetails[0].chassisNo, this.vehicleDetails[0].customer.code, this.vehicleDetails[0].customer.invoiceNumber);
         this.getBankCategoryData();
       }

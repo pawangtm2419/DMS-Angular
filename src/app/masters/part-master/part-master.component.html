@@ -13,10 +13,10 @@
                         </div>
                         <div class="col-md-6">
                             <div class="searchBar d-flex justify-content-center align-items-center">
-                                <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search"> 
+                                <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
                             </div>
                         </div>
-                        <div class="col-md-6 align-self-end text-end"> 
+                        <div class="col-md-6 align-self-end text-end">
                             <div class="modelBtnMain">
                                 <button type="button" data-bs-toggle="modal" data-bs-target="#addPart" class="btn btn-primary text-uppercase me-2">+ Part</button>
                                 <button type="button" class="btn btn-primary" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
@@ -47,25 +47,25 @@
                         <tbody>
                             <tr *ngFor="let part of partsData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                                 <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
-                                <td data-title="Product Code"><a class="table-href" data-bs-toggle="modal" data-bs-target="#partsinfo" (click)="viewFullInfo(part)">{{part.partsCode}}</a></td>
-                                <td data-title="Description">{{part.partsDescription | uppercase}}</td>
-                                <td data-title="HSN Code">{{part.hsnCode}}</td>
-                                <td data-title="GST Tax %">{{part.gstTax}}</td>
-                                <td data-title="Basic Price (INR)">{{part.basicPrice}}</td>
-                                <td data-title="Maximum Retail Price (INR)">{{part.maxRetailPrice}}</td>
+                                <td data-title="Product Code"><a class="table-href" data-bs-toggle="modal" data-bs-target="#partsinfo" (click)="viewFullInfo(part)">{{part?.partsCode}}</a></td>
+                                <td data-title="Description">{{part?.partsDescription | uppercase}}</td>
+                                <td data-title="HSN Code">{{part?.hsnCode}}</td>
+                                <td data-title="GST Tax %">{{part?.gstTax}}</td>
+                                <td data-title="Basic Price (INR)">{{part?.basicPrice}}</td>
+                                <td data-title="Maximum Retail Price (INR)">{{part?.maxRetailPrice}}</td>
                                 <td data-title="Options" class="text-center">
                                     <!-- <div class="container">
                                         <div class="row">
                                             <div class="col-6 col-md-6">
-                                                <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" [routerLink]="['/master/edit-part', part._id]"><span class="fa fa-edit margin-right-0"></span></button>
+                                                <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" [routerLink]="['/master/edit-part', part?._id]"><span class="fa fa-edit margin-right-0"></span></button>
                                             </div>
                                             <div class="col-6 col-md-6">
-                                                <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" (click)="partDelete(part._id)"><span class="fa fa-trash margin-right-0"></span></button>
+                                                <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" (click)="partDelete(part?._id)"><span class="fa fa-trash margin-right-0"></span></button>
                                             </div>
                                         </div>
                                     </div> -->
-                                    <a class="editIcon icon mb-1" [routerLink]="['/master/edit-part', part._id]"><i class="fa fa-edit"></i></a>
-                                    <a class="deleteIcon icon" (click)="partDelete(part._id)"><i class="fa fa-trash-alt"></i></a>
+                                    <a class="editIcon icon mb-1" [routerLink]="['/master/edit-part', part?._id]"><i class="fa fa-edit"></i></a>
+                                    <a class="deleteIcon icon" (click)="partDelete(part?._id)"><i class="fa fa-trash-alt"></i></a>
                                 </td>
                               </tr>
                         </tbody>
@@ -84,7 +84,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content" *ngFor="let part of partsInfo">
         <div class="modal-header modalHeaderCenter" style="background: #454397">
-            <h4 class="modal-title text-white text-center">Part Code - {{part.partsCode}}</h4>
+            <h4 class="modal-title text-white text-center">Part Code - {{part?.partsCode}}</h4>
           <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
           <a class="btn-close2" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></a>
         </div>
@@ -95,34 +95,34 @@
                     <div class="row mt-1">
                         <div class="col-5"><b>Parts Code</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{part.partsCode}}</div>
+                        <div class="col-6">{{part?.partsCode}}</div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-5"><b>MPart Description</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{part.partsDescription | uppercase}}</div>
+                        <div class="col-6">{{part?.partsDescription | uppercase}}</div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-5"><b>HSN Code</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{part.hsnCode}}</div>
+                        <div class="col-6">{{part?.hsnCode}}</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-6 p-2">
                     <div class="row mt-1">
                         <div class="col-5"><b>GST Tax %</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{part.gstTax}}</div>
+                        <div class="col-6">{{part?.gstTax}}</div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-5"><b>Basic Price (INR)</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{part.basicPrice}}</div>
+                        <div class="col-6">{{part?.basicPrice}}</div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-5"><b>Maximum Retail Price (INR)</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{part.maxRetailPrice}}</div>
+                        <div class="col-6">{{part?.maxRetailPrice}}</div>
                     </div>
                 </div>
               </div>

@@ -13,10 +13,10 @@
                       </div>
                       <div class="col-md-6">
                           <div class="searchBar d-flex justify-content-center align-items-center">
-                              <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search"> 
+                              <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
                           </div>
                       </div>
-                      <div class="col-md-6 align-self-end text-end"> 
+                      <div class="col-md-6 align-self-end text-end">
                           <div class="modelBtnMain">
                               <button type="button" data-bs-toggle="modal" data-bs-target="#addonPower" class="btn btn-primary text-uppercase me-2">+ Add On Power</button>
                               <button type="button" class="btn btn-primary" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
@@ -49,27 +49,27 @@
                         <tbody>
                             <tr *ngFor="let onPower of onPOwerData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                               <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
-                                <td data-title="Driver Code"><a class="table-href" data-bs-toggle="modal" data-bs-target="#onPowerinfo" (click)="viewFullInfo(onPower)">{{onPower.driverCode}}</a></td>
-                                <td data-title="Driver Name">{{onPower.driverName}}</td>
-                                <td data-title="Address"> <span *ngIf="onPower.address.driverAddress1">{{onPower.address.driverAddress1 | uppercase}}</span></td>
-                                <td data-title="Country"> <span *ngIf="onPower.address.countryName">{{onPower.address.countryName | uppercase}}</span></td>
-                                <td data-title="State">{{onPower.address.stateName}}</td>
-                                <td data-title="City">{{onPower.address.cityName}}</td>
-                                <td data-title="License No.">{{onPower.lisenceNo}}</td>
-                                <td data-title="License Valid">{{onPower.licensesValideUpTo | date:"dd-MM-yyyy"}}</td>
+                                <td data-title="Driver Code"><a class="table-href" data-bs-toggle="modal" data-bs-target="#onPowerinfo" (click)="viewFullInfo(onPower)">{{onPower?.driverCode}}</a></td>
+                                <td data-title="Driver Name">{{onPower?.driverName}}</td>
+                                <td data-title="Address"> <span *ngIf="onPower?.address.driverAddress1">{{onPower?.address.driverAddress1 | uppercase}}</span></td>
+                                <td data-title="Country"> <span *ngIf="onPower?.address.countryName">{{onPower?.address.countryName | uppercase}}</span></td>
+                                <td data-title="State">{{onPower?.address.stateName}}</td>
+                                <td data-title="City">{{onPower?.address.cityName}}</td>
+                                <td data-title="License No.">{{onPower?.lisenceNo}}</td>
+                                <td data-title="License Valid">{{onPower?.licensesValideUpTo | date:"dd-MM-yyyy"}}</td>
                                 <td data-title="Options" class="text-center">
                                     <!-- <div class="container">
                                         <div class="row">
                                             <div class="col-6 col-md-6">
-                                                <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" [routerLink]="['/master/edit-onPower', onPower._id]"><span class="fa fa-edit margin-right-0"></span></button>
+                                                <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" [routerLink]="['/master/edit-onPower', onPower?._id]"><span class="fa fa-edit margin-right-0"></span></button>
                                             </div>
                                             <div class="col-6 col-md-6">
-                                                <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" (click)="onPowerDelete(onPower._id)"><span class="fa fa-trash margin-right-0"></span></button>
+                                                <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" (click)="onPowerDelete(onPower?._id)"><span class="fa fa-trash margin-right-0"></span></button>
                                             </div>
                                         </div>
                                     </div> -->
-                                    <a class="editIcon icon mb-1" [routerLink]="['/master/edit-onPower', onPower._id]"><i class="fa fa-edit"></i></a>
-                                    <a class="deleteIcon icon" (click)="onPowerDelete(onPower._id)"><i class="fa fa-trash-alt"></i></a>
+                                    <a class="editIcon icon mb-1" [routerLink]="['/master/edit-onPower', onPower?._id]"><i class="fa fa-edit"></i></a>
+                                    <a class="deleteIcon icon" (click)="onPowerDelete(onPower?._id)"><i class="fa fa-trash-alt"></i></a>
                                 </td>
                               </tr>
                         </tbody>
@@ -89,7 +89,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content" *ngFor="let onPower of onPowerInfo">
         <div class="modal-header modalHeaderCenter" style="background: #454397">
-            <h4 class="modal-title text-white text-center">{{onPower.driverCode}} - {{onPower.driverName}}</h4>
+            <h4 class="modal-title text-white text-center">{{onPower?.driverCode}} - {{onPower?.driverName}}</h4>
           <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
           <a class="btn-close2" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></a>
         </div>
@@ -100,44 +100,44 @@
                     <div class="row mt-1">
                         <div class="col-5"><b>Driver Code</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{onPower.driverCode}}</div>
+                        <div class="col-6">{{onPower?.driverCode}}</div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-5"><b>Driver Name</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{onPower.driverName}}</div>
+                        <div class="col-6">{{onPower?.driverName}}</div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-5"><b>Address</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{onPower.address.driverAddress1}}</div>
+                        <div class="col-6">{{onPower?.address.driverAddress1}}</div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-5"><b>Country</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{onPower.address.countryName}}</div>
+                        <div class="col-6">{{onPower?.address.countryName}}</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-6 p-2">
                     <div class="row mt-1">
                         <div class="col-5"><b>State</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{onPower.address.stateName}}</div>
+                        <div class="col-6">{{onPower?.address.stateName}}</div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-5"><b>City</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{onPower.address.cityName}}</div>
+                        <div class="col-6">{{onPower?.address.cityName}}</div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-5"><b>License No.</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{onPower.lisenceNo}}</div>
+                        <div class="col-6">{{onPower?.lisenceNo}}</div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-5"><b>License Valid</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{onPower.licensesValideUpTo | date:"dd-MM-yyyy"}}</div>
+                        <div class="col-6">{{onPower?.licensesValideUpTo | date:"dd-MM-yyyy"}}</div>
                     </div>
                 </div>
               </div>
