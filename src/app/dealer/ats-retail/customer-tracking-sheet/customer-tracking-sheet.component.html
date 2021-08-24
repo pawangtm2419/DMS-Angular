@@ -23,10 +23,237 @@
       <ng-container>
           <div class="card mt-2">
             <div class="row p-2" *ngFor="let vehicle of vehicleDetails">
-
+              <div class="col-md-4">
+                <div class="row align-items-center">
+                  <div class="col-md-4 col-4 ps-3">
+                    <label for="customerName" class="col-form-label">Customer : </label>
+                  </div>
+                  <div class="col-md-8 col-8 pe-2">
+                    <p id="customerName">{{vehicle.customer.name}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="row align-items-center">
+                  <div class="col-md-4 col-4 ps-3">
+                    <label class="col-form-label">Dealer : </label>
+                  </div>
+                  <div class="col-md-8 col-8 pe-2">
+                    <p> {{vehicle.dealer.code}}/ {{vehicle.dealer.name}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="row align-items-center">
+                  <div class="col-md-4 col-4 ps-3">
+                    <label class="col-form-label">Deal Price : </label>
+                  </div>
+                  <div class="col-md-8 col-8 pe-2">
+                    <p> {{vehicle.customer.dealPrice | currency : 'INR'}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="row align-items-center">
+                  <div class="col-md-4 col-4 ps-3">
+                    <label class="col-form-label">Address : </label>
+                  </div>
+                  <div class="col-md-8 col-8 pe-2">
+                    <p> {{vehicle.customer.city}}, {{vehicle.customer.state}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="row align-items-center">
+                  <div class="col-md-4 col-4 ps-3">
+                    <label class="col-form-label">Address : </label>
+                  </div>
+                  <div class="col-md-8 col-8 pe-2">
+                    <p> {{vehicle.dealer.city}}/ {{vehicle.dealer.state}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="row align-items-center">
+                  <div class="col-md-4 col-4 ps-3">
+                    <label class="col-form-label">Old Tractor Price: </label>
+                  </div>
+                  <div class="col-md-8 col-8 pe-2">
+                    <p> <span *ngIf="vehicle.customer.hasOldTractor ==='No'">0</span><span *ngIf="vehicle.customer.hasOldTractor ==='Yes'">{{vehicle.customer.oldTractor.price | currency : 'INR'}}</span> </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="row align-items-center">
+                  <div class="col-md-4 col-4 ps-3">
+                    <label class="col-form-label">Contact : </label>
+                  </div>
+                  <div class="col-md-8 col-8 pe-2">
+                    <p> {{vehicle.customer.phone}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="row align-items-center">
+                  <div class="col-md-4 col-4 ps-3">
+                    <label class="col-form-label">Chassis No: </label>
+                  </div>
+                  <div class="col-md-8 col-8 pe-2">
+                    <p> {{vehicle.chassisNo}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="row align-items-center">
+                  <div class="col-md-4 col-4 ps-3">
+                    <label class="col-form-label">Received Amount: </label>
+                  </div>
+                  <div class="col-md-8 col-8 pe-2">
+                    <p> {{vehicle.customer.amountReceived | currency : 'INR'}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="row align-items-center">
+                  <div class="col-md-4 col-4 ps-3">
+                    <label class="col-form-label">Delivery Date: </label>
+                  </div>
+                  <div class="col-md-8 col-8 pe-2">
+                    <p> {{vehicle.customer.deliveryDate | date: 'dd-MM-yyyy'}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="row align-items-center">
+                  <div class="col-md-4 col-4 ps-3">
+                    <label class="col-form-label">NDP(without tax): </label>
+                  </div>
+                  <div class="col-md-8 col-8 pe-2">
+                    <p> {{vehicle.NDP | currency : 'INR'}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="row align-items-center">
+                  <div class="col-md-4 col-4 ps-3">
+                    <label class="col-form-label">Balance Amount: </label>
+                  </div>
+                  <div class="col-md-8 col-8 pe-2">
+                    <p> {{vehicle.customer.balanceAmount | currency : 'INR'}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="row align-items-center">
+                  <div class="col-md-4 col-4 ps-3">
+                    <label class="col-form-label">Bank Name: </label>
+                  </div>
+                  <div class="col-md-8 col-8 pe-2">
+                    <p> </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
       </ng-container>
+    </div>
+  </div>
+</section>
+<section class="mt-2 mb-3">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4 mb-2">
+        <div class="row align-items-center">
+          <div class="col-md-4 col-4 ps-3">
+            <label class="col-form-label">Payment Type: </label>
+          </div>
+          <div class="col-md-8 col-8 pe-2">
+            <select [(ngModel)]="selectPaymentType" class="form-control">
+              <option value="Finance">Finance</option>
+              <option value="Cash">Cash</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-2" *ngIf="selectPaymentType === 'Finance'">
+        <div class="row align-items-center">
+          <div class="col-md-4 col-4 ps-3">
+            <label class="col-form-label">Institution Type: </label>
+          </div>
+          <div class="col-md-8 col-8 pe-2">
+            <select [(ngModel)]="selectPaymentInstitution" class="form-control" (ngModelChange)="getBankList()">
+              <option value="">Select Bank Category</option>
+              <option *ngFor="let obj of bankCategoryList" value="{{obj}}">{{obj}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-2" *ngIf="selectPaymentType === 'Finance'">
+        <div class="row align-items-center">
+          <div class="col-md-4 col-4 ps-3">
+            <label class="col-form-label">Institution Name: </label>
+          </div>
+          <div class="col-md-8 col-8 pe-2">
+            <select [(ngModel)]="selectPaymentInstitutionName" class="form-control">
+              <option *ngFor="let obj of bankDataList" value="{{obj.instName}}">{{obj.instName}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-2">
+        <div class="row align-items-center">
+          <div class="col-md-4 col-4 ps-3">
+            <label class="col-form-label">Reference No: </label>
+          </div>
+          <div class="col-md-8 col-8 pe-2">
+            <input type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-2">
+        <div class="row align-items-center">
+          <div class="col-md-4 col-4 ps-3">
+            <label class="col-form-label">Date Received: </label>
+          </div>
+          <div class="col-md-8 col-8 pe-2">
+            <input type="date" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-2">
+        <div class="row align-items-center">
+          <div class="col-md-4 col-4 ps-3">
+            <label class="col-form-label">Amount Received: </label>
+          </div>
+          <div class="col-md-8 col-8 pe-2">
+            <input type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-2">
+        <div class="row align-items-center">
+          <div class="col-md-4 col-4 ps-3">
+            <label class="col-form-label">Remarks: </label>
+          </div>
+          <div class="col-md-8 col-8 pe-2">
+            <textarea class="form-control" rows="2"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-2" *ngIf="selectPaymentType === 'Finance'">
+        <div class="row align-items-center">
+        </div>
+      </div>
+      <div class="col-md-4 mb-2">
+        <div class="row align-items-center">
+          <div class="col-md-7 col-7 ps-3"></div>
+          <div class="col-md-5 col-5 pe-2">
+            <div class="d-grid gap-2">
+              <button class="btn btn-primary"><i class="fas fa-money-check-alt"></i> Add Payment</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

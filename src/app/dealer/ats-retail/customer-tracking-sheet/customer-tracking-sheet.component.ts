@@ -18,6 +18,10 @@ export class CustomerTrackingSheetComponent implements OnInit {
   vehicleDetails: any;
   bankCategoryList: any;
   transactionList: any;
+  selectPaymentType: any = "Finance";
+  selectPaymentInstitution: any = '';
+  bankDataList: any;
+  selectPaymentInstitutionName: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -43,6 +47,7 @@ export class CustomerTrackingSheetComponent implements OnInit {
     this.service.getVehicleDetails(data).subscribe(res => {
       if(res.status === "true"){
         this.vehicleDetails = res.data;
+        console.log(this.vehicleDetails[0]);
         this.getPaymentsList(this.vehicleDetails[0].chassisNo, this.vehicleDetails[0].customer.code, this.vehicleDetails[0].customer.invoiceNumber);
         this.getBankCategoryData();
         this.getTransaction();
@@ -80,4 +85,11 @@ export class CustomerTrackingSheetComponent implements OnInit {
     });
   }
 
+  getBankList(): void {
+    this.dealer.getFinancialInstitutionsList(this.selectPaymentInstitution).subscribe(res => {
+      if(res.status) {
+        this.bankDataList = res.data;
+      }
+    });
+  }
 }
