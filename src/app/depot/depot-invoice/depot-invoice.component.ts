@@ -16,7 +16,7 @@ export class DepotInvoiceComponent implements OnInit {
   currentDate: any;
   fromDate: any;
   toDate: any;
-
+  isExcelDownload: boolean = false;
   constructor(private depot: DepotService, public toaster: ToasterService) {
     this.fromDate =  new Date(new Date().getFullYear(), new Date().getMonth(), 1, 0, 0, 0, 0).toISOString();
     this.toDate =  new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0, 0, 0, 0).toISOString();
@@ -42,7 +42,8 @@ export class DepotInvoiceComponent implements OnInit {
     };
     this.depot.depotInvoices(data).subscribe(res => {
       this.invoiceData = res.data;
-      if (this.invoiceData.length > 0) {
+      if (this.invoiceData.length > 0) { 
+        this.isExcelDownload = true;
         this.limits = [{ key: 50, value: 50 }, { key: 100, value: 100 }, { key: 250, value: 250 }, { key: 500, value: 500 }, { key: 'ALL', value: this.invoiceData.length }];
         this.toaster.showSuccess('Data', 'Report successfully Open.');
       } else {

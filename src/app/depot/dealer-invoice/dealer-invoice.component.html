@@ -19,7 +19,7 @@
               <div class="col-md-6 col-12 align-self-end text-end"> 
                   <div class="modelBtnMain">
                     <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#filter" aria-expanded="false" aria-controls="collapseExample"> <i class="fas fa-filter"></i> </button>
-                    <button type="button" class="btn btn-primary ms-2" *ngIf="invoiceData.length > 0" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
+                    <button type="button" class="btn btn-primary ms-2" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
                   </div>
                   <label for="limit">
                       <select id="limit" name="limit" class="form-select" (click)="dataLimit()">

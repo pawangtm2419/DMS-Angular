@@ -13,6 +13,7 @@ export class SalesReturnInvoiceComponent implements OnInit {
   pageData: number = 1;
   limits: any;
   limit: any = 50;
+  isExcelDownload:boolean = false;
   constructor(private dealer: DepotService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -24,6 +25,7 @@ export class SalesReturnInvoiceComponent implements OnInit {
       this.invoiceData=res.data;
       this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.invoiceData.length }];
       if(this.invoiceData.length > 0) {
+        this.isExcelDownload = true;
         this.toaster.showSuccess("Data", "Report successfully Open.");
       } else {
         this.toaster.showInfo("Data", "No record found.");

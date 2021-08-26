@@ -19,6 +19,7 @@ export class AgingFromRecievedComponent implements OnInit {
   modelList: any;
   data: any = {"locationType":"DEPOT","useType":"ALL"};
   total: any = { count30: 0, count3060: 0, count6090: 0, count90120: 0, count120180: 0, count180: 0, count: 0 };
+  isExcelDownload:boolean = false;
   constructor(private depotService: DepotService, public toaster: ToasterService, public service: CommonService) { }
 
   ngOnInit(): void {
@@ -57,6 +58,7 @@ export class AgingFromRecievedComponent implements OnInit {
       this.ageRecData=res.data;
       this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.ageRecData.length }];
       if(this.ageRecData.length > 0) {
+        this.isExcelDownload = true;
         this.ageRecData.forEach((item: { count30: any; count3060:any, count6090:any; count90120: any; count120180: any; count180:any; count: any;}) => {
           this.total.count30 = this.total.count30 + item.count30;
           this.total.count3060 = this.total.count3060 + item.count3060;

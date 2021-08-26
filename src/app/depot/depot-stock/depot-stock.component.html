@@ -18,7 +18,7 @@
             </div>
             <div class="col-md-6 align-self-end text-end filterMain">
               <button class="btn btn-primary me-2" type="button" data-bs-toggle="collapse" data-bs-target="#filter" aria-expanded="false" aria-controls="collapseExample"> <i class="fa fa-filter"></i> </button>
-              <button type="button" class="btn btn-primary me-2" *ngIf="depotData.length > 0" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
+              <button type="button" class="btn btn-primary me-2" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
               <label for="limit">
                 <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
                   <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>

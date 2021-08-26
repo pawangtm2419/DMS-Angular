@@ -6,27 +6,34 @@ body {
 .sidenav-space {
   margin-left: 60px;
 }
-tbody, td, tfoot, th, thead, tr {
-  border: 1px solid hsla(206, 6%, 23%, 0.30);
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  border: 1px solid hsla(206, 6%, 23%, 0.3);
   font-size: small;
 }
 label {
   font-weight: 600;
 }
-.btn-check:focus+.btn-primary, .btn-primary:focus {
+.btn-check:focus + .btn-primary,
+.btn-primary:focus {
   color: #fff;
   background-color: #454397;
   border-color: #454397;
   box-shadow: 0 0 0 0.25rem rgb(69 67 151 / 26%);
 }
 
-.btn-primary.disabled, .btn-primary:disabled {
+.btn-primary.disabled,
+.btn-primary:disabled {
   color: #fff;
   background-color: #454397;
   border-color: #454397;
 }
 
-.btn-view{
+.btn-view {
   display: inline-block;
   padding: 0.2em 0.8em;
   border: 0;
@@ -35,17 +42,18 @@ label {
   white-space: nowrap;
   cursor: pointer;
   font-size: 13px;
-  transition: all .1s ease;
-  background-color: #61A706;
+  transition: all 0.1s ease;
+  background-color: #61a706;
   color: #fff;
 }
-.btn-view:hover{
-  box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15);
+.btn-view:hover {
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
 }
-.btn, #filter .form-control {
-  padding: .275rem .75rem;
+.btn,
+#filter .form-control {
+  padding: 0.275rem 0.75rem;
 }
-.btn-rounded{
+.btn-rounded {
   display: inline-block;
   padding: 0.2em 0.8em;
   border: 0;
@@ -54,23 +62,23 @@ label {
   white-space: nowrap;
   cursor: pointer;
   font-size: 14px;
-  transition: all .1s ease;
+  transition: all 0.1s ease;
   background-color: #454397;
   color: #fff;
 }
 .form-select {
-  padding: .275rem 2.25rem .275rem .75rem;
+  padding: 0.275rem 2.25rem 0.275rem 0.75rem;
 }
-.btn-rounded:hover{
-  box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15);
+.btn-rounded:hover {
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
 }
-.txt-link{
+.txt-link {
   color: #000;
   font-size: 14px;
   text-decoration: none;
   display: block;
 }
-.txt-link:hover{
+.txt-link:hover {
   color: #000;
 }
 @media (min-width: 768px) {
@@ -88,7 +96,7 @@ label {
 .modal-backdrop {
   z-index: -1;
 }
-.table{
+.table {
   border-color: #373b3e !important;
 }
 .theadbg {
@@ -166,7 +174,7 @@ label {
   margin-right: 0.4rem;
 }
 /* header css */
-.logo img{
+.logo img {
   width: 104px;
 }
 .model-menu {
@@ -188,15 +196,16 @@ label {
   font-size: 13px;
   font-weight: 600;
 }
-.sidebarMain{
-  margin-bottom: .5rem;
+.sidebarMain {
+  margin-bottom: 0.5rem;
 }
-.sidebarMain .form-select, .btn-d-down .form-control{
+.sidebarMain .form-select,
+.btn-d-down .form-control {
   background-color: #d9d9d9;
 }
 .searchBar input {
   background-color: #d9d9d9;
-  padding: .275rem .75rem;
+  padding: 0.275rem 0.75rem;
 }
 .searchBar .fa-search {
   color: #4d4d4d;
@@ -219,37 +228,38 @@ label {
 .reportDtl .day {
   font-weight: normal;
 }
-.modelBtnMain{
+.modelBtnMain {
   display: inline-block;
   padding-right: 0.5rem;
 }
 @media (max-width: 768px) {
-  .btn-primary{
-    padding: .260rem .55rem !important;
+  .btn-primary {
+    padding: 0.26rem 0.55rem !important;
   }
-  .sidebarMain .form-select{
-    padding: .260rem 2.25rem .260rem .75rem;
+  .sidebarMain .form-select {
+    padding: 0.26rem 2.25rem 0.26rem 0.75rem;
   }
-  .wrapMain{
+  .wrapMain {
     overflow-x: hidden;
   }
-  .model-menu, .searchBar{
+  .model-menu,
+  .searchBar {
     margin-bottom: 0.8rem;
   }
-  .modelBtnMain{
+  .modelBtnMain {
     text-align: right;
     /* float: left; */
   }
-  .searchBar input{
+  .searchBar input {
     font-size: 0.9rem;
   }
-  #filter .mbSm{
+  #filter .mbSm {
     margin-bottom: 0.5rem;
   }
-  .searchBtnMain{
+  .searchBtnMain {
     text-align: right;
   }
-  .searDateBtn .btn-primary{
+  .searDateBtn .btn-primary {
     float: right;
   }
 }
@@ -289,21 +299,21 @@ label {
 }
 /* view modal css */
 /* add-Madal css */
-.add-custo .modal-body{
-    margin: 1.2rem 0 1.2rem 0;
+.add-custo .modal-body {
+  margin: 1.2rem 0 1.2rem 0;
 }
 
 /* added sidebar and page-content css */
-.page-content{
-width: calc(100% - 4.5rem);
-margin-left: 4.5rem;
+.page-content {
+  width: calc(100% - 4.5rem);
+  margin-left: 4.5rem;
 }
-.content-space{
-padding-left: 1rem;
-padding-right: 1rem;
+.content-space {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 @media (max-width: 575.98px) {
-  .page-content{
+  .page-content {
     width: 100%;
     margin-left: 0;
   }
@@ -311,51 +321,53 @@ padding-right: 1rem;
     padding-left: 0;
     padding-right: 0;
   }
-  .page-content{
+  .page-content {
     margin-bottom: 57px;
   }
   .row {
     --bs-gutter-x: 1.2rem;
   }
-  .btn-primary{
-    padding: .395rem .55rem !important;
+  .btn-primary {
+    padding: 0.395rem 0.55rem !important;
   }
-  .sidebarMain{
+  .sidebarMain {
     margin-bottom: 0.7rem;
   }
-  .searchBar .fa-search, .logo img{
+  .searchBar .fa-search,
+  .logo img {
     display: none;
   }
-  .searchBar input{
+  .searchBar input {
     font-size: 0.9rem;
   }
   .sidebarMain .form-select {
-    padding: .395rem 2.0rem .395rem .30rem;
+    padding: 0.395rem 2rem 0.395rem 0.3rem;
     font-size: 0.9rem;
   }
-  .model-menu{
+  .model-menu {
     margin-bottom: 0.7rem;
   }
-  .searchBar{
+  .searchBar {
     margin-bottom: 0.8rem;
   }
   .model-menu li {
     display: inline-block;
     padding: 0 4px 0 4px;
   }
-  #filter .card-body{
+  #filter .card-body {
     padding: 1rem 0rem;
   }
-  .filterMain .fa, .fa-filter{
+  .filterMain .fa,
+  .fa-filter {
     font-size: 14px;
   }
 }
 /* added sidebar and page-content css end */
 @media (max-width: 575.98px) {
-  .sidebarMain .align-self-end{
-      align-self: end !important;
+  .sidebarMain .align-self-end {
+    align-self: end !important;
   }
 }
 .form-control {
-  padding: .250rem .75rem !important;
+  padding: 0.25rem 0.75rem !important;
 }

@@ -16,7 +16,7 @@ export class DealerInvoiceComponent implements OnInit {
   fromDate: any;
   toDate: any;
   currentDate: any;
-
+  isExcelDownload: boolean = false;
   constructor(private depot: DepotService, public toaster: ToasterService) {
     this.fromDate =  new Date(new Date().getFullYear(), new Date().getMonth(), 1, 0, 0, 0, 0).toISOString();
     this.toDate =  new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0, 0, 0, 0).toISOString();
@@ -45,6 +45,7 @@ export class DealerInvoiceComponent implements OnInit {
       console.log(this.invoiceData);
       this.limits = [{ key: 50, value: 50 }, { key: 100, value: 100 }, { key: 250, value: 250 }, { key: 500, value: 500 }, { key: 'ALL', value: this.invoiceData.length }];
       if (this.invoiceData.length > 0) {
+        this.isExcelDownload = true;
         this.toaster.showSuccess('Data', 'Report successfully Open.');
       } else {
         this.toaster.showInfo('Data', 'No record found.');

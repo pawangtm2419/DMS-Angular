@@ -15,6 +15,7 @@ export class PlantStockComponent implements OnInit {
   pageData = 1;
   limit: any = 50;
   localStrg: any = localStorage.getItem("user") || {};
+  isExcelDownload: boolean = false;
   constructor(private service: PlantService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -25,6 +26,7 @@ export class PlantStockComponent implements OnInit {
     this.service.plantStock(stock).subscribe(res => {
       this.plantStock = res.data;
       if (this.plantStock.length > 0) {
+        this.isExcelDownload = true;
         this.toaster.showSuccess('Data', 'Report successfully Open.');
         this.limits.push({ key: 'ALL', value: this.plantStock.length });
       } else {

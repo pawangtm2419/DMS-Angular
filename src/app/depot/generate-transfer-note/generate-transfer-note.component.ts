@@ -48,6 +48,7 @@ export class GenerateTransferNoteComponent implements OnInit {
   dollar: any;
   isDollerCheckBox: boolean = false;
   dollarvalue: any;
+  isExcelDownload: boolean = false;
   constructor(private depot: DepotService, public toaster: ToasterService, public service: CommonService) { }
 
   ngOnInit(): void { 
@@ -111,6 +112,7 @@ export class GenerateTransferNoteComponent implements OnInit {
         this.vehicleList = res.data;
         this.selectedChassisNo = [];
         if (this.vehicleList.length > 0) {
+          this.isExcelDownload = true;
           this.limits = [{ key: 50, value: 50 }, { key: 100, value: 100 }, { key: 250, value: 250 }, { key: 500, value: 500 }, { key: 'ALL', value: this.vehicleList.length }];
           this.toaster.showSuccess('Data', 'Data report open.');
         } else {
