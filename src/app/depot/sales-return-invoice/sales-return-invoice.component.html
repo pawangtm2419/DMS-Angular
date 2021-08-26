@@ -33,7 +33,8 @@
                   <table class="table table-striped table-hover align-middle" id="export">
                       <thead class="text-white sticky-top theadbg">
                           <tr>
-                              <th></th>
+                              <th>#</th>
+                              <th>Action</th>
                               <th>Dealer</th>
                               <th>Code</th>
                               <th>City</th>
@@ -48,12 +49,12 @@
                               <th>ChassisNo / Product code</th>
                               <th>Sale Inv</th>
                               <th>Discount Amount</th>
-                              <th>Action</th>
                             </tr>
                       </thead>
                       <tbody>
                           <tr *ngFor="let invoice of invoiceData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                               <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
+                              <td data-title="Action"><button class="btn-view" type="button" routerLink="/viewd-depot-invoice/{{invoice.data[0].previousState.code}}">View</button></td>
                               <td data-title="Dealer">{{invoice.data[0].previousState.name}}</td>
                               <td data-title="Code">{{invoice.data[0].previousState.code}}</td>
                               <td data-title="City">{{invoice.data[0].previousState.city}}</td>
@@ -68,9 +69,6 @@
                               <td data-title="Chassis No/Product Code">{{invoice.data[0].chassisNo}} /{{invoice.data[0].productCode}}</td>
                               <td data-title="Sale Inv">{{invoice.data[0].dealer.invoiceNumber}}</td>
                               <td data-title="Discount Amount">{{invoice.data[0].dealer.discountAmount}}</td>
-                              <td data-title="Action">
-                                  <button class="btn-view" type="button">View</button>
-                              </td>
                           </tr>
                       </tbody>
                   </table>

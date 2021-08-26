@@ -36,6 +36,7 @@ const routes: Routes = [
   { path: 'depot-stock', loadChildren: () => import('./depot/depot-stock/depot-stock.module').then(m => m.DepotStockModule), canActivate: [AppGuard] },
   { path: 'gr-note', loadChildren: () => import('./depot/generate-transfer-note/generate-transfer-note.module').then(m => m.GenerateTransferNoteModule), canActivate: [AppGuard] },
   { path: 'sales-return-invoice', loadChildren: () => import('./depot/sales-return-invoice/sales-return-invoice.module').then(m => m.SalesReturnInvoiceModule), canActivate: [AppGuard] },
+  { path: 'viewd-depot-invoice/:id', loadChildren: () => import('./depot/viewd-depot-invoice/viewd-depot-invoice.module').then(m => m.ViewdDepotInvoiceModule), canActivate: [AppGuard] },
   { path: 'depot-stock-variantWise', loadChildren: () => import('./depot/variant-depot-stock/variant-depot-stock.module').then(m => m.VariantDepotStockModule), canActivate: [AppGuard] },
   // dealer report's modules
   { path: 'r-advance', loadChildren: () => import('./dealer/report-advance/report-advance.module').then(m => m.ReportAdvanceModule), canActivate: [AppGuard] },
