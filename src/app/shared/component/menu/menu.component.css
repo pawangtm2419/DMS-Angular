@@ -1,13 +1,14 @@
-.sidebar-main{
+.sidebar-main {
   position: relative;
   margin: 0;
   padding: 0px 0;
   clear: both;
 }
-.mobile-top-navbar, .mobile-btm-menubar{
+.mobile-top-navbar,
+.mobile-btm-menubar {
   display: none;
 }
-.sideBarMenu{
+.sideBarMenu {
   /* position: relative; */
   position: fixed;
   z-index: 5;
@@ -15,47 +16,49 @@
   width: 4.5rem;
   height: 100vh;
   border-radius: 0px 10px 10px 0px;
-  box-shadow: 3px 3px 12px -4px rgba(0,0,0,0.46);
-  -webkit-box-shadow: 3px 3px 12px -4px rgba(0,0,0,0.46);
-  -moz-box-shadow: 3px 3px 12px -4px rgba(0,0,0,0.46);
+  box-shadow: 3px 3px 12px -4px rgba(0, 0, 0, 0.46);
+  -webkit-box-shadow: 3px 3px 12px -4px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 3px 3px 12px -4px rgba(0, 0, 0, 0.46);
 }
-.sideBarMenu ul li .fa, .settingArea a .fa{
+.sideBarMenu ul li .fa,
+.settingArea a .fa {
   -webkit-transition: all 0.3s ease-in-out;
--moz-transition: all 0.3s ease-in-out;
--ms-transition: all 0.3s ease-in-out;
--o-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.sideBarMenu ul li .fa:hover, .settingArea a .fa:hover {
+.sideBarMenu ul li .fa:hover,
+.settingArea a .fa:hover {
   -webkit-transform: scale(1.3);
--moz-transform: scale(1.3);
--ms-transform: scale(1.3);
--o-transform: scale(1.3);
+  -moz-transform: scale(1.3);
+  -ms-transform: scale(1.3);
+  -o-transform: scale(1.3);
   transform: scale(1.3);
   color: #000;
 }
-.profileArea{
+.profileArea {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-.profileArea li{
+.profileArea li {
   position: relative;
 }
-.profileArea li a{
+.profileArea li a {
   text-align: center;
   display: block;
   text-decoration: none;
   padding: 12px 20px;
   color: #fff;
 }
-.profileArea li a i.fa{
+.profileArea li a i.fa {
   display: block;
   text-transform: uppercase;
   font-size: 20px;
   letter-spacing: 3px;
 }
-.menu-area{
+.menu-area {
   width: 100%;
   list-style: none;
   padding: 0;
@@ -65,36 +68,38 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.menu-area ul, .menu-area li ul {
+.menu-area ul,
+.menu-area li ul {
   border: 1px solid #ccc !important;
-  border-radius: .50rem;
+  border-radius: 0.5rem;
   box-shadow: 0px 5px 5px 10px rgb(69 67 151 / 15%);
   background-clip: padding-box;
 }
-.menu-area .menuTxt{
+.menu-area .menuTxt {
   display: none !important;
 }
-.menu-area li{
+.menu-area li {
   position: relative;
 }
-ul.menu-area li a{
+ul.menu-area li a {
   text-align: center;
   display: block;
   text-decoration: none;
   padding: 12px 20px;
-  color: #2A2B2D;
+  color: #2a2b2d;
 }
-.menu-area li a i{
+.menu-area li a i {
   display: block;
   text-transform: uppercase;
   font-size: 20px;
   letter-spacing: 3px;
   color: #fff;
 }
-.menu-area li a i:hover{
+.menu-area li a i:hover {
   color: #000;
 }
-.menu-area li ul, .menu-area li ul li ul{
+.menu-area li ul,
+.menu-area li ul li ul {
   background: #fff;
   transition: 300ms;
   z-index: 999;
@@ -107,11 +112,11 @@ ul.menu-area li a{
   padding: 0;
   margin: 0;
 }
-.menu-area li ul li:hover{
+.menu-area li ul li:hover {
   background: #e9ecef;
-  color: #2A2B2D;
+  color: #2a2b2d;
 }
-.menu-area li > ul{
+.menu-area li > ul {
   left: 4.4rem;
   transition: 0.5s ease-in-out;
   position: absolute;
@@ -120,35 +125,35 @@ ul.menu-area li a{
   transform: translateY(-42%);
   z-index: 1025;
 }
-.drop-down01{
+.drop-down01 {
   position: relative !important;
-
 }
-.sub-menu01{
+.sub-menu01 {
   position: absolute;
   top: 50%;
-  transform: translateY(-42%)!important;
+  transform: translateY(-42%) !important;
   inset: initial !important;
 }
-.sub-menu02{
-  transform: translateY(-67%)!important;
+.sub-menu02 {
+  transform: translateY(-67%) !important;
 }
-.drop-down01 .sub-menu01, .drop-down01 .sub-menu02{
+.drop-down01 .sub-menu01,
+.drop-down01 .sub-menu02 {
   position: absolute !important;
   left: 100% !important;
   top: 0 !important;
 }
 
-.menu-area li ul li > ul{
+.menu-area li ul li > ul {
   opacity: 0;
   visibility: hidden;
 }
-.menu-area li ul li:hover > ul{
+.menu-area li ul li:hover > ul {
   opacity: 1;
   visibility: visible;
   left: 215px;
 }
-.menu-area li ul li a{
+.menu-area li ul li a {
   font-size: 14px;
   padding: 4px 8px;
   text-align: left;
@@ -156,16 +161,16 @@ ul.menu-area li a{
   border-bottom: 1px solid #ddd;
   height: auto;
 }
-.menu-area li ul li ul{
+.menu-area li ul li ul {
   left: 230px;
   top: 0;
   border: 0;
 }
-.menu-area ul .rgt-arrow{
+.menu-area ul .rgt-arrow {
   font-size: 15px;
   float: right;
 }
-.settingArea{
+.settingArea {
   list-style: none;
   padding: 0;
   margin: 0 auto;
@@ -173,136 +178,144 @@ ul.menu-area li a{
   bottom: 0;
   left: 6%;
 }
-.settingArea a{
+.settingArea a {
   text-align: center;
   display: block;
   text-decoration: none;
   padding: 7px 20px;
   color: #000;
 }
-.settingArea a i{
+.settingArea a i {
   display: block;
   text-transform: uppercase;
   font-size: 20px;
   letter-spacing: 3px;
   color: #fff;
 }
-.dropend .dropdown-toggle::after{
+.dropend .dropdown-toggle::after {
   display: none;
 }
-.settingArea .dropdown-menu{
+.settingArea .dropdown-menu {
   padding: 0rem 0;
 }
-.settingArea .dropdown-menu li a:hover{
+.settingArea .dropdown-menu li a:hover {
   background: #454397;
   color: #fff;
 }
-.sm-masterMenu, .sm-dashboardMenu, .sm-plantMenu, .sm-depotMenu, .sm-dealerMenu{
+.sm-masterMenu,
+.sm-dashboardMenu,
+.sm-plantMenu,
+.sm-depotMenu,
+.sm-dealerMenu {
   display: none;
 }
 @media (max-width: 575.98px) {
-  body{
-      margin: 0px 0px 57px 0px !important;
+  body {
+    margin: 0px 0px 57px 0px !important;
   }
-  .logoSm img{
-      width: 85px;
+  .logoSm img {
+    width: 85px;
   }
-  .mobile-top-navbar{
-      display: block;
-      background-color: #454397;
-      padding-top: 1px;
-      padding-bottom: 1px;
+  .mobile-top-navbar {
+    display: block;
+    background-color: #454397;
+    padding-top: 1px;
+    padding-bottom: 1px;
   }
-  .mobile-top-navbar .navbar-nav li a .fa{
-      font-size: 17px;
-      color: #fff;
+  .mobile-top-navbar .navbar-nav li a .fa {
+    font-size: 17px;
+    color: #fff;
   }
-  .sideBarMenu{
-      display: none;
+  .sideBarMenu {
+    display: none;
   }
-  .mobile-btm-menubar{
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      border-radius: 0;
-      height: 57px;
-      box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-      background-color: #454397;
-      display: flex;
-      overflow-x: auto;
+  .mobile-btm-menubar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-radius: 0;
+    height: 57px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    background-color: #454397;
+    display: flex;
+    overflow-x: auto;
   }
-  .navLink{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      flex-grow: 1;
-      min-width: 50px;
-      overflow: hidden;
-      white-space: nowrap;
-      font-size: 13px;
-      color: #fff;
-      text-decoration: none;
-      -webkit-tap-highlight-color: transparent;
-      transition: background-color 0.1s ease-in-out;
+  .navLink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    min-width: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 13px;
+    color: #fff;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.1s ease-in-out;
   }
-  .navLink:hover{
-      background-color: #000;
+  .navLink:hover {
+    background-color: #000;
   }
-  .navLink .fa{
-      font-size: 16px;
+  .navLink .fa {
+    font-size: 16px;
   }
-  .sm-masterMenu, .sm-dashboardMenu, .sm-plantMenu, .sm-depotMenu, .sm-dealerMenu{
-      display: block;
-      height: 100%;
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 0px;
-      margin-top: 57px;
-      margin-bottom: 57px;
-      background: #454397f5;
-      transition: all 0.4s ease;
-      overflow-x: hidden;
+  .sm-masterMenu,
+  .sm-dashboardMenu,
+  .sm-plantMenu,
+  .sm-depotMenu,
+  .sm-dealerMenu {
+    display: block;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 0px;
+    margin-top: 57px;
+    margin-bottom: 57px;
+    background: #454397f5;
+    transition: all 0.4s ease;
+    overflow-x: hidden;
   }
-  .menu{
-      list-style: none;
-      padding: 0;
-      margin: 0;
+  .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
-  .menu li{
-      color: #fff;
-      border-bottom: 1px solid rgb(255 255 255 / 46%);
+  .menu li {
+    color: #fff;
+    border-bottom: 1px solid rgb(255 255 255 / 46%);
   }
-  .menu li a{
-      font-size: 13px;
-      color: #fff;
-      display: block;
-      text-decoration: none;
-      text-transform: uppercase;
-      padding: 7px;
+  .menu li a {
+    font-size: 13px;
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 7px;
   }
   /* .dropdown-menu css */
-  .dropdown-menu{
-      padding: 0;
-      margin-left: 1rem !important;
-      min-width: 100%;
-      background-color: transparent;
-      border: none;
+  .dropdown-menu {
+    padding: 0;
+    margin-left: 1rem !important;
+    min-width: 100%;
+    background-color: transparent;
+    border: none;
   }
-  .menu .left-arrow{
-      padding-right: 0.2rem;
+  .menu .left-arrow {
+    padding-right: 0.2rem;
   }
-  .dealers li ul{
-      list-style: none;
-      padding-left: 1rem;
+  .dealers li ul {
+    list-style: none;
+    padding-left: 1rem;
   }
-  .rgt-arrow{
-      font-size: 8px;
-      padding-right: 0.2rem;
+  .rgt-arrow {
+    font-size: 8px;
+    padding-right: 0.2rem;
   }
-  .d-arrow{
-      font-size: 9px;
-      padding-left: 0.4rem;
+  .d-arrow {
+    font-size: 9px;
+    padding-left: 0.4rem;
   }
 }
