@@ -21,7 +21,6 @@ export class AgingFromProductionComponent implements OnInit {
   total: any = { count30: 0, count3060: 0, count6090: 0, count90120: 0, count120180: 0, count180: 0, count: 0 };
   filterDataRange: [] = [];
   isExcelDownload: boolean = false;
-  // data : any = {"locationType":"DEPOT","type":"production","useType":"ALL"};
   constructor(private depotService: DepotService, public toaster: ToasterService, public service: CommonService) { }
 
   ngOnInit(): void {

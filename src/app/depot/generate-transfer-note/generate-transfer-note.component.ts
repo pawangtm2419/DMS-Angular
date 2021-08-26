@@ -100,13 +100,12 @@ export class GenerateTransferNoteComponent implements OnInit {
   }
 
   getVehicleList() {
-    const data: any = {
+    const data = {
       'locationCode': this.selectedToLocDepotName,
       'locationType': 'DEPOT',
     }
     if (data.locationCode === 'WAREHOUSE') {
       data.locationType = 'PLANT';
-      data.type = "PLANTSTOCK";
     }
     console.log(data);
     if (data.locationCode && data.locationType) {
