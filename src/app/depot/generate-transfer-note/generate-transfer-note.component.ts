@@ -51,7 +51,7 @@ export class GenerateTransferNoteComponent implements OnInit {
   isExcelDownload: boolean = false;
   constructor(private depot: DepotService, public toaster: ToasterService, public service: CommonService) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.checkInvoiceNo();
   }
   convertDate(): void{
@@ -100,13 +100,15 @@ export class GenerateTransferNoteComponent implements OnInit {
   }
 
   getVehicleList() {
-    const data = {
+    const data: any = {
       'locationCode': this.selectedToLocDepotName,
-      'locationType': this.selectedToLocation.toUpperCase()
+      'locationType': 'DEPOT',
     }
     if (data.locationCode === 'WAREHOUSE') {
       data.locationType = 'PLANT';
+      data.type = "PLANTSTOCK";
     }
+    console.log(data);
     if (data.locationCode && data.locationType) {
       this.depot.viewVehicle(data).subscribe((res) => {
         this.vehicleList = res.data;
@@ -242,7 +244,7 @@ export class GenerateTransferNoteComponent implements OnInit {
           }
           invoiceData.transport = trans;
         }
-        this.invoiceDate = (document.getElementById('invoiceDate') as HTMLInputElement).value;        
+        this.invoiceDate = (document.getElementById('invoiceDate') as HTMLInputElement).value;
         if(this.invoiceNumber && this.invoiceDate) {
           invoiceData.invoiceNumber = this.invoiceNumber;
           invoiceData.invoiceDate = this.invoiceDate + 'T00:00:00.000Z';
