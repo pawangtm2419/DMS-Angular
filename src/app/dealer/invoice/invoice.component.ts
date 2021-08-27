@@ -8,6 +8,7 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./invoice.component.css']
 })
 export class InvoiceComponent implements OnInit {
+  date = new Date();
   searchData: any;
   invoiceData: any;
   pageData = 1;
@@ -18,25 +19,22 @@ export class InvoiceComponent implements OnInit {
   currentDate: any;
   isExcelDownload: boolean = false;
   constructor(private dealer: DealerService, public toaster: ToasterService) {
-    this.fromDate =  new Date(new Date().getFullYear(), new Date().getMonth(), 1, 0, 0, 0, 0).toISOString();
-    this.toDate =  new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0, 0, 0, 0).toISOString();
+    var date = this.date.getDate();
+    var month = 1+this.date.getMonth();
+    var year = this.date.getFullYear();
+    this.fromDate =  year+"-"+(month<9?'0':'')+month+"-"+'01';
+    this.toDate = this.currentDate =  year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
    }
 
   ngOnInit(): void {
     this.getinvoiceData();
-    this.convertDate();
   }
 
-  convertDate(): void{
-    function pad(s: string | number) { return (s < 10) ? '0' + s : s; }
-    const d = new Date();
-    this.currentDate = [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('-');
-  }
   getinvoiceData(): void{
     const data = {
       type: 'ALL',
-      fromDate: (document.getElementById('fromDate') as HTMLInputElement).value + 'T00:00:00.000Z',
-      toDate: (document.getElementById('toDate') as HTMLInputElement).value + 'T00:00:00.000Z',
+      fromDate: ((document.getElementById('fromDate') as HTMLInputElement).value) ? (document.getElementById('fromDate') as HTMLInputElement).value : this.fromDate + 'T00:00:00.000Z',
+      toDate: ((document.getElementById('toDate') as HTMLInputElement).value) ? (document.getElementById('toDate') as HTMLInputElement).value : this.toDate + 'T00:00:00.000Z',
       page: 'report',
       useType: 'ALL'
     };
