@@ -98,13 +98,13 @@
     <div #plantNav class="sm-plantMenu">
         <ul class="plants menu" *ngIf="roles?.plant_main?.link">
             <li *ngIf="roles?.plant_stock_sub?.link"><a routerLink="/plant-stock">Plant Stock</a></li>
-            <li *ngIf="roles?.plant_stock_sub?.link"><a routerLink="/c-stock">Capitalized Stock</a></li>
+            <li *ngIf="roles?.capitalized_stock_sub?.link"><a routerLink="/c-stock">Capitalized Stock</a></li>
         </ul>
     </div>
     <div #dashNav class="sm-dashboardMenu">
-        <ul class="dashboard menu">
-            <li *ngIf="roles?.currentlocation_main?.link"><a routerLink="/vehicle-history">Vehicle History</a></li>
-            <li *ngIf="roles?.currentlocation_main?.link"><a routerLink="/history-report">History Report</a></li>
+        <ul class="dashboard menu" *ngIf="roles?.dashboard_main?.link">
+            <li *ngIf="roles?.vehicle_history_sub?.link"><a routerLink="/vehicle-history">Vehicle History</a></li>
+            <li *ngIf="roles?.history_report_sub?.link"><a routerLink="/history-report">History Report</a></li>
         </ul>
     </div>
     <div #masterNav class="sm-masterMenu">
@@ -150,11 +150,11 @@
         <li><a routerLink="/home" title="Profile"><i class="fa fa-user"></i></a></li>
       </ul>
       <ul class="menu-area" *ngIf="isMenuLoad">
-           <li class="dropdown drop-down01">
+           <li class="dropdown drop-down01" *ngIf="roles?.dashboard_main?.link">
                <a title="Dashboard" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-th-large"></i></a>
                <ul class="dropdown-menu sub-menu01">
-                   <li *ngIf="roles?.currentlocation_main?.link"><a routerLink="/vehicle-history">Vehicle History</a></li>
-                   <li *ngIf="roles?.currentlocation_main?.link"><a routerLink="/history-report">History Report</a></li>
+                   <li *ngIf="roles?.vehicle_history_sub?.link"><a routerLink="/vehicle-history">Vehicle History</a></li>
+                   <li *ngIf="roles?.history_report_sub?.link"><a routerLink="/history-report">History Report</a></li>
                </ul>
            </li>
            <li class="dropdown drop-down01">
