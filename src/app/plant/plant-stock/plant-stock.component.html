@@ -55,19 +55,19 @@
               <tr *ngFor="let pStock of plantStock | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i=index">
                 <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
                 <td> <button class="btn-rounded" value="Move" title="Move to Capital stock" (click)="goCapitalizeStock(pStock)">Move</button> </td>
-                <td data-title="Depot Code">{{pStock.plant.code }}</td>
-                <td data-title="Depot Code">{{pStock.plant.name }}</td>
-                <td data-title="Product Code">{{pStock.productCode}}</td>
-                <td data-title="Model">{{pStock.model}}</td>
-                <td data-title="Variant Code">{{pStock.variantCode}}</td>
-                <td data-title="Chasis No">{{pStock.chassisNo}}</td>
-                <td data-title="Engine No">{{pStock.engineNo}}</td>
-                <td data-title="Mkt">{{pStock.market}}</td>
-                <td data-title="Prod-Date">{{pStock.prodDate | date:"dd-MM-yyyy"}}</td>
-                <td data-title="Status">{{pStock.status | uppercase}}</td>
-                <td data-title="Ageing"> {{pStock.prodDate | date:"dd-MM-yyyy"}}</td>
-                <td data-title="NDP_withoutTax">{{pStock.NDP}}</td>
-                <td data-title="Tax">{{pStock.SST +pStock.GST}}</td>
+                <td data-title="Depot Code">{{pStock?.plant.code }}</td>
+                <td data-title="Depot Code">{{pStock?.plant.name }}</td>
+                <td data-title="Product Code">{{pStock?.productCode}}</td>
+                <td data-title="Model">{{pStock?.model}}</td>
+                <td data-title="Variant Code">{{pStock?.variantCode}}</td>
+                <td data-title="Chasis No">{{pStock?.chassisNo}}</td>
+                <td data-title="Engine No">{{pStock?.engineNo}}</td>
+                <td data-title="Mkt">{{pStock?.market}}</td>
+                <td data-title="Prod-Date">{{pStock?.prodDate | date:"dd-MM-yyyy"}}</td>
+                <td data-title="Status">{{pStock?.status | uppercase}}</td>
+                <td data-title="Ageing"> {{pStock?.prodDate | date:"dd-MM-yyyy"}}</td>
+                <td data-title="NDP_withoutTax">{{pStock?.NDP}}</td>
+                <td data-title="Tax">{{pStock?.SST +pStock?.GST}}</td>
                 <td data-title="Options" class="text-center">
                   <div class="row">
                     <div class="col-3">

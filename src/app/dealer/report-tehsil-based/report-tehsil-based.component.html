@@ -12,12 +12,11 @@
                           </ul>
                           <div class="searchBar d-flex justify-content-center align-items-center">
                               <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
-
                           </div>
                       </div>
                       <div class="col-md-6 align-self-end text-end">
                           <div class="modelBtnMain">
-                            <button type="button" class=" btn btn-primary" *ngIf="tehsilData.length > 0" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
+                            <button type="button" class=" btn btn-primary" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
                           </div>
                           <label for="limit">
                               <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
@@ -53,13 +52,13 @@
                       <tbody>
                           <tr *ngFor="let tehsil of tehsilData | paginate: { itemsPerPage: limit, currentPage: pageData } | filter: searchData; let i = index">
                               <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
-                              <td data-title="Code">{{tehsil.dealerCode}}</td>
-                              <td data-title="Name">{{tehsil.dealerName}}</td>
-                              <td data-title="Location">{{tehsil.dealerLocation}}</td>
-                              <td data-title="State">{{tehsil.dealerState}}</td>
-                              <td data-title="Tehsil Name">{{tehsil.tehsil}}</td>
-                              <td data-title="MTD (Jul21)">{{tehsil.monthActual}}</td>
-                              <td data-title="YTD (Jan 21 to Jul21)">{{tehsil.yearActual}}</td>
+                              <td data-title="Code">{{tehsil?.dealerCode}}</td>
+                              <td data-title="Name">{{tehsil?.dealerName}}</td>
+                              <td data-title="Location">{{tehsil?.dealerLocation}}</td>
+                              <td data-title="State">{{tehsil?.dealerState}}</td>
+                              <td data-title="Tehsil Name">{{tehsil?.tehsil}}</td>
+                              <td data-title="MTD (Jul21)">{{tehsil?.monthActual}}</td>
+                              <td data-title="YTD (Jan 21 to Jul21)">{{tehsil?.yearActual}}</td>
                               <td data-title="MTD in Dealership">{{tehsil}}</td>
                               <td data-title="YTD in Dealership">{{tehsil}}</td>
                           </tr>

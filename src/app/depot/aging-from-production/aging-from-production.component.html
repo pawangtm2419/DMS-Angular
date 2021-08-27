@@ -94,7 +94,7 @@
                                 <div class="col-md-2 align-self-end text-end">
                                     <div class="BtnMainGrp">
                                         <button type="button" (click)="getagingProdList()" class="btn btn-primary me-2">Show Data</button>
-                                        <button type="button" class="btn btn-primary">Clear</button>  
+                                        <button type="button" class="btn btn-primary">Clear</button>
                                     </div>
                                 </div>
                             </div>
@@ -123,25 +123,25 @@
                         <tbody>
                             <tr  *ngFor="let ageData of ageProdData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i=index">
                               <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
-                              <td data-title="Code">{{ageData._id}}</td>
-                              <td data-title="Name">{{ageData.name}}</td>
-                              <td data-title="0-30 Days">{{ageData.count30}}</td>
-                              <td data-title="31-60 Days">{{ageData.count3060}}</td>
-                              <td data-title="61-90 Days">{{ageData.count6090}}</td>
-                              <td data-title="91-120 Days">{{ageData.count90120}}</td>
-                              <td data-title="120-180 Days">{{ageData.count120180}}</td>
-                              <td data-title="Above 180 Days">{{ageData.count180}}</td>
-                              <td data-title="Total Stock">{{ageData.count}}</td>
+                              <td data-title="Code">{{ageData?._id}}</td>
+                              <td data-title="Name">{{ageData?.name}}</td>
+                              <td data-title="0-30 Days">{{ageData?.count30}}</td>
+                              <td data-title="31-60 Days">{{ageData?.count3060}}</td>
+                              <td data-title="61-90 Days">{{ageData?.count6090}}</td>
+                              <td data-title="91-120 Days">{{ageData?.count90120}}</td>
+                              <td data-title="120-180 Days">{{ageData?.count120180}}</td>
+                              <td data-title="Above 180 Days">{{ageData?.count180}}</td>
+                              <td data-title="Total Stock">{{ageData?.count}}</td>
                             </tr>
                             <tr class="fw-bold">
                                 <td colspan="3">Total </td>
-                                <td>{{total.count30}}</td>
-                                <td>{{total.count3060}}</td>
-                                <td>{{total.count6090}}</td>
-                                <td>{{total.count90120}}</td>
-                                <td>{{total.count120180}}</td>
-                                <td>{{total.count180}}</td>
-                                <td>{{total.count}}</td>
+                                <td>{{total?.count30}}</td>
+                                <td>{{total?.count3060}}</td>
+                                <td>{{total?.count6090}}</td>
+                                <td>{{total?.count90120}}</td>
+                                <td>{{total?.count120180}}</td>
+                                <td>{{total?.count180}}</td>
+                                <td>{{total?.count}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -153,4 +153,4 @@
         </div>
     </div>
   </section>
-  
+

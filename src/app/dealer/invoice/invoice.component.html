@@ -17,7 +17,7 @@
           </div>
           <div class="col-md-6 col-12 align-self-end text-end filterMain">
             <button class="btn btn-primary me-2" type="button" data-bs-toggle="collapse" title="Filter" data-bs-target="#filter" aria-expanded="false" aria-controls="collapseExample"> <i class="fas fa-filter"></i> </button>
-            <button type="button" class="btn btn-primary me-2" *ngIf="invoiceData.length > 0" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
+            <button type="button" class="btn btn-primary me-2" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
             <label for="limit">
               <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
                 <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
@@ -89,28 +89,28 @@
               </tr>
             </thead>
             <tbody>
-              <tr [ngStyle]="{'color': (invoice.data[0].isReturned) ? 'Red' : '#000'}" *ngFor="let invoice of invoiceData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i=index">
+              <tr [ngStyle]="{'color': (invoice?.data[0]?.isReturned) ? 'Red' : '#000'}" *ngFor="let invoice of invoiceData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i=index">
                 <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
-                <td data-title="Invoice No.">{{invoice.data[0].invoiceNumber }}</td>
-                <td data-title="Received Date">{{invoice.data[0].invoiceDate | date:"dd-MM-yyyy" }}</td>
-                <td data-title="From Depot">{{invoice.data[0].previousState.name}}</td>
-                <td data-title="To Depot">{{invoice.data[0].dealer.name}} </td>
-                <td data-title="Received Date">{{invoice.data[0].dealer.code}}</td>
-                <td data-title="Name">{{invoice.data[0].name}}</td>
-                <td data-title="Received Date">{{invoice.data[0].city}}</td>
-                <td data-title="Sr. No.">{{invoice.data[0].state}}</td>
-                <td data-title="Sr. No.">{{invoice.data[0].model}}</td>
-                <td data-title="Sr. No.">{{invoice.data[0].variantCode}}</td>
-                <td data-title="Sr. No.">{{invoice.data[0].chassisNo}}</td>
-                <td data-title="Sr. No.">{{invoice.data[0].productCode}}</td>
-                <td data-title="To Depot">{{invoice.data[0].isReturned ? -1 : 1}} </td>
-                <td data-title="To Depot">{{invoice.data[0].status}}</td>
-                <td data-title="To Depot">{{invoice.data[0].NDP}}</td>
-                <td data-title="To Depot">{{ invoice.data[0].NDP-invoice.data[0].dealer.discountAmount}}</td>
-                <td data-title="To Depot">{{invoice.data[0].dealer.discountAmount}}</td>
-                <td data-title="To Depot">{{invoice.data[0].NDP-invoice.data[0].dealer.discountAmount}}</td>
-                <td data-title="To Depot">{{invoice.data[0].invoiceAmount -(invoice.data[0].NDP-invoice.data[0].dealer.discountAmount) | number}}</td>
-                <td data-title="Invoice No.">{{invoice.status=="Sale Return"?'-':''}}{{invoice.data[0].invoiceAmount}}
+                <td data-title="Invoice No.">{{invoice?.data[0]?.invoiceNumber }}</td>
+                <td data-title="Received Date">{{invoice?.data[0]?.invoiceDate | date:"dd-MM-yyyy" }}</td>
+                <td data-title="From Depot">{{invoice?.data[0]?.previousState.name}}</td>
+                <td data-title="To Depot">{{invoice?.data[0]?.dealer?.name}} </td>
+                <td data-title="Received Date">{{invoice?.data[0]?.dealer?.code}}</td>
+                <td data-title="Name">{{invoice?.data[0]?.name}}</td>
+                <td data-title="Received Date">{{invoice?.data[0]?.city}}</td>
+                <td data-title="Sr. No.">{{invoice?.data[0]?.state}}</td>
+                <td data-title="Sr. No.">{{invoice?.data[0]?.model}}</td>
+                <td data-title="Sr. No.">{{invoice?.data[0]?.variantCode}}</td>
+                <td data-title="Sr. No.">{{invoice?.data[0]?.chassisNo}}</td>
+                <td data-title="Sr. No.">{{invoice?.data[0]?.productCode}}</td>
+                <td data-title="To Depot">{{invoice?.data[0]?.isReturned ? -1 : 1}} </td>
+                <td data-title="To Depot">{{invoice?.data[0]?.status}}</td>
+                <td data-title="To Depot">{{invoice?.data[0]?.NDP}}</td>
+                <td data-title="To Depot">{{ invoice?.data[0]?.NDP-invoice?.data[0]?.dealer?.discountAmount}}</td>
+                <td data-title="To Depot">{{invoice?.data[0]?.dealer?.discountAmount}}</td>
+                <td data-title="To Depot">{{invoice?.data[0]?.NDP-invoice?.data[0]?.dealer?.discountAmount}}</td>
+                <td data-title="To Depot">{{invoice?.data[0]?.invoiceAmount -(invoice?.data[0]?.NDP-invoice?.data[0]?.dealer?.discountAmount) | number}}</td>
+                <td data-title="Invoice No.">{{invoice?.status=="Sale Return"?'-':''}}{{invoice?.data[0]?.invoiceAmount}}
                 </td>
               </tr>
             </tbody>

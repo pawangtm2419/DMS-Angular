@@ -12,12 +12,11 @@
                           </ul>
                           <div class="searchBar d-flex justify-content-center align-items-center">
                               <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
-
                           </div>
                       </div>
                       <div class="col-md-6 align-self-end text-end">
                           <div class="modelBtnMain">
-                            <button type="button" class="btn btn-primary" *ngIf="rtsReports.length > 0" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
+                            <button type="button" class="btn btn-primary" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
                           </div>
                           <label for="limit">
                               <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
@@ -69,27 +68,27 @@
                       <tbody>
                           <tr *ngFor="let rts of rtsReports | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                               <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
-                              <td data-title="Dealer Code">{{rts.dealer.code}}</td>
-                              <td data-title="Dealer Name">{{rts.dealer.name}}</td>
-                              <td data-title="Location">{{rts.dealer.city}}</td>
-                              <td data-title="State">{{rts.dealer.state}}</td>
-                              <td data-title="Customer Name">{{rts.customer.name}}</td>
-                              <td data-title="Contact">{{rts.customer.phone}}</td>
-                              <td data-title="Location">{{rts.customer.city}}</td>
-                              <td data-title="State">{{rts.customer.state}}</td>
-                              <td data-title="Chassis No.">{{rts.chassisNo}}</td>
-                              <td data-title="Engine No.">{{rts.engineNo}}</td>
-                              <td data-title="Variant">{{rts.variantCode}}</td>
-                              <td data-title="DealPrice">{{rts.customer.dealPrice | currency: 'INR'}}</td>
-                              <td data-title="ReceivedAmt">{{rts.customer.dealPrice - rts.customer.balanceAmount | currency : 'INR'}}</td>
-                              <td data-title="BalanceAmt">{{rts.customer.balanceAmount | currency : 'INR'}}</td>
-                              <td data-title="Invoice No">{{rts.customer.invoiceNumber}}</td>
-                              <td data-title="Production Date">{{rts.prodDate | date: 'dd-MM-yyyy'}}</td>
-                              <td data-title="Invoice Date">{{rts.customer.invoiceDate | date:'dd-MM-yyyy'}}</td>
-                              <td data-title="Delivery Date">{{rts.customer.deliveryDate | date:'dd-MM-yyyy'}}</td>
-                              <td data-title="Retailed Date">{{rts.customer.retailDate | date:'dd-MM-yyyy'}}</td>
-                              <td data-title="Financer Name">{{rts.financeDetails}}</td>
-                              <td data-title="Retail Remarks">{{rts.retailRemarks}}</td>
+                              <td data-title="Dealer Code">{{rts?.dealer?.code}}</td>
+                              <td data-title="Dealer Name">{{rts?.dealer?.name}}</td>
+                              <td data-title="Location">{{rts?.dealer?.city}}</td>
+                              <td data-title="State">{{rts?.dealer?.state}}</td>
+                              <td data-title="Customer Name">{{rts?.customer?.name}}</td>
+                              <td data-title="Contact">{{rts?.customer?.phone}}</td>
+                              <td data-title="Location">{{rts?.customer?.city}}</td>
+                              <td data-title="State">{{rts?.customer?.state}}</td>
+                              <td data-title="Chassis No.">{{rts?.chassisNo}}</td>
+                              <td data-title="Engine No.">{{rts?.engineNo}}</td>
+                              <td data-title="Variant">{{rts?.variantCode}}</td>
+                              <td data-title="DealPrice">{{rts?.customer?.dealPrice | currency: 'INR'}}</td>
+                              <td data-title="ReceivedAmt">{{rts?.customer?.dealPrice - rts?.customer?.balanceAmount | currency : 'INR'}}</td>
+                              <td data-title="BalanceAmt">{{rts?.customer?.balanceAmount | currency : 'INR'}}</td>
+                              <td data-title="Invoice No">{{rts?.customer?.invoiceNumber}}</td>
+                              <td data-title="Production Date">{{rts?.prodDate | date: 'dd-MM-yyyy'}}</td>
+                              <td data-title="Invoice Date">{{rts?.customer?.invoiceDate | date:'dd-MM-yyyy'}}</td>
+                              <td data-title="Delivery Date">{{rts?.customer?.deliveryDate | date:'dd-MM-yyyy'}}</td>
+                              <td data-title="Retailed Date">{{rts?.customer?.retailDate | date:'dd-MM-yyyy'}}</td>
+                              <td data-title="Financer Name">{{rts?.financeDetails}}</td>
+                              <td data-title="Retail Remarks">{{rts?.retailRemarks}}</td>
                           </tr>
                       </tbody>
                   </table>

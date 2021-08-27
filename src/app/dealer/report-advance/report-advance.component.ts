@@ -22,6 +22,7 @@ export class ReportAdvanceComponent implements OnInit {
   selectedCityName: any;
   selectedZone: any;
   data: any = {useType: 'ALL'};
+  isExcelDownload: boolean = false;
   constructor(private dealer: DealerReportService, public toaster: ToasterService, private service: CommonService) {
     this.fromDate =  new Date(new Date().getFullYear(), new Date().getMonth(), 1, 0, 0, 0, 0).toISOString();
     this.toDate =  new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0, 0, 0, 0).toISOString();
@@ -47,6 +48,7 @@ export class ReportAdvanceComponent implements OnInit {
     this.dealer.getAdvReports(this.data).subscribe(res => {
       this.advanceData = res.data;
       if (this.advanceData.length > 0) {
+        this.isExcelDownload = true;
         this.limits = [{ key: 50, value: 50 }, { key: 100, value: 100 }, { key: 250, value: 250 }, { key: 500, value: 500 }, { key: 'ALL', value: this.advanceData.length }];
         this.toaster.showSuccess('Data', 'Report successfully Open.');
       } else {

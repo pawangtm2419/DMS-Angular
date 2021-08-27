@@ -54,20 +54,20 @@
                       <tbody>
                           <tr *ngFor="let invoice of invoiceData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                               <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
-                              <td data-title="Dealer">{{invoice.data[0].previousState.name}}</td>
-                              <td data-title="Code">{{invoice.data[0].previousState.code}}</td>
-                              <td data-title="City">{{invoice.data[0].previousState.city}}</td>
-                              <td data-title="State">{{invoice.data[0].previousState.state}}</td>
-                              <td data-title="Depot">{{invoice.data[0].name}}</td>
-                              <td data-title="Depot Code">{{invoice.data[0].code}}</td>
-                              <td data-title="SR Inv">{{invoice._id}}</td>
-                              <td data-title="Invoice Date">{{invoice.data[0].invoiceDate | date:"dd-MM-yyyy"}}</td>
-                              <td data-title="Created On">{{invoice.data[0].createDate | date:"dd-MM-yyyy"}}</td>
-                              <td data-title="Model">{{invoice.data[0].model}}</td>
-                              <td data-title="Variant">{{invoice.data[0].variantCode}}</td>
-                              <td data-title="Chassis No/Product Code">{{invoice.data[0].chassisNo}} /{{invoice.data[0].productCode}}</td>
-                              <td data-title="Sale Inv">{{invoice.data[0].dealer.invoiceNumber}}</td>
-                              <td data-title="Discount Amount">{{invoice.data[0].dealer.discountAmount}}</td>
+                              <td data-title="Dealer">{{invoice?.data[0]?.previousState?.name}}</td>
+                              <td data-title="Code">{{invoice?.data[0]?.previousState?.code}}</td>
+                              <td data-title="City">{{invoice?.data[0]?.previousState?.city}}</td>
+                              <td data-title="State">{{invoice?.data[0]?.previousState?.state}}</td>
+                              <td data-title="Depot">{{invoice?.data[0]?.name}}</td>
+                              <td data-title="Depot Code">{{invoice?.data[0]?.code}}</td>
+                              <td data-title="SR Inv">{{invoice?._id}}</td>
+                              <td data-title="Invoice Date">{{invoice?.data[0]?.invoiceDate | date:"dd-MM-yyyy"}}</td>
+                              <td data-title="Created On">{{invoice?.data[0]?.createDate | date:"dd-MM-yyyy"}}</td>
+                              <td data-title="Model">{{invoice?.data[0]?.model}}</td>
+                              <td data-title="Variant">{{invoice?.data[0]?.variantCode}}</td>
+                              <td data-title="Chassis No/Product Code">{{invoice?.data[0]?.chassisNo}} /{{invoice?.data[0]?.productCode}}</td>
+                              <td data-title="Sale Inv">{{invoice?.data[0]?.dealer?.invoiceNumber}}</td>
+                              <td data-title="Discount Amount">{{invoice?.data[0]?.dealer?.discountAmount}}</td>
                               <td data-title="Action">
                                   <button class="btn-view" type="button">View</button>
                               </td>

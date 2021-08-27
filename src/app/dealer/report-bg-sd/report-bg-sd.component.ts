@@ -13,6 +13,7 @@ export class ReportBgSdComponent implements OnInit {
   pageData = 1;
   limits: any;
   limit: any = 50;
+  isExcelDownload:boolean = false;
   constructor(private dealer: DealerReportService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -22,6 +23,7 @@ export class ReportBgSdComponent implements OnInit {
     this.dealer.getBdSdMonitor().subscribe(res => {
       this.bgSdData = res.data;
       if (this.bgSdData.length > 0) {
+        this.isExcelDownload = true;
         this.limits = [{ 'key': 50, 'value': 50 }, { 'key': 100, 'value': 100 }, { 'key': 250, 'value': 250 }, { 'key': 500, 'value': 500 }, { key: 'ALL', value: this.bgSdData.length }];
         this.toaster.showSuccess('Data', 'Report successfully Open.');
       } else {

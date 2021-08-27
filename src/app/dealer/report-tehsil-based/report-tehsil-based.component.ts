@@ -15,6 +15,7 @@ export class ReportTehsilBasedComponent implements OnInit {
   limit: any = 50;
   year: Number = new Date().getFullYear();
   month: Number = new Date().getMonth()+1;
+  isExcelDownload: boolean = false;
   constructor(private dealer: DealerReportService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -25,6 +26,7 @@ export class ReportTehsilBasedComponent implements OnInit {
     this.dealer.getTehsilReports(data).subscribe(res=> {
       this.tehsilData=res.result;
       if(this.tehsilData.length > 0) {
+        this.isExcelDownload = true;
         this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.tehsilData.length }];
         this.toaster.showSuccess("Data", "Report successfully Open.");
       } else {

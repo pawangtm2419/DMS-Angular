@@ -12,12 +12,11 @@
                           </ul>
                           <div class="searchBar d-flex justify-content-center align-items-center">
                               <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
-
                           </div>
                       </div>
                       <div class="col-md-6 align-self-end text-end">
                           <div class="modelBtnMain">
-                            <button type="button" class=" btn btn-primary" *ngIf="expDisData.length > 0" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
+                            <button type="button" class=" btn btn-primary" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
                           </div>
                           <label for="cars">
                               <select id="limit" name="limit" class="form-select" (click)="dataLimit()">

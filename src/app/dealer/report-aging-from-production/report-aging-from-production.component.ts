@@ -14,6 +14,7 @@ export class ReportAgingFromProductionComponent implements OnInit {
   limits: any;
   limit: any = 50;
   total: any;
+  isExcelDownload: boolean = false;
   constructor(private dealer: DealerReportService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -23,9 +24,9 @@ export class ReportAgingFromProductionComponent implements OnInit {
     let data = {"locationType":"DEALER","type":"production","useType":"ALL"};
     this.dealer.getAgingProd(data).subscribe(res=> {
       this.ageProdData=res.data;
-      console.log(this.ageProdData);
       this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.ageProdData.length }];
       if(this.ageProdData.length > 0) {
+        this.isExcelDownload = true;
         this.total ={
           count30: 0, count3060: 0, count6090: 0, count90120: 0, count120180: 0, count180: 0, count: 0
         }

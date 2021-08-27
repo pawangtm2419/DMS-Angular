@@ -12,12 +12,11 @@
                           </ul>
                           <div class="searchBar d-flex justify-content-center align-items-center">
                               <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
-
                           </div>
                       </div>
                       <div class="col-md-6 align-self-end text-end">
                           <div class="modelBtnMain">
-                            <button type="button" class=" btn btn-primary" *ngIf="collectionDaywises.length > 0" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
+                            <button type="button" class=" btn btn-primary" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
                           </div>
                           <label for="cars">
                               <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
@@ -53,20 +52,19 @@
                           <tr *ngFor="let collection of collectionDaywises  | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                               <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
                               <td data-title="Action"><i class="fa fa-thumbs-down" style="color: red;"></i></td>
-                              <td data-title="Finance Date">{{collection.receivedOn | date:'dd-MM-yyyy'}}</td>
-                              <td data-title="Dealer Code">{{collection.code}}</td>
-                              <td data-title="Dealer Name">{{collection.name}}</td>
-                              <td data-title="Location">{{collection.city}}</td>
-                              <td data-title="State">{{collection.state}}</td>
-                              <td data-title="Doc Date">{{collection.receivedOn | date:'dd-MM-yyyy'}}</td>
-                              <td data-title="Amount">{{collection.amount}}</td>
-                              <td data-title="Mode">{{collection.paymentMode}}</td>
-                              <td data-title="Instrument No">{{collection.instrNo}}</td>
-                              <td data-title="From Bank">{{collection.bankFrom}}</td>
-                              <td data-title="To Bank">{{collection.bankTo}}</td>
-                              <td data-title="Status">{{collection.status}}</td>
-                              <td data-title="Remarks">{{collection.remarks}}</td>
-
+                              <td data-title="Finance Date">{{collection?.receivedOn | date:'dd-MM-yyyy'}}</td>
+                              <td data-title="Dealer Code">{{collection?.code}}</td>
+                              <td data-title="Dealer Name">{{collection?.name}}</td>
+                              <td data-title="Location">{{collection?.city}}</td>
+                              <td data-title="State">{{collection?.state}}</td>
+                              <td data-title="Doc Date">{{collection?.receivedOn | date:'dd-MM-yyyy'}}</td>
+                              <td data-title="Amount">{{collection?.amount}}</td>
+                              <td data-title="Mode">{{collection?.paymentMode}}</td>
+                              <td data-title="Instrument No">{{collection?.instrNo}}</td>
+                              <td data-title="From Bank">{{collection?.bankFrom}}</td>
+                              <td data-title="To Bank">{{collection?.bankTo}}</td>
+                              <td data-title="Status">{{collection?.status}}</td>
+                              <td data-title="Remarks">{{collection?.remarks}}</td>
                           </tr>
                       </tbody>
                   </table>
@@ -78,5 +76,3 @@
       </div>
   </div>
 </section>
-
-

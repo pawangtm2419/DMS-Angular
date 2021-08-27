@@ -13,10 +13,10 @@
                         </div>
                         <div class="col-md-6">
                             <div class="searchBar d-flex justify-content-center align-items-center">
-                                <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search"> 
+                                <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
                             </div>
                         </div>
-                        <div class="col-md-6 align-self-end text-end"> 
+                        <div class="col-md-6 align-self-end text-end">
                             <div class="modelBtnMain">
                                 <button type="button" data-bs-toggle="modal" data-bs-target="#addVariant" class="btn btn-primary text-uppercase me-2">+ Add Variant</button>
                                 <button type="button" class="btn btn-primary" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
@@ -51,29 +51,19 @@
                         <tbody>
                             <tr *ngFor="let variant of variantData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                                 <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
-                                <td data-title="Product Code"><a class="table-href" data-bs-toggle="modal" data-bs-target="#variantinfo" (click)="viewFullInfo(variant)">{{variant.productCode}}</a></td>
-                                <td data-title="Model Code">{{variant.modelCode}}</td>
-                                <td data-title="Variant Code">{{variant.variantCode}}</td>
-                                <td data-title="Specification">{{variant.specification}}</td>
-                                <td data-title="NDP Exc. GST">{{variant.currencyCode}} {{variant.NDP_withoutTax}}</td>
-                                <td data-title="CGST">{{variant.NDP_withoutTax * variant.gst/100 | number}}</td>
-                                <td data-title="SGST">{{variant.NDP_withoutTax * variant.sst/100 | number}}</td>
-                                <td data-title="NDP Inc. GST">{{variant.NDP_withoutTax + variant.NDP_withoutTax * variant.gst/100 + variant.NDP_withoutTax * variant.sst/100 | number}}</td>
-                                <td data-title="Dealer Margin">{{variant.dealerMargin}}</td>
-                                <td data-title="MRP">{{variant.dealerMargin + variant.NDP_withoutTax + ((variant.dealerMargin + variant.NDP_withoutTax)* (variant.gst/100 + variant.sst/100 )) | number}}</td>
+                                <td data-title="Product Code"><a class="table-href" data-bs-toggle="modal" data-bs-target="#variantinfo" (click)="viewFullInfo(variant)">{{variant?.productCode}}</a></td>
+                                <td data-title="Model Code">{{variant?.modelCode}}</td>
+                                <td data-title="Variant Code">{{variant?.variantCode}}</td>
+                                <td data-title="Specification">{{variant?.specification}}</td>
+                                <td data-title="NDP Exc. GST">{{variant?.currencyCode}} {{variant?.NDP_withoutTax}}</td>
+                                <td data-title="CGST">{{variant?.NDP_withoutTax * variant?.gst/100 | number}}</td>
+                                <td data-title="SGST">{{variant?.NDP_withoutTax * variant?.sst/100 | number}}</td>
+                                <td data-title="NDP Inc. GST">{{variant?.NDP_withoutTax + variant?.NDP_withoutTax * variant?.gst/100 + variant?.NDP_withoutTax * variant?.sst/100 | number}}</td>
+                                <td data-title="Dealer Margin">{{variant?.dealerMargin}}</td>
+                                <td data-title="MRP">{{variant?.dealerMargin + variant?.NDP_withoutTax + ((variant?.dealerMargin + variant?.NDP_withoutTax)* (variant?.gst/100 + variant?.sst/100 )) | number}}</td>
                                 <td data-title="Options" class="text-center">
-                                    <!-- <div class="container">
-                                        <div class="row">
-                                            <div class="col-6 col-md-6">
-                                                <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" [routerLink]="['/master/edit-variant', variant._id]"><span class="fa fa-edit margin-right-0"></span></button>
-                                            </div>
-                                            <div class="col-6 col-md-6">
-                                                <button class="btn bg-blue btn-xs radius_none" data-toggle="modal" (click)="variantDelete(variant._id)"><span class="fa fa-trash margin-right-0"></span></button>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <a class="editIcon icon mb-1" [routerLink]="['/master/edit-variant', variant._id]"><i class="fa fa-edit"></i></a>
-                                    <a class="deleteIcon icon" (click)="variantDelete(variant._id)"><i class="fa fa-trash-alt"></i></a>
+                                    <a class="editIcon icon mb-1" [routerLink]="['/master/edit-variant', variant?._id]"><i class="fa fa-edit"></i></a>
+                                    <a class="deleteIcon icon" (click)="variantDelete(variant?._id)"><i class="fa fa-trash-alt"></i></a>
                                 </td>
                               </tr>
                         </tbody>
@@ -92,7 +82,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content" *ngFor="let variant of variantInfo">
         <div class="modal-header modalHeaderCenter" style="background: #454397">
-            <h4 class="modal-title text-white text-center">Variant Code - {{variant.variantCode}}</h4>
+            <h4 class="modal-title text-white text-center">Variant Code - {{variant?.variantCode}}</h4>
           <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
           <a class="btn-close2" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></a>
         </div>
@@ -103,54 +93,54 @@
                     <div class="row mt-1">
                         <div class="col-5"><b>Product Code</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{variant.productCode}}</div>
+                        <div class="col-6">{{variant?.productCode}}</div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-5"><b>Model Code</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{variant.modelCode}}</div>
+                        <div class="col-6">{{variant?.modelCode}}</div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-5"><b>Variant Code</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{variant.variantCode}}</div>
+                        <div class="col-6">{{variant?.variantCode}}</div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-5"><b>Specification</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{variant.specification}}</div>
+                        <div class="col-6">{{variant?.specification}}</div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-5"><b>NDP Exc. GST</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{variant.currencyCode}} {{variant.NDP_withoutTax}}</div>
+                        <div class="col-6">{{variant?.currencyCode}} {{variant?.NDP_withoutTax}}</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-6 p-2">
                     <div class="row mt-1">
                         <div class="col-5"><b>CGST</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{variant.NDP_withoutTax * variant.gst/100 | number}}</div>
+                        <div class="col-6">{{variant?.NDP_withoutTax * variant?.gst/100 | number}}</div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-5"><b>SGST</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{variant.NDP_withoutTax * variant.sst/100 | number}}</div>
+                        <div class="col-6">{{variant?.NDP_withoutTax * variant?.sst/100 | number}}</div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-5"><b>NDP Inc. GST</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{variant.NDP_withoutTax + variant.NDP_withoutTax * variant.gst/100 + variant.NDP_withoutTax * variant.sst/100 | number}}</div>
+                        <div class="col-6">{{variant?.NDP_withoutTax + variant?.NDP_withoutTax * variant?.gst/100 + variant?.NDP_withoutTax * variant?.sst/100 | number}}</div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-5"><b>Dealer Margin</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{variant.dealerMargin}}</div>
+                        <div class="col-6">{{variant?.dealerMargin}}</div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-5"><b>MRP</b></div>
                         <div class="col-1"><b>:</b></div>
-                        <div class="col-6">{{variant.dealerMargin + variant.NDP_withoutTax + ((variant.dealerMargin + variant.NDP_withoutTax)* (variant.gst/100 + variant.sst/100 )) | number}}</div>
+                        <div class="col-6">{{variant?.dealerMargin + variant?.NDP_withoutTax + ((variant?.dealerMargin + variant?.NDP_withoutTax)* (variant?.gst/100 + variant?.sst/100 )) | number}}</div>
                     </div>
                 </div>
               </div>

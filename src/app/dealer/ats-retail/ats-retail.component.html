@@ -111,22 +111,22 @@
               <tbody>
                 <tr *ngFor="let retail of retailData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i=index">
                   <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
-                  <td data-title="Depot Code">{{retail.dealer.code}}</td>
-                  <td data-title="Dealer Name">{{retail.dealer.name}}</td>
-                  <td data-title="Dealer Location">{{retail.dealer.city}}</td>
-                  <td data-title="Dealer State">{{retail.dealer.state}}</td>
-                  <td data-title="Invoice No.">{{retail.dealer.invoiceNumber}}</td>
-                  <td data-title="Invoice Date">{{retail.dealer.invoiceDate | date:"dd-MM-yyyy"}}</td>
-                  <td data-title="Customer Name">{{retail.customer.name}}</td>
-                  <td data-title="Chassis No"><a routerLink="/customerTrackingSheet/{{retail.chassisNo}}" routerLinkActive="active">{{retail.chassisNo}}</a></td>
-                  <td data-title="Variant Code">{{retail.variantCode}}</td>
-                  <td data-title="Product Code">{{retail.productCode}}</td>
-                  <td data-title="Net Dealer Price">{{retail.NDP-retail.dealer.discountAmount}}</td>
-                  <td data-title="Deal Price">{{retail.customer.dealPrice}}</td>
-                  <td data-title="Balance Amount">{{retail.customer.balanceAmount}}</td>
-                  <td data-title="Payment Type">{{retail.customer.paymentType}}</td>
-                  <td data-title="Delivery Date">{{retail.customer.deliveryDate | date:"dd-MM-yyyy"}}</td>
-                  <td data-title="Ageing">{{retail.customer.deliveryDate | date:"dd-MM-yyyy"}}</td>
+                  <td data-title="Depot Code">{{retail?.dealer?.code}}</td>
+                  <td data-title="Dealer Name">{{retail?.dealer?.name}}</td>
+                  <td data-title="Dealer Location">{{retail?.dealer?.city}}</td>
+                  <td data-title="Dealer State">{{retail?.dealer?.state}}</td>
+                  <td data-title="Invoice No.">{{retail?.dealer?.invoiceNumber}}</td>
+                  <td data-title="Invoice Date">{{retail?.dealer?.invoiceDate | date:"dd-MM-yyyy"}}</td>
+                  <td data-title="Customer Name">{{retail?.customer?.name}}</td>
+                  <td data-title="Chassis No"><a routerLink="/customerTrackingSheet/{{retail?.chassisNo}}" routerLinkActive="active">{{retail?.chassisNo}}</a></td>
+                  <td data-title="Variant Code">{{retail?.variantCode}}</td>
+                  <td data-title="Product Code">{{retail?.productCode}}</td>
+                  <td data-title="Net Dealer Price">{{retail?.NDP-retail?.dealer?.discountAmount}}</td>
+                  <td data-title="Deal Price">{{retail?.customer?.dealPrice}}</td>
+                  <td data-title="Balance Amount">{{retail?.customer?.balanceAmount}}</td>
+                  <td data-title="Payment Type">{{retail?.customer?.paymentType}}</td>
+                  <td data-title="Delivery Date">{{retail?.customer?.deliveryDate | date:"dd-MM-yyyy"}}</td>
+                  <td data-title="Ageing">{{retail?.customer?.deliveryDate | date:"dd-MM-yyyy"}}</td>
                 </tr>
               </tbody>
             </table>

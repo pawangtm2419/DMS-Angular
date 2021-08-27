@@ -60,7 +60,7 @@
                         </div>
                         <div class="col-md-2 mbSm">
                           <div class="inline-el">
-                              <span class="me-2">From:</span> 
+                              <span class="me-2">From:</span>
                               <input type="date" placeholder="Invoice From date" name="fromDate" [ngModel]="fromDate | date:'yyyy-MM-dd'" max="{{currentDate}}" ngModel class="form-control">
                           </div>
                         </div>
@@ -119,20 +119,20 @@
                 <tbody>
                     <tr *ngFor="let ats of InsuranceData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                         <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
-                        <td data-title="Code">{{ats.dealer.code}}</td>
-                        <td data-title="Name">{{ats.dealer.name}}</td>
-                        <td data-title="Location">{{ats.dealer.city}}</td>
-                        <td data-title="State">{{ats.dealer.state}}</td>
+                        <td data-title="Code">{{ats?.dealer?.code}}</td>
+                        <td data-title="Name">{{ats?.dealer?.name}}</td>
+                        <td data-title="Location">{{ats?.dealer?.city}}</td>
+                        <td data-title="State">{{ats?.dealer?.state}}</td>
 
-                        <td data-title="Name">{{ats.customer.name}}</td>
-                        <td data-title="Contact">{{ats.customer.phone}}</td>
-                        <td data-title="Location">{{ats.customer.city}}</td>
-                        <td data-title="State">{{ats.customer.state}}</td>
+                        <td data-title="Name">{{ats?.customer?.name}}</td>
+                        <td data-title="Contact">{{ats?.customer?.phone}}</td>
+                        <td data-title="Location">{{ats?.customer?.city}}</td>
+                        <td data-title="State">{{ats?.customer?.state}}</td>
 
-                        <td data-title="Chassis No">{{ats.chassisNo}}</td>
-                        <td data-title="Variant">{{ats.variantCode}}</td>
-                        <td data-title="Delivery Date">{{ats.customer.deliveryDate | date:"dd-MM-yyyy"}}</td>
-                        <td data-title="Retailed Date">{{ats.customer.retailDate | date:"dd-MM-yyyy"}}</td>
+                        <td data-title="Chassis No">{{ats?.chassisNo}}</td>
+                        <td data-title="Variant">{{ats?.variantCode}}</td>
+                        <td data-title="Delivery Date">{{ats?.customer?.deliveryDate | date:"dd-MM-yyyy"}}</td>
+                        <td data-title="Retailed Date">{{ats?.customer?.retailDate | date:"dd-MM-yyyy"}}</td>
 
                         <td data-title="EffectiveFrom">{{ats}}</td>
                         <td data-title="EffectiveTill">{{ats}}</td>

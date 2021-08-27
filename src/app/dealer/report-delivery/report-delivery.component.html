@@ -12,12 +12,11 @@
                           </ul>
                           <div class="searchBar d-flex justify-content-center align-items-center">
                               <i class="fas fa-search"></i><input class="form-control" [(ngModel)]="searchData" type="search" placeholder="Search" aria-label="Search">
-
                           </div>
                       </div>
                       <div class="col-md-6 align-self-end text-end">
                           <div class="modelBtnMain">
-                            <button type="button" class="btn btn-primary" *ngIf="deliveryData.length > 0" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
+                            <button type="button" class="btn btn-primary" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
                           </div>
                           <label for="limit">
                               <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
@@ -79,37 +78,37 @@
                       <tbody>
                           <tr *ngFor="let del of deliveryData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                               <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
-                              <td data-title="Dealer Code">{{del.dealer.code}}</td>
-                              <td data-title="Dealer Name">{{del.dealer.name}}</td>
-                              <td data-title="Location">{{del.dealer.city}}</td>
-                              <td data-title="State">{{del.dealer.state}}</td>
-                              <td data-title="Customer Name">{{del.customer.name}}</td>
-                              <td data-title="Contact">{{del.customer.phone}}</td>
-                              <td data-title="Location">{{del.customer.city}}</td>
-                              <td data-title="State">{{del.customer.state}}</td>
-                              <td data-title="Model">{{del.model}}</td>
-                              <td data-title="ProductCode">{{del.prodDate | date: 'dd-MM-yyyy'}}</td>
-                              <td data-title="Variant">{{del.variantCode}}</td>
-                              <td data-title="ChassisNo">{{del.chassisNo}}</td>
-                              <td data-title="Engine No">{{del.engineNo}}</td>
-                              <td data-title="Invoice No">{{del.dealer.invoiceNumber}}</td>
-                              <td data-title="Invoice Date">{{del.dealer.invoiceDate | date:'dd-MM-yyyy'}}</td>
-                              <td data-title="Financer Type">{{del.finType}}</td>
-                              <td data-title="Financer Name">{{del.financeDetails.bankName}}</td>
-                              <td data-title="DealPrice">{{del.customer.dealPrice | date:'dd-MM-yyyy'}}</td>
-                              <td data-title="Margin">{{del.marginCollected | date:'dd-MM-yyyy'}}</td>
-                              <td data-title="Cash">{{del.cashAmount}}</td>
-                              <td data-title="Old Tractor Price">{{del.customer.oldTractor.price }}</td>
+                              <td data-title="Dealer Code">{{del?.dealer?.code}}</td>
+                              <td data-title="Dealer Name">{{del?.dealer?.name}}</td>
+                              <td data-title="Location">{{del?.dealer?.city}}</td>
+                              <td data-title="State">{{del?.dealer?.state}}</td>
+                              <td data-title="Customer Name">{{del?.customer?.name}}</td>
+                              <td data-title="Contact">{{del?.customer?.phone}}</td>
+                              <td data-title="Location">{{del?.customer?.city}}</td>
+                              <td data-title="State">{{del?.customer?.state}}</td>
+                              <td data-title="Model">{{del?.model}}</td>
+                              <td data-title="ProductCode">{{del?.prodDate | date: 'dd-MM-yyyy'}}</td>
+                              <td data-title="Variant">{{del?.variantCode}}</td>
+                              <td data-title="ChassisNo">{{del?.chassisNo}}</td>
+                              <td data-title="Engine No">{{del?.engineNo}}</td>
+                              <td data-title="Invoice No">{{del?.dealer?.invoiceNumber}}</td>
+                              <td data-title="Invoice Date">{{del?.dealer?.invoiceDate | date:'dd-MM-yyyy'}}</td>
+                              <td data-title="Financer Type">{{del?.finType}}</td>
+                              <td data-title="Financer Name">{{del?.financeDetails.bankName}}</td>
+                              <td data-title="DealPrice">{{del?.customer?.dealPrice | date:'dd-MM-yyyy'}}</td>
+                              <td data-title="Margin">{{del?.marginCollected | date:'dd-MM-yyyy'}}</td>
+                              <td data-title="Cash">{{del?.cashAmount}}</td>
+                              <td data-title="Old Tractor Price">{{del?.customer?.oldTractor.price }}</td>
                               <td data-title="Finance Amount Received On">NA</td>
-                              <td data-title="Finance Amount Received">{{del.financeAmount}}</td>
-                              <td data-title="ReceivedAmt">{{del.customer.dealPrice - del.customer.balanceAmount | currency : 'INR'}}</td>
-                              <td data-title="BalanceAmt">{{del.customer.balanceAmount}}</td>
+                              <td data-title="Finance Amount Received">{{del?.financeAmount}}</td>
+                              <td data-title="ReceivedAmt">{{del?.customer?.dealPrice - del?.customer?.balanceAmount | currency : 'INR'}}</td>
+                              <td data-title="BalanceAmt">{{del?.customer?.balanceAmount}}</td>
                               <td data-title="Quantity">-1</td>
-                              <td data-title="DeliveryDate/ReturnDate">{{del.customer.deliveryDate || del.invoiceDate | date:'dd-MM-yyyy'}}</td>
+                              <td data-title="DeliveryDate/ReturnDate">{{del?.customer?.deliveryDate || del?.invoiceDate | date:'dd-MM-yyyy'}}</td>
                               <td data-title="Production">{{del}}</td>
                               <td data-title="Advancing">{{del}}</td>
-                              <td data-title="Created On">{{del.createDate | date:'dd-MM-yyyy'}}</td>
-                              <td data-title="Created By">{{del.createdBy}}</td>
+                              <td data-title="Created On">{{del?.createDate | date:'dd-MM-yyyy'}}</td>
+                              <td data-title="Created By">{{del?.createdBy}}</td>
                               <td data-title="Remarks">{{del}}</td>
                           </tr>
                       </tbody>

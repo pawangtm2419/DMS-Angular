@@ -13,6 +13,7 @@ export class ReportAtsComponent implements OnInit {
   pageData = 1;
   limits: any;
   limit: any = 50;
+  isExcelDownload:boolean = false;
   constructor(private dealer: DealerReportService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -22,15 +23,14 @@ export class ReportAtsComponent implements OnInit {
     const data = {isRetailed: false, useType: 'ALL'};
     this.dealer.getAtsReports(data).subscribe((res: { data: any; }) => {
       this.atsReports = res.data;
-      console.log(this.atsReports);
       this.limits = [{ key: 50, value: 50 }, { key: 100, value: 100 }, { key: 250, value: 250 }, { key: 500, value: 500 }, { key: 'ALL', value: this.atsReports.length }];
       if (this.atsReports.length > 0) {
+        this.isExcelDownload = true;
         this.toaster.showSuccess('Data', 'Report successfully Open.');
       } else {
         this.toaster.showInfo('Data', 'No record found.');
       }
     }, (error: string) => {
-      // console.log(error);
       this.toaster.showInfo('Data', error);
     });
   }

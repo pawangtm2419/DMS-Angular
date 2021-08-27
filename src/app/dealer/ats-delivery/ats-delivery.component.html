@@ -18,7 +18,7 @@
               </div>
               <div class="col-md-6 align-self-end text-end filterMain">
                 <button class="btn btn-primary me-2" type="button" data-bs-toggle="collapse" data-bs-target="#filter" aria-expanded="false" aria-controls="collapseExample"> <i class="fa fa-filter"></i> </button>
-                <button type="button" class="btn btn-primary me-2" *ngIf="atsDelData.length > 0" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
+                <button type="button" class="btn btn-primary me-2" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
                 <label for="limit">
                   <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
                     <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
@@ -107,20 +107,20 @@
               <tbody>
                 <tr *ngFor="let atsDel of atsDelData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i=index">
                   <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
-                  <td data-title="Depot Code">{{atsDel.depot.code || atsDel.plant.code }}</td>
-                  <td data-title="Dealer Code">{{atsDel.dealer.code}}</td>
-                  <td data-title="Dealer Name">{{atsDel.dealer.name}}</td>
-                  <td data-title="Dealer Location">{{atsDel.dealer.city}}</td>
-                  <td data-title="Dealer State">{{atsDel.dealer.state}}</td>
-                  <td data-title="Invoice No.">{{atsDel.dealer.invoiceNumber}}</td>
-                  <td data-title="Invoice Date">{{atsDel.dealer.invoiceDate | date:"dd-MM-yyyy"}}</td>
-                  <td data-title="Model Code">{{atsDel.model}}</td>
-                  <td data-title="Variant Code">{{atsDel.variantCode}}</td>
-                  <td data-title="Chassis No"><a routerLink="/advanceDeliveryDetails/{{atsDel.chassisNo}}" routerLinkActive="active">{{atsDel.chassisNo}}</a></td>
-                  <td data-title="Product Code">{{atsDel.productCode}}</td>
-                  <td data-title="Net Dealer Price">{{atsDel.NDP-atsDel.dealer.discountAmount | currency : 'INR'}}</td>
-                  <td data-title="Date of Received">{{atsDel.dealer.recivedDate | date:"dd-MM-yyyy"}}</td>
-                  <td data-title="Aging">{{atsDel.dealer.recivedDate | date:"dd-MM-yyyy"}}</td>
+                  <td data-title="Depot Code">{{atsDel?.depot.code || atsDel?.plant.code }}</td>
+                  <td data-title="Dealer Code">{{atsDel?.dealer?.code}}</td>
+                  <td data-title="Dealer Name">{{atsDel?.dealer?.name}}</td>
+                  <td data-title="Dealer Location">{{atsDel?.dealer?.city}}</td>
+                  <td data-title="Dealer State">{{atsDel?.dealer?.state}}</td>
+                  <td data-title="Invoice No.">{{atsDel?.dealer?.invoiceNumber}}</td>
+                  <td data-title="Invoice Date">{{atsDel?.dealer?.invoiceDate | date:"dd-MM-yyyy"}}</td>
+                  <td data-title="Model Code">{{atsDel?.model}}</td>
+                  <td data-title="Variant Code">{{atsDel?.variantCode}}</td>
+                  <td data-title="Chassis No"><a routerLink="/advanceDeliveryDetails/{{atsDel?.chassisNo}}" routerLinkActive="active">{{atsDel?.chassisNo}}</a></td>
+                  <td data-title="Product Code">{{atsDel?.productCode}}</td>
+                  <td data-title="Net Dealer Price">{{atsDel?.NDP-atsDel?.dealer?.discountAmount | currency : 'INR'}}</td>
+                  <td data-title="Date of Received">{{atsDel?.dealer?.recivedDate | date:"dd-MM-yyyy"}}</td>
+                  <td data-title="Aging">{{atsDel?.dealer?.recivedDate | date:"dd-MM-yyyy"}}</td>
                 </tr>
               </tbody>
             </table>

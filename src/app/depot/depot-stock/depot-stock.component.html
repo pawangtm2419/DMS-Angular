@@ -118,19 +118,19 @@
             <tbody>
               <tr *ngFor="let dStock of depotData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i=index">
                 <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
-                <td data-title="Depot Code">{{dStock.depot.code }}</td>
-                <td data-title="Depot Name">{{dStock.depot.name}}</td>
-                <td data-title="Product Code">{{dStock.productCode}}</td>
-                <td data-title="Model Code">{{dStock.model}}</td>
-                <td data-title="Variant Code">{{dStock.variantCode}}</td>
-                <td data-title="Chasis No">{{dStock.chassisNo}}</td>
-                <td data-title="Engine No">{{dStock.engineNo}}</td>
-                <td data-title="Mkt">{{dStock.market}}</td>
-                <td data-title="Prod-Date">{{dStock.prodDate | date:"dd-MM-yyyy"}}</td>
-                <td data-title="NDP_withoutTax">{{dStock.NDP | currency: 'INR'}}</td>
-                <td data-title="Tax">{{dStock.SST +dStock.GST}}</td>
-                <td data-title="Ageing"> {{dStock.prodDate | date:"dd-MM-yyyy"}}</td>
-                <td data-title="Status">{{dStock.status | uppercase}}</td>
+                <td data-title="Depot Code">{{dStock?.depot?.code }}</td>
+                <td data-title="Depot Name">{{dStock?.depot?.name}}</td>
+                <td data-title="Product Code">{{dStock?.productCode}}</td>
+                <td data-title="Model Code">{{dStock?.model}}</td>
+                <td data-title="Variant Code">{{dStock?.variantCode}}</td>
+                <td data-title="Chasis No">{{dStock?.chassisNo}}</td>
+                <td data-title="Engine No">{{dStock?.engineNo}}</td>
+                <td data-title="Mkt">{{dStock?.market}}</td>
+                <td data-title="Prod-Date">{{dStock?.prodDate | date:"dd-MM-yyyy"}}</td>
+                <td data-title="NDP_withoutTax">{{dStock?.NDP | currency: 'INR'}}</td>
+                <td data-title="Tax">{{dStock?.SST +dStock?.GST}}</td>
+                <td data-title="Ageing"> {{dStock?.prodDate | date:"dd-MM-yyyy"}}</td>
+                <td data-title="Status">{{dStock?.status | uppercase}}</td>
                 <td style="width: 100px;" data-title="Options" class="text-center">
                   <a class="txt-link" href="" data-toggle="modal"> Form 22 </a>
                   <a class="editIcon icon me-0" data-toggle="modal"><i class="fa fa-edit"></i></a>

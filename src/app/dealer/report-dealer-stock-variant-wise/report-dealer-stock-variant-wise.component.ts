@@ -13,6 +13,7 @@ export class ReportDealerStockVariantWiseComponent implements OnInit {
   pageData: number = 1;
   limits = [{ "key": "50", "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
   limit: any = 50;
+  isExcelDownload:boolean = false;
   constructor(private dealer: DealerReportService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -24,6 +25,7 @@ export class ReportDealerStockVariantWiseComponent implements OnInit {
       this.stockVariants=res.data;
       this.limits.push({ "key": "ALL", "value": this.stockVariants.length });
       if(this.stockVariants.length > 0) {
+        this.isExcelDownload = true;
         this.toaster.showSuccess("Data", "Report successfully Open.");
       } else {
         this.toaster.showInfo("Data", "No record found.");

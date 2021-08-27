@@ -45,12 +45,12 @@
                       <tbody>
                           <tr *ngFor="let stockVariant of stockVariants | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                               <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
-                              <td data-title="Dealer Code">{{stockVariant._id.code}}</td>
-                              <td data-title="Dealer Name">{{stockVariant._id.name}}</td>
-                              <td data-title="Model">{{stockVariant._id.model}}</td>
-                              <td data-title="Variant Code">{{stockVariant._id.variantCode}}</td>
-                              <td data-title="Status">{{stockVariant._id.status}}</td>
-                              <td data-title="Quantity">{{stockVariant.vehicles}}</td>
+                              <td data-title="Dealer Code">{{stockVariant?._id.code}}</td>
+                              <td data-title="Dealer Name">{{stockVariant?._id.name}}</td>
+                              <td data-title="Model">{{stockVariant?._id.model}}</td>
+                              <td data-title="Variant Code">{{stockVariant?._id.variantCode}}</td>
+                              <td data-title="Status">{{stockVariant?._id.status}}</td>
+                              <td data-title="Quantity">{{stockVariant?.vehicles}}</td>
                           </tr>
                       </tbody>
                   </table>

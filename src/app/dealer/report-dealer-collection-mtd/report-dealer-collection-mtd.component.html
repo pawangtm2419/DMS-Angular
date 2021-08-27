@@ -42,11 +42,11 @@
             <tbody>
               <tr *ngFor="let collectionMtd of collectionMtds  | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                 <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
-                <td data-title="Zone">{{collectionMtd.zone}}</td>
-                <td data-title="State"><a (click)="getStatewiseCollection(collectionMtd.state)" style="color:blue">{{collectionMtd.state}}</a></td>
-                <td data-title="Cleared Collection (Lacs Rs.)">{{collectionMtd.present_year_amount | inlakhs}}</td>
-                <td data-title="Last Year Collection (MOM)">{{collectionMtd.past_year_amount | inlakhs}}</td>
-                <td data-title="Percentage Change">{{(collectionMtd.present_year_amount/collectionMtd.past_year_amount)*100 | number}} %</td>
+                <td data-title="Zone">{{collectionMtd?.zone}}</td>
+                <td data-title="State"><a (click)="getStatewiseCollection(collectionMtd?.state)" style="color:blue">{{collectionMtd?.state}}</a></td>
+                <td data-title="Cleared Collection (Lacs Rs.)">{{collectionMtd?.present_year_amount | inlakhs}}</td>
+                <td data-title="Last Year Collection (MOM)">{{collectionMtd?.past_year_amount | inlakhs}}</td>
+                <td data-title="Percentage Change">{{(collectionMtd?.present_year_amount/collectionMtd?.past_year_amount)*100 | number}} %</td>
               </tr>
             </tbody>
           </table>

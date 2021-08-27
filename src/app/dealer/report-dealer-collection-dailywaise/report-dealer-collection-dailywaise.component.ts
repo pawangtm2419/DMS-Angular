@@ -13,6 +13,7 @@ export class ReportDealerCollectionDailywaiseComponent implements OnInit {
   pageData = 1;
   limits: any;
   limit: any = 50;
+  isExcelDownload: boolean = false;
   constructor(private dealer: DealerReportService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -23,6 +24,7 @@ export class ReportDealerCollectionDailywaiseComponent implements OnInit {
     this.dealer.getCollectionDaywise(data).subscribe(res => {
       this.collectionDaywises = res.data;
       if (this.collectionDaywises.length > 0) {
+        this.isExcelDownload = true;
         this.limits = [{ key: 50, value: 50 }, { key: 100, value: 100 }, { key: 250, value: 250 }, { key: 500, value: 500 }, { key: 'ALL', value: this.collectionDaywises.length }];
         this.toaster.showSuccess('Data', 'Report successfully Open.');
       } else {

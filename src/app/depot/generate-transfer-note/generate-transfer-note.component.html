@@ -128,24 +128,24 @@
               <tr *ngFor="let stock of selectedChassisNo | filter: searchItem | paginate: { itemsPerPage: limit, currentPage: pageData }; let i=index">
                 <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
                 <td><input type="checkbox" (click)="rmItemInvoiceList(stock)" checked></td>
-                <td>{{stock.model}}</td>
-                <td>{{stock.variantCode}}</td>
-                <td>{{stock.chassisNo }}</td>
-                <td>{{stock.productCode}}</td>
-                <td>{{stock.engineNo}}</td>
-                <td>{{stock.prodDate | diffDate }}</td>
+                <td>{{stock?.model}}</td>
+                <td>{{stock?.variantCode}}</td>
+                <td>{{stock?.chassisNo }}</td>
+                <td>{{stock?.productCode}}</td>
+                <td>{{stock?.engineNo}}</td>
+                <td>{{stock?.prodDate | diffDate }}</td>
               </tr>
             </tbody>
             <tbody>
               <tr *ngFor="let stock of vehicleList | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i=index">
                 <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
                 <td><input type="checkbox" (click)="generateInvoiceList(stock)"></td>
-                <td>{{stock.model}}</td>
-                <td>{{stock.variantCode}}</td>
-                <td>{{stock.chassisNo }}</td>
-                <td>{{stock.productCode}}</td>
-                <td>{{stock.engineNo}}</td>
-                <td>{{stock.prodDate | diffDate }}</td>
+                <td>{{stock?.model}}</td>
+                <td>{{stock?.variantCode}}</td>
+                <td>{{stock?.chassisNo }}</td>
+                <td>{{stock?.productCode}}</td>
+                <td>{{stock?.engineNo}}</td>
+                <td>{{stock?.prodDate | diffDate }}</td>
               </tr>
             </tbody>
           </table>
@@ -205,15 +205,15 @@
                         <tr *ngFor="let stock of selectedChassisNo | filter: searchItem | paginate: { itemsPerPage: limit, currentPage: pageData }; let i=index">
                           <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
                           <td><input type="checkbox" (click)="rmItemInvoiceList(stock)" checked></td>
-                          <td>{{stock.model}}</td>
-                          <td>{{stock.variantCode}}</td>
-                          <td>{{stock.chassisNo }}</td>
-                          <td>{{stock.NDP }}</td>
-                          <td>{{stock.prodDate | diffDate }}</td>
-                          <td *ngIf="selectedToLocation === 'dealer'"> <input type="number" [(ngModel)]="stock.discountAmount" (ngModelChange)="checkAmount(stock.discountAmount, stock.NDP)"></td>
-                          <td *ngIf="selectedToLocation === 'dealer'"> <span *ngIf="stock.discountAmount"> {{stock.NDP - stock.discountAmount}} </span><span *ngIf="!stock.discountAmount"> {{stock.NDP}} </span> </td>
-                          <td *ngIf="selectedToLocation === 'dealer'"> <button class="btn btn-primary" (click)="discountCheck(stock.discountAmount, stock, i)"> Calulate</button></td>
-                          <td *ngIf="selectedToLocation === 'dealer'">{{stock.invoiceAmount}}</td>
+                          <td>{{stock?.model}}</td>
+                          <td>{{stock?.variantCode}}</td>
+                          <td>{{stock?.chassisNo }}</td>
+                          <td>{{stock?.NDP }}</td>
+                          <td>{{stock?.prodDate | diffDate }}</td>
+                          <td *ngIf="selectedToLocation === 'dealer'"> <input type="number" [(ngModel)]="stock.discountAmount" (ngModelChange)="checkAmount(stock?.discountAmount, stock?.NDP)"></td>
+                          <td *ngIf="selectedToLocation === 'dealer'"> <span *ngIf="stock?.discountAmount"> {{stock?.NDP - stock?.discountAmount}} </span><span *ngIf="!stock?.discountAmount"> {{stock?.NDP}} </span> </td>
+                          <td *ngIf="selectedToLocation === 'dealer'"> <button class="btn btn-primary" (click)="discountCheck(stock?.discountAmount, stock, i)"> Calulate</button></td>
+                          <td *ngIf="selectedToLocation === 'dealer'">{{stock?.invoiceAmount}}</td>
                         </tr>
                       </tbody>
                     </table>

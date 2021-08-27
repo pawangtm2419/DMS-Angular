@@ -18,7 +18,7 @@
               </div>
               <div class="col-md-6 align-self-end text-end filterMain">
                   <button class="btn btn-primary me-2" type="button" data-bs-toggle="collapse" data-bs-target="#filter" aria-expanded="false" aria-controls="collapseExample"> <i class="fas fa-filter"></i> </button>
-                  <button type="button" class="btn btn-primary me-2" *ngIf="advanceData.length > 0" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
+                  <button type="button" class="btn btn-primary me-2" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
                   <label for="limit">
                       <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
                         <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
@@ -160,41 +160,41 @@
             <tbody>
               <tr *ngFor="let adv of advanceData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                 <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
-                <td data-title="Dealer Code">{{adv.dealer.code}}</td>
-                <td data-title="Dealer Name">{{adv.dealer.name}}</td>
-                <td data-title="Location">{{adv.dealer.city}}</td>
-                <td data-title="State">{{adv.dealer.state}}</td>
-                <td data-title="Customer Name">{{adv.customer.name}}</td>
-                <td data-title="Contact">{{adv.customer.phone}}</td>
-                <td data-title="Village">{{adv.customer.city}}</td>
-                <td data-title="Tehsil">{{adv.customer.tehsil}}</td>
-                <td data-title="State">{{adv.customer.state}}</td>
-                <td data-title="Model">{{adv.model}}</td>
-                <td data-title="ProductCode">{{adv.productCode}}</td>
-                <td data-title="Variant">{{adv.variantCode}}</td>
-                <td data-title="ChassisNo">{{adv.chassisNo}}</td>
-                <td data-title="Engine No">{{adv.engineNo}}</td>
-                <td data-title="Financer Type">{{adv.finType}}</td>
-                <td data-title="Financer Name">{{adv.financeDetails.bankName}}</td>
-                <td data-title="DealPrice">{{adv.customer.dealPrice | currency : 'INR'}}</td>
-                <td data-title="Invoice Amount">{{adv.invoiceAmt | currency : 'INR'}}</td>
-                <td data-title="Margin">{{adv.marginCollected}}</td>
-                <td data-title="Cash">{{adv.cashAmount}}</td>
-                <td data-title="Old Tractor Price">{{adv.customer.oldTractor.price}}</td>
-                <td data-title="Cash/Finance Amount Received On">{{adv.lastReceived | date:'dd-MM-yyyy'}}</td>
-                <td data-title="Finance Amount Received">{{adv.financeAmount}}</td>
-                <td data-title="ReceivedAmt">{{adv.customer.dealPrice - adv.customer.balanceAmount | currency : 'INR'}}</td>
-                <td data-title="BalanceAmt">{{adv.customer.balanceAmount}}</td>
-                <td data-title="Quantity">{{adv.isReturned ? -1 : 1}}</td>
-                <td data-title="Invoice No">{{adv.customer.invoiceNumber}}</td>
-                <td data-title="Production Date">{{adv.prodDate | date:'dd-MM-yyyy'}}</td>
-                <td data-title="Invoice Date">{{adv.customer.invoiceDate | date:'dd-MM-yyyy'}}</td>
-                <td data-title="Delivery Date">{{adv.customer.deliveryDate | date:'dd-MM-yyyy'}}</td>
-                <td data-title="Exp Disbursement Date">{{adv.expDisbDate | date:'dd-MM-yyyy'}}</td>
+                <td data-title="Dealer Code">{{adv?.dealer?.code}}</td>
+                <td data-title="Dealer Name">{{adv?.dealer?.name}}</td>
+                <td data-title="Location">{{adv?.dealer?.city}}</td>
+                <td data-title="State">{{adv?.dealer?.state}}</td>
+                <td data-title="Customer Name">{{adv?.customer?.name}}</td>
+                <td data-title="Contact">{{adv?.customer?.phone}}</td>
+                <td data-title="Village">{{adv?.customer?.city}}</td>
+                <td data-title="Tehsil">{{adv?.customer?.tehsil}}</td>
+                <td data-title="State">{{adv?.customer?.state}}</td>
+                <td data-title="Model">{{adv?.model}}</td>
+                <td data-title="ProductCode">{{adv?.productCode}}</td>
+                <td data-title="Variant">{{adv?.variantCode}}</td>
+                <td data-title="ChassisNo">{{adv?.chassisNo}}</td>
+                <td data-title="Engine No">{{adv?.engineNo}}</td>
+                <td data-title="Financer Type">{{adv?.finType}}</td>
+                <td data-title="Financer Name">{{adv?.financeDetails.bankName}}</td>
+                <td data-title="DealPrice">{{adv?.customer?.dealPrice | currency : 'INR'}}</td>
+                <td data-title="Invoice Amount">{{adv?.invoiceAmt | currency : 'INR'}}</td>
+                <td data-title="Margin">{{adv?.marginCollected}}</td>
+                <td data-title="Cash">{{adv?.cashAmount}}</td>
+                <td data-title="Old Tractor Price">{{adv?.customer?.oldTractor.price}}</td>
+                <td data-title="Cash/Finance Amount Received On">{{adv?.lastReceived | date:'dd-MM-yyyy'}}</td>
+                <td data-title="Finance Amount Received">{{adv?.financeAmount}}</td>
+                <td data-title="ReceivedAmt">{{adv?.customer?.dealPrice - adv?.customer?.balanceAmount | currency : 'INR'}}</td>
+                <td data-title="BalanceAmt">{{adv?.customer?.balanceAmount}}</td>
+                <td data-title="Quantity">{{adv?.isReturned ? -1 : 1}}</td>
+                <td data-title="Invoice No">{{adv?.customer?.invoiceNumber}}</td>
+                <td data-title="Production Date">{{adv?.prodDate | date:'dd-MM-yyyy'}}</td>
+                <td data-title="Invoice Date">{{adv?.customer?.invoiceDate | date:'dd-MM-yyyy'}}</td>
+                <td data-title="Delivery Date">{{adv?.customer?.deliveryDate | date:'dd-MM-yyyy'}}</td>
+                <td data-title="Exp Disbursement Date">{{adv?.expDisbDate | date:'dd-MM-yyyy'}}</td>
                 <td data-title="Tractor Ageing">{{adv}}</td>
                 <td data-title="Advance ageing">{{adv}}</td>
-                <td data-title="Remarks1 (Delivery)">{{adv.customer.deliveryDate}}</td>
-                <td data-title="Remarks2">{{adv.customer.receivedRemarks}}</td>
+                <td data-title="Remarks1 (Delivery)">{{adv?.customer?.deliveryDate}}</td>
+                <td data-title="Remarks2">{{adv?.customer?.receivedRemarks}}</td>
                 <td data-title="Add Remarks"><i class="fas fa-plus"></i></td>
               </tr>
             </tbody>
