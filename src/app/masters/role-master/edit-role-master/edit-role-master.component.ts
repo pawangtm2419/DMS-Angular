@@ -22,7 +22,7 @@ export class EditRoleMasterComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.roleCode = params;
     });
-    this.service.getRoleData(this.roleCode).subscribe((res: any) => {
+    this.service.getRoleData({ role: this.roleCode.id }).subscribe((res: any) => {
       if (res.status === 'true') {
         this.roles = res.data;
         this.roles.filter((item: any) => {

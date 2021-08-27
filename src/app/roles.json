@@ -12,7 +12,7 @@
       {
           "reversal_report" : {
               "pageName" : "Reversal Report",
-              "priority" : "2",
+              "priority" : 2,
               "delete" : true,
               "edit" : true,
               "add" : true,
@@ -612,7 +612,7 @@
           },
           "view_dealer_reports_sub" : {
               "pageName" : "View Report",
-              "priority" : "1",
+              "priority" : 1,
               "delete" : true,
               "edit" : true,
               "add" : true,
@@ -755,7 +755,7 @@
               "link" : true
           },
           "stock_main" : {
-              "pageName" : "ABC",
+              "pageName" : "Stock",
               "priority" : 0,
               "link" : true,
               "delete" : true,
@@ -779,7 +779,7 @@
               "add" : true
           },
           "settings_main" : {
-              "pageName" : "ABC",
+              "pageName" : "Setting",
               "priority" : 0,
               "link" : true,
               "delete" : true,
@@ -819,7 +819,7 @@
               "add" : true
           },
           "dashboard_main" : {
-              "pageName" : "ABC",
+              "pageName" : "Dashboard",
               "priority" : 0,
               "link" : true,
               "delete" : true,
