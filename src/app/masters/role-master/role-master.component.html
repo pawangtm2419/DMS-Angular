@@ -51,7 +51,7 @@
                 <td data-title="Status">{{role?.status}}</td>
                 <td data-title="Created Date">{{role?.CreatedDate | date:'dd-MM-yyyy'}}</td>
                 <td data-title="Options" class="text-center">
-                  <a class="editIcon icon mb-1" [routerLink]="['/master/edit-role', role?.roleCode]"><i class="fa fa-edit"></i></a>
+                  <a class="editIcon icon mb-1" routerLink="/edit-roles/{{role?.roleCode}}"><i class="fa fa-edit"></i></a>
                 </td>
               </tr>
             </tbody>

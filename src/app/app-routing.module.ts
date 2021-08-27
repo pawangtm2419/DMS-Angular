@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'm-on-power', loadChildren: () => import('./masters/on-power-master/on-power-master.module').then(m => m.OnPowerMasterModule), canActivate: [AppGuard] },
   { path: 'm-part', loadChildren: () => import('./masters/part-master/part-master.module').then(m => m.PartMasterModule), canActivate: [AppGuard] },
   { path: 'm-roles', loadChildren: () => import('./masters/role-master/role-master.module').then(m => m.RoleMasterModule), canActivate: [AppGuard] },
+  { path: 'edit-roles/:id', loadChildren: () => import('./masters/role-master/edit-role-master/edit-role-master.module').then(m => m.EditRoleMasterModule), canActivate: [AppGuard] },
   { path: 'm-state', loadChildren: () => import('./masters/state-master/state-master.module').then(m => m.StateMasterModule), canActivate: [AppGuard] },
   { path: 'm-user', loadChildren: () => import('./masters/user-master/user-master.module').then(m => m.UserMasterModule), canActivate: [AppGuard] },
   { path: 'm-transport', loadChildren: () => import('./masters/transporter-master/transporter-master.module').then(m => m.TransporterMasterModule), canActivate: [AppGuard] },

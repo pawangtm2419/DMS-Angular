@@ -1,0 +1,831 @@
+{
+  "_id" : ObjectId("593004b90536a152f21767f3"),
+  "status" : "Active",
+  "description" : "Super Admin",
+  "roleName" : "Super Admin",
+  "roleCode" : "super_admin",
+  "CreatedDate" : ISODate("2017-12-07T09:52:00.444Z"),
+  "isDeleted" : false,
+  "__v" : 0,
+  "useType" : "ALL",
+  "roleMenus" : [
+      {
+          "reversal_report" : {
+              "pageName" : "Reversal Report",
+              "priority" : "2",
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "hsn_master_sub" : {
+              "pageName" : "HSN Code Master",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "city_master_sub" : {
+              "pageName" : "City Master",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "retail_return" : {
+              "pageName" : "Retail Return",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "retail_plan_report_last" : {
+              "pageName" : "Retail Plan Report",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "retail_plan_upload_last" : {
+              "pageName" : "Retail Plan Upload",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "expected_disbursement_report_last" : {
+              "pageName" : "Expected Disbursement Report",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "old_tractor_report_last" : {
+              "pageName" : "Old Tractor Exchange",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "tehsil_based_report_last" : {
+              "pageName" : "Tehsil Based Report",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_statement_upload_last" : {
+              "pageName" : "Statement Upload",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_opening_sheet_last" : {
+              "pageName" : "Opening/Closing Sheet",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_monthly_statement_last" : {
+              "pageName" : "Monthly Statement",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "sale_plan_upload_last" : {
+              "pageName" : "Sale Plan Upload",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "sale_plan_report_last" : {
+              "pageName" : "Sale Plan Report",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "collection_plan_upload_last" : {
+              "pageName" : "Collection Plan Upload",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "collection_plan_report_last" : {
+              "pageName" : "Collection Plan Report",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "delivery_plan_upload_last" : {
+              "pageName" : "Delivery Plan Upload",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "delivery_plan_report_last" : {
+              "pageName" : "Delivery Plan Report",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "advance_last" : {
+              "pageName" : "Advance Reports",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "viewddepotinvoice_last" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "salereturninvoice_last" : {
+              "pageName" : "Sale Return Invoice",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "viewdepotinvoice_last" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "viewdealerinvoice_last" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "retails_last" : {
+              "pageName" : "Retail Reports",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "deliveries_last" : {
+              "pageName" : "Delivery Reports",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "depot_receipt_transfer_last" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_collection_statewise_last" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_collection_daywise_last" : {
+              "pageName" : "Dealer Collection Daywise",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_collection_mtd_last" : {
+              "pageName" : "Dealer Collection MTD",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_receipt_transfer_last" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_invoices_statewise_last" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "depot_pdi_list_last" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_pdi_list_last" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_shortage_damage_list_last" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "depot_shortage_damage_list_last" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "insurance_last" : {
+              "pageName" : "Insurance",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_invoices_mtd_last" : {
+              "pageName" : "Dealer Invoice MTD",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "invoices_last" : {
+              "pageName" : "Invoices",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_aging_from_received_last" : {
+              "pageName" : "Aging From Received",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_aging_from_production_last" : {
+              "pageName" : "Aging From Production",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "bg_sd_monitoring_last" : {
+              "pageName" : "BG/SD Monitoring",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "rts_reports_last" : {
+              "pageName" : "RTS Reports",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "ats_reports_last" : {
+              "pageName" : "ATS Reports",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_stock_variant_wise_last" : {
+              "pageName" : "Dealer Stock Variant Wise",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_stock_last" : {
+              "pageName" : "Dealer Stock",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "retail_last" : {
+              "pageName" : "Retail",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "delivery_last" : {
+              "pageName" : "Delivery",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "depot_aging_from_received_last" : {
+              "pageName" : "Depot - Aging From Received",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "depot_aging_from_production_last" : {
+              "pageName" : "Depot - Aging From Production",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "depot_to_dealer_invoice_last" : {
+              "pageName" : "Depot - Dealer Invoice",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "depot_to_depot_invoice_last" : {
+              "pageName" : "Depot - Depot Invoice",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "update_vehicle_sub" : {
+              "pageName" : "ABC",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_statement_sub" : {
+              "pageName" : "Dealer Statement",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "auto_invoice_upload_sub" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_plan_sub" : {
+              "pageName" : "ABC",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "closing_dates_sub" : {
+              "pageName" : "Plans",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "capital_stock_sub" : {
+              "pageName" : "Capitalized Stock",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "change_password_sub" : {
+              "pageName" : "ABC",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "profile_sub" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_collection_entry_sub" : {
+              "pageName" : "Dealer Collection Entry",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "zone_master_sub" : {
+              "pageName" : "Zone Master",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "state_master_sub" : {
+              "pageName" : "State Master",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "menu_master_sub" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "messages_master_sub" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "roles_master_sub" : {
+              "pageName" : "Roles Master",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "financial_master_sub" : {
+              "pageName" : "Financial Institution Master",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "user_master_sub" : {
+              "pageName" : "Users Master",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "parts_master_sub" : {
+              "pageName" : "Parts Master",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "transport_master_sub" : {
+              "pageName" : "Transporter Master",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "power_master_sub" : {
+              "pageName" : "On-Power Master",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "variant_master_sub" : {
+              "pageName" : "Variant Master",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "customer_master_sub" : {
+              "pageName" : "Customer Master",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_master_sub" : {
+              "pageName" : "Dealer Master",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "depot_master_sub" : {
+              "pageName" : "Depot Master",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_invoices_sub" : {
+              "pageName" : "Invoices",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "view_dealer_reports_sub" : {
+              "pageName" : "View Report",
+              "priority" : "1",
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "advance_return_sub" : {
+              "pageName" : "Advance Return",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "bgs_sub" : {
+              "pageName" : "BGS",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "ats_sub" : {
+              "pageName" : "ATS",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "sale_return_receipt_list_sub" : {
+              "pageName" : "Sale Return Receipt List",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "sale_return_sub" : {
+              "pageName" : "Sale Return",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_pdi_sub" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_shortage_and_damage_sub" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "dealer_receipt_list_sub" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "view_depot_reports_sub" : {
+              "pageName" : 2,
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "depot_stock_variant_wise_sub" : {
+              "pageName" : "Depot Stock Variant Wise",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "depot_stock_sub" : {
+              "pageName" : "Depot Stock",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "depot_pdi_sub" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "depot_shortage_and_damage_sub" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "depot_receipt_list_sub" : {
+              "pageName" : "ABC",
+              "priority" : 2,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "generate_transfer_note_sub" : {
+              "pageName" : "Generate Transfer Note",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "plant_stock_sub" : {
+              "pageName" : "Plant Stock",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "capitalized_stock_sub" : {
+              "pageName" : "Capitalized Stock",
+              "priority" : 1,
+              "delete" : true,
+              "edit" : true,
+              "add" : true,
+              "link" : true
+          },
+          "stock_main" : {
+              "pageName" : "ABC",
+              "priority" : 0,
+              "link" : true,
+              "delete" : true,
+              "edit" : true,
+              "add" : true
+          },
+          "vehicle_history_sub" : {
+              "pageName" : "Vehicle History",
+              "priority" : 1,
+              "link" : true,
+              "delete" : true,
+              "edit" : true,
+              "add" : true
+          },
+          "history_report_sub" : {
+              "pageName" : "History Report",
+              "priority" : 1,
+              "link" : true,
+              "delete" : true,
+              "edit" : true,
+              "add" : true
+          },
+          "settings_main" : {
+              "pageName" : "ABC",
+              "priority" : 0,
+              "link" : true,
+              "delete" : true,
+              "edit" : true,
+              "add" : true
+          },
+          "dealers_main" : {
+              "pageName" : "Dealer",
+              "priority" : 0,
+              "link" : true,
+              "delete" : true,
+              "edit" : true,
+              "add" : true
+          },
+          "depot_main" : {
+              "pageName" : "Depot",
+              "priority" : 0,
+              "link" : true,
+              "delete" : true,
+              "edit" : true,
+              "add" : true
+          },
+          "plant_main" : {
+              "pageName" : "Plant",
+              "priority" : 0,
+              "link" : true,
+              "delete" : true,
+              "edit" : true,
+              "add" : true
+          },
+          "masters_main" : {
+              "pageName" : "Master",
+              "priority" : 0,
+              "link" : true,
+              "delete" : true,
+              "edit" : true,
+              "add" : true
+          },
+          "dashboard_main" : {
+              "pageName" : "ABC",
+              "priority" : 0,
+              "link" : true,
+              "delete" : true,
+              "edit" : true,
+              "add" : true
+          }
+      }
+  ]
+}

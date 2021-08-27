@@ -44,10 +44,10 @@ export class UserService {
 
   logout(): void{
     localStorage.removeItem('profile');
-    /* this.cookie.delete('token'); */
+    this.cookie.delete('token');
     localStorage.clear();
     this.userSubject.next(null);
-    /* this.cookie.deleteAll(); */
+    this.cookie.deleteAll();
     this.toaster.showSuccess('Success', 'Log out successfull');
     this.router.navigate(['/']);
   }

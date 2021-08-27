@@ -56,14 +56,14 @@ export class CustomerTrackingSheetComponent implements OnInit {
     this.service.getVehicleDetails(data).subscribe(res => {
       if(res.status === "true"){
         this.vehicleDetails = res.data;
-        if (this.vehicleDetails.isRetailed === false) {
+        /* if (this.vehicleDetails.isRetailed === false) {
           this.amtReceived = this.vehicleDetails.customer.dealPrice - this.vehicleDetails.customer.balanceAmount;
         } else {
           this.toaster.showInfo("Info", "This is a retail vehicle");
           setTimeout(() => {
             this.router.navigate(['/ats-retail']);
           }, 3000);
-        }
+        } */
         this.getPaymentsList(this.vehicleDetails[0].chassisNo, this.vehicleDetails[0].customer.code, this.vehicleDetails[0].customer.invoiceNumber);
         this.getBankCategoryData();
       }
