@@ -12,6 +12,7 @@
       {
           "reversal_report" : {
               "pageName" : "Reversal Report",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -20,6 +21,7 @@
           },
           "hsn_master_sub" : {
               "pageName" : "HSN Code Master",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -28,6 +30,7 @@
           },
           "city_master_sub" : {
               "pageName" : "City Master",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -36,6 +39,7 @@
           },
           "retail_return" : {
               "pageName" : "Retail Return",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -44,6 +48,7 @@
           },
           "retail_plan_report_last" : {
               "pageName" : "Retail Plan Report",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -52,6 +57,7 @@
           },
           "retail_plan_upload_last" : {
               "pageName" : "Retail Plan Upload",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -60,6 +66,7 @@
           },
           "expected_disbursement_report_last" : {
               "pageName" : "Expected Disbursement Report",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -68,6 +75,7 @@
           },
           "old_tractor_report_last" : {
               "pageName" : "Old Tractor Exchange",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -76,6 +84,7 @@
           },
           "tehsil_based_report_last" : {
               "pageName" : "Tehsil Based Report",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -84,6 +93,7 @@
           },
           "dealer_statement_upload_last" : {
               "pageName" : "Statement Upload",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -92,6 +102,7 @@
           },
           "dealer_opening_sheet_last" : {
               "pageName" : "Opening/Closing Sheet",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -100,6 +111,7 @@
           },
           "dealer_monthly_statement_last" : {
               "pageName" : "Monthly Statement",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -108,6 +120,7 @@
           },
           "sale_plan_upload_last" : {
               "pageName" : "Sale Plan Upload",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -116,6 +129,7 @@
           },
           "sale_plan_report_last" : {
               "pageName" : "Sale Plan Report",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -124,6 +138,7 @@
           },
           "collection_plan_upload_last" : {
               "pageName" : "Collection Plan Upload",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -132,6 +147,7 @@
           },
           "collection_plan_report_last" : {
               "pageName" : "Collection Plan Report",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -140,6 +156,7 @@
           },
           "delivery_plan_upload_last" : {
               "pageName" : "Delivery Plan Upload",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -148,6 +165,7 @@
           },
           "delivery_plan_report_last" : {
               "pageName" : "Delivery Plan Report",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -156,6 +174,7 @@
           },
           "advance_last" : {
               "pageName" : "Advance Reports",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -164,6 +183,7 @@
           },
           "viewddepotinvoice_last" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -172,6 +192,7 @@
           },
           "salereturninvoice_last" : {
               "pageName" : "Sale Return Invoice",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -180,6 +201,7 @@
           },
           "viewdepotinvoice_last" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -188,6 +210,7 @@
           },
           "viewdealerinvoice_last" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -196,6 +219,7 @@
           },
           "retails_last" : {
               "pageName" : "Retail Reports",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -204,6 +228,7 @@
           },
           "deliveries_last" : {
               "pageName" : "Delivery Reports",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -212,6 +237,7 @@
           },
           "depot_receipt_transfer_last" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -220,6 +246,7 @@
           },
           "dealer_collection_statewise_last" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -228,6 +255,7 @@
           },
           "dealer_collection_daywise_last" : {
               "pageName" : "Dealer Collection Daywise",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -236,6 +264,7 @@
           },
           "dealer_collection_mtd_last" : {
               "pageName" : "Dealer Collection MTD",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -244,6 +273,7 @@
           },
           "dealer_receipt_transfer_last" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -252,6 +282,7 @@
           },
           "dealer_invoices_statewise_last" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -260,6 +291,7 @@
           },
           "depot_pdi_list_last" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -268,6 +300,7 @@
           },
           "dealer_pdi_list_last" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -276,6 +309,7 @@
           },
           "dealer_shortage_damage_list_last" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -284,6 +318,7 @@
           },
           "depot_shortage_damage_list_last" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -292,6 +327,7 @@
           },
           "insurance_last" : {
               "pageName" : "Insurance",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -300,6 +336,7 @@
           },
           "dealer_invoices_mtd_last" : {
               "pageName" : "Dealer Invoice MTD",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -308,6 +345,7 @@
           },
           "invoices_last" : {
               "pageName" : "Invoices",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -316,6 +354,7 @@
           },
           "dealer_aging_from_received_last" : {
               "pageName" : "Aging From Received",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -324,6 +363,7 @@
           },
           "dealer_aging_from_production_last" : {
               "pageName" : "Aging From Production",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -332,6 +372,7 @@
           },
           "bg_sd_monitoring_last" : {
               "pageName" : "BG/SD Monitoring",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -340,6 +381,7 @@
           },
           "rts_reports_last" : {
               "pageName" : "RTS Reports",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -348,6 +390,7 @@
           },
           "ats_reports_last" : {
               "pageName" : "ATS Reports",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -356,6 +399,7 @@
           },
           "dealer_stock_variant_wise_last" : {
               "pageName" : "Dealer Stock Variant Wise",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -364,6 +408,7 @@
           },
           "dealer_stock_last" : {
               "pageName" : "Dealer Stock",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -372,6 +417,7 @@
           },
           "retail_last" : {
               "pageName" : "Retail",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -380,6 +426,7 @@
           },
           "delivery_last" : {
               "pageName" : "Delivery",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -388,6 +435,7 @@
           },
           "depot_aging_from_received_last" : {
               "pageName" : "Depot - Aging From Received",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -396,6 +444,7 @@
           },
           "depot_aging_from_production_last" : {
               "pageName" : "Depot - Aging From Production",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -404,6 +453,7 @@
           },
           "depot_to_dealer_invoice_last" : {
               "pageName" : "Depot - Dealer Invoice",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -412,6 +462,7 @@
           },
           "depot_to_depot_invoice_last" : {
               "pageName" : "Depot - Depot Invoice",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -420,6 +471,7 @@
           },
           "update_vehicle_sub" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -428,6 +480,7 @@
           },
           "dealer_statement_sub" : {
               "pageName" : "Dealer Statement",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -436,6 +489,7 @@
           },
           "auto_invoice_upload_sub" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -444,6 +498,7 @@
           },
           "dealer_plan_sub" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -452,6 +507,7 @@
           },
           "closing_dates_sub" : {
               "pageName" : "Plans",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -460,6 +516,7 @@
           },
           "capital_stock_sub" : {
               "pageName" : "Capitalized Stock",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -468,6 +525,7 @@
           },
           "change_password_sub" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -476,6 +534,7 @@
           },
           "profile_sub" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -484,6 +543,7 @@
           },
           "dealer_collection_entry_sub" : {
               "pageName" : "Dealer Collection Entry",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -492,6 +552,7 @@
           },
           "zone_master_sub" : {
               "pageName" : "Zone Master",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -500,6 +561,7 @@
           },
           "state_master_sub" : {
               "pageName" : "State Master",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -508,6 +570,7 @@
           },
           "menu_master_sub" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -516,6 +579,7 @@
           },
           "messages_master_sub" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -524,6 +588,7 @@
           },
           "roles_master_sub" : {
               "pageName" : "Roles Master",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -532,6 +597,7 @@
           },
           "financial_master_sub" : {
               "pageName" : "Financial Institution Master",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -540,6 +606,7 @@
           },
           "user_master_sub" : {
               "pageName" : "Users Master",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -548,6 +615,7 @@
           },
           "parts_master_sub" : {
               "pageName" : "Parts Master",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -556,6 +624,7 @@
           },
           "transport_master_sub" : {
               "pageName" : "Transporter Master",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -564,6 +633,7 @@
           },
           "power_master_sub" : {
               "pageName" : "On-Power Master",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -572,6 +642,7 @@
           },
           "variant_master_sub" : {
               "pageName" : "Variant Master",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -580,6 +651,7 @@
           },
           "customer_master_sub" : {
               "pageName" : "Customer Master",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -588,6 +660,7 @@
           },
           "dealer_master_sub" : {
               "pageName" : "Dealer Master",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -596,6 +669,7 @@
           },
           "depot_master_sub" : {
               "pageName" : "Depot Master",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -604,6 +678,7 @@
           },
           "dealer_invoices_sub" : {
               "pageName" : "Invoices",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -612,6 +687,7 @@
           },
           "view_dealer_reports_sub" : {
               "pageName" : "View Report",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -620,6 +696,7 @@
           },
           "advance_return_sub" : {
               "pageName" : "Advance Return",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -628,6 +705,7 @@
           },
           "bgs_sub" : {
               "pageName" : "BGS",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -636,6 +714,7 @@
           },
           "ats_sub" : {
               "pageName" : "ATS",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -644,6 +723,7 @@
           },
           "sale_return_receipt_list_sub" : {
               "pageName" : "Sale Return Receipt List",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -652,6 +732,7 @@
           },
           "sale_return_sub" : {
               "pageName" : "Sale Return",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -660,6 +741,7 @@
           },
           "dealer_pdi_sub" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -668,6 +750,7 @@
           },
           "dealer_shortage_and_damage_sub" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -676,6 +759,7 @@
           },
           "dealer_receipt_list_sub" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -692,6 +776,7 @@
           },
           "depot_stock_variant_wise_sub" : {
               "pageName" : "Depot Stock Variant Wise",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -700,6 +785,7 @@
           },
           "depot_stock_sub" : {
               "pageName" : "Depot Stock",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -708,6 +794,7 @@
           },
           "depot_pdi_sub" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -716,6 +803,7 @@
           },
           "depot_shortage_and_damage_sub" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -724,6 +812,7 @@
           },
           "depot_receipt_list_sub" : {
               "pageName" : "ABC",
+              "linkPath": "advanceReturn",
               "priority" : 2,
               "delete" : true,
               "edit" : true,
@@ -732,6 +821,7 @@
           },
           "generate_transfer_note_sub" : {
               "pageName" : "Generate Transfer Note",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -740,6 +830,7 @@
           },
           "plant_stock_sub" : {
               "pageName" : "Plant Stock",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -748,6 +839,7 @@
           },
           "capitalized_stock_sub" : {
               "pageName" : "Capitalized Stock",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "delete" : true,
               "edit" : true,
@@ -756,6 +848,7 @@
           },
           "stock_main" : {
               "pageName" : "Stock",
+              "linkPath": "advanceReturn",
               "priority" : 0,
               "link" : true,
               "delete" : true,
@@ -764,6 +857,7 @@
           },
           "vehicle_history_sub" : {
               "pageName" : "Vehicle History",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "link" : true,
               "delete" : true,
@@ -772,6 +866,7 @@
           },
           "history_report_sub" : {
               "pageName" : "History Report",
+              "linkPath": "advanceReturn",
               "priority" : 1,
               "link" : true,
               "delete" : true,
@@ -780,6 +875,7 @@
           },
           "settings_main" : {
               "pageName" : "Setting",
+              "linkPath": "advanceReturn",
               "priority" : 0,
               "link" : true,
               "delete" : true,
@@ -788,6 +884,7 @@
           },
           "dealers_main" : {
               "pageName" : "Dealer",
+              "linkPath": "advanceReturn",
               "priority" : 0,
               "link" : true,
               "delete" : true,
@@ -796,6 +893,7 @@
           },
           "depot_main" : {
               "pageName" : "Depot",
+              "linkPath": "advanceReturn",
               "priority" : 0,
               "link" : true,
               "delete" : true,
@@ -804,6 +902,7 @@
           },
           "plant_main" : {
               "pageName" : "Plant",
+              "linkPath": "advanceReturn",
               "priority" : 0,
               "link" : true,
               "delete" : true,
@@ -812,6 +911,7 @@
           },
           "masters_main" : {
               "pageName" : "Master",
+              "linkPath": "advanceReturn",
               "priority" : 0,
               "link" : true,
               "delete" : true,
@@ -820,6 +920,7 @@
           },
           "dashboard_main" : {
               "pageName" : "Dashboard",
+              "linkPath": "advanceReturn",
               "priority" : 0,
               "link" : true,
               "delete" : true,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { UserService } from 'src/app/shared/services';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ToasterService, UserService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-edit-role-master',
@@ -16,7 +17,15 @@ export class EditRoleMasterComponent implements OnInit {
   sub: any[] = [];
   subSub: any[] = [];
 
-  constructor(private service: UserService, private route: ActivatedRoute,) { }
+  constructor(private service: UserService, private route: ActivatedRoute, private fb: FormBuilder, public toaster: ToasterService, private router: Router) { }
+  form = this.fb.group({
+    pageName: ['', Validators.required],
+    link: [false],
+    add: [false],
+    edit: [false],
+    delete: [false],
+    priority: [0]
+  });
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -50,5 +59,41 @@ export class EditRoleMasterComponent implements OnInit {
         });
       }
     });
+  }
+
+  addRoles() {
+    var key = this.form.value.pageName.split(' ').join('_');
+    const roleData = {
+      link: this.form.value.link,
+      add: this.form.value.add,
+      edit: this.form.value.edit,
+      delete: this.form.value.delete,
+      priority: this.form.value.priority,
+      pageName: this.form.value.pageName
+    };
+    const rolesKey = Object.keys(this.roles[0]);
+    const rolesValue = Object.values(this.roles[0]);
+    rolesKey.push(key);
+    rolesValue.push(roleData);
+    var result: any = {};
+    for (var i = 0; i < rolesKey.length; i++) {
+      result[rolesKey[i]] = rolesValue[i];
+    }
+    const submitData = {
+      menuObject: [result],
+      roleCode: this.roleCode.id
+    };
+    this.service.updateRole(submitData).subscribe((res: any) => {
+      if (res.status) {
+        this.toaster.showSuccess('Success', res.msg);
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+      }
+    });
+  }
+
+  updateNewRoles() {
+    console.log("hello");
   }
 }
