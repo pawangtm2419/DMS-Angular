@@ -40,10 +40,10 @@
                     <td data-title="Sr. No.">{{i+1}}</td>
                     <td data-title="Priority"> <span *ngIf="role?.priority === 0">Main</span><span *ngIf="role?.priority === 1">Sub</span><span *ngIf="role?.priority === 2">Sub_sub</span></td>
                     <td data-title="Page Name"> <a routerLink="/{{role?.linkpath}}">{{role?.pageName}}</a></td>
-                    <td data-title="Link"><input type="checkbox" name="link" [checked]="role?.link" ngModel></td>
-                    <td data-title="Add"><input type="checkbox" name="add" [checked]="role?.add" ngModel></td>
-                    <td data-title="Edit"><input type="checkbox" name="edit" [checked]="role?.edit" ngModel></td>
-                    <td data-title="Delete"><input type="checkbox" name="delete" [checked]="role?.delete" ngModel></td>
+                    <td data-title="Link"><input type="checkbox" name="{{role?.name}}.link" [(ngModel)]="role.link"></td>
+                    <td data-title="Add"><input type="checkbox" name="{{role?.name}}.add" [(ngModel)]="role.add"></td>
+                    <td data-title="Edit"><input type="checkbox" name="{{role?.name}}.edit" [(ngModel)]="role.edit"></td>
+                    <td data-title="Delete"><input type="checkbox" name="{{role?.name}}.delete" [(ngModel)]="role.delete"></td>
                   </tr>
                 </tbody>
               </table>

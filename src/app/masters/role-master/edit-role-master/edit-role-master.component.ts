@@ -94,9 +94,6 @@ export class EditRoleMasterComponent implements OnInit {
       }
     });
   }
-  hello(role: any): void {
-    console.log(role);
-  }
   updateNewRoles(updateRoles: NgForm) {
     console.log(updateRoles.value);
   }
