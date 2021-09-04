@@ -16,6 +16,7 @@ export class EditRoleMasterComponent implements OnInit {
   main: any[] = [];
   sub: any[] = [];
   subSub: any[] = [];
+  updateRoles!: FormGroup;
 
   constructor(private service: UserService, private route: ActivatedRoute, private fb: FormBuilder, public toaster: ToasterService, private router: Router) { }
   form = this.fb.group({
@@ -45,6 +46,7 @@ export class EditRoleMasterComponent implements OnInit {
               "delete": item[keyVlaue].delete,
               "pageName": item[keyVlaue].pageName,
               "priority": item[keyVlaue].priority,
+              "linkpath": item[keyVlaue].linkPath
             });
           });
         });
@@ -92,8 +94,10 @@ export class EditRoleMasterComponent implements OnInit {
       }
     });
   }
-
-  updateNewRoles() {
-    console.log("hello");
+  hello(role: any): void {
+    console.log(role);
+  }
+  updateNewRoles(updateRoles: NgForm) {
+    console.log(updateRoles.value);
   }
 }

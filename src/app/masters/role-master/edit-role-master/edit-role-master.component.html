@@ -19,87 +19,44 @@
             </div>
           </div>
         </div>
-        <form>
+        <form (ngSubmit)="updateNewRoles(updateRoles)" #updateRoles="ngForm">
           <div class="row">
-            <div class="col-md-6 col-6 p-1">
-              <div class="table-responsive">
-                <table class="table table-striped table-hover align-middle" id="export">
-                  <thead class="text-white sticky-top theadbg">
-                    <th colspan="6" class="text-center">Main Menu</th>
-                    <tr>
-                      <th>#</th>
-                      <th>Page Name</th>
-                      <th>Link</th>
-                      <th>Add</th>
-                      <th>Edit</th>
-                      <th>Delete</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let role of main; let i=index">
-                      <td data-title="Sr. No.">{{i+1}}</td>
-                      <td data-title="Page Name">{{role?.pageName}}</td>
-                      <td data-title="Link"><input type="checkbox" name="link" [checked]="role?.link"></td>
-                      <td data-title="Add"><input type="checkbox" name="add" [checked]="role?.add"></td>
-                      <td data-title="Edit"><input type="checkbox" name="edit" [checked]="role?.edit"></td>
-                      <td data-title="Delete"><input type="checkbox" name="delete" [checked]="role?.delete"></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div><hr>
-              <div class="table-responsive">
-                <table class="table table-striped table-hover align-middle" id="export">
-                  <thead class="text-white sticky-top theadbg">
-                    <th colspan="6" class="text-center">Sub Menu</th>
-                    <tr>
-                      <th>#</th>
-                      <th>Page Name</th>
-                      <th>Link</th>
-                      <th>Add</th>
-                      <th>Edit</th>
-                      <th>Delete</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let role of sub; let i=index">
-                      <td data-title="Sr. No.">{{i+1}}</td>
-                      <td data-title="Page Name">{{role?.pageName}}</td>
-                      <td data-title="Link"><input type="checkbox" name="link" [checked]="role?.link"></td>
-                      <td data-title="Add"><input type="checkbox" name="add" [checked]="role?.add"></td>
-                      <td data-title="Edit"><input type="checkbox" name="edit" [checked]="role?.edit"></td>
-                      <td data-title="Delete"><input type="checkbox" name="delete" [checked]="role?.delete"></td>
-                    </tr>
-                  </tbody>
-                </table>
+            <div class="table-responsive p-1">
+              <table class="table table-striped table-hover align-middle" id="export">
+                <thead class="text-white sticky-top theadbg">
+                  <th colspan="7" class="text-center">Main Menu</th>
+                  <tr>
+                    <th>#</th>
+                    <th>Priority</th>
+                    <th>Page Name</th>
+                    <th>Link</th>
+                    <th>Add</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let role of newFilterArray; let i=index">
+                    <td data-title="Sr. No.">{{i+1}}</td>
+                    <td data-title="Priority"> <span *ngIf="role?.priority === 0">Main</span><span *ngIf="role?.priority === 1">Sub</span><span *ngIf="role?.priority === 2">Sub_sub</span></td>
+                    <td data-title="Page Name"> <a routerLink="/{{role?.linkpath}}">{{role?.pageName}}</a></td>
+                    <td data-title="Link"><input type="checkbox" name="link" [checked]="role?.link" ngModel></td>
+                    <td data-title="Add"><input type="checkbox" name="add" [checked]="role?.add" ngModel></td>
+                    <td data-title="Edit"><input type="checkbox" name="edit" [checked]="role?.edit" ngModel></td>
+                    <td data-title="Delete"><input type="checkbox" name="delete" [checked]="role?.delete" ngModel></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+              <div class="d-grid gap-2">
+                <button class="btn btn-primary">Update roles</button>
               </div>
             </div>
-            <div class="col-md-6 col-6 p-1">
-              <div class="table-responsive">
-                <table class="table table-striped table-hover align-middle" id="export">
-                  <thead class="text-white sticky-top theadbg">
-                    <th colspan="6" class="text-center">Sub-Sub Menu</th>
-                    <tr>
-                      <th>#</th>
-                      <th>Page Name</th>
-                      <th>Link</th>
-                      <th>Add</th>
-                      <th>Edit</th>
-                      <th>Delete</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let role of subSub; let i=index">
-                      <td data-title="Sr. No.">{{i+1}}</td>
-                      <td data-title="Page Name">{{role?.pageName}}</td>
-                      <td data-title="Link"><input type="checkbox" name="link" [checked]="role?.link"></td>
-                      <td data-title="Add"><input type="checkbox" name="add" [checked]="role?.add"></td>
-                      <td data-title="Edit"><input type="checkbox" name="edit" [checked]="role?.edit"></td>
-                      <td data-title="Delete"><input type="checkbox" name="delete" [checked]="role?.delete"></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            <div class="col-md-5"></div>
           </div>
         </form>
         <div class="modal fade" id="addRole" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -127,10 +84,10 @@
                       <tbody>
                         <tr>
                           <td data-title="Page Name"><input type="text" class="form-control" placeholder="Page Name" formControlName="pageName"></td>
-                          <td data-title="Link"><input type="checkbox" name="link" formControlName="link"></td>
-                          <td data-title="Add"><input type="checkbox" name="add" formControlName="add"></td>
-                          <td data-title="Edit"><input type="checkbox" name="edit" formControlName="edit"></td>
-                          <td data-title="Delete"><input type="checkbox" name="delete" formControlName="delete"></td>
+                          <td data-title="Link"><input type="checkbox" formControlName="link"></td>
+                          <td data-title="Add"><input type="checkbox" formControlName="add"></td>
+                          <td data-title="Edit"><input type="checkbox" formControlName="edit"></td>
+                          <td data-title="Delete"><input type="checkbox" formControlName="delete"></td>
                           <td data-title="Delete"><select name="priority" class="form-control" formControlName="priority"> <option value="0">Main</option><option value="1">Sub</option><option value="2">Sub Sub</option> </select></td>
                         </tr>
                       </tbody>
