@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { PlantService, ToasterService } from 'src/app/shared/services';
+import { environment } from 'src/environments/environment';
 import * as XLSX from 'xlsx';
 
 type AOA = any[][];
@@ -18,7 +20,7 @@ export class PlantStockComponent implements OnInit {
   isExcelDownload: boolean = false;
 
   data: AOA = [];
-  constructor(private service: PlantService, public toaster: ToasterService) { }
+  constructor(private service: PlantService, public toaster: ToasterService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.plantStockData();
@@ -74,9 +76,15 @@ export class PlantStockComponent implements OnInit {
     XLSX.writeFile(wb, "plantStockReport.xlsx");
   }
 
-  /* onFileChange(evt: any) {
+  onFileChange(evt: any) {
+    debugger;
     const target: DataTransfer = <DataTransfer>(evt.target);
     if (target.files.length !== 1) throw new Error('Cannot use multiple files');
+    var formData = new FormData();
+    Array.from(target.files).forEach(f => formData.append('file', f));
+    this.service.depotStockUpload(formData).subscribe((event: any) => {
+      console.log(event);
+    })
     const reader: FileReader = new FileReader();
     reader.onload = (e: any) => {
       // read workbook
@@ -90,5 +98,5 @@ export class PlantStockComponent implements OnInit {
       console.log(this.data);
     };
     reader.readAsBinaryString(target.files[0]);
-  } */
+  }
 }

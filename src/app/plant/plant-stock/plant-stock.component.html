@@ -15,7 +15,8 @@
                   <div class="searchBar d-flex justify-content-center align-items-center">
                       <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
                   </div>
-                  <!-- <input type="file" (change)="onFileChange($event)" multiple="false"> -->
+                  <input type="file" (change)="onFileChange($event)" multiple="false">
+                  <button data-bs-toggle="modal" data-bs-target="#upLoadExcelView">View</button>
               </div>
               <div class="col-md-6 col-12 align-self-end text-end">
                   <div class="modelBtnMain">
@@ -95,3 +96,33 @@
     </div>
   </div>
 </section>
+<div class="modal fade" id="upLoadExcelView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header modalHeaderCenter">
+        <h4 class="modal-title text-white text-center">Header</h4>
+        <a class="btn-close2" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></a>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="table-responsive">
+              <table class="table table-striped table-hover align-middle" id="export">
+                <tbody>
+                  <tr *ngFor="let row of data">
+                    <td *ngFor="let val of row">
+                      {{val}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-btm">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

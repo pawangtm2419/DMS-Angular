@@ -30,4 +30,9 @@ export class PlantService {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
     return this.http.post(`${environment._url}/vehicle/movetoPlant`, data, httpOptions);
   }
+  // /vehicle/depotStockUpload
+  depotStockUpload(data: any): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this.http.post(`${environment._url}/vehicle/depotStockUpload`, data, httpOptions);
+  }
 }
