@@ -26,7 +26,7 @@ import { CookieService } from 'ngx-cookie-service';
     BrowserAnimationsModule,
     Ng2SearchPipeModule,
     ToastrModule.forRoot({
-      timeOut: 3000,
+      timeOut: 2500,
       positionClass: 'toast-top-right',
       preventDuplicates: false,
       newestOnTop: true,

@@ -42,19 +42,34 @@ export class DepotMasterComponent implements OnInit {
   viewFullInfo(depot: any) {
     this.depotInfo = [depot];
   }
+  editCustInfo(depot: any) {
+    console.log(depot);
+  }
   dataLimit() {
     this.limit = (<HTMLInputElement>document.getElementById("limit")).value;
   }
-  depotDelete(id: any) {
-    const data = { _id : id, depotStatus: 'In Active' };
-    this.master.deleteDepot(data).subscribe(res=> {
-      if(res.status) {
-        window.alert(res.msg);
-        this.getDepotData();
-      }
-    }, (error) => {
-      console.log(error);
-    });
+  changeDepotStatus(id: any, status: any) {
+    let data = {};
+    let areYouSure = false;
+    if(status === "Active") {
+      areYouSure = true;
+      data = { _id : id, depotStatus: 'In Active' };
+    } else {
+      areYouSure = false;
+      data = { _id : id, depotStatus: 'Active' };
+    }
+    if(areYouSure) {
+      this.master.deleteDepot(data).subscribe((res: any)=> {
+        if(res.status) {
+          this.getDepotData();
+          this.toaster.showSuccess("Data", res.msg);
+        }
+      }, (error) => {
+        console.log(error);
+      });
+    } else {
+      this.toaster.showError("Status", "This feature is not availble.");
+    }
   }
   download(): void {
     let wb = XLSX.utils.table_to_book(document.getElementById('export'), { display: false, raw: true });

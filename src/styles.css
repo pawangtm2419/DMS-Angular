@@ -155,7 +155,6 @@ label {
   padding: 0.2rem 0.4rem;
 }
 .deleteIcon {
-  background-color: #cc0000;
   text-align: center;
   display: inline-block;
   cursor: pointer;
@@ -163,8 +162,8 @@ label {
 .deleteIcon i,
 .editIcon i {
   color: #fff;
-  font-size: 11px;
-  padding: 3px;
+  font-size: 20px;
+  padding: 0;
 }
 .editIcon {
   background-color: #0099cc;
