@@ -11,7 +11,11 @@
                 <li>Edit Role</li>
               </ul>
             </div>
-            <div class="col-md-6"></div>
+            <div class="col-md-6">
+              <div class="searchBar d-flex justify-content-center align-items-center">
+                <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
+              </div>
+            </div>
             <div class="col-md-6 align-self-end text-end">
               <div class="modelBtnMain">
                 <button type="button" data-bs-toggle="modal" data-bs-target="#addRole" class="btn btn-primary text-uppercase me-2">+ New Role</button>
@@ -19,12 +23,11 @@
             </div>
           </div>
         </div>
-        <form (ngSubmit)="updateNewRoles(updateRoles)" #updateRoles="ngForm">
           <div class="row">
-            <div class="table-responsive p-1">
-              <table class="table table-striped table-hover align-middle" id="export">
+            <div class="table-responsive">
+              <table class="table table-striped table-hover align-middle">
                 <thead class="text-white sticky-top theadbg">
-                  <th colspan="7" class="text-center">Main Menu</th>
+                  <th colspan="8" class="text-center">Main Menu</th>
                   <tr>
                     <th>#</th>
                     <th>Priority</th>
@@ -33,10 +36,11 @@
                     <th>Add</th>
                     <th>Edit</th>
                     <th>Delete</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let role of newFilterArray; let i=index">
+                  <tr *ngFor="let role of newFilterArray | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData };; let i=index">
                     <td data-title="Sr. No.">{{i+1}}</td>
                     <td data-title="Priority"> <span *ngIf="role?.priority === 0">Main</span><span *ngIf="role?.priority === 1">Sub</span><span *ngIf="role?.priority === 2">Sub_sub</span></td>
                     <td data-title="Page Name"> <a routerLink="/{{role?.linkpath}}">{{role?.pageName}}</a></td>
@@ -44,17 +48,12 @@
                     <td data-title="Add"><input type="checkbox" name="{{role?.name}}.add" [(ngModel)]="role.add"></td>
                     <td data-title="Edit"><input type="checkbox" name="{{role?.name}}.edit" [(ngModel)]="role.edit"></td>
                     <td data-title="Delete"><input type="checkbox" name="{{role?.name}}.delete" [(ngModel)]="role.delete"></td>
+                    <td data-title="Delete"><button class="btn" (click)="editRoles(role)">Update</button></td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
-          <div class="row mb-4">
-            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-              <button class="btn btn-primary">Update roles</button>
-            </div>
-          </div>
-        </form>
         <div class="modal fade" id="addRole" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">

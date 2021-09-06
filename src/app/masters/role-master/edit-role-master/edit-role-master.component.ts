@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToasterService, UserService } from 'src/app/shared/services';
@@ -8,8 +8,12 @@ import { ToasterService, UserService } from 'src/app/shared/services';
   templateUrl: './edit-role-master.component.html',
   styleUrls: ['./edit-role-master.component.css']
 })
-export class EditRoleMasterComponent implements OnInit {
+export class EditRoleMasterComponent implements OnInit, OnDestroy {
   roles: any;
+  searchData:any;
+  pageData: number = 1;
+  limits: any = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
+  limit: any = 50;
   roleCode!: Params;
   masterData: any;
   newFilterArray: any[] = [];
@@ -49,18 +53,18 @@ export class EditRoleMasterComponent implements OnInit {
               "linkpath": item[keyVlaue].linkPath
             });
           });
-        });
-        this.newFilterArray.map((item: any) => {
-          if (item.priority === 0) {
-            this.main.push(item);
-          } else if (item.priority === 1) {
-            this.sub.push(item);
-          } else {
-            this.subSub.push(item);
-          }
+          this.limit = this.newFilterArray.length;
         });
       }
     });
+  }
+  ngOnDestroy(): void {
+    this.newFilterArray = [];
+    this.main = [];
+    this.sub = [];
+    this.subSub = [];
+    this.masterData = [];
+    this.roles = [];
   }
 
   addRoles() {
@@ -88,13 +92,43 @@ export class EditRoleMasterComponent implements OnInit {
     this.service.updateRole(submitData).subscribe((res: any) => {
       if (res.status) {
         this.toaster.showSuccess('Success', res.msg);
+        this.ngOnDestroy();
         setTimeout(() => {
           window.location.reload();
         }, 3000);
       }
     });
   }
-  updateNewRoles(updateRoles: NgForm) {
-    console.log(updateRoles.value);
+
+  editRoles(role: any): void {
+    const data = {
+      add: role.add,
+      delete: role.delete,
+      edit: role.edit,
+      link: role.link,
+      linkpath: role.linkpath,
+      name: role.name,
+      pageName: role.pageName,
+      priority: role.priority
+    }
+    const rolesKey = Object.keys(this.roles[0]);
+    const rolesValue = Object.values(this.roles[0]);
+    rolesKey.push(data.name);
+    rolesValue.push(data);
+    var result: any = {};
+    for (var i = 0; i < rolesKey.length; i++) {
+      result[rolesKey[i]] = rolesValue[i];
+    }
+    const submitData = {
+      menuObject: [result],
+      roleCode: this.roleCode.id
+    };
+    this.service.updateRole(submitData).subscribe((res: any) => {
+      if (res.status) {
+        this.ngOnDestroy();
+        this.toaster.showSuccess('Success', res.msg);
+        this.ngOnInit();
+      }
+    });
   }
 }
