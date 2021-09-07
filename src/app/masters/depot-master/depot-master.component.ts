@@ -11,11 +11,13 @@ export class DepotMasterComponent implements OnInit {
   searchData:any;
   property: any;
   depotData: any;
+  filterDepotData: any;
   depotInfo: any[] = [];
   pageData: number = 1;
   limits: any = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
   limit: any = 50;
-  isExcelDownload: boolean= false;
+  isExcelDownload: boolean = false;
+  depotStatus: string = 'Active';
 
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
@@ -27,6 +29,7 @@ export class DepotMasterComponent implements OnInit {
     this.master.depotMaster(data).subscribe(res=> {
       this.depotData=res.data;
       if(this.depotData.length > 0) {
+        this.showInActive();
         this.isExcelDownload = true;
         this.limits.push({ "key": "ALL", value: this.depotData.length });
         this.toaster.showSuccess("Data", "Report successfully Open.");
@@ -43,7 +46,7 @@ export class DepotMasterComponent implements OnInit {
     this.depotInfo = [depot];
   }
   editCustInfo(depot: any) {
-    console.log(depot);
+    console.log([depot]);
   }
   dataLimit() {
     this.limit = (<HTMLInputElement>document.getElementById("limit")).value;
@@ -69,6 +72,18 @@ export class DepotMasterComponent implements OnInit {
       });
     } else {
       this.toaster.showError("Status", "This feature is not availble.");
+    }
+  }
+
+  showInActive(): void{
+    this.filterDepotData = this.depotData;
+    this.filterDepotData = this.filterDepotData.filter((depot: any) => {
+      return depot.depotStatus === this.depotStatus;
+    });
+    if(this.depotStatus === 'Active') {
+      this.depotStatus = 'In Active';
+    } else {
+      this.depotStatus = 'Active';
     }
   }
   download(): void {

@@ -11,14 +11,18 @@
                       <li><a routerLink="/plant-stock">Plant Stock</a></li>
                   </ul>
               </div>
-              <div class="col-md-6 col-12">
-                  <div class="searchBar d-flex justify-content-center align-items-center">
-                      <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
-                  </div>
-                  <input type="file" (change)="onFileChange($event)" multiple="false">
-                  <button data-bs-toggle="modal" data-bs-target="#upLoadExcelView">View</button>
+              <div class="col-md-5 col-12 pe-2">
+                <div class="searchBar d-flex justify-content-center align-items-center">
+                    <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
+                </div>
               </div>
-              <div class="col-md-6 col-12 align-self-end text-end">
+              <div class="col-md-3 col-12">
+                <div class="searchBar d-flex justify-content-center align-items-center">
+                  <input type="file" class="form-control" (change)="onFileSelect($event)" multiple="false">
+                  <button data-bs-toggle="modal" class="btn btn-primary" data-bs-target="#upLoadExcelView">View</button>
+                </div>
+              </div>
+              <div class="col-md-4 col-12 align-self-end text-end">
                   <div class="modelBtnMain">
                     <button type="button" class="btn btn-primary" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
                   </div>
@@ -50,7 +54,9 @@
                 <th>Ageing</th>
                 <th>NDP_withoutTax</th>
                 <th>Tax</th>
-                <th> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Action&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th>Download</th>
+                <th>Edit</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -71,19 +77,13 @@
                 <td data-title="NDP_withoutTax">{{pStock?.NDP}}</td>
                 <td data-title="Tax">{{pStock?.SST +pStock?.GST}}</td>
                 <td data-title="Options" class="text-center">
-                  <div class="row">
-                    <div class="col-3">
-                      <a class="txt-link" href="" data-toggle="modal" (click)="form22(pStock)"><i class="fa fa-download"></i></a>
-                    </div>
-                    &nbsp;&nbsp;
-                    <div class="col-3">
-                      <a class="editIcon icon me-0" data-toggle="modal" (click)="editDepotIndo(pStock)"><i class="fa fa-edit"></i></a>
-                    </div>
-                    &nbsp;&nbsp;
-                    <div class="col-3">
-                      <a class="deleteIcon icon" data-toggle="modal" (click)="removeChassis(pStock)"><i class="fa fa-trash"></i></a>
-                    </div>
-                  </div>
+                  <button class="btn bg-success text-white" href="" data-toggle="modal" (click)="form22(pStock)"><i class="fa fa-download"></i></button>
+                </td>
+                <td data-title="Options" class="text-center">
+                  <button class="btn bg-info" data-toggle="modal" (click)="editDepotIndo(pStock)"><i class="fa fa-edit"></i></button>
+                </td>
+                <td data-title="Options" class="text-center">
+                  <button class="btn bg-danger text-white" data-toggle="modal" (click)="removeChassis(pStock)"><i class="fa fa-trash"></i></button>
                 </td>
               </tr>
             </tbody>
