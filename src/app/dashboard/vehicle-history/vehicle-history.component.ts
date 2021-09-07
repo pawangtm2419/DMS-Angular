@@ -21,10 +21,14 @@ export class VehicleHistoryComponent implements OnInit {
       chassisNo: this.chassisNo
     }
     if (this.chassisNo.length > 13) {
-      this.service.vehicleHist(data).subscribe(res => {
-        this.vehiData = res.data;
-        this.location = res.currentLocation;
-        this.dataChassisNo = this.chassisNo;
+      this.service.vehicleHist(data).subscribe((res: any) => {
+        if (res.status) {
+          this.vehiData = res.data;
+          this.location = res.currentLocation;
+          this.dataChassisNo = this.chassisNo;
+        } else {
+          this.toaster.showInfo('Error', 'Data not found!');
+        }
       });
     }
   }

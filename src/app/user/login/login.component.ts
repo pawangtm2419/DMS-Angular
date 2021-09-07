@@ -3,7 +3,6 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToasterService } from 'src/app/shared/services/toster.service';
-import { first } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -14,6 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class LoginComponent implements OnInit {
   userInfo: any;
   submit = false;
+  logIntryCount = 0;
   constructor(private service: UserService, private router: Router, public toaster: ToasterService, private cookie: CookieService) { }
 
   ngOnInit(): void {
@@ -23,22 +23,30 @@ export class LoginComponent implements OnInit {
   }
 
   getUserInfo(logIn: NgForm): void{
+    /* const loginCount = this.cookie.get('LogInCount');
+    var y: number = +loginCount; */
     if (logIn.valid) {
       this.submit = true;
     }
-    if (this.submit) {
-      this.service.userUogIn(logIn.value).subscribe(res => {
-        if (res.status === 'true') {
-          this.toaster.showSuccess('Success', 'Log in successfull');
-          this.cookie.set('token', res.token);
-          window.location.reload();
-          this.router.navigate(['home']);
-        } else if (res.status === 'false') {
-          this.toaster.showError('Error', res.msg);
-        }
-      }, (error) => {
-        this.toaster.showError('Error', error);
-      });
+    if (this.logIntryCount < 3) {
+      if (this.submit) {
+        this.service.userUogIn(logIn.value).subscribe((res: any) => {
+          if (res.status) {
+            this.toaster.showSuccess('Success', 'Log in successfull');
+            this.cookie.set('token', res.token);
+            window.location.reload();
+            this.router.navigate(['home']);
+          } else {
+            this.logIntryCount++;
+            this.cookie.set('LogInCount', JSON.stringify(this.logIntryCount));
+            this.toaster.showError('Error', 'Please enter valid ID and password.');
+          }
+        }, (error) => {
+          this.toaster.showError('Error', error);
+        });
+      }
+    } else {
+      this.toaster.showError('Error', 'You have reached maximum login attempts!');
     }
   }
 }

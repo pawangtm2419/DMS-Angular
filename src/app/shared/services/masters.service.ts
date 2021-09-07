@@ -40,6 +40,11 @@ export class MastersService {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
     return this.http.post(`${environment._url}/dealer/dealers`, data, httpOptions);
   }
+  // /dealer/changeDealerStatus
+  changeDealerStatus(data: any): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this.http.post(`${environment._url}/dealer/changeDealerStatus`, data, httpOptions);
+  }
   /* Customer Master */
   getCustomers(data: any): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };

@@ -1,0 +1,673 @@
+{
+    "_id" : ObjectId("593004e50536a152f21767f5"),
+    "status" : "Active",
+    "description" : "Will manage OEM (e.g. SDF), except create new OEM they can play all roles and execute the whole application for them (OEM). Main focus is sales",
+    "roleName" : "Sales Admin",
+    "roleCode" : "sales_admin",
+    "CreatedDate" : ISODate("2017-12-05T06:02:06.899Z"),
+    "isDeleted" : false,
+    "__v" : 0,
+    "useType" : "MARKET",
+    "roleMenus" : {
+        "reversal_report" : {
+            "linkPath" : "reversalReport",
+            "delete" : true,
+            "edit" : true,
+            "add" : true,
+            "link" : true
+        },
+        "retail_return" : {
+            "linkPath" : "retailReturn",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "retail_plan_report_last" : {
+            "linkPath" : "retailPlanReport",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "retail_plan_upload_last" : {
+            "linkPath" : "retailPlanUpload",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "expected_disbursement_report_last" : {
+            "linkPath" : "expDisbursementReport",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "old_tractor_report_last" : {
+            "linkPath" : "oldTractorExchange",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "tehsil_based_report_last" : {
+            "linkPath" : "tehsilReport",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "dealer_statement_upload_last" : {
+            "linkPath" : "dealerStatementUpload",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "dealer_opening_sheet_last" : {
+            "linkPath" : "dealerOpeningSheet",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "dealer_monthly_statement_last" : {
+            "linkPath" : "dealerMonthlyStatement",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "sale_plan_upload_last" : {
+            "linkPath" : "salePlanUpload",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "sale_plan_report_last" : {
+            "linkPath" : "salePlanReport",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "collection_plan_upload_last" : {
+            "linkPath" : "collectionPlanUpoad",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "collection_plan_report_last" : {
+            "linkPath" : "collectionPlanReport",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "delivery_plan_upload_last" : {
+            "linkPath" : "deliveryPlanUpload",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "delivery_plan_report_last" : {
+            "linkPath" : "deliveryPlanReport",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "advance_last" : {
+            "linkPath" : "advanceReport",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "viewddepotinvoice_last" : {
+            "linkPath" : "viewdDepotInvoice",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "salereturninvoice_last" : {
+            "linkPath" : "saleReturnInvoice",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "viewdepotinvoice_last" : {
+            "linkPath" : "viewDepotInvoice",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "viewdealerinvoice_last" : {
+            "linkPath" : "viewDealerInvoice",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "retails_last" : {
+            "linkPath" : "retails",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "deliveries_last" : {
+            "linkPath" : "deliveries",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "depot_receipt_transfer_last" : {
+            "linkPath" : "depotReceiptTransfer",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "dealer_collection_statewise_last" : {
+            "linkPath" : "dealerCollectionStatewise",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "dealer_collection_daywise_last" : {
+            "linkPath" : "dealerCollectionDaywise",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "dealer_collection_mtd_last" : {
+            "linkPath" : "dealerCollectionMTD",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "dealer_receipt_transfer_last" : {
+            "linkPath" : "dealerReceiptTransfer",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "dealer_invoices_statewise_last" : {
+            "linkPath" : "dealerInvoicesStatewise",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "depot_pdi_list_last" : {
+            "linkPath" : "checkDepotPdi",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "dealer_pdi_list_last" : {
+            "linkPath" : "checkDealerPdi",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "dealer_shortage_damage_list_last" : {
+            "linkPath" : "dealerShortageDamageList",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "depot_shortage_damage_list_last" : {
+            "linkPath" : "depotShortageDamageList",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "insurance_last" : {
+            "linkPath" : "dealerAdvRetStock",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "dealer_invoices_mtd_last" : {
+            "linkPath" : "dealerInvoicesMTD",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "invoices_last" : {
+            "linkPath" : "invoices",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "dealer_aging_from_received_last" : {
+            "linkPath" : "dealerAgingReceived",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "dealer_aging_from_production_last" : {
+            "linkPath" : "dealerAgingProduction",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "bg_sd_monitoring_last" : {
+            "linkPath" : "bgMonitoring",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "rts_reports_last" : {
+            "linkPath" : "rtsReport",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "ats_reports_last" : {
+            "linkPath" : "atsReport",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "dealer_stock_variant_wise_last" : {
+            "linkPath" : "dealerStockStatus",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "dealer_stock_last" : {
+            "linkPath" : "dealerStock",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "retail_last" : {
+            "linkPath" : "dealerAdvanceStock",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "delivery_last" : {
+            "linkPath" : "dealerPhysicalStock",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "depot_aging_from_received_last" : {
+            "linkPath" : "depotAgingReceived",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "depot_aging_from_production_last" : {
+            "linkPath" : "depotAgingProduction",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "depot_to_dealer_invoice_last" : {
+            "linkPath" : "dealerInvoicesList",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "depot_to_depot_invoice_last" : {
+            "linkPath" : "depotInvoicesList",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "update_vehicle_sub" : {
+            "linkPath" : "updateVehicle",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "dealer_statement_sub" : {
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "auto_invoice_upload_sub" : {
+            "linkPath" : "excelStockTransfer",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "dealer_plan_sub" : {
+            "linkPath" : "",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "closing_dates_sub" : {
+            "linkPath" : "closingDates",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "capital_stock_sub" : {
+            "linkPath" : "cStock",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "change_password_sub" : {
+            "linkPath" : "changePassword",
+            "delete" : false,
+            "edit" : false,
+            "add" : true,
+            "link" : true
+        },
+        "profile_sub" : {
+            "linkPath" : "profile",
+            "delete" : false,
+            "edit" : false,
+            "add" : true,
+            "link" : true
+        },
+        "dealer_collection_entry_sub" : {
+            "linkPath" : "dealerCollectionEntry",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "zone_master_sub" : {
+            "linkPath" : "zoneMaster",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "state_master_sub" : {
+            "linkPath" : "stateMaster",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "menu_master_sub" : {
+            "linkPath" : "menu",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "messages_master_sub" : {
+            "linkPath" : "messages",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "roles_master_sub" : {
+            "linkPath" : "rolesMaster",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "financial_master_sub" : {
+            "linkPath" : "financialMaster",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "user_master_sub" : {
+            "linkPath" : "userMaster",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "parts_master_sub" : {
+            "linkPath" : "partsMaster",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "transport_master_sub" : {
+            "linkPath" : "transporterMaster",
+            "delete" : false,
+            "edit" : true,
+            "add" : true,
+            "link" : true
+        },
+        "power_master_sub" : {
+            "linkPath" : "onPowerMaster",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "variant_master_sub" : {
+            "linkPath" : "variantMaster",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "customer_master_sub" : {
+            "linkPath" : "customerMaster",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "dealer_master_sub" : {
+            "linkPath" : "dealerMaster",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "depot_master_sub" : {
+            "linkPath" : "depotMaster",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "dealer_invoices_sub" : {
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "view_dealer_reports_sub" : {
+            "linkPath" : "",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "advance_return_sub" : {
+            "linkPath" : "advanceReturn",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "bgs_sub" : {
+            "linkPath" : "bgs",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "ats_sub" : {
+            "linkPath" : "",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "sale_return_receipt_list_sub" : {
+            "linkPath" : "saleReturnReceipt",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "sale_return_sub" : {
+            "linkPath" : "saleReturn",
+            "delete" : false,
+            "edit" : false,
+            "add" : true,
+            "link" : true
+        },
+        "dealer_pdi_sub" : {
+            "linkPath" : "dealerPdiList",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "dealer_shortage_and_damage_sub" : {
+            "linkPath" : "dealerDamageList",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "dealer_receipt_list_sub" : {
+            "linkPath" : "dealerReceiptList",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : false
+        },
+        "view_depot_reports_sub" : {
+            "linkPath" : "",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "depot_stock_variant_wise_sub" : {
+            "linkPath" : "depotStockStatus",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "depot_stock_sub" : {
+            "linkPath" : "depotStock",
+            "delete" : false,
+            "edit" : true,
+            "add" : false,
+            "link" : true
+        },
+        "depot_pdi_sub" : {
+            "linkPath" : "depotPdiList",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "depot_shortage_and_damage_sub" : {
+            "linkPath" : "depotDamageList",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "depot_receipt_list_sub" : {
+            "linkPath" : "depotReceiptList",
+            "delete" : false,
+            "edit" : false,
+            "add" : false,
+            "link" : true
+        },
+        "generate_transfer_note_sub" : {
+            "linkPath" : "stockTransferNote",
+            "delete" : false,
+            "edit" : true,
+            "add" : true,
+            "link" : true
+        },
+        "plant_stock_sub" : {
+            "linkPath" : "plantStock",
+            "delete" : false,
+            "edit" : true,
+            "add" : false,
+            "link" : true
+        },
+        "stock_main" : {
+            "linkPath" : "stock",
+            "link" : true
+        },
+        "currentlocation_main" : {
+            "linkPath" : "currentlocation",
+            "link" : true
+        },
+        "settings_main" : {
+            "linkPath" : "Settings",
+            "link" : true
+        },
+        "dealers_main" : {
+            "linkPath" : "dealers",
+            "link" : true
+        },
+        "depot_main" : {
+            "linkPath" : "depot",
+            "link" : true
+        },
+        "plant_main" : {
+            "linkPath" : "plant",
+            "link" : true
+        },
+        "masters_main" : {
+            "linkPath" : "masters",
+            "link" : true
+        },
+        "dashboard_main" : {
+            "linkPath" : "home",
+            "link" : true
+        }
+    }
+}

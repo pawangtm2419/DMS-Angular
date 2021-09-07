@@ -16,6 +16,7 @@ export class DealerMasterComponent implements OnInit {
   limit: any = 50;
   currentdate= new Date();
   isExcelDownload:boolean = false;
+  dealerDeleteId: any;
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -36,6 +37,27 @@ export class DealerMasterComponent implements OnInit {
       console.log(error);
     });
   }
+  sureDelete(id: any): void {
+    this.dealerDeleteId = id;
+    console.log(this.dealerDeleteId);
+  }
+  dealerStatus(): void {
+    const data = {
+      "dealerStatus":"In Active",
+      "_id": this.dealerDeleteId
+    };
+    this.master.changeDealerStatus(data).subscribe((res: any) => {
+      if(res.status == 'true') {
+        this.toaster.showSuccess("Data", "Status successfully changed.");
+        this.getDealersList();
+      } else {
+        this.toaster.showError("Data", "Status not changed.");
+      }
+    }), (error: any) => {
+      this.toaster.showError("Data", error);
+    }
+  }
+
   dataLimit() {
     this.limit = (<HTMLInputElement>document.getElementById("limit")).value;
   }

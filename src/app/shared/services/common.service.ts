@@ -32,21 +32,21 @@ export class CommonService {
   }
 
   getVariant(): Observable<any> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
     return this._http.get<any>(`${environment._url}/variant/getVariants`, httpOptions);
   }
 
   vehicleHist(data: any): Observable<any> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
     return this._http.post(`${environment._url}/vehicle/getVehicleHistory`, data, httpOptions);
   }
 
   getZones(): Observable<any> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
     return this._http.get<any>(`${environment._url}/zones`, httpOptions);
   }
   getStatesByZone(zoneCode: string): Observable<any> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: JSON.parse(localStorage.getItem('token') || '{}')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
     return this._http.get<any>(`${environment._url}/getStatesByZone?zoneCode=${zoneCode}`, httpOptions);
   }
 

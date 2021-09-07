@@ -45,7 +45,9 @@
                                 <th>NDP Inc. GST</th>
                                 <th>Dealer Margin</th>
                                 <th>MRP</th>
-                                <th>Action</th>
+                                <th>Status</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                               </tr>
                         </thead>
                         <tbody>
@@ -61,9 +63,12 @@
                                 <td data-title="NDP Inc. GST">{{variant?.NDP_withoutTax + variant?.NDP_withoutTax * variant?.gst/100 + variant?.NDP_withoutTax * variant?.sst/100 | number}}</td>
                                 <td data-title="Dealer Margin">{{variant?.dealerMargin}}</td>
                                 <td data-title="MRP">{{variant?.dealerMargin + variant?.NDP_withoutTax + ((variant?.dealerMargin + variant?.NDP_withoutTax)* (variant?.gst/100 + variant?.sst/100 )) | number}}</td>
+                                <td data-title="MRP"><span *ngIf="!variant?.isDeleted">Active</span><span *ngIf="variant?.isDeleted">In Active</span> </td>
                                 <td data-title="Options" class="text-center">
-                                    <a class="editIcon icon mb-1" [routerLink]="['/master/edit-variant', variant?._id]"><i class="fa fa-edit"></i></a>
-                                    <a class="deleteIcon icon" (click)="variantDelete(variant?._id)"><i class="fa fa-trash-alt"></i></a>
+                                    <a class="btn bg-info" [routerLink]="['/master/edit-variant', variant?._id]"><i class="fa fa-edit"></i></a>
+                                </td>
+                                <td data-title="Options" class="text-center">
+                                    <a class="bg-danger btn text-white" (click)="variantDelete(variant?._id)"><i class="fa fa-trash-alt"></i></a>
                                 </td>
                               </tr>
                         </tbody>
