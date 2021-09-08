@@ -106,6 +106,6 @@ export class MastersService {
   }
   deactiveCity(data: any): Observable<any> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.post(`${environment._url}/deactiveCity`, data, httpOptions);
+    return this.http.post(`${environment._url}/deleteCity`, data, httpOptions);
   }
 }

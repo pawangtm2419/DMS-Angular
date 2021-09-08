@@ -43,13 +43,26 @@ export class CityMasterComponent implements OnInit {
       "id": id,
       "status": sts
     }
-    console.log(data);
-    /* this.master.deactiveCity(data).subscribe((res: any)=> {
-      if(res.status) {
-        this.toaster.showSuccess("Success", res.msg);
-        this.getCityList();
+    var areYouSure = false;
+    if(data.status) {
+      areYouSure = true;
+    } else {
+      areYouSure = false;
+    }
+    if(areYouSure) {
+      this.master.deactiveCity(data).subscribe((res: any)=> {
+        if(res.status) {
+          this.toaster.showSuccess("Success", res.msg);
+          this.getCityList();
+        } else {
+          this.toaster.showError("Error", res.msg);
+        }
+      }), (error: any) => {
+        this.toaster.showError("Error", error);
       }
-    }); */
+    } else {
+      this.toaster.showError("Status", "This feature is not availble.");
+    }
   }
   download(): void {
     let wb = XLSX.utils.table_to_book(document.getElementById('export'), { display: false, raw: true });
