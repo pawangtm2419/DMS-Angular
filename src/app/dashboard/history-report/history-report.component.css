@@ -1,0 +1,24 @@
+.formBtn{
+    background-color: #0099cc;
+    padding: 3px 7px;
+    color: #fff;
+    text-decoration: none;
+    transition: 5ms;
+}
+.formBtn:hover{
+    background-color: #058cbb;
+}
+.srNoStyle{
+  color: #454397;
+  text-decoration: none;  
+}
+.srNoStyle:hover{
+    text-decoration: underline;
+}
+.modal-header{
+    background-color: #454397;
+    color: #fff;
+}
+.modal-content{
+    border-bottom: 4px solid #454397;
+}

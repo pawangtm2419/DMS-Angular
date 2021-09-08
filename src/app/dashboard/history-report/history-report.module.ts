@@ -13,7 +13,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    HistoryReportComponent
+    HistoryReportComponent,
   ],
   imports: [
     CommonModule,
