@@ -85,7 +85,7 @@ export class HistoryReportComponent implements OnInit {
     const data ={
       chassisNo : this.chassisNo
     }
-    this.service.getVehHistory(data).subscribe((res: any) =>{
+    this.service.getVehHistory(data).subscribe(res =>{
       this.vehicleData = res.data;
       console.log('veh data -> '+ this.vehicleData);
 

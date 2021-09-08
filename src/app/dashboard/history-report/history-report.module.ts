@@ -10,10 +10,9 @@ const routes: Routes = [
   { path: '', component: HistoryReportComponent }
 ];
 
-
 @NgModule({
   declarations: [
-    HistoryReportComponent,
+    HistoryReportComponent
   ],
   imports: [
     CommonModule,
