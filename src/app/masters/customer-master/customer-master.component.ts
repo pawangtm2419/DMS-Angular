@@ -29,10 +29,10 @@ export class CustomerMasterComponent implements OnInit {
     const data = {useType: 'ALL'};
     this.master.getCustomers(data).subscribe((res: any) => {
       this.customersData = res.data;
-      if(res.status === 'true'){
+      this.showInActive();
+      if(res.status === 'true') {
         this.limits.push({ key: 'ALL', value: this.customersData.length });
         if (this.customersData.length > 0) {
-          this.showInActive();
           this.isExcelDownload = true;
           this.toaster.showSuccess('Data', 'Report successfully Open.');
         } else {
