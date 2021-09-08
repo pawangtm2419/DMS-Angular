@@ -38,8 +38,18 @@ export class CityMasterComponent implements OnInit {
     this.limit = (<HTMLInputElement>document.getElementById("limit")).value;
   }
 
-  cityDelete(id: any) {
-    console.log(id);
+  cityDelete(id: any, sts: any) {
+    const data = {
+      "id": id,
+      "status": sts
+    }
+    console.log(data);
+    /* this.master.deactiveCity(data).subscribe((res: any)=> {
+      if(res.status) {
+        this.toaster.showSuccess("Success", res.msg);
+        this.getCityList();
+      }
+    }); */
   }
   download(): void {
     let wb = XLSX.utils.table_to_book(document.getElementById('export'), { display: false, raw: true });

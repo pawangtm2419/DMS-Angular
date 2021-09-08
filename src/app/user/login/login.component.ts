@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     if (logIn.valid) {
       this.submit = true;
     }
-    if (this.logIntryCount < 3) {
+    if (this.logIntryCount < 3 || this.cookie.get('LogInUser') !== logIn.value.empID) {
       if (this.submit) {
         this.service.userUogIn(logIn.value).subscribe((res: any) => {
           if (res.status) {
@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['home']);
           } else {
             this.logIntryCount++;
+            this.cookie.set('LogInUser', logIn.value.empID);
             this.cookie.set('LogInCount', JSON.stringify(this.logIntryCount));
             this.toaster.showError('Error', 'Please enter valid ID and password.');
           }

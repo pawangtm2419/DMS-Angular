@@ -104,4 +104,8 @@ export class MastersService {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
     return this.http.get(`${environment._url}/getCities`, httpOptions);
   }
+  deactiveCity(data: any): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this.http.post(`${environment._url}/deactiveCity`, data, httpOptions);
+  }
 }
