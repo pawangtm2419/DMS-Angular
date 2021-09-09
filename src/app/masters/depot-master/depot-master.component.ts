@@ -29,6 +29,7 @@ export class DepotMasterComponent implements OnInit {
     this.master.depotMaster(data).subscribe(res=> {
       this.depotData=res.data;
       if(this.depotData.length > 0) {
+        this.depotStatus = 'Active';
         this.showInActive();
         this.isExcelDownload = true;
         this.limits.push({ "key": "ALL", value: this.depotData.length });

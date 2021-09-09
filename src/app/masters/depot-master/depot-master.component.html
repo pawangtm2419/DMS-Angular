@@ -66,7 +66,7 @@
                               <a class="editIcon icon btn" (click)="editCustInfo(depot)"><i class="fa fa-edit"></i></a>
                             </td>
                             <td data-title="Options" class="text-center">
-                              <a class="deleteIcon icon btn" [ngClass]="!(depot?.depotStatus === 'Active') ? 'bg-danger' : 'bg-success'" (click)="changeDepotStatus(depot?.depotCode, depot?.depotStatus)"><i [ngClass]="(depot?.depotStatus === 'Active') ? 'fa fa-toggle-on' : 'fa fa-toggle-off'"></i></a>
+                              <button class="deleteIcon icon btn" [ngClass]="!(depot?.depotStatus === 'Active') ? 'bg-danger' : 'bg-success'" (click)="changeDepotStatus(depot?.depotCode, depot?.depotStatus)"><i [ngClass]="(depot?.depotStatus === 'Active') ? 'fa fa-toggle-on' : 'fa fa-toggle-off'"></i></button>
                             </td>
                           </tr>
                         </tbody>
