@@ -36,13 +36,13 @@ export class ReportRetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getZoneList();
-    this.filterForm = new FormGroup({
-      fromDate: new FormControl('', [Validators.required]),
-      toDate: new FormControl('', [Validators.required]),
-      zone: new FormControl(''),
-      state: new FormControl(''),
-      dealer: new FormControl('')
-    });
+    const data = {
+      fromDate: this.fromDate +"T00:00:00.000Z",
+      toDate: this.toDate +"T00:00:00.000Z",
+      isRetailed: false,
+      useType: "ALL"
+    };
+    //this.getretailList(data);
   }
 
   getZoneList(): void {
@@ -81,6 +81,7 @@ export class ReportRetailComponent implements OnInit {
   }
 
   getretailList(formData: any): void {
+    //console.log(formData);
     let data = {
       zoneCode: formData.value.zone,
       stateName: formData.value.state,
@@ -90,7 +91,6 @@ export class ReportRetailComponent implements OnInit {
       isRetailed: false,
       useType: "ALL"
     };
-    console.log(data);
     this.dealer.getretailReports(data).subscribe((res: any) => {
       if(res.status) {
         this.retailData = res.data;
