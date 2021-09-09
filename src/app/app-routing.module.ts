@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AppGuard } from './shared/app.guard';
-import { LoginComponent } from './user/login/login.component';
 
 const routes: Routes = [
   { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule), canActivate: [AppGuard] },

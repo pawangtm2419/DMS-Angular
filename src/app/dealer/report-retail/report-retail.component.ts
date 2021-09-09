@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DealerReportService, ToasterService } from 'src/app/shared/services';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CommonService, DealerReportService, ToasterService } from 'src/app/shared/services';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -8,25 +9,95 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./report-retail.component.css']
 })
 export class ReportRetailComponent implements OnInit {
+  date = new Date();
   searchData:any;
   retailData: any;
   pageData: number = 1;
   limits: any;
   limit: any = 50;
+  fromDate: any;
+  toDate: any;
+  filterForm!: FormGroup;
+  currentDate: any;
   isExcelDownload: boolean = false;
-  constructor(private dealer: DealerReportService, public toaster: ToasterService) { }
+  zoneList: any;
+  stateListData: any;
+  dealerListData: any;
+  selectZone: any;
+  selectState: any;
+  constructor(private dealer: DealerReportService, public toaster: ToasterService, private service: CommonService) {
+    var date = this.date.getDate();
+    var month = 1+this.date.getMonth();
+    var year = this.date.getFullYear();
+    this.fromDate =  year+"-"+(month<9?'0':'')+month+"-"+'01';
+    this.toDate = year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
+    this.currentDate =  year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
+  }
 
   ngOnInit(): void {
-    this.getretailList();
+    this.getZoneList();
+    this.filterForm = new FormGroup({
+      fromDate: new FormControl('', [Validators.required]),
+      toDate: new FormControl('', [Validators.required]),
+      zone: new FormControl(''),
+      state: new FormControl(''),
+      dealer: new FormControl('')
+    });
   }
-  getretailList() {
-    let data = {"fromDate":"2021-03-15T00:00:00.000Z","toDate":"2021-07-20T00:00:00.000Z","isRetailed":false,"useType":"ALL"};
-    this.dealer.getretailReports(data).subscribe(res=> {
-      this.retailData=res.data;
-      if(this.retailData.length > 0) {
-        this.isExcelDownload = true;
-        this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.retailData.length }];
-        this.toaster.showSuccess("Data", "Report successfully Open.");
+
+  getZoneList(): void {
+    this.service.getZones().subscribe((data: any) => {
+      if(data.status) {
+        this.zoneList = data.zones;
+      } else {
+        this.toaster.showError("Zone", 'Data not found!');
+      }
+    },
+      (error: any) => console.log(error)
+    );
+  }
+
+  getStateList(data: any): void {
+    this.service.getStatesByZone(data).subscribe(data => {
+      if(data.status) {
+        this.stateListData = data.states;
+      } else {
+        this.toaster.showError("State", 'Data not found!');
+      }
+    },
+      (error: any) => console.log(error)
+    );
+  }
+  getDealers(data: any): void {
+    this.service.getDealerList(data).subscribe(data => {
+      if(data.status) {
+        this.dealerListData = data.msg;
+      } else {
+        this.toaster.showError("Dealer", 'Data not found!');
+      }
+    },
+      (error: any) => console.log(error)
+    );
+  }
+
+  getretailList(formData: any): void {
+    let data = {
+      fromDate: formData.value.fromDate +"T00:00:00.000Z",
+      toDate: formData.value.toDate +"T00:00:00.000Z",
+      isRetailed: false,
+      useType: "ALL"
+    };
+    console.log(data);
+    this.dealer.getretailReports(data).subscribe((res: any) => {
+      if(res.status) {
+        this.retailData = res.data;
+        if(this.retailData.length > 0) {
+          this.isExcelDownload = true;
+          this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.retailData.length }];
+          this.toaster.showSuccess("Data", "Report successfully Open.");
+        } else {
+          this.toaster.showInfo("Data", "No record found.");
+        }
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }

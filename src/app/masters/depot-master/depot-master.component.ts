@@ -59,7 +59,7 @@ export class DepotMasterComponent implements OnInit {
       areYouSure = true;
       data = { _id : id, depotStatus: 'In Active' };
     } else {
-      areYouSure = false;
+      areYouSure = true;
       data = { _id : id, depotStatus: 'Active' };
     }
     if(areYouSure) {

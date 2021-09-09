@@ -18,7 +18,7 @@
                         </div>
                         <div class="col-md-2">
                           <div class="searchBar d-flex justify-content-center align-items-center">
-                            <input type="checkbox" (click)="showInActive()" name="status" id="custStatus">
+                            <input type="checkbox" (click)="showInActive()" [checked]="depotStatus === 'Active'" name="status" id="custStatus">
                             <label for="status">Show Inactive</label>
                           </div>
                         </div>

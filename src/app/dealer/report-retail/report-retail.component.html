@@ -16,6 +16,7 @@
                       </div>
                       <div class="col-md-6 align-self-end text-end">
                           <div class="modelBtnMain">
+                            <button class="btn btn-primary me-2" type="button" data-bs-toggle="collapse" title="Filter" data-bs-target="#filter" aria-expanded="false" aria-controls="collapseExample"> <i class="fas fa-filter"></i> </button>
                             <button type="button" class="btn btn-primary" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
                           </div>
                           <label for="limit">
@@ -25,6 +26,78 @@
                           </label>
                       </div>
                   </div>
+              </div>
+              <div class="collapse mb-2" id="filter">
+                <div class="card card-body">
+                  <div class="container">
+                    <div class="row">
+                      <div class="d-downMain">
+                        <form [formGroup]="filterForm">
+                        <div class="row" style="--bs-gutter-x: 1.5rem;">
+                          <div class="col-md-2">
+                            <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
+                              <select class="form-select" formControlName="zone" [(ngModel)]="selectZone" (ngModelChange)="getStateList(selectZone)">
+                                <option value="">Select Zone</option>
+                                <option *ngFor="let obj of zoneList" [ngValue]="obj.zoneCode"> {{obj.zoneCode}} </option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-2">
+                            <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
+                              <select  class="form-select" formControlName="state" [(ngModel)]="selectState" (ngModelChange)="getDealers(selectState)">
+                                <option value="">Select State</option>
+                                <option *ngFor="let obj of stateListData" value="{{obj}}"> {{obj}} </option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-2">
+                            <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
+                              <select  class="form-select" formControlName="dealer" ngModel>
+                                <option value="">Select Dealer</option>
+                                <option *ngFor="let obj of dealerListData" [ngValue]="obj.code"> {{obj.code}} </option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-2">
+                            <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
+                              <div class="col-md-2 col-2">
+                                <label for="fromDate" class="col-form-label">From: </label>
+                              </div>
+                              <div class="col-md-10 col-10">
+                                <input type="date" id="fromDate" formControlName="fromDate" [ngModel]="fromDate | date:'yyyy-MM-dd'" max="{{currentDate}}" class="form-control">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-2">
+                            <div class="row align-items-center" style="--bs-gutter-x: 1rem;">
+                              <div class="col-md-2 col-2">
+                                <label for="toDate" class="col-form-label">To: </label>
+                              </div>
+                              <div class="col-md-10 col-10">
+                                <input type="date" id="toDate" formControlName="toDate" [ngModel]="toDate | date:'yyyy-MM-dd'" max="{{currentDate}}" class="form-control">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-2 align-self-end text-end">
+                            <div class="row">
+                              <div class="col-md-6 pe-1">
+                                <div class="d-grid gap-2">
+                                  <button type="button" class="btn btn-primary">Search</button>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="d-grid gap-2">
+                                  <button type="button" class="btn btn-primary" (click)="getretailList(filterForm)">Show Data</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <!-- searchbar-row -->
               <div class="table-responsive">
@@ -111,8 +184,16 @@
                               <td data-title="RCT">{{retail}}</td>
                               <td data-title="Created By">{{retail?.customer?.createdBy}}</td>
                               <td data-title="Created On">{{retail?.customer?.createDate | date:'dd-MM-yyyy'}}</td>
-                              <td data-title="Remarks1 (Advance)">{{retail}}</td>
-                              <td data-title="Remarks2 (Retail)">{{retail}}</td>
+                              <td data-title="Remarks1 (Advance)">
+                                <ul>
+                                  <li *ngFor="let item of retail.remarks">{{item || '-'}}</li>
+                                </ul>
+                              </td>
+                              <td data-title="Remarks2 (Retail)">
+                                <ul>
+                                  <li *ngFor="let item of retail.retailRemarks">{{item || '-'}}</li>
+                                </ul>
+                              </td>
                               <td data-title="Add Remarks"><i class="fa fa-plus" title="Add remarks"></i></td>
                               <td data-title="Reversal QTY">{{retail?.isReversal}}</td>
                               <td data-title="Reversal Date">{{retail?.reversalDate | date:'dd-MM-yyyy'}}</td>
