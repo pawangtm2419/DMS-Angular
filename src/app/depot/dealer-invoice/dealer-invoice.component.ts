@@ -8,6 +8,7 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./dealer-invoice.component.css']
 })
 export class DealerInvoiceComponent implements OnInit {
+  date: Date = new Date();
   searchData: any;
   invoiceData: any;
   pageData = 1;
@@ -18,19 +19,16 @@ export class DealerInvoiceComponent implements OnInit {
   currentDate: any;
   isExcelDownload: boolean = false;
   constructor(private depot: DepotService, public toaster: ToasterService) {
-    this.fromDate =  new Date(new Date().getFullYear(), new Date().getMonth(), 1, 0, 0, 0, 0).toISOString();
-    this.toDate =  new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0, 0, 0, 0).toISOString();
+    var date = this.date.getDate();
+    var month = 1+this.date.getMonth();
+    var year = this.date.getFullYear();
+    this.fromDate =  year+"-"+(month<9?'0':'')+month+"-"+'01';
+    this.toDate = year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
+    this.currentDate =  year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
    }
 
   ngOnInit(): void {
     this.getdealerInvoiceList();
-    this.convertDate();
-  }
-
-  convertDate() {
-    function pad(s: string | number) { return (s < 10) ? '0' + s : s; }
-    const d = new Date();
-    this.currentDate = [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('-');
   }
 
   getdealerInvoiceList() {

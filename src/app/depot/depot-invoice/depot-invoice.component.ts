@@ -8,6 +8,7 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./depot-invoice.component.css']
 })
 export class DepotInvoiceComponent implements OnInit {
+  date: Date = new Date();
   searchData: any;
   invoiceData: any;
   pageData = 1;
@@ -18,21 +19,17 @@ export class DepotInvoiceComponent implements OnInit {
   toDate: any;
   isExcelDownload: boolean = false;
   constructor(private depot: DepotService, public toaster: ToasterService) {
-    this.fromDate =  new Date(new Date().getFullYear(), new Date().getMonth(), 1, 0, 0, 0, 0).toISOString();
-    this.toDate =  new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0, 0, 0, 0).toISOString();
+    var date = this.date.getDate();
+    var month = 1+this.date.getMonth();
+    var year = this.date.getFullYear();
+    this.fromDate =  year+"-"+(month<9?'0':'')+month+"-"+'01';
+    this.toDate = year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
+    this.currentDate =  year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
    }
 
   ngOnInit(): void {
     this.getdepotInvoiceList();
-    this.convertDate();
   }
-
-  convertDate() {
-    function pad(s: string | number) { return (s < 10) ? '0' + s : s; }
-    const d = new Date();
-    this.currentDate = [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('-');
-  }
-
   getdepotInvoiceList() {
     const data = {
       type: 'ALL',
@@ -42,7 +39,7 @@ export class DepotInvoiceComponent implements OnInit {
     };
     this.depot.depotInvoices(data).subscribe(res => {
       this.invoiceData = res.data;
-      if (this.invoiceData.length > 0) { 
+      if (this.invoiceData.length > 0) {
         this.isExcelDownload = true;
         this.limits = [{ key: 50, value: 50 }, { key: 100, value: 100 }, { key: 250, value: 250 }, { key: 500, value: 500 }, { key: 'ALL', value: this.invoiceData.length }];
         this.toaster.showSuccess('Data', 'Report successfully Open.');

@@ -17,9 +17,7 @@ export class VehicleHistoryComponent implements OnInit {
   ngOnInit(): void { }
 
   search(): void {
-    const data = {
-      chassisNo: this.chassisNo
-    }
+    const data = { chassisNo: this.chassisNo };
     if (this.chassisNo.length > 13) {
       this.service.vehicleHist(data).subscribe((res: any) => {
         if (res.status) {
@@ -29,7 +27,9 @@ export class VehicleHistoryComponent implements OnInit {
         } else {
           this.toaster.showInfo('Error', 'Data not found!');
         }
-      });
+      }), (err: any) => {
+        this.toaster.showError('Error', err);
+      }
     }
   }
 }

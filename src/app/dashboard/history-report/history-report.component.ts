@@ -8,6 +8,7 @@ import { CommonService, ToasterService } from 'src/app/shared/services';
   styleUrls: ['./history-report.component.css']
 })
 export class HistoryReportComponent implements OnInit {
+  date = new Date();
   chassisNo: any;
   dataChassisNo: String = '';
   histReportData:any;
@@ -20,36 +21,39 @@ export class HistoryReportComponent implements OnInit {
   isExcelDownload: boolean = false;
   vehicleData: any;
   constructor(private service : CommonService, public toaster : ToasterService) {
-    this.fromDate = new Date("2015-01-01").toISOString();
-    // this.currentDate = this.toDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0, 0, 0, 0).toISOString();
-    this.toDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0, 0, 0, 0).toISOString();
+    var date = this.date.getDate();
+    var month = 1+this.date.getMonth();
+    var year = this.date.getFullYear();
+    this.fromDate =  year+"-"+(month<9?'0':'')+month+"-"+'01';
+    this.toDate = year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
+    this.currentDate =  year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
    }
 
   ngOnInit(): void {
     this.getHistoryData();
-    this.convertDate();
   }
   search(): void {
-    const data = {
-      chassisNo : this.chassisNo
-    }
+    const data = { chassisNo : this.chassisNo };
     if(this.chassisNo.length > 13) {
       this.service.histReports(data).subscribe((res: any) => {
-        if(res.data.length === 1){
-          this.histReportData = res.data;
-          console.log('hist repo ==> ' + this.histReportData);
-          this.dataChassisNo =this.chassisNo;
+        if(res.status) {
+          if(res.data.length === 1) {
+            this.histReportData = res.data;
+            console.log('hist repo ==> ' + this.histReportData);
+            this.dataChassisNo =this.chassisNo;
+          } else {
+            this.histReportData = [];
+          }
         } else {
           this.histReportData = [];
+          this.toaster.showInfo('Data', 'No record found.');
         }
-      })
+      }), (error: any) => {
+        this.toaster.showError('Error', error);
+      }
     }
   }
-  convertDate(): void{
-    function pad(s: string | number) { return (s < 10) ? '0' + s : s; }
-    const d = new Date();
-    this.currentDate = [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('-');
-  }
+
   getHistoryData(){
     const data = {
       type: 'ALL',
@@ -60,16 +64,20 @@ export class HistoryReportComponent implements OnInit {
     };
     setTimeout(() => {
       this.service.histReports(data).subscribe((res: any) => {
-        this.histReportData = res.data;
-        this.limits.splice(4);
-        this.limits.push({ key: 'ALL', value: this.histReportData.length });
-        if (this.histReportData.length > 0) {
-          this.isExcelDownload = true;
-          this.toaster.showSuccess('Data', 'Report successfully Open.');
+        if(res.status) {
+          this.histReportData = res.data;
+          this.limits.splice(4);
+          this.limits.push({ key: 'ALL', value: this.histReportData.length });
+          if (this.histReportData.length > 0) {
+            this.isExcelDownload = true;
+            this.toaster.showSuccess('Data', 'Report successfully Open.');
+          } else {
+            this.toaster.showInfo('Data', 'No record found.');
+          }
         } else {
           this.toaster.showInfo('Data', 'No record found.');
         }
-      }, (error) => {
+      }, (error: any) => {
         this.toaster.showError('Error', error);
       });
     }, 1000);
@@ -82,13 +90,15 @@ export class HistoryReportComponent implements OnInit {
     XLSX.writeFile(wb, "historyReport.xlsx");
   }
   rowData(){
-    const data ={
-      chassisNo : this.chassisNo
+    const data = { chassisNo : this.chassisNo };
+    this.service.getVehHistory(data).subscribe((res: any) => {
+      if(res.status) {
+        this.vehicleData = res.data;
+      } else {
+        this.toaster.showInfo('Data', 'No record found.');
+      }
+    }), (error: any) => {
+      this.toaster.showError('Error', error);
     }
-    this.service.getVehHistory(data).subscribe(res =>{
-      this.vehicleData = res.data;
-      console.log('veh data -> '+ this.vehicleData);
-
-    })
   }
 }

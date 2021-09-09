@@ -13,6 +13,7 @@ interface selectedObject {
   styleUrls: ['./ats-retail.component.css']
 })
 export class AtsRetailComponent implements OnInit {
+  date: Date = new Date();
   searchData: any;
   retailData: any;
   pageData = 1;
@@ -21,7 +22,6 @@ export class AtsRetailComponent implements OnInit {
   zoneList: any;
   selectedZoneName: any = '';
   selectedStateName: any = '';
-  // data: any = {"type":"ADVANCE","fromDate":"2020-05-07T00:00:00.000Z","toDate":"2021-08-12T00:00:00.000Z","code":"10003151","state":"Maharashtra","zone":"ZONE2","useType":"ALL"}
   data: selectedObject = {"type":"ADVANCE", "useType":"ALL"}
   stateListData: any;
   dealerListData: any;
@@ -30,18 +30,16 @@ export class AtsRetailComponent implements OnInit {
   currentDate: any;
   isRetailData: boolean = false;
   constructor(private service: CommonService, public toaster: ToasterService) {
-    this.fromDate =  new Date(new Date().getFullYear(), new Date().getMonth(), 1, 0, 0, 0, 0).toISOString();
-    this.toDate =  new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0, 0, 0, 0).toISOString();
+    var date = this.date.getDate();
+    var month = 1+this.date.getMonth();
+    var year = this.date.getFullYear();
+    this.fromDate =  year+"-"+(month<9?'0':'')+month+"-"+'01';
+    this.toDate = year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
+    this.currentDate =  year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
   }
 
   ngOnInit(): void {
     this.getZoneList();
-    this.convertDate();
-  }
-  convertDate(): void{
-    function pad(s: string | number) { return (s < 10) ? '0' + s : s; }
-    const d = new Date();
-    this.currentDate = [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('-');
   }
   getZoneList(): void {
     this.service.getZones().subscribe(data => {

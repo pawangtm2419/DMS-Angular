@@ -8,7 +8,7 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./report-advance.component.css']
 })
 export class ReportAdvanceComponent implements OnInit {
-
+  date: Date = new Date();
   searchData: any;
   advanceData: any;
   pageData = 1;
@@ -24,19 +24,17 @@ export class ReportAdvanceComponent implements OnInit {
   data: any = {useType: 'ALL'};
   isExcelDownload: boolean = false;
   constructor(private dealer: DealerReportService, public toaster: ToasterService, private service: CommonService) {
-    this.fromDate =  new Date(new Date().getFullYear(), new Date().getMonth(), 1, 0, 0, 0, 0).toISOString();
-    this.toDate =  new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0, 0, 0, 0).toISOString();
+    var date = this.date.getDate();
+    var month = 1+this.date.getMonth();
+    var year = this.date.getFullYear();
+    this.fromDate =  year+"-"+(month<9?'0':'')+month+"-"+'01';
+    this.toDate = year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
+    this.currentDate =  year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
   }
 
   ngOnInit(): void {
     this.getadvReportList();
-    this.convertDate();
     this.getZoneList();
-  }
-  convertDate(): void{
-    function pad(s: string | number) { return (s < 10) ? '0' + s : s; }
-    const d = new Date();
-    this.currentDate = [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('-');
   }
   getadvReportList(): void {
     if (this.selectedZone) {

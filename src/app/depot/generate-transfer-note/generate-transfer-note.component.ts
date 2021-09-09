@@ -54,11 +54,6 @@ export class GenerateTransferNoteComponent implements OnInit {
   ngOnInit(): void {
     this.checkInvoiceNo();
   }
-  convertDate(): void{
-    function pad(s: string | number) { return (s < 10) ? '0' + s : s; }
-    const d = new Date();
-    this.currentDate = [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('-');
-  }
   showDollar(): void {
     this.isDollerCheckBox = !this.isDollerCheckBox;
   }
@@ -156,9 +151,7 @@ export class GenerateTransferNoteComponent implements OnInit {
   }
 
   invoiceGenrate(): void {
-    this.convertDate();
     this.vehicletransportdriverSelected = true;
-    console.log(this.selectedChassisNo);
   }
 
   getDealerStatesList(): void {

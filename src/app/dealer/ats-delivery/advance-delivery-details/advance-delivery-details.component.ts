@@ -56,8 +56,9 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
     var month = 1+this.date.getMonth();
     var year = this.date.getFullYear();
     this.fromDate =  year+"-"+(month<9?'0':'')+month+"-"+'01';
-    this.toDate = this.currentDate =  year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
-    this.marginCollectedDate = this.deliveryDate = this.currentDate;
+    this.toDate = year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
+    this.currentDate =  year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
+    this.marginCollectedDate = this.deliveryDate;
   }
 
   ngOnInit() {
@@ -98,7 +99,7 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
   vehicleData(): void {
     const data = { chassisNo: this.params.id };
     this.service.getVehicleDetails(data).subscribe(res => {
-      if(res.status === "true"){
+      if(res.status){
         this.vehicleDetails = res.data;
         this.customerDataByDealer();
         if (this.vehicleDetails[0].locationType == "DEALER") {
@@ -126,7 +127,7 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
 
   getBankCategoryData(): void {
     this.service.getBankCategories().subscribe(res => {
-      if(res.status === "true"){
+      if(res.status){
         this.bankCategoryList = res.data;
       }
     });
