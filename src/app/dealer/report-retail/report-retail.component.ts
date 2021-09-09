@@ -82,6 +82,9 @@ export class ReportRetailComponent implements OnInit {
 
   getretailList(formData: any): void {
     let data = {
+      zoneCode: formData.value.zone,
+      stateName: formData.value.state,
+      dealerCode: formData.value.dealer,
       fromDate: formData.value.fromDate +"T00:00:00.000Z",
       toDate: formData.value.toDate +"T00:00:00.000Z",
       isRetailed: false,
