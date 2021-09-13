@@ -9,7 +9,5 @@ export class HeaderComponent implements OnInit {
   currentdate= new Date();
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void { }
 }

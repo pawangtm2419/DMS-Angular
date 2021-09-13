@@ -22,9 +22,9 @@ export class DealerInvoiceComponent implements OnInit {
     var date = this.date.getDate();
     var month = 1+this.date.getMonth();
     var year = this.date.getFullYear();
-    this.fromDate =  year+"-"+(month<9?'0':'')+month+"-"+'01';
-    this.toDate = year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
-    this.currentDate =  year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
+    this.fromDate =  year+"-"+(month<=9?'0':'')+month+"-"+'01';
+    this.toDate = year+"-"+(month<=9?'0':'')+month+"-"+(date<=9?'0':'')+date;
+    this.currentDate =  year+"-"+(month<=9?'0':'')+month+"-"+(date<=9?'0':'')+date;
    }
 
   ngOnInit(): void {
@@ -34,13 +34,12 @@ export class DealerInvoiceComponent implements OnInit {
   getdealerInvoiceList() {
     const data = {
       type: 'ALL',
-      fromDate: (document.getElementById('fromDate') as HTMLInputElement).value + 'T00:00:00.000Z',
-      toDate: (document.getElementById('toDate') as HTMLInputElement).value + 'T00:00:00.000Z',
+      fromDate: this.fromDate + 'T00:00:00.000Z',
+      toDate: this.toDate + 'T00:00:00.000Z',
       useType: 'ALL'
     };
-    this.depot.dealerInvoices(data).subscribe(res => {
+    this.depot.dealerInvoices(data).subscribe((res: any) => {
       this.invoiceData = res.data;
-      console.log(this.invoiceData);
       this.limits = [{ key: 50, value: 50 }, { key: 100, value: 100 }, { key: 250, value: 250 }, { key: 500, value: 500 }, { key: 'ALL', value: this.invoiceData.length }];
       if (this.invoiceData.length > 0) {
         this.isExcelDownload = true;
@@ -49,7 +48,6 @@ export class DealerInvoiceComponent implements OnInit {
         this.toaster.showInfo('Data', 'No record found.');
       }
     }, (error) => {
-      // console.log(error);
       this.toaster.showInfo('Data', error);
     });
   }

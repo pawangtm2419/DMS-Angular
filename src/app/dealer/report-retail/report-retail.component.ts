@@ -29,9 +29,9 @@ export class ReportRetailComponent implements OnInit {
     var date = this.date.getDate();
     var month = 1+this.date.getMonth();
     var year = this.date.getFullYear();
-    this.fromDate =  year+"-"+(month<9?'0':'')+month+"-"+'01';
-    this.toDate = year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
-    this.currentDate =  year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
+    this.fromDate =  year+"-"+(month<=9?'0':'')+month+"-"+'01';
+    this.toDate = year+"-"+(month<=9?'0':'')+month+"-"+(date<=9?'0':'')+date;
+    this.currentDate =  year+"-"+(month<=9?'0':'')+month+"-"+(date<=9?'0':'')+date;
   }
 
   ngOnInit(): void {

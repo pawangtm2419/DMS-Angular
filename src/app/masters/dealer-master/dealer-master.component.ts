@@ -26,10 +26,8 @@ export class DealerMasterComponent implements OnInit {
   }
   getDealersList() {
     let data = {useType: "ALL"};
-    this.master.getDealers(data).subscribe(res=> {
+    this.master.getDealers(data).subscribe((res: any)=> {
       this.dealerData = res.msg;
-      console.log('dealer data -', this.dealerData);
-      
       if(this.dealerData.length > 0) {
         this.showInActive();
         this.isExcelDownload = true;

@@ -22,9 +22,9 @@ export class DepotInvoiceComponent implements OnInit {
     var date = this.date.getDate();
     var month = 1+this.date.getMonth();
     var year = this.date.getFullYear();
-    this.fromDate =  year+"-"+(month<9?'0':'')+month+"-"+'01';
-    this.toDate = year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
-    this.currentDate =  year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
+    this.fromDate =  year+"-"+(month<=9?'0':'')+month+"-"+'01';
+    this.toDate = year+"-"+(month<=9?'0':'')+month+"-"+(date<=9?'0':'')+date;
+    this.currentDate =  year+"-"+(month<=9?'0':'')+month+"-"+(date<=9?'0':'')+date;
    }
 
   ngOnInit(): void {
@@ -33,8 +33,8 @@ export class DepotInvoiceComponent implements OnInit {
   getdepotInvoiceList() {
     const data = {
       type: 'ALL',
-      fromDate: (document.getElementById('fromDate') as HTMLInputElement).value + 'T00:00:00.000Z',
-      toDate: (document.getElementById('toDate') as HTMLInputElement).value + 'T00:00:00.000Z',
+      fromDate: this.fromDate + 'T00:00:00.000Z',
+      toDate: this.toDate + 'T00:00:00.000Z',
       useType: 'ALL'
     };
     this.depot.depotInvoices(data).subscribe(res => {

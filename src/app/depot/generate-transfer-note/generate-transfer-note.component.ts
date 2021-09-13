@@ -74,7 +74,6 @@ export class GenerateTransferNoteComponent implements OnInit {
       return item.code === obj;
     });
     this.selectedDealerData = this.selectedDealerData[0];
-    console.log(this.selectedDealerData);
   }
   getCityList() {
     this.service.viewDepot().subscribe(res => {

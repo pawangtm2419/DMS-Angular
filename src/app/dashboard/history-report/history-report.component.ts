@@ -24,26 +24,20 @@ export class HistoryReportComponent implements OnInit {
     var date = this.date.getDate();
     var month = 1+this.date.getMonth();
     var year = this.date.getFullYear();
-    this.fromDate =  year+"-"+(month<9?'0':'')+month+"-"+'01';
-    this.toDate = year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
-    this.currentDate =  year+"-"+(month<9?'0':'')+month+"-"+(date<9?'0':'')+date;
+    this.fromDate =  year+"-"+(month<=9?'0':'')+month+"-"+'01';
+    this.toDate = year+"-"+((month<=9?'0':'')+month)+"-"+((date<=9?'0':'')+date);
+    this.currentDate =  year+"-"+((month<=9?'0':'')+month)+"-"+((date<=9?'0':'')+date);
    }
 
-  ngOnInit(): void {
-    this.getHistoryData();
-  }
+  ngOnInit(): void { }
   search(): void {
     const data = { chassisNo : this.chassisNo };
     if(this.chassisNo.length > 13) {
       this.service.histReports(data).subscribe((res: any) => {
-        if(res.status) {
-          if(res.data.length === 1) {
-            this.histReportData = res.data;
-            console.log('hist repo ==> ' + this.histReportData);
-            this.dataChassisNo =this.chassisNo;
-          } else {
-            this.histReportData = [];
-          }
+        if(res.status && res.data.length === 1) {
+          this.histReportData = res.data;
+          console.log('hist repo ==> ' + this.histReportData);
+          this.dataChassisNo =this.chassisNo;
         } else {
           this.histReportData = [];
           this.toaster.showInfo('Data', 'No record found.');
@@ -57,8 +51,8 @@ export class HistoryReportComponent implements OnInit {
   getHistoryData(){
     const data = {
       type: 'ALL',
-      fromDate: (document.getElementById('fromDate') as HTMLInputElement).value + 'T00:00:00.000Z',
-      toDate: (document.getElementById('toDate') as HTMLInputElement).value + 'T00:00:00.000Z',
+      fromDate: this.fromDate + 'T00:00:00.000Z',
+      toDate: this.toDate + 'T00:00:00.000Z',
       page: 'report',
       useType: 'ALL'
     };
