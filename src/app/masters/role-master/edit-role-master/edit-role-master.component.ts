@@ -37,7 +37,7 @@ export class EditRoleMasterComponent implements OnInit, OnDestroy {
       this.roleCode = params;
     });
     this.service.getRoleData({ role: this.roleCode.id }).subscribe((res: any) => {
-      if (res.status === 'true') {
+      if (res.status) {
         this.roles = res.data;
         this.roles.filter((item: any) => {
           var arrkeys = Object.keys(item);
