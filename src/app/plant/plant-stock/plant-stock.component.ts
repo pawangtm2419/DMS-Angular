@@ -79,7 +79,6 @@ export class PlantStockComponent implements OnInit {
   }
 
   onFileSelect(evt: any): void {
-    debugger;
     const target: DataTransfer = <DataTransfer>(evt.target);
     if (target.files.length !== 1) throw new Error('Cannot use multiple files');
     const reader: FileReader = new FileReader();

@@ -89,7 +89,6 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
     }
   }
   bankListData(): void {
-    console.log(this.bankCategorySelected);
     this.dealer.getFinancialInstitutionsList(this.bankCategorySelected).subscribe(res => {
       if(res.status) {
         this.bankDataList = res.data;

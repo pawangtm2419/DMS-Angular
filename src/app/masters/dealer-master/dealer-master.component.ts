@@ -37,7 +37,7 @@ export class DealerMasterComponent implements OnInit {
         this.toaster.showInfo("Data", "No record found.");
       }
     }, (error) => {
-      console.log(error);
+      this.toaster.showError('Data', error);;
     });
   }
   sureDelete(id: any): void {

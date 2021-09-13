@@ -31,7 +31,7 @@ export class VariantDepotStockComponent implements OnInit {
         this.toaster.showInfo("Data", "No record found.");
       }
     }, (error) => {
-      // console.log(error);
+      // this.toaster.showError('Data', error);;
       this.toaster.showInfo("Data", error);
     });
   }

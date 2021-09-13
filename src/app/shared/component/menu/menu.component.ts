@@ -41,7 +41,6 @@ export class MenuComponent implements OnInit {
    this.service.logout();
   }
   openMasterNav(): void {
-    console.log(this.masterNav.nativeElement);
     if (this.masterNav.nativeElement.style.width === '0px'){
       this.masterNav.nativeElement.style.width = '220px';
       this.masterNav.nativeElement.transition = '.5s all ease-in-out';

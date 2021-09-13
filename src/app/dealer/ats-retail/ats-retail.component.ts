@@ -47,7 +47,7 @@ export class AtsRetailComponent implements OnInit {
         this.zoneList = data.zones;
       }
     },
-      error => console.log(error)
+      error => this.toaster.showError('Data', error)
     );
   }
   getStateList(data: any): void {
@@ -56,7 +56,7 @@ export class AtsRetailComponent implements OnInit {
         this.stateListData = data.states;
       }
     },
-      error => console.log(error)
+      error => this.toaster.showError('Data', error)
     );
   }
   getDealers(data: any): void {
@@ -65,7 +65,7 @@ export class AtsRetailComponent implements OnInit {
         this.dealerListData = data.msg;
       }
     },
-      error => console.log(error)
+      error => this.toaster.showError('Data', error)
     );
   }
   getAtsRetailList(atsFilterForm: NgForm) {

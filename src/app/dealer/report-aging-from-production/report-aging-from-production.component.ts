@@ -38,14 +38,13 @@ export class ReportAgingFromProductionComponent implements OnInit {
           this.total.count120180 = this.total.count120180 + item.count120180;
           this.total.count180 = this.total.count180 + item.count180;
           this.total.count = this.total.count + item.count;
-          console.log(item.count)
         });
         this.toaster.showSuccess("Data", "Report successfully Open.");
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
     }, (error) => {
-      // console.log(error);
+      // this.toaster.showError('Data', error);;
       this.toaster.showInfo("Data", error);
     });
   }

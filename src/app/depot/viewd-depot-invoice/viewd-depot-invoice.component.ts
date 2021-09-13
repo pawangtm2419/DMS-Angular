@@ -23,8 +23,7 @@ export class ViewdDepotInvoiceComponent implements OnInit {
   ngOnInit(): void {
     this.depotByUser();
     this.depot.dealerInvoiceDetails(this.params['id']).subscribe((data: any) => {
-      if(data.status == 'true') {
-        console.log(data.msg);
+      if(data.status) {
         this.toaster.showSuccess('Success', 'data load');
       }
     });
@@ -32,7 +31,6 @@ export class ViewdDepotInvoiceComponent implements OnInit {
 
   depotByUser() {
     this.depot.getDepotByUser(this.userData.id).subscribe((data: any) => {
-      console.log(data);
       this.toaster.showSuccess('Success', 'data load');
     });
   }

@@ -35,7 +35,7 @@ export class RoleMasterComponent implements OnInit {
         this.toaster.showInfo("Data", "No record found.");
       }
     }, (error) => {
-      console.log(error);
+      this.toaster.showError('Data', error);;
     });
   }
   viewFullInfo(role: any) {
@@ -43,10 +43,6 @@ export class RoleMasterComponent implements OnInit {
   }
   dataLimit() {
     this.limit = (<HTMLInputElement>document.getElementById("limit")).value;
-  }
-
-  roleDelete(code: String) {
-    console.log(code);
   }
   download(): void {
     let wb = XLSX.utils.table_to_book(document.getElementById('export'), { display: false, raw: true });

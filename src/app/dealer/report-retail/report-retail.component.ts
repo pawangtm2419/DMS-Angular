@@ -53,7 +53,7 @@ export class ReportRetailComponent implements OnInit {
         this.toaster.showError("Zone", 'Data not found!');
       }
     },
-      (error: any) => console.log(error)
+      (error: any) => this.toaster.showError('Data', error)
     );
   }
 
@@ -65,7 +65,7 @@ export class ReportRetailComponent implements OnInit {
         this.toaster.showError("State", 'Data not found!');
       }
     },
-      (error: any) => console.log(error)
+      (error: any) => this.toaster.showError('Data', error)
     );
   }
   getDealers(data: any): void {
@@ -76,12 +76,11 @@ export class ReportRetailComponent implements OnInit {
         this.toaster.showError("Dealer", 'Data not found!');
       }
     },
-      (error: any) => console.log(error)
+      (error: any) => this.toaster.showError('Data', error)
     );
   }
 
   getretailList(formData: any): void {
-    //console.log(formData);
     let data = {
       zoneCode: formData.value.zone,
       stateName: formData.value.state,

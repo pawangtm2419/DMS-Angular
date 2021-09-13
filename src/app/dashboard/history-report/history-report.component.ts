@@ -36,7 +36,6 @@ export class HistoryReportComponent implements OnInit {
       this.service.histReports(data).subscribe((res: any) => {
         if(res.status && res.data.length === 1) {
           this.histReportData = res.data;
-          console.log('hist repo ==> ' + this.histReportData);
           this.dataChassisNo =this.chassisNo;
         } else {
           this.histReportData = [];

@@ -101,7 +101,6 @@ export class GenerateTransferNoteComponent implements OnInit {
     if (data.locationCode === 'WAREHOUSE') {
       data.locationType = 'PLANT';
     }
-    console.log(data);
     if (data.locationCode && data.locationType) {
       this.depot.viewVehicle(data).subscribe((res) => {
         this.vehicleList = res.data;
@@ -209,7 +208,6 @@ export class GenerateTransferNoteComponent implements OnInit {
           invoiceData.email = this.selectedToDepot.depotHead.email;
           invoiceData.mobile = this.selectedToDepot.depotHead.mobile;
         }
-        debugger;
         if(this.selectedDealerData && invoiceData.locationType === "DEALER") {
           invoiceData.code = this.selectedDealerData.code;
           invoiceData.name = this.selectedDealerData.name;
@@ -303,8 +301,7 @@ export class GenerateTransferNoteComponent implements OnInit {
       tax = ((stock.SST) + (stock.GST)) / 100;
       const pricet = invoiceAmount * tax;
       this.selectedChassisNo[i]['invoiceAmount'] = (pricet + invoiceAmount).toFixed(2);
-  }
-    console.log(this.selectedChassisNo);
+    }
   }
 
   checkAmount(discountAmount: any, NDP: any): void {

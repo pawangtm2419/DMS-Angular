@@ -23,9 +23,8 @@ export class VariantMasterComponent implements OnInit {
     this.getVariantList();
   }
   getVariantList() {
-    this.master.getVariant().subscribe(res=> {
+    this.master.getVariant().subscribe((res: any)=> {
       this.variantData=res.data;
-      console.log(this.variantData);
       this.showInActive();
       if(this.variantData.length > 0) {
         this.isExcelDownload = true;
@@ -35,13 +34,13 @@ export class VariantMasterComponent implements OnInit {
         this.toaster.showInfo("Data", "No record found.");
       }
     }, (error) => {
-      console.log(error);
+      this.toaster.showError('Data', error);;
     });
   }
   editVarInfo(variant: any) {
     console.log([variant]);
   }
-  
+
   changeVariantStatus(){
 
   }

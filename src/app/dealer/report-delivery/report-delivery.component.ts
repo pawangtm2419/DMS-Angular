@@ -22,9 +22,8 @@ export class ReportDeliveryComponent implements OnInit {
   }
   getdelList() {
     let data = {"fromDate":"2021-06-01T00:00:00.000Z","toDate":"2021-07-20T00:00:00.000Z","useType":"ALL"};
-    this.dealer.getDelReports(data).subscribe(res=> {
+    this.dealer.getDelReports(data).subscribe((res: any)=> {
       this.deliveryData=res.data;
-      console.log(this.deliveryData);
       this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.deliveryData.length }];
       if(this.deliveryData.length > 0) {
         this.isExcelDownload = true;
@@ -33,7 +32,7 @@ export class ReportDeliveryComponent implements OnInit {
         this.toaster.showInfo("Data", "No record found.");
       }
     }, (error) => {
-      // console.log(error);
+      // this.toaster.showError('Data', error);;
       this.toaster.showInfo("Data", error);
     });
   }

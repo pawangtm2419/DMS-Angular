@@ -37,7 +37,7 @@ export class DepotMasterComponent implements OnInit {
         this.toaster.showInfo("Data", "No record found.");
       }
     }, (error) => {
-      // console.log(error);
+      // this.toaster.showError('Data', error);;
       this.toaster.showInfo("Data", error);
     });
   }
@@ -68,7 +68,7 @@ export class DepotMasterComponent implements OnInit {
           this.toaster.showSuccess("Data", res.msg);
         }
       }, (error) => {
-        console.log(error);
+        this.toaster.showError('Data', error);;
       });
     } else {
       this.toaster.showError("Status", "This feature is not availble.");

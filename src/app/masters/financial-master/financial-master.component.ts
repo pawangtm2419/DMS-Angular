@@ -34,7 +34,7 @@ export class FinancialMasterComponent implements OnInit {
         this.toaster.showInfo("Data", "No record found.");
       }
     }, (error) => {
-      console.log(error);
+      this.toaster.showError('Data', error);;
     });
   }
   dataLimit() {

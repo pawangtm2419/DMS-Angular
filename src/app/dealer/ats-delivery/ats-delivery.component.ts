@@ -48,7 +48,7 @@ export class AtsDeliveryComponent implements OnInit {
         this.zoneList = data.zones;
       }
     },
-      error => console.log(error)
+      error => this.toaster.showError('Data', error)
     );
   }
   getStateList(data: any): void {
@@ -57,7 +57,7 @@ export class AtsDeliveryComponent implements OnInit {
         this.stateListData = data.states;
       }
     },
-      error => console.log(error)
+      error => this.toaster.showError('Data', error)
     );
   }
   getDealers(data: any): void {
@@ -66,7 +66,7 @@ export class AtsDeliveryComponent implements OnInit {
         this.dealerListData = data.msg;
       }
     },
-      error => console.log(error)
+      error => this.toaster.showError('Data', error)
     );
   }
   getAtsDeliveryList(atsFilterForm: NgForm) {
@@ -94,7 +94,7 @@ export class AtsDeliveryComponent implements OnInit {
         this.toaster.showInfo('Data', 'No record found.');
       }
     }, (error) => {
-      this.toaster.showInfo('Data', error);
+      this.toaster.showError('Data', error);
     });
     setTimeout(() => {
       deliveryData.unsubscribe();

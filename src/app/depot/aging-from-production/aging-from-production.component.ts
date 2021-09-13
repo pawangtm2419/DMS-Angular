@@ -28,8 +28,7 @@ export class AgingFromProductionComponent implements OnInit {
     this.getVariantList();
     this.getModelList();
   }
-  getagingProdList() {
-    console.log("var " + this.selectedVariantName +" " + this.selectedModelName);
+  getagingProdList(): void {
     if(this.selectedVariantName) {
       const data = {
         locationType:"DEPOT",
@@ -84,7 +83,7 @@ export class AgingFromProductionComponent implements OnInit {
       }
 
     }, (error) => {
-      // console.log(error);
+      // this.toaster.showError('Data', error);;
       this.toaster.showInfo("Data", error);
     });
   }

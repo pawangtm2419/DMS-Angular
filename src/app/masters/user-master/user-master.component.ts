@@ -35,7 +35,7 @@ export class UserMasterComponent implements OnInit {
         this.toaster.showInfo("Data", "No record found.");
       }
     }, (error) => {
-      console.log(error);
+      this.toaster.showError('Data', error);;
     });
   }
   viewFullInfo(user: any) {
