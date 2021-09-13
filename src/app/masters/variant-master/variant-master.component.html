@@ -11,12 +11,18 @@
                                 <li><a routerLink="/m-variant">Variant Master</a></li>
                             </ul>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <div class="searchBar d-flex justify-content-center align-items-center">
                                 <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
                             </div>
                         </div>
-                        <div class="col-md-6 align-self-end text-end">
+                        <div class="col-md-2 d-flex justify-content-center align-items-center">
+                            <div class="checkboxMain d-flex justify-content-center align-items-center">
+                              <input class="me-2" type="checkbox" (click)="showInActive()" name="status" id="custStatus">
+                              <label for="status">Show Inactive</label>
+                            </div>
+                          </div>
+                        <div class="col-md-5 align-self-end text-end">
                             <div class="modelBtnMain">
                                 <button type="button" data-bs-toggle="modal" data-bs-target="#addVariant" class="btn btn-primary text-uppercase me-2">+ Add Variant</button>
                                 <button type="button" class="btn btn-primary" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
@@ -51,7 +57,7 @@
                               </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let variant of variantData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
+                            <tr *ngFor="let variant of filterVarData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                                 <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
                                 <td data-title="Product Code"><a class="table-href" data-bs-toggle="modal" data-bs-target="#variantinfo" (click)="viewFullInfo(variant)">{{variant?.productCode}}</a></td>
                                 <td data-title="Model Code">{{variant?.modelCode}}</td>
@@ -64,11 +70,14 @@
                                 <td data-title="Dealer Margin">{{variant?.dealerMargin}}</td>
                                 <td data-title="MRP">{{variant?.dealerMargin + variant?.NDP_withoutTax + ((variant?.dealerMargin + variant?.NDP_withoutTax)* (variant?.gst/100 + variant?.sst/100 )) | number}}</td>
                                 <td data-title="MRP"><span *ngIf="!variant?.isDeleted">Active</span><span *ngIf="variant?.isDeleted">In Active</span> </td>
-                                <td data-title="Options" class="text-center">
-                                    <a class="btn bg-info" [routerLink]="['/master/edit-variant', variant?._id]"><i class="fa fa-edit"></i></a>
+                                <td data-title="Edit" class="text-center">
+                                    <!-- <a class="btn bg-info" [routerLink]="['/master/edit-variant', variant?._id]"><i class="fa fa-edit"></i></a> -->
+                                    <a class="bg-info btn" (click)="editVarInfo(variant)"><i class="fa fa-edit"></i></a>
                                 </td>
-                                <td data-title="Options" class="text-center">
-                                    <a class="bg-danger btn text-white" (click)="variantDelete(variant?._id)"><i class="fa fa-trash-alt"></i></a>
+                                <td data-title="Delete" class="text-center">
+                                    <!-- <a class="bg-danger btn text-white" (click)="variantDelete(variant?._id)"><i class="fa fa-trash-alt"></i></a> -->
+                                    <!-- <a class="btn" [ngClass]="!(variant?.variantStatus === 'Active') ? 'bg-danger' : 'bg-success'"><i [ngClass]="(variant?.variantStatus === 'Active') ? 'fa fa-toggle-on' : 'fa fa-toggle-off'"></i></a> -->
+                                    <a class="btn" [ngClass]="(variant?.isDeleted) ? 'bg-danger' : 'bg-success'"><i [ngClass]="(variant?.isDeleted) ? 'fa fa-toggle-off' : 'fa fa-toggle-on'"></i></a>
                                 </td>
                               </tr>
                         </tbody>

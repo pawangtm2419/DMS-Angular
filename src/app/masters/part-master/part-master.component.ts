@@ -15,6 +15,8 @@ export class PartMasterComponent implements OnInit {
   limits: any = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
   limit: any = 50;
   isExcelDownload: boolean = false;
+  filterPartsData: any;
+  partStatus: boolean = false;
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -24,6 +26,7 @@ export class PartMasterComponent implements OnInit {
   getPartList() {
     this.master.getParts().subscribe(res=> {
       this.partsData=res.data;
+      this.showInActive();
       if(this.partsData.length > 0) {
         this.isExcelDownload = true;
         this.limits.push({ "key": "ALL", value: this.partsData.length });
@@ -35,7 +38,13 @@ export class PartMasterComponent implements OnInit {
       console.log(error);
     });
   }
-
+  showInActive(): void{
+    this.filterPartsData = this.partsData;
+    this.filterPartsData = this.filterPartsData.filter((part: any) => {
+      return part.isDeleted === this.partStatus;
+    });
+    this.partStatus = !this.partStatus;
+  }
   dataLimit() {
     this.limit = (<HTMLInputElement>document.getElementById("limit")).value;
   }

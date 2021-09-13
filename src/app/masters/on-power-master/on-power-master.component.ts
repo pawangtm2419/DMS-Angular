@@ -15,6 +15,8 @@ export class OnPowerMasterComponent implements OnInit {
   limits: any = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
   limit: any = 50;
   isExcelDownload: boolean = false;
+  filterOnPowerData: any;
+  onPowerStatus: boolean= false;
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -23,6 +25,7 @@ export class OnPowerMasterComponent implements OnInit {
   getOnPoweList() {
     this.master.getOnPower().subscribe(res=> {
       this.onPOwerData=res.data;
+      this.showInActive();
       if(this.onPOwerData.length > 0) {
         this.isExcelDownload = true;
         this.limits.push({ "key": "ALL", value: this.onPOwerData.length });
@@ -40,7 +43,13 @@ export class OnPowerMasterComponent implements OnInit {
   onPowerDelete(code: String) {
     console.log(code);
   }
-
+  showInActive(): void{
+    this.filterOnPowerData = this.onPOwerData;
+    this.filterOnPowerData = this.filterOnPowerData.filter((onpower: any) => {
+      return onpower.isDeleted === this.onPowerStatus;
+    });
+    this.onPowerStatus = !this.onPowerStatus;
+  }
   dataLimit() {
     this.limit = (<HTMLInputElement>document.getElementById("limit")).value;
   }

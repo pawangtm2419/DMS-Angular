@@ -14,6 +14,8 @@ export class StateMasterComponent implements OnInit {
   limits: any = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
   limit: any = 50;
   isExcelDownload:boolean = false;
+  filterStateData: any;
+  stateStatus: string = 'Active';
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -22,6 +24,7 @@ export class StateMasterComponent implements OnInit {
   getStateList() {
     this.master.getState().subscribe(res=> {
       this.stateData=res.data;
+      this.showInActive();
       if(this.stateData.length > 0) {
         this.isExcelDownload = true;
         this.limits.push({ "key": "ALL", value: this.stateData.length });
@@ -42,5 +45,16 @@ export class StateMasterComponent implements OnInit {
   download(): void {
     let wb = XLSX.utils.table_to_book(document.getElementById('export'), { display: false, raw: true });
     XLSX.writeFile(wb, "stateReport.xlsx");
+  }
+  showInActive(): void{
+    this.filterStateData = this.stateData;
+    this.filterStateData = this.filterStateData.filter((state: any) => {
+      return state.status === this.stateStatus;
+    });
+    if(this.stateStatus === 'Active') {
+      this.stateStatus = 'In Active';
+    } else {
+      this.stateStatus = 'Active';
+    }
   }
 }

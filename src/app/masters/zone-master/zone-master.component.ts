@@ -14,6 +14,8 @@ export class ZoneMasterComponent implements OnInit {
   limits: any = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
   limit: any = 50;
   isExcelDownload: boolean = false;
+  filterZoneData: any;
+  zoneStatus: boolean = true;
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -22,8 +24,11 @@ export class ZoneMasterComponent implements OnInit {
   getzoneList() {
     this.master.getzones().subscribe(res=> {
       this.zonesData=res.zones;
+      this.showInActive();
       if(this.zonesData.length > 0) {
         this.isExcelDownload = true;
+        this.zoneStatus = true;
+        this.showInActive();
         this.limits.push({ "key": "ALL", value: this.zonesData.length });
         this.toaster.showSuccess("Data", "Report successfully Open.");
       } else {
@@ -42,5 +47,12 @@ export class ZoneMasterComponent implements OnInit {
   download(): void {
     let wb = XLSX.utils.table_to_book(document.getElementById('export'), { display: false, raw: true });
     XLSX.writeFile(wb, "zoneReport.xlsx");
+  }
+  showInActive(): void{
+    this.filterZoneData = this.zonesData;
+    this.filterZoneData = this.filterZoneData.filter((state: any) => {
+      return state.status === this.zoneStatus;
+    });
+    this.zoneStatus = !this.zoneStatus;
   }
 }

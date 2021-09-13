@@ -16,9 +16,9 @@
                                 <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
                             </div>
                         </div>
-                        <div class="col-md-2">
-                          <div class="searchBar d-flex justify-content-center align-items-center">
-                            <input type="checkbox" (click)="showInActive()" [checked]="depotStatus === 'Active'" name="status" id="custStatus">
+                        <div class="col-md-2 d-flex justify-content-center align-items-center">
+                          <div class="checkboxMain d-flex justify-content-center align-items-center">
+                            <input class="me-2" type="checkbox" (click)="showInActive()" name="status" id="custStatus">
                             <label for="status">Show Inactive</label>
                           </div>
                         </div>
@@ -61,12 +61,12 @@
                             <td data-title="Depot Head">{{depot?.depotHead?.name}}</td>
                             <td data-title="Email ID">{{depot?.depotEmail}}</td>
                             <td data-title="Head Mobile">{{depot?.depotHead?.mobile}}</td>
-                            <td data-title="Status">{{depot?.depotStatus}}</td>
-                            <td data-title="Options" class="text-center">
-                              <a class="editIcon icon btn" (click)="editCustInfo(depot)"><i class="fa fa-edit"></i></a>
+                            <td data-title="Status"><span *ngIf="!depot?.isDeleted">Active</span><span *ngIf="depot?.isDeleted">In Active</span></td>
+                            <td data-title="Edit" class="text-center">
+                              <a class="editIcon btn" (click)="editCustInfo(depot)"><i class="fa fa-edit"></i></a>
                             </td>
-                            <td data-title="Options" class="text-center">
-                              <button class="deleteIcon icon btn" [ngClass]="!(depot?.depotStatus === 'Active') ? 'bg-danger' : 'bg-success'" (click)="changeDepotStatus(depot?.depotCode, depot?.depotStatus)"><i [ngClass]="(depot?.depotStatus === 'Active') ? 'fa fa-toggle-on' : 'fa fa-toggle-off'"></i></button>
+                            <td data-title="Delete" class="text-center">
+                              <a class="btn" [ngClass]="!(depot?.isDeleted === false) ? 'bg-danger' : 'bg-success'" (click)="changeDepotStatus(depot?.depotCode, depot?.depotStatus)"><i [ngClass]="(depot?.isDeleted === false) ? 'fa fa-toggle-on' : 'fa fa-toggle-off'"></i></a>
                             </td>
                           </tr>
                         </tbody>

@@ -11,12 +11,18 @@
                               <li><a routerLink="/m-onPower">On Power Master</a></li>
                           </ul>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-5">
                           <div class="searchBar d-flex justify-content-center align-items-center">
                               <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
                           </div>
                       </div>
-                      <div class="col-md-6 align-self-end text-end">
+                      <div class="col-md-2 d-flex justify-content-center align-items-center">
+                        <div class="checkboxMain d-flex justify-content-center align-items-center">
+                          <input class="me-2" type="checkbox" (click)="showInActive()" name="status" id="custStatus">
+                          <label for="status">Show Inactive</label>
+                        </div>
+                      </div>
+                      <div class="col-md-5 align-self-end text-end">
                           <div class="modelBtnMain">
                               <button type="button" data-bs-toggle="modal" data-bs-target="#addonPower" class="btn btn-primary text-uppercase me-2">+ Add On Power</button>
                               <button type="button" class="btn btn-primary" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
@@ -43,11 +49,13 @@
                                 <th>City</th>
                                 <th>License No.</th>
                                 <th>License Valid</th>
-                                <th>Action</th>
+                                <th>Status</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                               </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let onPower of onPOwerData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
+                            <tr *ngFor="let onPower of filterOnPowerData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                               <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
                                 <td data-title="Driver Code"><a class="table-href" data-bs-toggle="modal" data-bs-target="#onPowerinfo" (click)="viewFullInfo(onPower)">{{onPower?.driverCode}}</a></td>
                                 <td data-title="Driver Name">{{onPower?.driverName}}</td>
@@ -57,9 +65,14 @@
                                 <td data-title="City">{{onPower?.address?.cityName}}</td>
                                 <td data-title="License No.">{{onPower?.lisenceNo}}</td>
                                 <td data-title="License Valid">{{onPower?.licensesValideUpTo | date:"dd-MM-yyyy"}}</td>
-                                <td data-title="Options" class="text-center">
-                                    <a class="editIcon icon mb-1" [routerLink]="['/master/edit-onPower', onPower?._id]"><i class="fa fa-edit"></i></a>
-                                    <a class="deleteIcon icon" (click)="onPowerDelete(onPower?._id)"><i class="fa fa-trash-alt"></i></a>
+                                <td data-title="Status"><span *ngIf="!onPower?.isDeleted">Active</span><span *ngIf="onPower?.isDeleted">inactive</span></td>
+                                <!-- <td data-title="Status"><span *ngIf="!onpower?.isDeleted">Active</span><span *ngIf="onpower?.isDeleted">inactive</span></td> -->
+                                <td data-title="edit" class="text-center">
+                                    <a class="bg-info btn"><i class="fa fa-edit"></i></a>
+                                    <!-- <a class="deleteIcon icon" (click)="onPowerDelete(onPower?._id)"><i class="fa fa-trash-alt"></i></a> -->
+                                </td>
+                                <td data-title="delete" class="text-center">
+                                    <a class="btn" [ngClass]="(onPower?.isDeleted) ? 'bg-danger' : 'bg-success'"><i [ngClass]="(onPower?.isDeleted) ? 'fa fa-toggle-off' : 'fa fa-toggle-on'"></i></a>
                                 </td>
                               </tr>
                         </tbody>

@@ -11,12 +11,18 @@
                                 <li><a routerLink="/m-finance">Finance Master</a></li>
                             </ul>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <div class="searchBar d-flex justify-content-center align-items-center">
                                 <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
                             </div>
                         </div>
-                        <div class="col-md-6 align-self-end text-end">
+                        <div class="col-md-2 d-flex justify-content-center align-items-center">
+                            <div class="checkboxMain d-flex justify-content-center align-items-center">
+                              <input class="me-2" type="checkbox" (click)="showInActive()" name="status" id="custStatus">
+                              <label for="status">Show Inactive</label>
+                            </div>
+                          </div>
+                        <div class="col-md-5 align-self-end text-end">
                             <div class="modelBtnMain">
                                 <button type="button" data-bs-toggle="modal" data-bs-target="#addFinance" class="btn btn-primary text-uppercase me-2">+ Add Finance</button>
                                 <button type="button" class="btn btn-primary" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
@@ -39,19 +45,22 @@
                                 <th>Sub-Category</th>
                                 <th>Bank / Institution Name</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                               </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let finance of financialInstsData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
+                            <tr *ngFor="let finance of filterfinanceData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                                 <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
                                 <td data-title="Bank / Institution Category">{{finance?.category}}</td>
                                 <td data-title="Sub-Category">{{finance?.subCategory}}</td>
                                 <td data-title="Bank / Institution Name">{{finance?.instName}}</td>
-                                <td data-title="Status">{{finance?.status}}</td>
-                                <td data-title="Options" class="text-center">
-                                  <a class="editIcon icon mb-1" [routerLink]="['/master/edit-finance', finance?._id]"><i class="fa fa-edit"></i></a>
-                                  <a class="deleteIcon icon" (click)="financeDelete(finance?._id)"><i class="fa fa-trash-alt"></i></a>
+                                <td data-title="Status"><span *ngIf="!finance?.isDeleted">Active</span><span *ngIf="finance?.isDeleted">inactive</span></td>
+                                <td data-title="Edit" class="text-center">
+                                  <a class="bg-info btn" [routerLink]="['/master/edit-finance', finance?._id]"><i class="fa fa-edit"></i></a>
+                                </td>
+                                <td data-title="Delete" class="text-center">
+                                    <a class="btn" [ngClass]="(finance?.isDeleted) ? 'bg-danger' : 'bg-success'"><i [ngClass]="(finance?.isDeleted) ? 'fa fa-toggle-off' : 'fa fa-toggle-on'"></i></a>
                                 </td>
                             </tr>
                         </tbody>

@@ -17,7 +17,7 @@ export class DepotMasterComponent implements OnInit {
   limits: any = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
   limit: any = 50;
   isExcelDownload: boolean = false;
-  depotStatus: string = 'Active';
+  depotStatus: boolean= false;
 
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
@@ -29,7 +29,6 @@ export class DepotMasterComponent implements OnInit {
     this.master.depotMaster(data).subscribe(res=> {
       this.depotData=res.data;
       if(this.depotData.length > 0) {
-        this.depotStatus = 'Active';
         this.showInActive();
         this.isExcelDownload = true;
         this.limits.push({ "key": "ALL", value: this.depotData.length });
@@ -59,7 +58,7 @@ export class DepotMasterComponent implements OnInit {
       areYouSure = true;
       data = { _id : id, depotStatus: 'In Active' };
     } else {
-      areYouSure = true;
+      areYouSure = false;
       data = { _id : id, depotStatus: 'Active' };
     }
     if(areYouSure) {
@@ -79,13 +78,14 @@ export class DepotMasterComponent implements OnInit {
   showInActive(): void{
     this.filterDepotData = this.depotData;
     this.filterDepotData = this.filterDepotData.filter((depot: any) => {
-      return depot.depotStatus === this.depotStatus;
+      return depot.isDeleted === this.depotStatus;
     });
-    if(this.depotStatus === 'Active') {
-      this.depotStatus = 'In Active';
-    } else {
-      this.depotStatus = 'Active';
-    }
+    this.depotStatus = !this.depotStatus;
+    // if(this.depotStatus === 'Active') {
+    //   this.depotStatus = 'In Active';
+    // } else {
+    //   this.depotStatus = 'Active';
+    // }
   }
   download(): void {
     let wb = XLSX.utils.table_to_book(document.getElementById('export'), { display: false, raw: true });

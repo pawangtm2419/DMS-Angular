@@ -15,6 +15,8 @@ export class TransporterMasterComponent implements OnInit {
   limits: any = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
   limit: any = 50;
   isExcelDownload:boolean = false;
+  filterTransportData: any;
+  transportStatus: boolean = false;
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -23,6 +25,7 @@ export class TransporterMasterComponent implements OnInit {
   getTransporterList() {
     this.master.getTransporter().subscribe(res=> {
       this.transporterData=res.data;
+      this.showInActive();
       if(this.transporterData.length > 0) {
         this.isExcelDownload = true;
         this.limits.push({ "key": "ALL", value: this.transporterData.length });
@@ -33,6 +36,13 @@ export class TransporterMasterComponent implements OnInit {
     }, (error) => {
       console.log(error);
     });
+  }
+  showInActive(): void{
+    this.filterTransportData = this.transporterData;
+    this.filterTransportData = this.filterTransportData.filter((transporter:any) =>{
+      return transporter.isDeleted === this.transportStatus;
+    });
+    this.transportStatus = !this.transportStatus;
   }
   dataLimit() {
     this.limit = (<HTMLInputElement>document.getElementById("limit")).value;

@@ -15,6 +15,8 @@ export class VariantMasterComponent implements OnInit {
   limits: any = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
   limit: any = 50;
   isExcelDownload: boolean = false;
+  filterVarData: any;
+  variantStatus: boolean = false;
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -23,6 +25,8 @@ export class VariantMasterComponent implements OnInit {
   getVariantList() {
     this.master.getVariant().subscribe(res=> {
       this.variantData=res.data;
+      console.log(this.variantData);
+      this.showInActive();
       if(this.variantData.length > 0) {
         this.isExcelDownload = true;
         this.limits.push({ "key": "ALL", value: this.variantData.length });
@@ -33,6 +37,20 @@ export class VariantMasterComponent implements OnInit {
     }, (error) => {
       console.log(error);
     });
+  }
+  editVarInfo(variant: any) {
+    console.log([variant]);
+  }
+  
+  changeVariantStatus(){
+
+  }
+  showInActive(): void{
+    this.filterVarData = this.variantData;
+    this.filterVarData = this.filterVarData.filter((variant: any) => {
+      return variant.isDeleted === this.variantStatus;
+    });
+    this.variantStatus = !this.variantStatus;
   }
   dataLimit() {
     this.limit = (<HTMLInputElement>document.getElementById("limit")).value;

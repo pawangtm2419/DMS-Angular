@@ -29,7 +29,6 @@ export class CustomerMasterComponent implements OnInit {
     const data = {useType: 'ALL'};
     this.master.getCustomers(data).subscribe((res: any) => {
       this.customersData = res.data;
-      this.custStatus = false;
       this.showInActive();
       if(res.status === 'true') {
         this.limits.push({ key: 'ALL', value: this.customersData.length });
@@ -51,7 +50,7 @@ export class CustomerMasterComponent implements OnInit {
   viewFullInfo(customer: any): void{
     this.customersInfo = [customer];
   }
-  editCustomerIndo(customer: any): void{
+  editCustomerInfo(customer: any): void{
     console.log(customer);
   }
   deleteCustomerIndo(id: string): void{

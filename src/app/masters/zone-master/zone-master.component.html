@@ -11,12 +11,18 @@
                                 <li><a routerLink="/m-zone">Zone Master</a></li>
                             </ul>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <div class="searchBar d-flex justify-content-center align-items-center">
                                 <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
                             </div>
                         </div>
-                        <div class="col-md-6 align-self-end text-end">
+                        <div class="col-md-2 d-flex justify-content-center align-items-center">
+                            <div class="checkboxMain d-flex justify-content-center align-items-center">
+                              <input class="me-2" type="checkbox" (click)="showInActive()" [checked]="zoneStatus" name="status" id="custStatus">
+                              <label for="status">Show Inactive</label>
+                            </div>
+                        </div>
+                        <div class="col-md-5 align-self-end text-end">
                             <div class="modelBtnMain">
                                 <button type="button" data-bs-toggle="modal" data-bs-target="#addZone" class="btn btn-primary text-uppercase me-2">+ Zone</button>
                                 <button type="button" class="btn btn-primary" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
@@ -38,18 +44,21 @@
                                 <th>Country</th>
                                 <th>Zone</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                               </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let zone of zonesData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
+                            <tr *ngFor="let zone of filterZoneData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                                 <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
                                 <td data-title="Country">{{zone?.countryName}}</td>
                                 <td data-title="Zone">{{zone?.zone}}</td>
                                 <td data-title="Status">{{zone?.status ? "Active" : "Inactive"}}</td>
-                                <td data-title="Options" class="text-center">
-                                    <a class="editIcon icon mb-1" [routerLink]="['/master/edit-zone', zone?._id]"><i class="fa fa-edit"></i></a>
-                                    <a class="deleteIcon icon" (click)="zoneDelete(zone?._id)"><i class="fa fa-trash-alt"></i></a>
+                                <td data-title="Edit" class="text-center">
+                                    <a class="btn bg-info" [routerLink]="['/master/edit-zone', zone?._id]"><i class="fa fa-edit"></i></a>
+                                </td>
+                                <td data-title="Delete" class="text-center">
+                                    <a class="btn text-white" [ngClass]="!(zone?.status) ? 'bg-danger' : 'bg-success'"><i [ngClass]="(zone?.status) ? 'fa fa-toggle-on' : 'fa fa-toggle-off'"></i></a>
                                 </td>
                             </tr>
                         </tbody>

@@ -11,12 +11,18 @@
                       <li><a routerLink="/m-role">Role Master</a></li>
                   </ul>
               </div>
-              <div class="col-md-6 col-12">
+              <div class="col-md-5 col-12">
                   <div class="searchBar d-flex justify-content-center align-items-center">
                       <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
                   </div>
               </div>
-              <div class="col-md-6 col-12 align-self-end text-end">
+              <div class="col-md-2 d-flex justify-content-center align-items-center">
+                <div class="checkboxMain d-flex justify-content-center align-items-center">
+                  <input class="me-2" type="checkbox" (click)="showInActive()" name="status" id="custStatus">
+                  <label for="status">Show Inactive</label>
+                </div>
+              </div>
+              <div class="col-md-5 col-12 align-self-end text-end">
                   <div class="modelBtnMain">
                     <button type="button" class="btn btn-primary" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
                   </div>
@@ -39,19 +45,19 @@
                 <th>Description</th>
                 <th>Status</th>
                 <th>Created Date</th>
-                <th>Action</th>
+                <th>Edit</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let role of rolesData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
+              <tr *ngFor="let role of filterRolesData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                 <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
                 <td data-title="Role Code"><a class="table-href" data-bs-toggle="modal" data-bs-target="#rolesinfo" (click)="viewFullInfo(role)">{{role?.roleCode}}</a></td>
                 <td data-title="Role Name">{{role?.roleName}}</td>
                 <td data-title="Description">{{role?.description}}</td>
-                <td data-title="Status">{{role?.status}}</td>
+                <td data-title="Status"><span *ngIf="!role?.isDeleted">Active</span><span *ngIf="role?.isDeleted">inactive</span></td>
                 <td data-title="Created Date">{{role?.CreatedDate | date:'dd-MM-yyyy'}}</td>
-                <td data-title="Options" class="text-center">
-                  <a class="editIcon icon mb-1" routerLink="/edit-roles/{{role?.roleCode}}"><i class="fa fa-edit"></i></a>
+                <td data-title="Edit" class="text-center">
+                  <a class="bg-info btn" routerLink="/edit-roles/{{role?.roleCode}}"><i class="fa fa-edit"></i></a>
                 </td>
               </tr>
             </tbody>

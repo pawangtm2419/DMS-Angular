@@ -15,6 +15,8 @@ export class UserMasterComponent implements OnInit {
   limits: any = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
   limit: any = 50;
   isExcelDownload: boolean = false;
+  filterUserData: any;
+  userStatus: string ='Active';
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -24,6 +26,7 @@ export class UserMasterComponent implements OnInit {
   getUserList() {
     this.master.getusers().subscribe((res) => {
       this.usersData=res.data;
+      this.showInActive();
       if(this.usersData.length > 0) {
         this.isExcelDownload = true;
         this.limits.push({ "key": "ALL", value: this.usersData.length });
@@ -47,5 +50,16 @@ export class UserMasterComponent implements OnInit {
   download(): void {
     let wb = XLSX.utils.table_to_book(document.getElementById('export'), { display: false, raw: true });
     XLSX.writeFile(wb, "userReport.xlsx");
+  }
+  showInActive(): void{
+    this.filterUserData = this.usersData;
+    this.filterUserData = this.filterUserData.filter((user: any) => {
+      return user.status === this.userStatus;
+    });
+    if(this.userStatus === 'Active') {
+      this.userStatus = 'Deactive';
+    } else {
+      this.userStatus = 'Active';
+    }
   }
 }

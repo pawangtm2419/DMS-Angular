@@ -17,6 +17,8 @@ export class DealerMasterComponent implements OnInit {
   currentdate= new Date();
   isExcelDownload:boolean = false;
   dealerDeleteId: any;
+  filterDealerData: any;
+  dealerStatus: string = 'Active';
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -26,7 +28,10 @@ export class DealerMasterComponent implements OnInit {
     let data = {useType: "ALL"};
     this.master.getDealers(data).subscribe(res=> {
       this.dealerData = res.msg;
+      console.log('dealer data -', this.dealerData);
+      
       if(this.dealerData.length > 0) {
+        this.showInActive();
         this.isExcelDownload = true;
         this.limits.push({ "key": "ALL", value: this.dealerData.length });
         this.toaster.showSuccess("Data", "Report successfully Open.");
@@ -41,7 +46,7 @@ export class DealerMasterComponent implements OnInit {
     this.dealerDeleteId = id;
     console.log(this.dealerDeleteId);
   }
-  dealerStatus(): void {
+  dealerStatusModal(): void {
     const data = {
       "dealerStatus":"In Active",
       "_id": this.dealerDeleteId
@@ -57,7 +62,20 @@ export class DealerMasterComponent implements OnInit {
       this.toaster.showError("Data", error);
     }
   }
-
+  editDealerInfo(dealer: any) {
+    console.log([dealer]);
+  }
+  showInActive(): void{
+    this.filterDealerData = this.dealerData;
+    this.filterDealerData = this.filterDealerData.filter((dealer: any) => {
+      return dealer.dealerStatus === this.dealerStatus;
+    });
+    if(this.dealerStatus === 'Active') {
+      this.dealerStatus = 'In Active';
+    } else {
+      this.dealerStatus = 'Active';
+    }
+  }
   dataLimit() {
     this.limit = (<HTMLInputElement>document.getElementById("limit")).value;
   }

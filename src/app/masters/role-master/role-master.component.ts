@@ -15,6 +15,9 @@ export class RoleMasterComponent implements OnInit {
   limits: any = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
   limit: any = 50;
   isExcelDownload:boolean = false;
+  financialInstsData: any;
+  filterRolesData: any;
+  roleStatus: boolean = false;
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -23,6 +26,7 @@ export class RoleMasterComponent implements OnInit {
   getRolessList() {
     this.master.getRoles().subscribe(res=> {
       this.rolesData=res.data;
+      this.showInActive();
       if(this.rolesData.length > 0) {
         this.isExcelDownload = true;
         this.limits.push({ "key": "ALL", value: this.rolesData.length });
@@ -47,5 +51,12 @@ export class RoleMasterComponent implements OnInit {
   download(): void {
     let wb = XLSX.utils.table_to_book(document.getElementById('export'), { display: false, raw: true });
     XLSX.writeFile(wb, "roleReport.xlsx");
+  }
+  showInActive(): void{
+    this.filterRolesData = this.rolesData;
+    this.filterRolesData = this.filterRolesData.filter((role: any) => {
+      return role.isDeleted === this.roleStatus;
+    });
+    this.roleStatus = !this.roleStatus;
   }
 }

@@ -14,6 +14,8 @@ export class CityMasterComponent implements OnInit {
   limits: any = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
   limit: any = 50;
   isExcelDownload: boolean = false;
+  filterCityData: any;
+  cityStatus: boolean= true;
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -22,6 +24,8 @@ export class CityMasterComponent implements OnInit {
   getCityList() {
     this.master.getCity().subscribe(res=> {
       this.citiesData = res.data;
+      this.cityStatus = true;
+      this.showInActive();
       if(this.citiesData.length > 0) {
         this.isExcelDownload = true;
         this.limits.push({ "key": "ALL", value: this.citiesData.length });
@@ -67,6 +71,13 @@ export class CityMasterComponent implements OnInit {
   download(): void {
     let wb = XLSX.utils.table_to_book(document.getElementById('export'), { display: false, raw: true });
     XLSX.writeFile(wb, "citiesReport.xlsx");
+  }
+  showInActive(): void{
+    this.filterCityData = this.citiesData;
+    this.filterCityData = this.filterCityData.filter((city: any) => {
+      return city.isActive === this.cityStatus;
+    });
+    this.cityStatus = !this.cityStatus;
   }
 }
 

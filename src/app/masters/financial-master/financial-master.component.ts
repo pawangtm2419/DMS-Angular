@@ -14,6 +14,8 @@ export class FinancialMasterComponent implements OnInit {
   limits: any = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
   limit: any = 50;
   isExcelDownload: boolean = false;
+  filterfinanceData: any;
+  financeStatus: boolean = false;
   constructor(private master: MastersService, public toaster: ToasterService) { }
 
   ngOnInit(): void {
@@ -23,6 +25,7 @@ export class FinancialMasterComponent implements OnInit {
   getFinancialInst() {
     this.master.getFinancialInst().subscribe(res=> {
       this.financialInstsData=res.data;
+      this.showInActive();
       if(this.financialInstsData.length > 0) {
         this.isExcelDownload = true;
         this.limits.push({ "key": "ALL", value: this.financialInstsData.length });
@@ -44,5 +47,12 @@ export class FinancialMasterComponent implements OnInit {
   download(): void {
     let wb = XLSX.utils.table_to_book(document.getElementById('export'), { display: false, raw: true });
     XLSX.writeFile(wb, "financialReport.xlsx");
+  }
+  showInActive(): void{
+    this.filterfinanceData = this.financialInstsData;
+    this.filterfinanceData = this.filterfinanceData.filter((finance: any) => {
+      return finance.isDeleted === this.financeStatus;
+    });
+    this.financeStatus = !this.financeStatus;
   }
 }
