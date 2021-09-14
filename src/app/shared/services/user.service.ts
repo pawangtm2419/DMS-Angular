@@ -65,4 +65,10 @@ export class UserService {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
     return this.http.post(`${environment._url}/updateRoles`, role, httpOptions);
   }
+
+  // updateUser
+  updateUser(user: any): Observable<any> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
+    return this.http.post(`${environment._url}/updateUser`, user, httpOptions);
+  }
 }
