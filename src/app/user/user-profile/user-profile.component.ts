@@ -58,9 +58,12 @@ export class UserProfileComponent implements OnInit {
     }
     this.user.updateUser(data).subscribe(
       (data: any) => {
-        localStorage.setItem("user", JSON.stringify(data.data));
-        this.toster.showSuccess("Updated", "User profile updated successfully");
-        this.isEditProfile = false;
+        if(data.status) {
+          this.toster.showSuccess("Updated", "User profile updated successfully");
+          this.isEditProfile = false;
+        } else {
+          this.toster.showError("Error", "User profile update failed");
+        }
       },
       (error: any) => this.toster.showError("Error", error.error.error)
     );
