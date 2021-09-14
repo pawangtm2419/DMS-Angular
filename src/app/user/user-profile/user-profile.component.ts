@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
   profile: any;
+  isEditProfile: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -15,6 +16,13 @@ export class UserProfileComponent implements OnInit {
 
   editProfile(): void {
     console.log(this.profile);
+    this.isEditProfile = true;
+  }
+
+  updateUser(user: any): void {
+    console.log(user);
+    this.profile = [user];
+    this.isEditProfile = false;
   }
 
 }

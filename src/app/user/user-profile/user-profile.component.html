@@ -1,4 +1,4 @@
-<section>
+<section *ngIf="!isEditProfile">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
@@ -8,7 +8,7 @@
             <div class="col-md-12">
               <ul class="model-menu">
                 <li><a routerLink="/">Home</a></li>/
-                <li><a routerLink="/user-profile">User Profile</a></li>
+                <li><a>User Profile</a></li>
               </ul>
             </div>
           </div>
@@ -29,51 +29,189 @@
             </div>
           </div>
         </div>
-      </header><hr>
-        <div class="col-md-6">
-          <div class="row">
-            <label class="col-sm-5 text-right" for="">Company Name :</label>
-            <div class="col-sm-7 col-md-7">{{user?.companyName}}</div>
-          </div>
-          <div class="row">
-            <label class="col-sm-5 text-right" for="">Name :</label>
-            <div class="col-sm-7 col-md-7">{{user?.firstName}} {{user?.lastName}}</div>
-          </div>
-          <div class="row">
-            <label class="col-sm-5 text-right" for="">Role :</label>
-            <div class="col-sm-7 col-md-7">{{user?.role}}</div>
-          </div>
-          <div class="row">
-            <label class="col-sm-5 text-right" for="">E-Mail :</label>
-            <div class="col-sm-7 col-md-7">{{user?.email}}</div>
-          </div>
-          <div class="row">
-            <label class="col-sm-5 text-right" for="">Mobile Number :</label>
-            <div class="col-sm-7 col-md-7">{{user?.mobile}}</div>
-          </div>
+      </header>
+      <hr>
+      <div class="col-md-6">
+        <div class="row">
+          <label class="col-sm-5 text-right" for="">Company Name :</label>
+          <div class="col-sm-7 col-md-7">{{user?.companyName}}</div>
         </div>
-        <div class="col-md-6">
+        <div class="row">
+          <label class="col-sm-5 text-right" for="">Name :</label>
+          <div class="col-sm-7 col-md-7">{{user?.firstName}} {{user?.lastName}}</div>
+        </div>
+        <div class="row">
+          <label class="col-sm-5 text-right" for="">Role :</label>
+          <div class="col-sm-7 col-md-7">{{user?.role}}</div>
+        </div>
+        <div class="row">
+          <label class="col-sm-5 text-right" for="">E-Mail :</label>
+          <div class="col-sm-7 col-md-7">{{user?.email}}</div>
+        </div>
+        <div class="row">
+          <label class="col-sm-5 text-right" for="">Mobile Number :</label>
+          <div class="col-sm-7 col-md-7">{{user?.mobile}}</div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <label class="col-sm-5 text-right" for="">Country :</label>
+          <div class="col-sm-7 col-md-7">{{user?.address.country}}</div>
+        </div>
+        <div class="row">
+          <label class="col-sm-5 text-right" for="">State :</label>
+          <div class="col-sm-7 col-md-7">{{user?.address.state}}</div>
+        </div>
+        <div class="row">
+          <label class="col-sm-5 text-right" for="">City :</label>
+          <div class="col-sm-7 col-md-7">{{user?.address.city}}</div>
+        </div>
+        <div class="row">
+          <label class="col-sm-5 text-right" for="">Location :</label>
+          <div class="col-sm-7 col-md-7">{{user?.address.location}}</div>
+        </div>
+        <div class="row">
+          <label class="col-sm-5 text-right" for="">Pin Code :</label>
+          <div class="col-sm-7 col-md-7">{{user?.address.zipcode}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section *ngIf="isEditProfile">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- searchbar-row -->
+        <div class="sidebarMain">
           <div class="row">
-            <label class="col-sm-5 text-right" for="">Country :</label>
-            <div class="col-sm-7 col-md-7">{{user?.address.country}}</div>
-          </div>
-          <div class="row">
-            <label class="col-sm-5 text-right" for="">State :</label>
-            <div class="col-sm-7 col-md-7">{{user?.address.state}}</div>
-          </div>
-          <div class="row">
-            <label class="col-sm-5 text-right" for="">City :</label>
-            <div class="col-sm-7 col-md-7">{{user?.address.city}}</div>
-          </div>
-          <div class="row">
-            <label class="col-sm-5 text-right" for="">Location :</label>
-            <div class="col-sm-7 col-md-7">{{user?.address.location}}</div>
-          </div>
-          <div class="row">
-            <label class="col-sm-5 text-right" for="">Pin Code :</label>
-            <div class="col-sm-7 col-md-7">{{user?.address.zipcode}}</div>
+            <div class="col-md-12">
+              <ul class="model-menu">
+                <li><a routerLink="/">Home</a></li>/
+                <li><a>Edit Profile</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="container-fluid card p-4 mb-4">
+    <div class="row" *ngFor="let user of profile">
+      <header style="background-color: #333333;">
+        <div class="row p-1">
+          <div class="col-md-11">
+            <h3 class="text-center text-white">{{user?.firstName}} {{user?.lastName}} ( {{user?.empID}} )</h3>
+          </div>
+          <div class="col-md-1">
+            <div class="d-grid gap-2">
+              <button class="btn text-white" (click)="editProfile()"><i class="fas fa-edit"></i></button>
+            </div>
+          </div>
+        </div>
+      </header>
+      <hr>
+      <form (ngSubmit)="updateUser(user)" noValidate>
+      <div class="row">
+          <div class="col-md-4 p-1">
+            <div class="row">
+              <label class="col-md-5 text-right" for="">Company Name :</label>
+              <div class="col-sm-7 col-md-7">
+                <input type="text" [(ngModel)]="user.companyName" name="companyName" class="form-control" placeholder="Company Name">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-1">
+            <div class="row">
+              <label class="col-md-5 text-right" for=""> First Name :</label>
+              <div class="col-sm-7 col-md-7">
+                <input type="text" [(ngModel)]="user.firstName" name="firstName" class="form-control" placeholder="Name">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-1">
+            <div class="row">
+              <label class="col-md-5 text-right" for=""> Last Name :</label>
+              <div class="col-sm-7 col-md-7">
+                <input type="text" [(ngModel)]="user.lastName" name="lastName" class="form-control" placeholder="Name">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-1">
+            <div class="row">
+              <label class="col-md-5 text-right" for="">Role :</label>
+              <div class="col-sm-7 col-md-7">
+                <input type="text" [(ngModel)]="user.role" name="role" class="form-control" placeholder="Role">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-1">
+            <div class="row">
+              <label class="col-md-5 text-right" for="">E-Mail :</label>
+              <div class="col-sm-7 col-md-7">
+                <input type="text" [(ngModel)]="user.email" name="email" class="form-control" placeholder="E-Mail">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-1">
+            <div class="row">
+              <label class="col-md-5 text-right" for="">Mobile Number :</label>
+              <div class="col-sm-7 col-md-7">
+                <input type="text" [(ngModel)]="user.mobile" name="mobile" class="form-control" placeholder="Mobile Number">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-1">
+            <div class="row">
+              <label class="col-md-5 text-right" for="">Country :</label>
+              <div class="col-sm-7 col-md-7">
+                <input type="text" [(ngModel)]="user.address.country" name="address.country" class="form-control" placeholder="Country">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-1">
+            <div class="row">
+              <label class="col-md-5 text-right" for="">State :</label>
+              <div class="col-sm-7 col-md-7">
+                <input type="text" [(ngModel)]="user.address.state" name="address.state" class="form-control" placeholder="State">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-1">
+            <div class="row">
+              <label class="col-md-5 text-right" for="">City :</label>
+              <div class="col-sm-7 col-md-7">
+                <input type="text" [(ngModel)]="user.address.city" name="address.city" class="form-control" placeholder="City">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-1">
+            <div class="row">
+              <label class="col-md-5 text-right" for="">Location :</label>
+              <div class="col-sm-7 col-md-7">
+                <input type="text" [(ngModel)]="user.address.location" name="address.location" class="form-control" placeholder="Location">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-1">
+            <div class="row">
+              <label class="col-md-5 text-right" for="">Zipcode :</label>
+              <div class="col-sm-7 col-md-7">
+                <input type="text" [(ngModel)]="user.address.zipcode" name="address.zipcode" class="form-control" placeholder="Zipcode">
+              </div>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+              <div class="d-grid gap-2">
+                <button class="btn btn-primary">Update</button>
+              </div>
+            </div>
+            <div class="col-md-5"></div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </section>
