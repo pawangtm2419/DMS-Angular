@@ -10,7 +10,11 @@ export class UserProfileComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.profile = JSON.parse(localStorage.getItem("profile") || '{}');
+    this.profile = [JSON.parse(localStorage.getItem("user") || '{}').data];
+  }
+
+  editProfile(): void {
+    console.log(this.profile);
   }
 
 }

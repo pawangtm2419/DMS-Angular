@@ -150,130 +150,139 @@
         <li><a routerLink="/home" title="Profile"><i class="fa fa-user"></i></a></li>
       </ul>
       <ul class="menu-area" *ngIf="isMenuLoad">
-           <li class="dropdown drop-down01" *ngIf="roles?.dashboard_main?.link">
-               <a title="Dashboard" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-th-large"></i></a>
-               <ul class="dropdown-menu sub-menu01">
-                <li *ngIf="roles?.vehicle_history_sub?.link"><a routerLink="/vehicle-history">Vehicle History</a></li>
-                <li *ngIf="roles?.history_report_sub?.link"><a routerLink="/history-report">History Report</a></li>
-               </ul>
-           </li>
-           <li class="dropdown drop-down01">
-               <a title="Masters" id="navbarDropdown" *ngIf="roles?.masters_main?.link" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-users"></i></a>
-               <ul class="dropdown-menu sub-menu01">
-                   <li *ngIf="roles?.depot_master_sub?.link"><a routerLink="/m-depot">Depot Master</a></li>
-                   <li *ngIf="roles?.dealer_master_sub?.link"><a routerLink="/m-dealer">Dealer Master</a></li>
-                   <li *ngIf="roles?.variant_master_sub?.link"><a routerLink="/m-variant">Variant Master</a></li>
-                   <li *ngIf="roles?.power_master_sub?.link"><a routerLink="/m-on-power">On-Power Master</a></li>
-                   <li *ngIf="roles?.transport_master_sub?.link"><a routerLink="/m-transport">Transporter Master</a></li>
-                   <li *ngIf="roles?.parts_master_sub?.link"><a routerLink="/m-part">Parts Master</a></li>
-                   <li *ngIf="roles?.user_master_sub?.link"><a routerLink="/m-user">Users Master</a></li>
-                   <li *ngIf="roles?.hsn_master_sub?.link"><a routerLink="/m-hsn-code">HSN Code Master</a></li>
-                   <li *ngIf="roles?.financial_master_sub?.link"><a routerLink="/m-financial">Financial Institution Master</a></li>
-                   <li *ngIf="roles?.customer_master_sub?.link"><a routerLink="/m-customer">Customer Master</a></li>
-                   <li *ngIf="roles?.roles_master_sub?.link"><a routerLink="/m-roles">Roles Master</a></li>
-                   <li *ngIf="roles?.state_master_sub?.link"><a routerLink="/m-state">State Master</a></li>
-                   <li *ngIf="roles?.zone_master_sub?.link"><a routerLink="/m-zone">Zone Master</a></li>
-                   <li *ngIf="roles?.city_master_sub?.link"><a routerLink="/m-city">City Master</a></li>
-               </ul>
-           </li>
-           <li class="dropdown drop-down01">
-               <a title="Plant" id="navbarDropdown" *ngIf="roles?.plant_main?.link" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-industry"></i></a>
-               <ul class="dropdown-menu sub-menu01">
-                   <li *ngIf="roles?.plant_stock_sub?.link"><a routerLink="/plant-stock">Plant Stock</a></li>
-                   <li *ngIf="roles?.capital_stock_sub?.link"><a routerLink="/c-stock">Capitalized Stock</a></li>
-               </ul>
-           </li>
-           <li class="dropdown drop-down01">
-               <a title="Depot" id="navbarDropdown" *ngIf="roles?.depot_main?.link" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-cube"></i></a>
-               <ul class="dropdown-menu sub-menu01">
-                   <li *ngIf="roles?.generate_transfer_note_sub?.link"><a routerLink="/gr-note">Generate Transfer Note</a></li>
-                   <li *ngIf="roles?.depot_stock_sub?.link"><a routerLink="/depot-stock">Depot Stock</a></li>
-                   <li *ngIf="roles?.depot_stock_variant_wise_sub?.link"><a routerLink="/depot-stock-variantWise">Depot Stock Variant Wise</a></li>
-                   <li *ngIf="roles?.view_depot_reports_sub?.link" class="dropdown drop-down01">
-                       <a id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">View Report<span class="rgt-arrow">&rsaquo;</span></a>
-                       <ul class="dropdown-submenu sub-menu01">
-                           <li *ngIf="roles?.depot_to_depot_invoice_last?.link"><a routerLink="/depot-depot-invoice">Depot - Depot Invoice</a></li>
-                           <li *ngIf="roles?.depot_to_dealer_invoice_last?.link"><a routerLink="/depot-dealer-invoice">Depot - Dealer Invoice</a></li>
-                           <li *ngIf="roles?.salereturninvoice_last?.link"><a routerLink="/sales-return-invoice">Sale Return Invoice</a></li>
-                           <li *ngIf="roles?.depot_aging_from_production_last?.link"><a routerLink="/depot-aging-production">Aging From Production</a></li>
-                           <li *ngIf="roles?.depot_aging_from_received_last?.link"><a routerLink="/depot-aging-recieved">Aging From Received</a></li>
-                       </ul>
-                   </li>
-               </ul>
-           </li>
-           <li class="dropdown drop-down01">
-               <a title="Dealers" id="navbarDropdown" *ngIf="roles?.dealers_main?.link" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-cubes"></i></a>
-               <ul class="dropdown-menu sub-menu01">
-                <li *ngIf="roles?.view_dealer_reports_sub?.link">
-                  <a>View Report<span class="rgt-arrow">&rsaquo;</span></a>
-                  <ul>
-                    <li *ngIf="roles?.dealer_stock_last?.link"><a routerLink="/r-dealer-stock">Dealer Stock</a></li>
-                    <li *ngIf="roles?.dealer_stock_variant_wise_last?.link"><a routerLink="/r-dealer-stock-variantwise">Dealer Stock Variant Wise</a></li>
-                    <li *ngIf="roles?.dealer_collection_mtd_last?.link"><a routerLink="/r-dealer-collection">Dealer Collection MTD</a></li>
-                    <li *ngIf="roles?.dealer_collection_daywise_last?.link"><a routerLink="/r-dealer-daily-collection">Dealer Collection Daywise</a></li>
-                    <li *ngIf="roles?.ats_reports_last?.link"><a routerLink="/r-ats">ATS Reports</a></li>
-                    <li *ngIf="roles?.rts_reports_last?.link"><a routerLink="/r-rts">RTS Reports</a></li>
-                    <li *ngIf="roles?.deliveries_last?.link"><a routerLink="/r-delivery">Delivery Reports</a></li>
-                    <li *ngIf="roles?.retails_last?.link"><a routerLink="/r-retail">Retail Reports</a></li>
-                    <li *ngIf="roles?.reversal_report?.link"><a routerLink="/r-retail-return">Reversal Report</a></li>
-                    <li *ngIf="roles?.advance_last?.link"><a routerLink="/r-advance">Advance Reports</a></li>
-                    <li *ngIf="roles?.bg_sd_monitoring_last?.link"><a routerLink="/r-bd-sd">BG/SD Monitoring</a></li>
-                    <li *ngIf="roles?.old_tractor_report_last?.link"><a routerLink="/r-old-tractor">Old Tractor Exchange</a></li>
-                    <li *ngIf="roles?.tehsil_based_report_last?.link"><a routerLink="/r-tehsil-based">Tehsil Based Report</a></li>
-                    <li *ngIf="roles?.expected_disbursement_report_last?.link"><a routerLink="/r-exppected-disbursement">Expected Disbursement Report</a></li>
-                    <li *ngIf="roles?.dealer_aging_from_production_last?.link"><a routerLink="/r-aging-from-production">Aging From Production</a></li>
-                    <li *ngIf="roles?.dealer_aging_from_received_last?.link"><a routerLink="/r-aging-from-recieved">Aging From Received</a></li>
-                  </ul>
-                </li>
-                   <li *ngIf="roles?.dealer_invoices_sub?.link">
-                       <a>Invoices<span class="rgt-arrow">&rsaquo;</span></a>
-                       <ul>
-                           <li *ngIf="roles?.invoices_last?.link"><a routerLink="/invoices">Invoices</a></li>
-                           <li *ngIf="roles?.dealer_invoices_mtd_last?.link"><a routerLink="/invoices-mtd">Dealer Invoice MTD</a></li>
-                       </ul>
-                   </li>
-                   <li>
-                       <a>Retrun<span class="rgt-arrow">&rsaquo;</span></a>
-                    <ul>
-                      <li *ngIf="roles?.advance_return_sub?.link"><a routerLink="/advance-return">Advance Return</a></li>
-                      <li *ngIf="roles?.sale_return_sub?.link"><a routerLink="/sales-return">Sale Return</a></li>
-                      <li *ngIf="roles?.retail_return?.link"><a routerLink="/retail-return">Retail Return</a></li>
+        <li class="dropdown drop-down01" *ngIf="roles?.dashboard_main?.link">
+            <a title="Dashboard" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-th-large"></i></a>
+            <ul class="dropdown-menu sub-menu01">
+            <li *ngIf="roles?.vehicle_history_sub?.link"><a routerLink="/vehicle-history">Vehicle History</a></li>
+            <li *ngIf="roles?.history_report_sub?.link"><a routerLink="/history-report">History Report</a></li>
+            </ul>
+        </li>
+        <li class="dropdown drop-down01">
+            <a title="Masters" id="navbarDropdown" *ngIf="roles?.masters_main?.link" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-users"></i></a>
+            <ul class="dropdown-menu sub-menu01">
+                <li *ngIf="roles?.depot_master_sub?.link"><a routerLink="/m-depot">Depot Master</a></li>
+                <li *ngIf="roles?.dealer_master_sub?.link"><a routerLink="/m-dealer">Dealer Master</a></li>
+                <li *ngIf="roles?.variant_master_sub?.link"><a routerLink="/m-variant">Variant Master</a></li>
+                <li *ngIf="roles?.power_master_sub?.link"><a routerLink="/m-on-power">On-Power Master</a></li>
+                <li *ngIf="roles?.transport_master_sub?.link"><a routerLink="/m-transport">Transporter Master</a></li>
+                <li *ngIf="roles?.parts_master_sub?.link"><a routerLink="/m-part">Parts Master</a></li>
+                <li *ngIf="roles?.user_master_sub?.link"><a routerLink="/m-user">Users Master</a></li>
+                <li *ngIf="roles?.hsn_master_sub?.link"><a routerLink="/m-hsn-code">HSN Code Master</a></li>
+                <li *ngIf="roles?.financial_master_sub?.link"><a routerLink="/m-financial">Financial Institution Master</a></li>
+                <li *ngIf="roles?.customer_master_sub?.link"><a routerLink="/m-customer">Customer Master</a></li>
+                <li *ngIf="roles?.roles_master_sub?.link"><a routerLink="/m-roles">Roles Master</a></li>
+                <li *ngIf="roles?.state_master_sub?.link"><a routerLink="/m-state">State Master</a></li>
+                <li *ngIf="roles?.zone_master_sub?.link"><a routerLink="/m-zone">Zone Master</a></li>
+                <li *ngIf="roles?.city_master_sub?.link"><a routerLink="/m-city">City Master</a></li>
+            </ul>
+        </li>
+        <li class="dropdown drop-down01">
+            <a title="Plant" id="navbarDropdown" *ngIf="roles?.plant_main?.link" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-industry"></i></a>
+            <ul class="dropdown-menu sub-menu01">
+                <li *ngIf="roles?.plant_stock_sub?.link"><a routerLink="/plant-stock">Plant Stock</a></li>
+                <li *ngIf="roles?.capital_stock_sub?.link"><a routerLink="/c-stock">Capitalized Stock</a></li>
+            </ul>
+        </li>
+        <li class="dropdown drop-down01">
+            <a title="Depot" id="navbarDropdown" *ngIf="roles?.depot_main?.link" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-cube"></i></a>
+            <ul class="dropdown-menu sub-menu01">
+                <li *ngIf="roles?.generate_transfer_note_sub?.link"><a routerLink="/gr-note">Generate Transfer Note</a></li>
+                <li *ngIf="roles?.depot_stock_sub?.link"><a routerLink="/depot-stock">Depot Stock</a></li>
+                <li *ngIf="roles?.depot_stock_variant_wise_sub?.link"><a routerLink="/depot-stock-variantWise">Depot Stock Variant Wise</a></li>
+                <li *ngIf="roles?.view_depot_reports_sub?.link" class="dropdown drop-down01">
+                    <a id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">View Report<span class="rgt-arrow">&rsaquo;</span></a>
+                    <ul class="dropdown-submenu sub-menu01">
+                        <li *ngIf="roles?.depot_to_depot_invoice_last?.link"><a routerLink="/depot-depot-invoice">Depot - Depot Invoice</a></li>
+                        <li *ngIf="roles?.depot_to_dealer_invoice_last?.link"><a routerLink="/depot-dealer-invoice">Depot - Dealer Invoice</a></li>
+                        <li *ngIf="roles?.salereturninvoice_last?.link"><a routerLink="/sales-return-invoice">Sale Return Invoice</a></li>
+                        <li *ngIf="roles?.depot_aging_from_production_last?.link"><a routerLink="/depot-aging-production">Aging From Production</a></li>
+                        <li *ngIf="roles?.depot_aging_from_received_last?.link"><a routerLink="/depot-aging-recieved">Aging From Received</a></li>
                     </ul>
                 </li>
-                   <li *ngIf="roles?.sale_return_receipt_list_sub?.link"><a routerLink="/sale-return-receipt">Sale Return Receipt List</a></li>
-                   <li *ngIf="roles?.dealer_collection_entry_sub?.link"><a routerLink="/dealer-collection-entry">Dealer Collection Entry</a></li>
-                   <li *ngIf="roles?.dealer_statement_sub?.link"><a>Dealer Statement<span class="rgt-arrow">&rsaquo;</span></a>
-                       <ul>
-                           <li *ngIf="roles?.dealer_statement_upload_last?.link"><a routerLink="/statement-upload">Statement Upload</a></li>
-                           <li *ngIf="roles?.dealer_opening_sheet_last?.link"><a routerLink="/opening-closing-sheet">Opening/Closing Sheet</a></li>
-                           <li *ngIf="roles?.dealer_monthly_statement_last?.link"><a routerLink="/monthly-statement">Monthly Statement</a></li>
-                       </ul>
-                   </li>
-                   <li *ngIf="roles?.dealer_plan_sub?.link"><a>Plans<span class="rgt-arrow">&rsaquo;</span></a>
-                       <ul>
-                           <li *ngIf="roles?.sale_plan_upload_last?.link"><a routerLink="/upload-sale-plan">Sale Plan Upload</a></li>
-                           <li *ngIf="roles?.sale_plan_report_last?.link"><a routerLink="/r-sale-plan">Sale Plan Report</a></li>
-                           <li *ngIf="roles?.collection_plan_upload_last?.link"><a routerLink="/upload-collection-plan">Collection Plan Upload</a></li>
-                           <li *ngIf="roles?.collection_plan_report_last?.link"><a routerLink="/r-collection-plan">Collection Plan Report</a></li>
-                           <li *ngIf="roles?.delivery_plan_upload_last?.link"><a routerLink="/upload-delivery-plan">Delivery Plan Upload</a></li>
-                           <li *ngIf="roles?.delivery_plan_report_last?.link"><a routerLink="/r-delivery-plan">Delivery Plan Report</a></li>
-                           <li *ngIf="roles?.retail_plan_upload_last?.link"><a routerLink="/upload-retail-plan">Retail Plan Upload</a></li>
-                           <li *ngIf="roles?.retail_plan_report_last?.link"><a routerLink="/r-retail-plan">Retail Plan Report</a></li>
-                       </ul>
-                   </li>
-                   <li *ngIf="roles?.ats_sub?.link"><a>ATS<span class="rgt-arrow">&rsaquo;</span></a>
-                       <ul>
-                           <li *ngIf="roles?.delivery_last?.link"><a routerLink="/ats-delivery">Delivery</a></li>
-                           <li *ngIf="roles?.retail_last?.link"><a routerLink="/ats-retail">Retail</a></li>
-                           <li *ngIf="roles?.insurance_last?.link"><a routerLink="/ats-insurance">Insurance</a></li>
-                       </ul>
-                   </li>
-                   <li *ngIf="roles?.bgs_sub?.link"><a routerLink="/bgs-report">BGS</a></li>
-               </ul>
-           </li>
+            </ul>
+        </li>
+        <li class="dropdown drop-down01">
+          <a title="Dealers" id="navbarDropdown" *ngIf="roles?.dealers_main?.link" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-cubes"></i></a>
+          <ul class="dropdown-menu sub-menu01">
+          <li *ngIf="roles?.view_dealer_reports_sub?.link">
+            <a>View Report<span class="rgt-arrow">&rsaquo;</span></a>
+            <ul>
+              <li *ngIf="roles?.dealer_stock_last?.link"><a routerLink="/r-dealer-stock">Dealer Stock</a></li>
+              <li *ngIf="roles?.dealer_stock_variant_wise_last?.link"><a routerLink="/r-dealer-stock-variantwise">Dealer Stock Variant Wise</a></li>
+              <li *ngIf="roles?.dealer_collection_mtd_last?.link"><a routerLink="/r-dealer-collection">Dealer Collection MTD</a></li>
+              <li *ngIf="roles?.dealer_collection_daywise_last?.link"><a routerLink="/r-dealer-daily-collection">Dealer Collection Daywise</a></li>
+              <li *ngIf="roles?.ats_reports_last?.link"><a routerLink="/r-ats">ATS Reports</a></li>
+              <li *ngIf="roles?.rts_reports_last?.link"><a routerLink="/r-rts">RTS Reports</a></li>
+              <li *ngIf="roles?.deliveries_last?.link"><a routerLink="/r-delivery">Delivery Reports</a></li>
+              <li *ngIf="roles?.retails_last?.link"><a routerLink="/r-retail">Retail Reports</a></li>
+              <li *ngIf="roles?.reversal_report?.link"><a routerLink="/r-retail-return">Reversal Report</a></li>
+              <li *ngIf="roles?.advance_last?.link"><a routerLink="/r-advance">Advance Reports</a></li>
+              <li *ngIf="roles?.bg_sd_monitoring_last?.link"><a routerLink="/r-bd-sd">BG/SD Monitoring</a></li>
+              <li *ngIf="roles?.old_tractor_report_last?.link"><a routerLink="/r-old-tractor">Old Tractor Exchange</a></li>
+              <li *ngIf="roles?.tehsil_based_report_last?.link"><a routerLink="/r-tehsil-based">Tehsil Based Report</a></li>
+              <li *ngIf="roles?.expected_disbursement_report_last?.link"><a routerLink="/r-exppected-disbursement">Expected Disbursement Report</a></li>
+              <li *ngIf="roles?.dealer_aging_from_production_last?.link"><a routerLink="/r-aging-from-production">Aging From Production</a></li>
+              <li *ngIf="roles?.dealer_aging_from_received_last?.link"><a routerLink="/r-aging-from-recieved">Aging From Received</a></li>
+            </ul>
+          </li>
+            <li *ngIf="roles?.dealer_invoices_sub?.link">
+              <a>Invoices<span class="rgt-arrow">&rsaquo;</span></a>
+              <ul>
+                <li *ngIf="roles?.invoices_last?.link"><a routerLink="/invoices">Invoices</a></li>
+                <li *ngIf="roles?.dealer_invoices_mtd_last?.link"><a routerLink="/invoices-mtd">Dealer Invoice MTD</a></li>
+              </ul>
+            </li>
+            <li>
+              <a>Retrun<span class="rgt-arrow">&rsaquo;</span></a>
+            <ul>
+              <li *ngIf="roles?.advance_return_sub?.link"><a routerLink="/advance-return">Advance Return</a></li>
+              <li *ngIf="roles?.sale_return_sub?.link"><a routerLink="/sales-return">Sale Return</a></li>
+              <li *ngIf="roles?.retail_return?.link"><a routerLink="/retail-return">Retail Return</a></li>
+            </ul>
+          </li>
+            <li *ngIf="roles?.sale_return_receipt_list_sub?.link"><a routerLink="/sale-return-receipt">Sale Return Receipt List</a></li>
+            <li *ngIf="roles?.dealer_collection_entry_sub?.link"><a routerLink="/dealer-collection-entry">Dealer Collection Entry</a></li>
+            <li *ngIf="roles?.dealer_statement_sub?.link"><a>Dealer Statement<span class="rgt-arrow">&rsaquo;</span></a>
+              <ul>
+                <li *ngIf="roles?.dealer_statement_upload_last?.link"><a routerLink="/statement-upload">Statement Upload</a></li>
+                <li *ngIf="roles?.dealer_opening_sheet_last?.link"><a routerLink="/opening-closing-sheet">Opening/Closing Sheet</a></li>
+                <li *ngIf="roles?.dealer_monthly_statement_last?.link"><a routerLink="/monthly-statement">Monthly Statement</a></li>
+              </ul>
+            </li>
+            <li *ngIf="roles?.dealer_plan_sub?.link"><a>Plans<span class="rgt-arrow">&rsaquo;</span></a>
+              <ul>
+                <li *ngIf="roles?.sale_plan_upload_last?.link"><a routerLink="/upload-sale-plan">Sale Plan Upload</a></li>
+                <li *ngIf="roles?.sale_plan_report_last?.link"><a routerLink="/r-sale-plan">Sale Plan Report</a></li>
+                <li *ngIf="roles?.collection_plan_upload_last?.link"><a routerLink="/upload-collection-plan">Collection Plan Upload</a></li>
+                <li *ngIf="roles?.collection_plan_report_last?.link"><a routerLink="/r-collection-plan">Collection Plan Report</a></li>
+                <li *ngIf="roles?.delivery_plan_upload_last?.link"><a routerLink="/upload-delivery-plan">Delivery Plan Upload</a></li>
+                <li *ngIf="roles?.delivery_plan_report_last?.link"><a routerLink="/r-delivery-plan">Delivery Plan Report</a></li>
+                <li *ngIf="roles?.retail_plan_upload_last?.link"><a routerLink="/upload-retail-plan">Retail Plan Upload</a></li>
+                <li *ngIf="roles?.retail_plan_report_last?.link"><a routerLink="/r-retail-plan">Retail Plan Report</a></li>
+              </ul>
+            </li>
+            <li *ngIf="roles?.ats_sub?.link"><a>ATS<span class="rgt-arrow">&rsaquo;</span></a>
+              <ul>
+                <li *ngIf="roles?.delivery_last?.link"><a routerLink="/ats-delivery">Delivery</a></li>
+                <li *ngIf="roles?.retail_last?.link"><a routerLink="/ats-retail">Retail</a></li>
+                <li *ngIf="roles?.insurance_last?.link"><a routerLink="/ats-insurance">Insurance</a></li>
+              </ul>
+            </li>
+            <li *ngIf="roles?.bgs_sub?.link"><a routerLink="/bgs-report">BGS</a></li>
+          </ul>
+        </li>
       </ul>
-       <div class="settingArea">
-           <a type="button" (click)="getLogout()"><i class="fa fa-power-off"></i></a>
+      <div class="settingArea">
+        <ul class="menu-area" *ngIf="isMenuLoad">
+          <li class="dropdown drop-down01">
+            <a title="Dashboard" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-power-off"></i></a>
+            <ul class="dropdown-menu sub-menu01">
+              <li><a routerLink="/change-pass">Change Password</a></li>
+              <li><a routerLink="/user-profile">User Profile</a></li>
+              <li><a (click)="getLogout()">Log Out</a></li>
+            </ul>
+          </li>
+        </ul>
        </div>
   </nav>
   <!-- desktop-view end -->
