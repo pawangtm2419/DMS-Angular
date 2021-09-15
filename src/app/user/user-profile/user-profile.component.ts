@@ -67,8 +67,9 @@ export class UserProfileComponent implements OnInit {
       },
       (error: any) => this.toster.showError("Error", error.error.error)
     );
-
-    console.log(data);
+    this.isEditProfile = false;
+  }
+  closeEdit(): void {
     this.isEditProfile = false;
   }
 
