@@ -28,6 +28,9 @@ export class AgingFromProductionComponent implements OnInit {
     this.getVariantList();
     this.getModelList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getagingProdList(): void {
     if(this.selectedVariantName) {
       const data = {

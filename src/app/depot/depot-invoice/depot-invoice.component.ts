@@ -30,6 +30,9 @@ export class DepotInvoiceComponent implements OnInit {
   ngOnInit(): void {
     this.getdepotInvoiceList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getdepotInvoiceList() {
     const data = {
       type: 'ALL',

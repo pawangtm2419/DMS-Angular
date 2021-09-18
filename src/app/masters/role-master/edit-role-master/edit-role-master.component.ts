@@ -58,6 +58,9 @@ export class EditRoleMasterComponent implements OnInit, OnDestroy {
       }
     });
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   ngOnDestroy(): void {
     this.newFilterArray = [];
     this.main = [];

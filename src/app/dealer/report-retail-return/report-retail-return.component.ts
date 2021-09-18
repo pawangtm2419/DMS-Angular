@@ -9,7 +9,9 @@ export class ReportRetailReturnComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+  refresh(): void {
+    this.ngOnInit();
   }
 
 }

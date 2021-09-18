@@ -19,6 +19,9 @@ export class VariantDepotStockComponent implements OnInit {
   ngOnInit(): void {
     this.getstockVarList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getstockVarList() {
     let data = {"type":"DEPOTSTOCK","useType":"ALL"};
     this.dealer.depotVariant(data).subscribe(res=> {

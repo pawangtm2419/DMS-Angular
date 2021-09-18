@@ -22,9 +22,13 @@ export class VariantMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getVariantList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getVariantList() {
     this.master.getVariant().subscribe((res: any)=> {
       this.variantData=res.data;
+      this.variantStatus = false;
       this.showInActive();
       if(this.variantData.length > 0) {
         this.isExcelDownload = true;

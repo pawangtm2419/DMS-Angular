@@ -15,6 +15,9 @@ export class VehicleHistoryComponent implements OnInit {
   constructor(private service: CommonService, public toaster: ToasterService) { }
 
   ngOnInit(): void { }
+  refresh(): void {
+    this.ngOnInit();
+  }
 
   search(): void {
     const data = { chassisNo: this.chassisNo };

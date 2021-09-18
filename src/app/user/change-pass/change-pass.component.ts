@@ -21,7 +21,9 @@ export class ChangePassComponent implements OnInit {
       confirmPassword: new FormControl('', [Validators.required, Validators.minLength(8)])
     });
   }
-
+  refresh(): void {
+    this.ngOnInit();
+  }
   get oldPassword() { return this.updatePassword.value.oldPassword; }
   get newPassword() { return this.updatePassword.value.newPassword; }
   get confirmPassword() { return this.updatePassword.value.confirmPassword; }

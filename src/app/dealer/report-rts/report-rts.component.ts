@@ -20,6 +20,9 @@ export class ReportRtsComponent implements OnInit {
   ngOnInit(): void {
     this.getrtsList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getrtsList() {
     let data = {"isRetailed":false,"useType":"ALL"};
     this.dealer.getRtsReports(data).subscribe(res=> {

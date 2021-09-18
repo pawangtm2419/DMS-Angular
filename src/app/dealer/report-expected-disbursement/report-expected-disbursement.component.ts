@@ -19,6 +19,9 @@ export class ReportExpectedDisbursementComponent implements OnInit {
   ngOnInit(): void {
     this.getExpDisbList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getExpDisbList() {
     let data = {};
     this.dealer.getExpDisbReport(data).subscribe(res=> {

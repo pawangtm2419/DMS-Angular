@@ -9,8 +9,9 @@ export class DealerCollectionStatewiseComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-
+  ngOnInit(): void { }
+  refresh(): void {
+    this.ngOnInit();
   }
 
 }

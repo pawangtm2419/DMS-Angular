@@ -27,6 +27,9 @@ export class PlantStockComponent implements OnInit {
   ngOnInit(): void {
     this.plantStockData();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   plantStockData() {
     let stock = {type: 'PLANTSTOCK'};
     this.service.plantStock(stock).subscribe(res => {

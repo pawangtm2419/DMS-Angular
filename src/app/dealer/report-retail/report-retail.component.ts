@@ -44,6 +44,9 @@ export class ReportRetailComponent implements OnInit {
     };
     //this.getretailList(data);
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
 
   getZoneList(): void {
     this.service.getZones().subscribe((data: any) => {

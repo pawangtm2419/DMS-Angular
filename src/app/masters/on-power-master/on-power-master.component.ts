@@ -22,16 +22,24 @@ export class OnPowerMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getOnPoweList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getOnPoweList() {
-    this.master.getOnPower().subscribe(res=> {
-      this.onPOwerData=res.data;
-      this.showInActive();
-      if(this.onPOwerData.length > 0) {
-        this.isExcelDownload = true;
-        this.limits.push({ "key": "ALL", value: this.onPOwerData.length });
-        this.toaster.showSuccess("Data", "Report successfully Open.");
+    this.master.getOnPower().subscribe((res: any)=> {
+      if(res.status) {
+        this.onPOwerData=res.data;
+        this.onPowerStatus = false;
+        this.showInActive();
+        if(this.onPOwerData.length > 0) {
+          this.isExcelDownload = true;
+          this.limits.push({ "key": "ALL", value: this.onPOwerData.length });
+          this.toaster.showSuccess("Data", "Report successfully Open.");
+        } else {
+          this.toaster.showInfo("Data", "No record found.");
+        }
       } else {
-        this.toaster.showInfo("Data", "No record found.");
+        this.toaster.showError("Data", "No record found.");
       }
     }, (error) => {
       this.toaster.showError("Error", error);

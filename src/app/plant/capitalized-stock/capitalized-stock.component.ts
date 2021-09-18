@@ -20,6 +20,9 @@ export class CapitalizedStockComponent implements OnInit {
   ngOnInit(): void {
     this.capitalizeStockData();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   capitalizeStockData(): void {
     const stock = {};
     this.service.cStock(stock).subscribe(res => {

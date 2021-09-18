@@ -54,6 +54,9 @@ export class GenerateTransferNoteComponent implements OnInit {
   ngOnInit(): void {
     this.checkInvoiceNo();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   showDollar(): void {
     this.isDollerCheckBox = !this.isDollerCheckBox;
   }

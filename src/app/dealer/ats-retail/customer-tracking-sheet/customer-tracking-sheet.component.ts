@@ -52,7 +52,9 @@ export class CustomerTrackingSheetComponent implements OnInit {
     this.vehicleData();
     this.getTransaction();
   }
-
+  refresh(): void {
+    this.ngOnInit();
+  }
   vehicleData(): void {
     const data = { chassisNo: this.params.id };
     this.service.getVehicleDetails(data).subscribe(res => {

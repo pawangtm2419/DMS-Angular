@@ -41,6 +41,9 @@ export class AtsRetailComponent implements OnInit {
   ngOnInit(): void {
     this.getZoneList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getZoneList(): void {
     this.service.getZones().subscribe(data => {
       if(data.status === 'true') {

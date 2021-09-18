@@ -19,6 +19,9 @@ export class ReportBgSdComponent implements OnInit {
   ngOnInit(): void {
     this.getadvReportList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getadvReportList(): void {
     this.dealer.getBdSdMonitor().subscribe(res => {
       this.bgSdData = res.data;

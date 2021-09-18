@@ -22,16 +22,24 @@ export class TransporterMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getTransporterList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getTransporterList() {
     this.master.getTransporter().subscribe((res: any)=> {
-      this.transporterData=res.data;
-      this.showInActive();
-      if(this.transporterData.length > 0) {
-        this.isExcelDownload = true;
-        this.limits.push({ "key": "ALL", value: this.transporterData.length });
-        this.toaster.showSuccess("Data", "Report successfully Open.");
+      if(res.status) {
+        this.transporterData=res.data;
+        this.transportStatus = false;
+        this.showInActive();
+        if(this.transporterData.length > 0) {
+          this.isExcelDownload = true;
+          this.limits.push({ "key": "ALL", value: this.transporterData.length });
+          this.toaster.showSuccess("Data", "Report successfully Open.");
+        } else {
+          this.toaster.showInfo("Data", "No record found.");
+        }
       } else {
-        this.toaster.showInfo("Data", "No record found.");
+        this.toaster.showError("Server Error", res.error.message);
       }
     }, (error) => {
       this.toaster.showError('Data', error);;

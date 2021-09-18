@@ -21,10 +21,12 @@ export class ZoneMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getzoneList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getzoneList() {
-    this.master.getzones().subscribe(res=> {
+    this.master.getzones().subscribe((res: any)=> {
       this.zonesData=res.zones;
-      this.showInActive();
       if(this.zonesData.length > 0) {
         this.isExcelDownload = true;
         this.zoneStatus = true;

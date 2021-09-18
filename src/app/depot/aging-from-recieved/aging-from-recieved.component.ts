@@ -27,6 +27,9 @@ export class AgingFromRecievedComponent implements OnInit {
     this.getVariantList();
     this.getModelList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getagingRecList() {
     if(this.selectedVariantName) {
       this.data = {

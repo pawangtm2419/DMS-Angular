@@ -30,6 +30,9 @@ export class InvoiceComponent implements OnInit {
   ngOnInit(): void {
     this.getinvoiceData();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
 
   getinvoiceData(): void{
     const data = {

@@ -21,17 +21,24 @@ export class FinancialMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getFinancialInst();
   }
-
+  refresh(): void {
+    this.ngOnInit();
+  }
   getFinancialInst() {
-    this.master.getFinancialInst().subscribe(res=> {
-      this.financialInstsData=res.data;
-      this.showInActive();
-      if(this.financialInstsData.length > 0) {
-        this.isExcelDownload = true;
-        this.limits.push({ "key": "ALL", value: this.financialInstsData.length });
-        this.toaster.showSuccess("Data", "Report successfully Open.");
+    this.master.getFinancialInst().subscribe((res: any)=> {
+      if(res.status) {
+        this.financialInstsData=res.data;
+        this.financeStatus = false;
+        this.showInActive();
+        if(this.financialInstsData.length > 0) {
+          this.isExcelDownload = true;
+          this.limits.push({ "key": "ALL", value: this.financialInstsData.length });
+          this.toaster.showSuccess("Data", "Report successfully Open.");
+        } else {
+          this.toaster.showInfo("Data", "No record found.");
+        }
       } else {
-        this.toaster.showInfo("Data", "No record found.");
+        this.toaster.showError("Data", "No record found.");
       }
     }, (error) => {
       this.toaster.showError('Data', error);;

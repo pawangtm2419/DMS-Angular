@@ -7,7 +7,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <ul class="model-menu">
-                              <li onclick="goBack()"><button class="badge bg-dark"><i class="fas fa-arrow-left"></i> Back</button></li>
+                              <li onclick="goBack()"><button class="btn badge bg-dark"><i class="fas fa-arrow-left"></i> Back</button></li>
+                              <li (click)="refresh()"><button class="btn badge bg-primary" title="Refresh"><i class="fas fa-sync-alt"></i></button></li> |
                                 <li><a routerLink="/home">Master</a></li>/
                                 <li><a routerLink="/m-user">User Master</a></li>
                             </ul>
@@ -72,7 +73,7 @@
                                     <!-- <a class="deleteIcon icon" (click)="userDelete(user?._id)"><i class="fa fa-trash-alt"></i></a> -->
                                 </td>
                                 <td data-title="Delete" class="text-center">
-                                    <a class="btn" [ngClass]="!(user?.status === 'Active') ? 'bg-danger' : 'bg-success'"><i [ngClass]="(user?.status === 'Active') ? 'fa fa-toggle-on' : 'fa fa-toggle-off'"></i></a>
+                                    <a class="btn text-white" [ngClass]="!(user?.status === 'Active') ? 'bg-danger' : 'bg-success'"><i [ngClass]="(user?.status === 'Active') ? 'fa fa-toggle-on' : 'fa fa-toggle-off'"></i></a>
                                 </td>
                               </tr>
                         </tbody>

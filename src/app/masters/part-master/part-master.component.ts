@@ -22,20 +22,27 @@ export class PartMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getPartList();
   }
-
+  refresh(): void {
+    this.ngOnInit();
+  }
   getPartList() {
-    this.master.getParts().subscribe(res=> {
-      this.partsData=res.data;
-      this.showInActive();
-      if(this.partsData.length > 0) {
-        this.isExcelDownload = true;
-        this.limits.push({ "key": "ALL", value: this.partsData.length });
-        this.toaster.showSuccess("Data", "Report successfully Open.");
+    this.master.getParts().subscribe((res: any)=> {
+      if(res.status) {
+        this.partsData=res.data;
+        this.partStatus = false;
+        this.showInActive();
+        if(this.partsData.length > 0) {
+          this.isExcelDownload = true;
+          this.limits.push({ "key": "ALL", value: this.partsData.length });
+          this.toaster.showSuccess("Data", "Report successfully Open.");
+        } else {
+          this.toaster.showInfo("Data", "No record found.");
+        }
       } else {
-        this.toaster.showInfo("Data", "No record found.");
+        this.toaster.showError("Error", "No record found.");
       }
     }, (error) => {
-      this.toaster.showError('Data', error);;
+      this.toaster.showError('Error', error);;
     });
   }
   showInActive(): void{
