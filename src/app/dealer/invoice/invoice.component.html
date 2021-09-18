@@ -38,7 +38,7 @@
                           <label for="fromDate" class="col-form-label">From: </label>
                         </div>
                         <div class="col-md-10 col-10">
-                          <input type="date" id="fromDate" [ngModel]="fromDate | date:'yyyy-MM-dd'" max="{{currentDate}}" class="form-control">
+                          <input type="date" id="fromDate" name="fromDate" [(ngModel)]="fromDate" max="{{currentDate}}" class="form-control">
                         </div>
                       </div>
                     </div>
@@ -48,7 +48,7 @@
                           <label for="toDate" class="col-form-label">To: </label>
                         </div>
                         <div class="col-md-10 col-10">
-                          <input type="date" id="toDate" [ngModel]="toDate | date:'yyyy-MM-dd'" max="{{currentDate}}" class="form-control">
+                          <input type="date" id="toDate" name="toDate" [(ngModel)]="toDate" max="{{currentDate}}" class="form-control">
                         </div>
                       </div>
                     </div>

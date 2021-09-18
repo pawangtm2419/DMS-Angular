@@ -34,8 +34,8 @@ export class InvoiceComponent implements OnInit {
   getinvoiceData(): void{
     const data = {
       type: 'ALL',
-      fromDate: ((document.getElementById('fromDate') as HTMLInputElement).value) ? (document.getElementById('fromDate') as HTMLInputElement).value : this.fromDate + 'T00:00:00.000Z',
-      toDate: ((document.getElementById('toDate') as HTMLInputElement).value) ? (document.getElementById('toDate') as HTMLInputElement).value : this.toDate + 'T00:00:00.000Z',
+      fromDate: this.fromDate + 'T00:00:00.000Z',
+      toDate: this.toDate + 'T00:00:00.000Z',
       page: 'report',
       useType: 'ALL'
     };
