@@ -50,7 +50,7 @@ export class DealerMasterComponent implements OnInit {
       "_id": this.dealerDeleteId
     };
     this.master.changeDealerStatus(data).subscribe((res: any) => {
-      if(res.status == 'true') {
+      if(res.status) {
         this.toaster.showSuccess("Data", "Status successfully changed.");
         this.getDealersList();
       } else {

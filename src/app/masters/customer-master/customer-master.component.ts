@@ -30,7 +30,7 @@ export class CustomerMasterComponent implements OnInit {
     this.master.getCustomers(data).subscribe((res: any) => {
       this.customersData = res.data;
       this.showInActive();
-      if(res.status === 'true') {
+      if(res.status) {
         this.limits.push({ key: 'ALL', value: this.customersData.length });
         if (this.customersData.length > 0) {
           this.isExcelDownload = true;
@@ -56,7 +56,7 @@ export class CustomerMasterComponent implements OnInit {
   deleteCustomerIndo(id: string): void{
     const data = {_id: id};
     this.master.deleteCustomer(data).subscribe((res: any) => {
-      if (res.status === 'true') {
+      if (res.status) {
         this.getCustomerList();
         this.toaster.showSuccess('Success', res.msg);
       } else {

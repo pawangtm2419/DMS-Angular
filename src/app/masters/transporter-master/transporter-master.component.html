@@ -58,7 +58,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let transport of filterTransportData | async | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
+              <tr *ngFor="let transport of filterTransportData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
                 <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
                 <td data-title="Transporter Code"><a class="table-href" data-bs-toggle="modal" data-bs-target="#transportinfo" (click)="viewFullInfo(transport)">{{transport?.transCode}}</a></td>
                 <td data-title="Transporter Name">{{transport?.transName}}</td>
