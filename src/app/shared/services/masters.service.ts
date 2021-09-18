@@ -70,9 +70,9 @@ export class MastersService {
     return this.http.get(`${environment._url}/viewOnPower`, httpOptions);
   }
   /* viewTransporter */
-  getTransporter(): Observable<any> {
+  getTransporter(): Observable<any[]> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.get(`${environment._url}/viewTransporter`, httpOptions);
+    return this.http.get<any[]>(`${environment._url}/viewTransporter`, httpOptions);
   }
   /* viewPart */
   getParts(): Observable<any> {

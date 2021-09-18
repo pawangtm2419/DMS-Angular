@@ -4,3 +4,6 @@
 .alert {
   padding: 0px;
 }
+label {
+  padding-bottom: 5px;
+}

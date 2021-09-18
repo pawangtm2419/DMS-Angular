@@ -23,7 +23,7 @@ export class TransporterMasterComponent implements OnInit {
     this.getTransporterList();
   }
   getTransporterList() {
-    this.master.getTransporter().subscribe(res=> {
+    this.master.getTransporter().subscribe((res: any)=> {
       this.transporterData=res.data;
       this.showInActive();
       if(this.transporterData.length > 0) {
