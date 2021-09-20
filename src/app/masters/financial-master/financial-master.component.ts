@@ -21,6 +21,9 @@ export class FinancialMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getFinancialInst();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
 
   getFinancialInst() {
     this.master.getFinancialInst().subscribe(res=> {

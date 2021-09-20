@@ -21,6 +21,9 @@ export class ZoneMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getzoneList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getzoneList() {
     this.master.getzones().subscribe(res=> {
       this.zonesData=res.zones;

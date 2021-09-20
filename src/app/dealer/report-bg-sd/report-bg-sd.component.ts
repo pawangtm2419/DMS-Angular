@@ -19,8 +19,11 @@ export class ReportBgSdComponent implements OnInit {
   ngOnInit(): void {
     this.getadvReportList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getadvReportList(): void {
-    this.dealer.getBdSdMonitor().subscribe(res => {
+    this.dealer.getBdSdMonitor().subscribe((res: any) => {
       this.bgSdData = res.data;
       if (this.bgSdData.length > 0) {
         this.isExcelDownload = true;

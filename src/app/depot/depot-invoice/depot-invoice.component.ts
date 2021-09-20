@@ -30,6 +30,9 @@ export class DepotInvoiceComponent implements OnInit {
   ngOnInit(): void {
     this.getdepotInvoiceList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getdepotInvoiceList() {
     const data = {
       type: 'ALL',
@@ -37,7 +40,7 @@ export class DepotInvoiceComponent implements OnInit {
       toDate: this.toDate + 'T00:00:00.000Z',
       useType: 'ALL'
     };
-    this.depot.depotInvoices(data).subscribe(res => {
+    this.depot.depotInvoices(data).subscribe((res: any) => {
       this.invoiceData = res.data;
       if (this.invoiceData.length > 0) {
         this.isExcelDownload = true;

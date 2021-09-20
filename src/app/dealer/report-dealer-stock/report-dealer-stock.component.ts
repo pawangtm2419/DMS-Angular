@@ -20,6 +20,9 @@ export class ReportDealerStockComponent implements OnInit {
   ngOnInit(): void {
     this.getstockList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getstockList() {
     let data = {"type":"DEALERSTOCK","useType":"ALL"};
     this.dealer.getStocks(data).subscribe(res=> {

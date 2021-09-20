@@ -41,6 +41,9 @@ export class AtsInsuranceComponent implements OnInit {
   ngOnInit(): void {
     this.getZoneList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getZoneList(): void {
     this.service.getZones().subscribe(data => {
       if(data.status === 'true') {
@@ -83,7 +86,7 @@ export class AtsInsuranceComponent implements OnInit {
       this.data['fromDate'] = atsFilter.fromDate+"T00:00:00.000Z";
       this.data['toDate'] = atsFilter.toDate+"T00:00:00.000Z";
     }
-    this.service.getvehInsurance(this.data).subscribe(res => {
+    this.service.getvehInsurance(this.data).subscribe((res: any) => {
       this.InsuranceData = res.data;
       if (this.InsuranceData.length > 0) {
         this.isInsuranceData = true;

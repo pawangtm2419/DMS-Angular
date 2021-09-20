@@ -28,6 +28,9 @@ export class ViewdDepotInvoiceComponent implements OnInit {
       }
     });
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
 
   depotByUser() {
     this.depot.getDepotByUser(this.userData.id).subscribe((data: any) => {

@@ -20,9 +20,12 @@ export class CapitalizedStockComponent implements OnInit {
   ngOnInit(): void {
     this.capitalizeStockData();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   capitalizeStockData(): void {
     const stock = {};
-    this.service.cStock(stock).subscribe(res => {
+    this.service.cStock(stock).subscribe((res: any) => {
       this.cPlantStock = res.data;
       if (this.cPlantStock.length > 0) {
         this.isExcelDownload = true;
@@ -46,7 +49,7 @@ export class CapitalizedStockComponent implements OnInit {
       chassisNo: cStock.chassisNo,
       createdBy: JSON.parse(this.localStrg).data.empID,
     }
-    this.service.moveToPlant(data).subscribe(res => {
+    this.service.moveToPlant(data).subscribe((res: any) => {
       if (res.status) {
         this.toaster.showSuccess('Success', 'Moved in Plant Stock.');
         this.capitalizeStockData();

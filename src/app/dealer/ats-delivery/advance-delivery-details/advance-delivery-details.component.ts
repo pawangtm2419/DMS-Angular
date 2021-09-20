@@ -61,10 +61,13 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
     this.marginCollectedDate = this.deliveryDate;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.vehicleData();
     this.getTransaction();
     this.getBankCategoryData();
+  }
+  refresh(): void {
+    this.ngOnInit();
   }
   select(): void {
     if(this.customerCode) {
@@ -89,7 +92,7 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
     }
   }
   bankListData(): void {
-    this.dealer.getFinancialInstitutionsList(this.bankCategorySelected).subscribe(res => {
+    this.dealer.getFinancialInstitutionsList(this.bankCategorySelected).subscribe((res: any) => {
       if(res.status) {
         this.bankDataList = res.data;
       }
@@ -97,7 +100,7 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
   }
   vehicleData(): void {
     const data = { chassisNo: this.params.id };
-    this.service.getVehicleDetails(data).subscribe(res => {
+    this.service.getVehicleDetails(data).subscribe((res: any) => {
       if(res.status){
         this.vehicleDetails = res.data;
         this.customerDataByDealer();
@@ -117,7 +120,7 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
 
   getTransaction(): void {
     const data = {transactionType: "delivery"};
-    this.dealer.getTransactionClose(data).subscribe(res => {
+    this.dealer.getTransactionClose(data).subscribe((res: any) => {
       if(res.status){
         this.transactionList = res.msg;
       }
@@ -125,7 +128,7 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
   }
 
   getBankCategoryData(): void {
-    this.service.getBankCategories().subscribe(res => {
+    this.service.getBankCategories().subscribe((res: any) => {
       if(res.status){
         this.bankCategoryList = res.data;
       }
@@ -134,7 +137,7 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
 
   customerDataByDealer(): void {
     const data = this.vehicleDetails[0].dealer.code;
-    this.dealer.getCustomerByDealer(data).subscribe(res => {
+    this.dealer.getCustomerByDealer(data).subscribe((res: any) => {
       if(res.status){
         this.customerList = res.data;
       }

@@ -24,6 +24,9 @@ export class DepotMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getDepotData();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getDepotData() {
     let data = {useType: "ALL"};
     this.master.depotMaster(data).subscribe(res=> {

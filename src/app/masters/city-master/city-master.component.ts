@@ -21,6 +21,9 @@ export class CityMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getCityList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getCityList() {
     this.master.getCity().subscribe(res=> {
       this.citiesData = res.data;

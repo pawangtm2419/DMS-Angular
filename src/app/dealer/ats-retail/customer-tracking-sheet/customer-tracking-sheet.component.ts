@@ -52,10 +52,13 @@ export class CustomerTrackingSheetComponent implements OnInit {
     this.vehicleData();
     this.getTransaction();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
 
   vehicleData(): void {
     const data = { chassisNo: this.params.id };
-    this.service.getVehicleDetails(data).subscribe(res => {
+    this.service.getVehicleDetails(data).subscribe((res: any) => {
       if(res.status === "true"){
         this.vehicleDetails = res.data;
         /* if (this.vehicleDetails.isRetailed === false) {
@@ -86,7 +89,7 @@ export class CustomerTrackingSheetComponent implements OnInit {
   }
 
   getBankCategoryData(): void {
-    this.service.getBankCategories().subscribe(res => {
+    this.service.getBankCategories().subscribe((res: any) => {
       if(res.status === "true"){
         this.bankCategoryList = res.data;
       }
@@ -95,7 +98,7 @@ export class CustomerTrackingSheetComponent implements OnInit {
 
   getTransaction(): void {
     const data = {transactionType: "delivery"};
-    this.dealer.getTransactionClose(data).subscribe(res => {
+    this.dealer.getTransactionClose(data).subscribe((res: any) => {
       if(res.status){
         this.transactionList = res.msg;
       }
@@ -103,7 +106,7 @@ export class CustomerTrackingSheetComponent implements OnInit {
   }
 
   getBankList(): void {
-    this.dealer.getFinancialInstitutionsList(this.selectPaymentInstitution).subscribe(res => {
+    this.dealer.getFinancialInstitutionsList(this.selectPaymentInstitution).subscribe((res: any) => {
       if(res.status) {
         this.bankDataList = res.data;
       }

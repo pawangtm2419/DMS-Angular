@@ -27,8 +27,11 @@ export class DepotStockComponent implements OnInit {
     this.getCityList();
     this.getModelList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getdepotStockList() {
-    this.service.getVehicleDetails(this.data).subscribe(res => {
+    this.service.getVehicleDetails(this.data).subscribe((res: any) => {
       this.depotData = res.data;
       if (this.depotData.length > 0) {
         this.isExcelDownload = true;
@@ -52,7 +55,7 @@ export class DepotStockComponent implements OnInit {
     if (this.selectedModelName && this.selectedDepotName) {
       this.data = {depot: this.selectedDepotName,  model: this.selectedModelName};
     }
-    this.depot.getFilteredDepotStock(this.data).subscribe(res => {
+    this.depot.getFilteredDepotStock(this.data).subscribe((res: any) => {
       this.depotData = res.data;
       if (this.depotData.length > 0) {
         this.limits = [{ key: 50, value: 50 }, { key: 100, value: 100 }, { key: 250, value: 250 }, { key: 500, value: 500 }, { key: 'ALL', value: this.depotData.length }];
@@ -65,7 +68,7 @@ export class DepotStockComponent implements OnInit {
     });
   }
   getCityList() {
-    this.service.viewDepot().subscribe(res => {
+    this.service.viewDepot().subscribe((res: any) => {
       this.depotList = res.data;
       if (this.depotList.length > 0) {
       } else {
@@ -77,7 +80,7 @@ export class DepotStockComponent implements OnInit {
   }
 
   getModelList() {
-    this.service.getModel().subscribe(res => {
+    this.service.getModel().subscribe((res: any) => {
       this.modelList = res.data;
       if (this.modelList.length > 0) {
       } else {

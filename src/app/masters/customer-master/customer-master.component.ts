@@ -25,6 +25,9 @@ export class CustomerMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getCustomerList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getCustomerList(): void{
     const data = {useType: 'ALL'};
     this.master.getCustomers(data).subscribe((res: any) => {

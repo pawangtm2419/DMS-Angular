@@ -14,6 +14,9 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.profile = [JSON.parse(localStorage.getItem("user") || '{}').data];
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
 
   editProfile(): void {
     this.isEditProfile = true;

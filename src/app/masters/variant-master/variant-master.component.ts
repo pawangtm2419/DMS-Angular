@@ -22,6 +22,9 @@ export class VariantMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getVariantList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getVariantList() {
     this.master.getVariant().subscribe((res: any)=> {
       this.variantData=res.data;

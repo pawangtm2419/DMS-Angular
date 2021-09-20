@@ -23,6 +23,9 @@ export class RoleMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getRolessList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getRolessList() {
     this.master.getRoles().subscribe(res=> {
       this.rolesData=res.data;

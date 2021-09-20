@@ -27,9 +27,12 @@ export class PlantStockComponent implements OnInit {
   ngOnInit(): void {
     this.plantStockData();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   plantStockData() {
     let stock = {type: 'PLANTSTOCK'};
-    this.service.plantStock(stock).subscribe(res => {
+    this.service.plantStock(stock).subscribe((res: any) => {
       this.plantStock = res.data;
       if (this.plantStock.length > 0) {
         this.isExcelDownload = true;
@@ -53,7 +56,7 @@ export class PlantStockComponent implements OnInit {
       createdBy: JSON.parse(this.localStrg).data.empID,
       market: "DEALER"
     }
-    this.service.moveToCapital(data).subscribe(res => {
+    this.service.moveToCapital(data).subscribe((res: any) => {
       if (res.status) {
         this.toaster.showSuccess('Success', 'Moved in Capitalize Stock.');
         this.plantStockData();

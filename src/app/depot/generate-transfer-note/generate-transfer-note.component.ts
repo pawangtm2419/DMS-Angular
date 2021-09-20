@@ -54,6 +54,9 @@ export class GenerateTransferNoteComponent implements OnInit {
   ngOnInit(): void {
     this.checkInvoiceNo();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   showDollar(): void {
     this.isDollerCheckBox = !this.isDollerCheckBox;
   }
@@ -76,7 +79,7 @@ export class GenerateTransferNoteComponent implements OnInit {
     this.selectedDealerData = this.selectedDealerData[0];
   }
   getCityList() {
-    this.service.viewDepot().subscribe(res => {
+    this.service.viewDepot().subscribe((res: any) => {
       this.depotList = res.data;
       if (this.depotList.length > 0) {
       } else {
@@ -133,7 +136,7 @@ export class GenerateTransferNoteComponent implements OnInit {
   }
 
   getDriverList() {
-    this.service.getDriver().subscribe(res => {
+    this.service.getDriver().subscribe((res: any) => {
       this.driverNameList = res.data;
     }, (error) => {
       this.toaster.showError('Error', error);
@@ -141,7 +144,7 @@ export class GenerateTransferNoteComponent implements OnInit {
   }
 
   getTransportList() {
-    this.service.getTransport().subscribe(res => {
+    this.service.getTransport().subscribe((res: any) => {
       this.transportList = res.data;
     }, (error) => {
       this.toaster.showError('Error', error);

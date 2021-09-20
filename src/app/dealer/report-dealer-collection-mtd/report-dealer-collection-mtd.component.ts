@@ -24,9 +24,12 @@ export class ReportDealerCollectionMTDComponent implements OnInit {
   ngOnInit(): void {
     this.getCollectionList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getCollectionList(): void {
     const data = {year: this.year, month: this.month, useType: 'ALL'};
-    this.dealer.getCollectionMtd(data).subscribe(res => {
+    this.dealer.getCollectionMtd(data).subscribe((res: any) => {
       this.collectionMtds = res.data;
       this.limits = [{ key: 50, value: 50 }, { key: 100, value: 100 }, { key: 250, value: 250 }, { key: 500, value: 500 }, { key: 'ALL', value: this.collectionMtds.length }];
       if (this.collectionMtds.length > 0) {

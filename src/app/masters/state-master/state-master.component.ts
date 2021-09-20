@@ -21,6 +21,9 @@ export class StateMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getStateList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getStateList() {
     this.master.getState().subscribe(res=> {
       this.stateData=res.data;

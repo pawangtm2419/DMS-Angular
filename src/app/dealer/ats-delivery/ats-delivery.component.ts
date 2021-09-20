@@ -41,6 +41,9 @@ export class AtsDeliveryComponent implements OnInit {
   ngOnInit(): void {
     this.getZoneList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
 
   getZoneList(): void {
     this.service.getZones().subscribe(data => {

@@ -41,6 +41,9 @@ export class AtsRetailComponent implements OnInit {
   ngOnInit(): void {
     this.getZoneList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getZoneList(): void {
     this.service.getZones().subscribe(data => {
       if(data.status === 'true') {
@@ -83,7 +86,7 @@ export class AtsRetailComponent implements OnInit {
       this.data['fromDate'] = atsFilter.fromDate+"T00:00:00.000Z";
       this.data['toDate'] = atsFilter.toDate+"T00:00:00.000Z";
     }
-    this.service.getVehicleDetails(this.data).subscribe(res => {
+    this.service.getVehicleDetails(this.data).subscribe((res: any) => {
       this.retailData = res.data;
       if (this.retailData.length > 0) {
         this.isRetailData = true;

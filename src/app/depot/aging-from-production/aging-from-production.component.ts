@@ -28,6 +28,9 @@ export class AgingFromProductionComponent implements OnInit {
     this.getVariantList();
     this.getModelList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getagingProdList(): void {
     if(this.selectedVariantName) {
       const data = {
@@ -88,7 +91,7 @@ export class AgingFromProductionComponent implements OnInit {
     });
   }
   getVariantList() {
-    this.service.getVariant().subscribe(res => {
+    this.service.getVariant().subscribe((res: any) => {
       this.variantList = res.data;
       if (this.variantList.length > 0) {
       } else {
@@ -99,7 +102,7 @@ export class AgingFromProductionComponent implements OnInit {
     });
   }
   getModelList() {
-    this.service.getModel().subscribe(res => {
+    this.service.getModel().subscribe((res: any) => {
       this.modelList = res.data;
       if (this.modelList.length > 0) {
       } else {

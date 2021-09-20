@@ -22,6 +22,9 @@ export class UserMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getUserList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
 
   getUserList() {
     this.master.getusers().subscribe((res) => {

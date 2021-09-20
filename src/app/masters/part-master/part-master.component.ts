@@ -22,6 +22,9 @@ export class PartMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getPartList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
 
   getPartList() {
     this.master.getParts().subscribe(res=> {

@@ -22,6 +22,9 @@ export class OnPowerMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getOnPoweList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getOnPoweList() {
     this.master.getOnPower().subscribe(res=> {
       this.onPOwerData=res.data;

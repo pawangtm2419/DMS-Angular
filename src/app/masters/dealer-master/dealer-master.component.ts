@@ -24,6 +24,9 @@ export class DealerMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getDealersList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getDealersList() {
     let data = {useType: "ALL"};
     this.master.getDealers(data).subscribe((res: any)=> {

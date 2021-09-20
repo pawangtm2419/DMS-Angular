@@ -30,6 +30,9 @@ export class InvoiceComponent implements OnInit {
   ngOnInit(): void {
     this.getinvoiceData();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
 
   getinvoiceData(): void{
     const data = {
@@ -40,7 +43,7 @@ export class InvoiceComponent implements OnInit {
       useType: 'ALL'
     };
     setTimeout(() => {
-      this.dealer.invoiceReport(data).subscribe(res => {
+      this.dealer.invoiceReport(data).subscribe((res: any) => {
         this.invoiceData = res.data;
         this.limits.splice(4);
         this.limits.push({ key: 'ALL', value: this.invoiceData.length });

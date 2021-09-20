@@ -36,6 +36,9 @@ export class ReportAdvanceComponent implements OnInit {
     this.getadvReportList();
     this.getZoneList();
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
   getadvReportList(): void {
     if (this.selectedZone) {
       this.data.zone = this.selectedZone;
@@ -43,7 +46,7 @@ export class ReportAdvanceComponent implements OnInit {
     if (this.selectedCityName) {
       this.data.state = this.selectedCityName;
     }
-    this.dealer.getAdvReports(this.data).subscribe(res => {
+    this.dealer.getAdvReports(this.data).subscribe((res: any) => {
       this.advanceData = res.data;
       if (this.advanceData.length > 0) {
         this.isExcelDownload = true;
@@ -61,7 +64,7 @@ export class ReportAdvanceComponent implements OnInit {
   }
 
   getZoneList(): void {
-    this.service.getZones().subscribe(res => {
+    this.service.getZones().subscribe((res: any) => {
       this.zoleList = res.data;
       this.getCityList();
     }, (error) => {
@@ -70,7 +73,7 @@ export class ReportAdvanceComponent implements OnInit {
   }
 
   getCityList(): void {
-    this.service.getStatesByZone(this.selectedZone).subscribe(res => {
+    this.service.getStatesByZone(this.selectedZone).subscribe((res: any) => {
       this.cityList = res.data;
     }, (error) => {
       this.toaster.showInfo('Data', error);

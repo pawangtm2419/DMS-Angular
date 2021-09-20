@@ -21,6 +21,9 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['home']);
     }
   }
+  refresh(): void {
+    this.ngOnInit();
+  }
 
   getUserInfo(logIn: NgForm): void{
     /* const loginCount = this.cookie.get('LogInCount');

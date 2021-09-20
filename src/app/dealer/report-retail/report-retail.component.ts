@@ -36,13 +36,9 @@ export class ReportRetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getZoneList();
-    const data = {
-      fromDate: this.fromDate +"T00:00:00.000Z",
-      toDate: this.toDate +"T00:00:00.000Z",
-      isRetailed: false,
-      useType: "ALL"
-    };
-    //this.getretailList(data);
+  }
+  refresh(): void {
+    this.ngOnInit();
   }
 
   getZoneList(): void {
