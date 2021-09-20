@@ -28,6 +28,7 @@ export class VariantMasterComponent implements OnInit {
   getVariantList() {
     this.master.getVariant().subscribe((res: any)=> {
       this.variantData=res.data;
+      this.variantStatus = false;
       this.showInActive();
       if(this.variantData.length > 0) {
         this.isExcelDownload = true;
@@ -36,7 +37,7 @@ export class VariantMasterComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Data', error);;
     });
   }

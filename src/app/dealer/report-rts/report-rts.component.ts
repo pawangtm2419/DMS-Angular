@@ -25,7 +25,7 @@ export class ReportRtsComponent implements OnInit {
   }
   getrtsList() {
     let data = {"isRetailed":false,"useType":"ALL"};
-    this.dealer.getRtsReports(data).subscribe(res=> {
+    this.dealer.getRtsReports(data).subscribe((res: any) => {
       this.rtsReports=res.data;
       this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.rtsReports.length }];
       if(this.rtsReports.length > 0) {
@@ -34,7 +34,7 @@ export class ReportRtsComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       // this.toaster.showError('Data', error);;
       this.toaster.showInfo("Data", error);
     });

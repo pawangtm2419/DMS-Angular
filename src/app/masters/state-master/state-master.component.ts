@@ -25,8 +25,9 @@ export class StateMasterComponent implements OnInit {
     this.ngOnInit();
   }
   getStateList() {
-    this.master.getState().subscribe(res=> {
+    this.master.getState().subscribe((res: any) => {
       this.stateData=res.data;
+      this.stateStatus = 'Active';
       this.showInActive();
       if(this.stateData.length > 0) {
         this.isExcelDownload = true;
@@ -35,7 +36,7 @@ export class StateMasterComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Data', error);;
     });
   }

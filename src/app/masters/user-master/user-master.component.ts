@@ -29,6 +29,7 @@ export class UserMasterComponent implements OnInit {
   getUserList() {
     this.master.getusers().subscribe((res) => {
       this.usersData=res.data;
+      this.userStatus ='Active';
       this.showInActive();
       if(this.usersData.length > 0) {
         this.isExcelDownload = true;
@@ -37,7 +38,7 @@ export class UserMasterComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Data', error);;
     });
   }

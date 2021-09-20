@@ -34,7 +34,7 @@ export class ReportDeliveryComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       // this.toaster.showError('Data', error);;
       this.toaster.showInfo("Data", error);
     });

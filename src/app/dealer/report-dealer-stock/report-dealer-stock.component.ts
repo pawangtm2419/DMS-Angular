@@ -25,7 +25,7 @@ export class ReportDealerStockComponent implements OnInit {
   }
   getstockList() {
     let data = {"type":"DEALERSTOCK","useType":"ALL"};
-    this.dealer.getStocks(data).subscribe(res=> {
+    this.dealer.getStocks(data).subscribe((res: any) => {
       this.stocksData=res.data;
       if(this.stocksData.length > 0) {
         this.isExcelDownload = true;
@@ -34,7 +34,7 @@ export class ReportDealerStockComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       // this.toaster.showError('Data', error);;
       this.toaster.showInfo("Data", error);
     });

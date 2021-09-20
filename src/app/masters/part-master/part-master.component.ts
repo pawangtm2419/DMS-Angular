@@ -27,8 +27,9 @@ export class PartMasterComponent implements OnInit {
   }
 
   getPartList() {
-    this.master.getParts().subscribe(res=> {
+    this.master.getParts().subscribe((res: any) => {
       this.partsData=res.data;
+      this.partStatus = false;
       this.showInActive();
       if(this.partsData.length > 0) {
         this.isExcelDownload = true;
@@ -37,7 +38,7 @@ export class PartMasterComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Data', error);;
     });
   }

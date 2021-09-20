@@ -65,7 +65,7 @@ export class AgingFromProductionComponent implements OnInit {
       useType:"ALL"
     }
 
-    this.depotService.agingFromProd(data).subscribe(res=> {
+    this.depotService.agingFromProd(data).subscribe((res: any) => {
       this.ageProdData=res.data;
       this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.ageProdData.length }];
       if(this.ageProdData.length > 0) {
@@ -85,7 +85,7 @@ export class AgingFromProductionComponent implements OnInit {
         this.toaster.showInfo("Data", "No record found.");
       }
 
-    }, (error) => {
+    }, (error: any) => {
       // this.toaster.showError('Data', error);;
       this.toaster.showInfo("Data", error);
     });
@@ -97,7 +97,7 @@ export class AgingFromProductionComponent implements OnInit {
       } else {
         this.toaster.showInfo('Data', 'No record found.');
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Error', error);
     });
   }
@@ -108,7 +108,7 @@ export class AgingFromProductionComponent implements OnInit {
       } else {
         this.toaster.showInfo('Data', 'No record found.');
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Error', error);
     });
   }

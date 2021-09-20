@@ -25,9 +25,8 @@ export class ZoneMasterComponent implements OnInit {
     this.ngOnInit();
   }
   getzoneList() {
-    this.master.getzones().subscribe(res=> {
+    this.master.getzones().subscribe((res: any) => {
       this.zonesData=res.zones;
-      this.showInActive();
       if(this.zonesData.length > 0) {
         this.isExcelDownload = true;
         this.zoneStatus = true;
@@ -37,7 +36,7 @@ export class ZoneMasterComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Data', error);;
     });
   }

@@ -40,7 +40,7 @@ export class DepotStockComponent implements OnInit {
       } else {
         this.toaster.showInfo('Data', 'No record found.');
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showInfo('Data', error);
     });
   }
@@ -63,7 +63,7 @@ export class DepotStockComponent implements OnInit {
       } else {
         this.toaster.showInfo('Data', 'No record found.');
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showInfo('Data', error);
     });
   }
@@ -74,7 +74,7 @@ export class DepotStockComponent implements OnInit {
       } else {
         this.toaster.showInfo('Data', 'No record found.');
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Error', error);
     });
   }
@@ -86,7 +86,7 @@ export class DepotStockComponent implements OnInit {
       } else {
         this.toaster.showInfo('Data', 'No record found.');
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Error', error);
     });
   }

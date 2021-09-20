@@ -32,6 +32,7 @@ export class DealerMasterComponent implements OnInit {
     this.master.getDealers(data).subscribe((res: any)=> {
       this.dealerData = res.msg;
       if(this.dealerData.length > 0) {
+        this.dealerStatus = 'Active';
         this.showInActive();
         this.isExcelDownload = true;
         this.limits.push({ "key": "ALL", value: this.dealerData.length });
@@ -39,7 +40,7 @@ export class DealerMasterComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Data', error);;
     });
   }

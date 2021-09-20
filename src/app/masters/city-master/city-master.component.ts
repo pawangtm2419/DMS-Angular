@@ -25,7 +25,7 @@ export class CityMasterComponent implements OnInit {
     this.ngOnInit();
   }
   getCityList() {
-    this.master.getCity().subscribe(res=> {
+    this.master.getCity().subscribe((res: any) => {
       this.citiesData = res.data;
       this.cityStatus = true;
       this.showInActive();
@@ -36,7 +36,7 @@ export class CityMasterComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError("Error", error);
     });
   }

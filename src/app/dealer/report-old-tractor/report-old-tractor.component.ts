@@ -24,7 +24,7 @@ export class ReportOldTractorComponent implements OnInit {
   }
   getadvReportList() {
     let data = {"startDate":"01-01-2018","endDate":"07-20-2021","useType":"ALL"};
-    this.dealer.getOldTractReports(data).subscribe(res=> {
+    this.dealer.getOldTractReports(data).subscribe((res: any) => {
       this.OldTractData=res.result;
       if(this.OldTractData.length > 0) {
         this.isExcelDownload = true;
@@ -33,7 +33,7 @@ export class ReportOldTractorComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showInfo("Data", error);
     });
   }

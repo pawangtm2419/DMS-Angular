@@ -34,7 +34,7 @@ export class CapitalizedStockComponent implements OnInit {
       } else {
         this.toaster.showInfo('Data', 'No record found.');
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Error', error);
     });
   }
@@ -54,7 +54,7 @@ export class CapitalizedStockComponent implements OnInit {
         this.toaster.showSuccess('Success', 'Moved in Plant Stock.');
         this.capitalizeStockData();
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Error', error);
     });
   }

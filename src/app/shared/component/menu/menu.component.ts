@@ -32,7 +32,7 @@ export class MenuComponent implements OnInit {
       this.roles = res.data[0];
       this.isMenuLoad = true;
     },
-    (error) => {
+    (error: any) => {
       this.isMenuLoad = false;
       this.service.logout();
     });

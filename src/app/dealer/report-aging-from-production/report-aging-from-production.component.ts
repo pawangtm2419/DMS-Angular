@@ -25,7 +25,7 @@ export class ReportAgingFromProductionComponent implements OnInit {
   }
   getAgingProdList() {
     let data = {"locationType":"DEALER","type":"production","useType":"ALL"};
-    this.dealer.getAgingProd(data).subscribe(res=> {
+    this.dealer.getAgingProd(data).subscribe((res: any) => {
       this.ageProdData=res.data;
       this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.ageProdData.length }];
       if(this.ageProdData.length > 0) {
@@ -46,7 +46,7 @@ export class ReportAgingFromProductionComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       // this.toaster.showError('Data', error);;
       this.toaster.showInfo("Data", error);
     });

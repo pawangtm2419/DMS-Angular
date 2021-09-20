@@ -99,7 +99,7 @@ export class ReportRetailComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showInfo("Data", error);
     });
   }

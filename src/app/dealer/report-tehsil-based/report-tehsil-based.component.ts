@@ -26,7 +26,7 @@ export class ReportTehsilBasedComponent implements OnInit {
   }
   gettehsilReportList() {
     let data = {"year": this.year,"month": this.month,"useType":"ALL"};
-    this.dealer.getTehsilReports(data).subscribe(res=> {
+    this.dealer.getTehsilReports(data).subscribe((res: any) => {
       this.tehsilData=res.result;
       if(this.tehsilData.length > 0) {
         this.isExcelDownload = true;
@@ -35,7 +35,7 @@ export class ReportTehsilBasedComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showInfo("Data", error);
     });
   }

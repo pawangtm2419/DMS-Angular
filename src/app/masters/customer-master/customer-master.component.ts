@@ -32,6 +32,7 @@ export class CustomerMasterComponent implements OnInit {
     const data = {useType: 'ALL'};
     this.master.getCustomers(data).subscribe((res: any) => {
       this.customersData = res.data;
+      this.custStatus = false;
       this.showInActive();
       if(res.status === 'true') {
         this.limits.push({ key: 'ALL', value: this.customersData.length });
@@ -42,7 +43,7 @@ export class CustomerMasterComponent implements OnInit {
           this.toaster.showInfo('Data', 'No record found.');
         }
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Error', error);
     });
   }

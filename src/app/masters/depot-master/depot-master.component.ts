@@ -29,9 +29,10 @@ export class DepotMasterComponent implements OnInit {
   }
   getDepotData() {
     let data = {useType: "ALL"};
-    this.master.depotMaster(data).subscribe(res=> {
+    this.master.depotMaster(data).subscribe((res: any) => {
       this.depotData=res.data;
       if(this.depotData.length > 0) {
+        this.depotStatus = false;
         this.showInActive();
         this.isExcelDownload = true;
         this.limits.push({ "key": "ALL", value: this.depotData.length });
@@ -39,7 +40,7 @@ export class DepotMasterComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       // this.toaster.showError('Data', error);;
       this.toaster.showInfo("Data", error);
     });
@@ -70,7 +71,7 @@ export class DepotMasterComponent implements OnInit {
           this.getDepotData();
           this.toaster.showSuccess("Data", res.msg);
         }
-      }, (error) => {
+      }, (error: any) => {
         this.toaster.showError('Data', error);;
       });
     } else {

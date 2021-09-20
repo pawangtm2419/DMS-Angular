@@ -26,8 +26,9 @@ export class OnPowerMasterComponent implements OnInit {
     this.ngOnInit();
   }
   getOnPoweList() {
-    this.master.getOnPower().subscribe(res=> {
+    this.master.getOnPower().subscribe((res: any) => {
       this.onPOwerData=res.data;
+      this.onPowerStatus = false;
       this.showInActive();
       if(this.onPOwerData.length > 0) {
         this.isExcelDownload = true;
@@ -36,7 +37,7 @@ export class OnPowerMasterComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError("Error", error);
     });
   }

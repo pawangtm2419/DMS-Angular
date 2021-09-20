@@ -27,8 +27,9 @@ export class RoleMasterComponent implements OnInit {
     this.ngOnInit();
   }
   getRolessList() {
-    this.master.getRoles().subscribe(res=> {
+    this.master.getRoles().subscribe((res: any) => {
       this.rolesData=res.data;
+      this.roleStatus = false;
       this.showInActive();
       if(this.rolesData.length > 0) {
         this.isExcelDownload = true;
@@ -37,7 +38,7 @@ export class RoleMasterComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Data', error);;
     });
   }

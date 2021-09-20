@@ -57,7 +57,7 @@ export class AgingFromRecievedComponent implements OnInit {
       }
     }
 
-    this.depotService.agingFromRec(this.data).subscribe(res=> {
+    this.depotService.agingFromRec(this.data).subscribe((res: any) => {
       this.ageRecData=res.data;
       this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.ageRecData.length }];
       if(this.ageRecData.length > 0) {
@@ -76,7 +76,7 @@ export class AgingFromRecievedComponent implements OnInit {
         this.total ={ count30: 0, count3060: 0, count6090: 0, count90120: 0, count120180: 0, count180: 0, count: 0 };
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       // this.toaster.showError('Data', error);;
       this.toaster.showInfo("Data", error);
     });
@@ -88,7 +88,7 @@ export class AgingFromRecievedComponent implements OnInit {
       } else {
         this.toaster.showInfo('Data', 'No record found.');
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Error', error);
     });
   }
@@ -100,7 +100,7 @@ export class AgingFromRecievedComponent implements OnInit {
       } else {
         this.toaster.showInfo('Data', 'No record found.');
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Error', error);
     });
   }

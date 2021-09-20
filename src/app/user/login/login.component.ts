@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
             this.cookie.set('LogInCount', JSON.stringify(this.logIntryCount));
             this.toaster.showError('Error', 'Please enter valid ID and password.');
           }
-        }, (error) => {
+        }, (error: any) => {
           this.toaster.showError('Error', error);
         });
       }

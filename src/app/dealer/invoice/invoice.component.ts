@@ -53,7 +53,7 @@ export class InvoiceComponent implements OnInit {
         } else {
           this.toaster.showInfo('Data', 'No record found.');
         }
-      }, (error) => {
+      }, (error: any) => {
         this.toaster.showError('Error', error);
       });
     }, 1000);

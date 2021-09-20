@@ -24,7 +24,7 @@ export class ReportDealerStockVariantWiseComponent implements OnInit {
   }
   getstockVarWiseList() {
     let data = {"type":"DEALERSTOCK","useType":"ALL"};
-    this.dealer.getStocksVarWise(data).subscribe(res=> {
+    this.dealer.getStocksVarWise(data).subscribe((res: any) => {
       this.stockVariants=res.data;
       this.limits.push({ "key": "ALL", "value": this.stockVariants.length });
       if(this.stockVariants.length > 0) {
@@ -33,7 +33,7 @@ export class ReportDealerStockVariantWiseComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showInfo("Data", error);
     });
   }

@@ -96,7 +96,7 @@ export class AtsDeliveryComponent implements OnInit {
       } else {
         this.toaster.showInfo('Data', 'No record found.');
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Data', error);
     });
     setTimeout(() => {

@@ -26,8 +26,9 @@ export class FinancialMasterComponent implements OnInit {
   }
 
   getFinancialInst() {
-    this.master.getFinancialInst().subscribe(res=> {
+    this.master.getFinancialInst().subscribe((res: any) => {
       this.financialInstsData=res.data;
+      this.financeStatus = false;
       this.showInActive();
       if(this.financialInstsData.length > 0) {
         this.isExcelDownload = true;
@@ -36,7 +37,7 @@ export class FinancialMasterComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Data', error);;
     });
   }

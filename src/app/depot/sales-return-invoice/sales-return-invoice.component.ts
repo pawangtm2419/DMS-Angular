@@ -24,7 +24,7 @@ export class SalesReturnInvoiceComponent implements OnInit {
   }
   getSalesInvoiceList() {
     let data = {"type":"ALL","fromDate":"2021-01-01T00:00:00.000Z","toDate":"2021-07-27T00:00:00.000Z","useType":"ALL"};
-    this.dealer.salesRetInvoices(data).subscribe(res=> {
+    this.dealer.salesRetInvoices(data).subscribe((res: any) => {
       this.invoiceData=res.data;
       this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.invoiceData.length }];
       if(this.invoiceData.length > 0) {
@@ -33,7 +33,7 @@ export class SalesReturnInvoiceComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       // this.toaster.showError('Data', error);;
       this.toaster.showInfo("Data", error);
     });

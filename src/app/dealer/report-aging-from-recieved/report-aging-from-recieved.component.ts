@@ -25,7 +25,7 @@ export class ReportAgingFromRecievedComponent implements OnInit {
   }
   getAgingProdList() {
     let data = {"locationType":"DEALER","useType":"ALL"};
-    this.dealer.getAgingRec(data).subscribe(res=> {
+    this.dealer.getAgingRec(data).subscribe((res: any) => {
       this.ageRecData=res.data;
       this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.ageRecData.length }];
       if(this.ageRecData.length > 0) {
@@ -46,7 +46,7 @@ export class ReportAgingFromRecievedComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showInfo("Data", error);
     });
   }

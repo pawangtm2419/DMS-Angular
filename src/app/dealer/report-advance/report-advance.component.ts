@@ -55,7 +55,7 @@ export class ReportAdvanceComponent implements OnInit {
       } else {
         this.toaster.showInfo('Data', 'No record found.');
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showInfo('Data', error);
     });
   }
@@ -67,7 +67,7 @@ export class ReportAdvanceComponent implements OnInit {
     this.service.getZones().subscribe((res: any) => {
       this.zoleList = res.data;
       this.getCityList();
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showInfo('Data', error);
     });
   }
@@ -75,7 +75,7 @@ export class ReportAdvanceComponent implements OnInit {
   getCityList(): void {
     this.service.getStatesByZone(this.selectedZone).subscribe((res: any) => {
       this.cityList = res.data;
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showInfo('Data', error);
     });
   }

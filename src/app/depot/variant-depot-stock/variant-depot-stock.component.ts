@@ -24,7 +24,7 @@ export class VariantDepotStockComponent implements OnInit {
   }
   getstockVarList() {
     let data = {"type":"DEPOTSTOCK","useType":"ALL"};
-    this.dealer.depotVariant(data).subscribe(res=> {
+    this.dealer.depotVariant(data).subscribe((res: any) => {
       this.stockVariants=res.data;
       this.limits = [{ "key": 50, "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }, { key: "ALL", value: this.stockVariants.length }];
       if(this.stockVariants.length > 0) {
@@ -33,7 +33,7 @@ export class VariantDepotStockComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       // this.toaster.showError('Data', error);;
       this.toaster.showInfo("Data", error);
     });

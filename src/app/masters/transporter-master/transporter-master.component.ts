@@ -41,7 +41,7 @@ export class TransporterMasterComponent implements OnInit {
       } else {
         this.toaster.showError("Server Error", res.error.message);
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Data', error);;
     });
   }

@@ -85,7 +85,7 @@ export class GenerateTransferNoteComponent implements OnInit {
       } else {
         this.toaster.showInfo('Data', 'No record found.');
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Error', error);
     });
   }
@@ -115,7 +115,7 @@ export class GenerateTransferNoteComponent implements OnInit {
         } else {
           this.toaster.showInfo('Data', 'No record found.');
         }
-      }, (error) => {
+      }, (error: any) => {
         this.toaster.showError('Error', error);
       });
     }
@@ -138,7 +138,7 @@ export class GenerateTransferNoteComponent implements OnInit {
   getDriverList() {
     this.service.getDriver().subscribe((res: any) => {
       this.driverNameList = res.data;
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Error', error);
     });
   }
@@ -146,7 +146,7 @@ export class GenerateTransferNoteComponent implements OnInit {
   getTransportList() {
     this.service.getTransport().subscribe((res: any) => {
       this.transportList = res.data;
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showError('Error', error);
     });
   }

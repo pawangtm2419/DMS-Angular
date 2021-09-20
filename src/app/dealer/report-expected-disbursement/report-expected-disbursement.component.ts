@@ -24,7 +24,7 @@ export class ReportExpectedDisbursementComponent implements OnInit {
   }
   getExpDisbList() {
     let data = {};
-    this.dealer.getExpDisbReport(data).subscribe(res=> {
+    this.dealer.getExpDisbReport(data).subscribe((res: any) => {
       this.expDisData=res.result;
       if(this.expDisData.length > 0) {
         this.isExcelDownload = true;
@@ -33,7 +33,7 @@ export class ReportExpectedDisbursementComponent implements OnInit {
       } else {
         this.toaster.showInfo("Data", "No record found.");
       }
-    }, (error) => {
+    }, (error: any) => {
       this.toaster.showInfo("Data", error);
     });
   }
