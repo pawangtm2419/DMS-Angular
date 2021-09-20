@@ -105,7 +105,7 @@ export class GenerateTransferNoteComponent implements OnInit {
       data.locationType = 'PLANT';
     }
     if (data.locationCode && data.locationType) {
-      this.depot.viewVehicle(data).subscribe((res) => {
+      this.depot.viewVehicle(data).subscribe((res: any) => {
         this.vehicleList = res.data;
         this.selectedChassisNo = [];
         if (this.vehicleList.length > 0) {

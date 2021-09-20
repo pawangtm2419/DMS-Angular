@@ -45,7 +45,7 @@ export class AtsRetailComponent implements OnInit {
     this.ngOnInit();
   }
   getZoneList(): void {
-    this.service.getZones().subscribe(data => {
+    this.service.getZones().subscribe((data: any) => {
       if(data.status === 'true') {
         this.zoneList = data.zones;
       }
@@ -54,7 +54,7 @@ export class AtsRetailComponent implements OnInit {
     );
   }
   getStateList(data: any): void {
-    this.service.getStatesByZone(data).subscribe(data => {
+    this.service.getStatesByZone(data).subscribe((data: any) => {
       if(data.status === 'true') {
         this.stateListData = data.states;
       }
@@ -63,7 +63,7 @@ export class AtsRetailComponent implements OnInit {
     );
   }
   getDealers(data: any): void {
-    this.service.getDealerList(data).subscribe(data => {
+    this.service.getDealerList(data).subscribe((data: any) => {
       if(data.status === 'true') {
         this.dealerListData = data.msg;
       }

@@ -46,7 +46,7 @@ export class AtsDeliveryComponent implements OnInit {
   }
 
   getZoneList(): void {
-    this.service.getZones().subscribe(data => {
+    this.service.getZones().subscribe((data: any) => {
       if(data.status) {
         this.zoneList = data.zones;
       }
@@ -55,7 +55,7 @@ export class AtsDeliveryComponent implements OnInit {
     );
   }
   getStateList(data: any): void {
-    this.service.getStatesByZone(data).subscribe(data => {
+    this.service.getStatesByZone(data).subscribe((data: any) => {
       if(data.status) {
         this.stateListData = data.states;
       }
@@ -64,7 +64,7 @@ export class AtsDeliveryComponent implements OnInit {
     );
   }
   getDealers(data: any): void {
-    this.service.getDealerList(data).subscribe(data => {
+    this.service.getDealerList(data).subscribe((data: any) => {
       if(data.status) {
         this.dealerListData = data.msg;
       }

@@ -24,7 +24,7 @@ export class ReportAtsComponent implements OnInit {
   }
   getatsList(): void {
     const data = {isRetailed: false, useType: 'ALL'};
-    this.dealer.getAtsReports(data).subscribe((res: { data: any; }) => {
+    this.dealer.getAtsReports(data).subscribe((res: any) => {
       this.atsReports = res.data;
       this.limits = [{ key: 50, value: 50 }, { key: 100, value: 100 }, { key: 250, value: 250 }, { key: 500, value: 500 }, { key: 'ALL', value: this.atsReports.length }];
       if (this.atsReports.length > 0) {

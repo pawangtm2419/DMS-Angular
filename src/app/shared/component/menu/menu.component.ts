@@ -28,7 +28,7 @@ export class MenuComponent implements OnInit {
   }
   roleData(): void {
     const role = { role: JSON.parse(localStorage.getItem('user') || '{}').data.role };
-    this.service.getRoleData(role).subscribe((res) => {
+    this.service.getRoleData(role).subscribe((res: any) => {
       this.roles = res.data[0];
       this.isMenuLoad = true;
     },

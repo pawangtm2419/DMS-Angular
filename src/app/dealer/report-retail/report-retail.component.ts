@@ -54,7 +54,7 @@ export class ReportRetailComponent implements OnInit {
   }
 
   getStateList(data: any): void {
-    this.service.getStatesByZone(data).subscribe(data => {
+    this.service.getStatesByZone(data).subscribe((data: any) => {
       if(data.status) {
         this.stateListData = data.states;
       } else {
@@ -65,7 +65,7 @@ export class ReportRetailComponent implements OnInit {
     );
   }
   getDealers(data: any): void {
-    this.service.getDealerList(data).subscribe(data => {
+    this.service.getDealerList(data).subscribe((data: any) => {
       if(data.status) {
         this.dealerListData = data.msg;
       } else {

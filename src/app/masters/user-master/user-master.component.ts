@@ -27,7 +27,7 @@ export class UserMasterComponent implements OnInit {
   }
 
   getUserList() {
-    this.master.getusers().subscribe((res) => {
+    this.master.getusers().subscribe((res: any) => {
       this.usersData=res.data;
       this.userStatus ='Active';
       this.showInActive();

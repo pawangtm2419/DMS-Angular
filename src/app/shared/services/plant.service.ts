@@ -11,28 +11,28 @@ export class PlantService {
 
   constructor(private http: HttpClient, private cookie: CookieService) { }
 
-  plantStock(data: any): Observable<any> {
+  plantStock(data: any): Observable<any[]> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.post(`${environment._url}/vehicle/getVehicles`, data, httpOptions);
+    return this.http.post<any[]>(`${environment._url}/vehicle/getVehicles`, data, httpOptions);
   }
 
-  cStock(data: any): Observable<any> {
+  cStock(data: any): Observable<any[]> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.post(`${environment._url}/vehicle/getCVehicles`, data, httpOptions);
+    return this.http.post<any[]>(`${environment._url}/vehicle/getCVehicles`, data, httpOptions);
   }
 
-  moveToCapital(data: any): Observable<any> {
+  moveToCapital(data: any): Observable<any[]> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.post(`${environment._url}/vehicle/movetoCapital`, data, httpOptions);
+    return this.http.post<any[]>(`${environment._url}/vehicle/movetoCapital`, data, httpOptions);
   }
 
-  moveToPlant(data: any): Observable<any> {
+  moveToPlant(data: any): Observable<any[]> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.post(`${environment._url}/vehicle/movetoPlant`, data, httpOptions);
+    return this.http.post<any[]>(`${environment._url}/vehicle/movetoPlant`, data, httpOptions);
   }
   // /vehicle/depotStockUpload
-  depotStockUpload(data: any): Observable<any> {
+  depotStockUpload(data: any): Observable<any[]> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.post(`${environment._url}/vehicle/depotStockUpload`, data, httpOptions);
+    return this.http.post<any[]>(`${environment._url}/vehicle/depotStockUpload`, data, httpOptions);
   }
 }

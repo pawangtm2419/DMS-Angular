@@ -23,9 +23,9 @@ export class UserService {
     this.userSubject = new BehaviorSubject<any>(this.cookie.get('token'));
     this.user = this.userSubject.asObservable();
   }
-  userUogIn(data: Users): Observable<any> {
+  userUogIn(data: Users): Observable<any[]> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})};
-    return this.http.post(`${environment._url}/authLog`, data, httpOptions).pipe(map((userData: any) => {
+    return this.http.post<any[]>(`${environment._url}/authLog`, data, httpOptions).pipe(map((userData: any) => {
       if(userData.status) {
         localStorage.setItem('user', JSON.stringify(userData));
         this.userSubject.next(userData);
@@ -50,20 +50,20 @@ export class UserService {
     this.toaster.showSuccess('Success', 'Log out successfull');
     this.router.navigate(['/']);
   }
-  getRoleData(role: any): Observable<any> {
+  getRoleData(role: any): Observable<any[]> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.post(`${environment._url}/role`, role, httpOptions);
+    return this.http.post<any[]>(`${environment._url}/role`, role, httpOptions);
   }
-  updateRole(role: any): Observable<any> {
+  updateRole(role: any): Observable<any[]> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.post(`${environment._url}/updateRoles`, role, httpOptions);
+    return this.http.post<any[]>(`${environment._url}/updateRoles`, role, httpOptions);
   }
-  updateUser(user: any): Observable<any> {
+  updateUser(user: any): Observable<any[]> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.post(`${environment._url}/updateUser`, user, httpOptions);
+    return this.http.post<any[]>(`${environment._url}/updateUser`, user, httpOptions);
   }
-  changePassword(user: any): Observable<any> {
+  changePassword(user: any): Observable<any[]> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this.cookie.get('token')}) };
-    return this.http.get(`${environment._url}/changePassword?id=${user.id}&newPassword=${user.newPassword}&oldPassword=${user.oldPassword}`, httpOptions);
+    return this.http.get<any[]>(`${environment._url}/changePassword?id=${user.id}&newPassword=${user.newPassword}&oldPassword=${user.oldPassword}`, httpOptions);
   }
 }
