@@ -27,9 +27,6 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this.roleData();
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
   roleData(): void {
     const role = { role: JSON.parse(localStorage.getItem('user') || '{}').data.role };
     this.service.getRoleData(role).subscribe((res: any) => {
