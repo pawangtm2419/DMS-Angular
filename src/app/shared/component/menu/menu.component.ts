@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToasterService } from '../../services';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -22,25 +21,19 @@ export class MenuComponent implements OnInit {
   @ViewChild('showAts') showAts!: ElementRef;
   roles: any;
   isMenuLoad: boolean = false;
-  constructor(private service: UserService, private elref: ElementRef, private toster: ToasterService) { }
+  constructor(private service: UserService,  private router: Router, private elref: ElementRef) { }
 
   ngOnInit(): void {
     this.roleData();
   }
   roleData(): void {
     const role = { role: JSON.parse(localStorage.getItem('user') || '{}').data.role };
-    this.service.getRoleData(role).subscribe((res: any) => {
-      if (res.status) {
-        this.roles = res.data[0];
-        this.isMenuLoad = true;
-      } else {
-        this.isMenuLoad = false;
-        this.toster.showError("Error", "Please check internet connection and re-login.");
-      }
+    this.service.getRoleData(role).subscribe((res) => {
+      this.roles = res.data[0];
+      this.isMenuLoad = true;
     },
-    (error: any) => {
+    (error) => {
       this.isMenuLoad = false;
-      this.toster.showError("Error", error.error.error);
       this.service.logout();
     });
   }

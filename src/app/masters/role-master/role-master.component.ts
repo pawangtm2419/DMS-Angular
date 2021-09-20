@@ -23,27 +23,19 @@ export class RoleMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getRolessList();
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
   getRolessList() {
-    this.master.getRoles().subscribe((res: any)=> {
-      if(res.status) {
-        this.rolesData=res.data;
-        this.roleStatus = false;
-        this.showInActive();
-        if(this.rolesData.length > 0) {
-          this.isExcelDownload = true;
-          this.limits.push({ "key": "ALL", value: this.rolesData.length });
-          this.toaster.showSuccess("Data", "Report successfully Open.");
-        } else {
-          this.toaster.showInfo("Data", "No record found.");
-        }
+    this.master.getRoles().subscribe(res=> {
+      this.rolesData=res.data;
+      this.showInActive();
+      if(this.rolesData.length > 0) {
+        this.isExcelDownload = true;
+        this.limits.push({ "key": "ALL", value: this.rolesData.length });
+        this.toaster.showSuccess("Data", "Report successfully Open.");
       } else {
-        this.toaster.showError("Error", "No record found.");
+        this.toaster.showInfo("Data", "No record found.");
       }
     }, (error) => {
-      this.toaster.showError('DaErrorta', error);;
+      this.toaster.showError('Data', error);;
     });
   }
   viewFullInfo(role: any) {

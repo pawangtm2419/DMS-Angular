@@ -30,9 +30,6 @@ export class DealerInvoiceComponent implements OnInit {
   ngOnInit(): void {
     this.getdealerInvoiceList();
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
 
   getdealerInvoiceList() {
     const data = {

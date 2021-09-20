@@ -20,9 +20,6 @@ export class ReportDeliveryComponent implements OnInit {
   ngOnInit(): void {
     this.getdelList();
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
   getdelList() {
     let data = {"fromDate":"2021-06-01T00:00:00.000Z","toDate":"2021-07-20T00:00:00.000Z","useType":"ALL"};
     this.dealer.getDelReports(data).subscribe((res: any)=> {

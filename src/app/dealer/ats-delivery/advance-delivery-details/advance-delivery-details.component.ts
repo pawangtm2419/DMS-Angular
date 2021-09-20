@@ -66,9 +66,6 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
     this.getTransaction();
     this.getBankCategoryData();
   }
-    refresh(): void {
-    this.ngOnInit();
-  }
   select(): void {
     if(this.customerCode) {
       this.isCustomerSelect = true;

@@ -20,9 +20,6 @@ export class ReportAgingFromProductionComponent implements OnInit {
   ngOnInit(): void {
     this.getAgingProdList();
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
   getAgingProdList() {
     let data = {"locationType":"DEALER","type":"production","useType":"ALL"};
     this.dealer.getAgingProd(data).subscribe(res=> {

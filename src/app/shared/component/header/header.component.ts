@@ -10,7 +10,4 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void { }
-  refresh(): void {
-    this.ngOnInit();
-  }
 }

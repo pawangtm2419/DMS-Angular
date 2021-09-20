@@ -24,14 +24,10 @@ export class DepotMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getDepotData();
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
   getDepotData() {
     let data = {useType: "ALL"};
     this.master.depotMaster(data).subscribe(res=> {
       this.depotData=res.data;
-      this.depotStatus = false;
       if(this.depotData.length > 0) {
         this.showInActive();
         this.isExcelDownload = true;

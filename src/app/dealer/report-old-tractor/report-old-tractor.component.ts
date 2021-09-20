@@ -19,9 +19,6 @@ export class ReportOldTractorComponent implements OnInit {
   ngOnInit(): void {
     this.getadvReportList()
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
   getadvReportList() {
     let data = {"startDate":"01-01-2018","endDate":"07-20-2021","useType":"ALL"};
     this.dealer.getOldTractReports(data).subscribe(res=> {

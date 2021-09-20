@@ -14,9 +14,6 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.profile = [JSON.parse(localStorage.getItem("user") || '{}').data];
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
 
   editProfile(): void {
     this.isEditProfile = true;
@@ -61,18 +58,14 @@ export class UserProfileComponent implements OnInit {
     }
     this.user.updateUser(data).subscribe(
       (data: any) => {
-        if(data.status) {
-          this.toster.showSuccess("Updated", "User profile updated successfully");
-          this.isEditProfile = false;
-        } else {
-          this.toster.showError("Error", "User profile update failed");
-        }
+        localStorage.setItem("user", JSON.stringify(data));
+        this.toster.showSuccess("Updated", "User profile updated successfully");
+        this.isEditProfile = false;
       },
       (error: any) => this.toster.showError("Error", error.error.error)
     );
-    this.isEditProfile = false;
-  }
-  closeEdit(): void {
+
+    console.log(data);
     this.isEditProfile = false;
   }
 

@@ -19,9 +19,6 @@ export class ReportDealerStockVariantWiseComponent implements OnInit {
   ngOnInit(): void {
     this.getstockVarWiseList();
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
   getstockVarWiseList() {
     let data = {"type":"DEALERSTOCK","useType":"ALL"};
     this.dealer.getStocksVarWise(data).subscribe(res=> {

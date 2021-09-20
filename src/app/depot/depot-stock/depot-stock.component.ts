@@ -27,9 +27,6 @@ export class DepotStockComponent implements OnInit {
     this.getCityList();
     this.getModelList();
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
   getdepotStockList() {
     this.service.getVehicleDetails(this.data).subscribe(res => {
       this.depotData = res.data;

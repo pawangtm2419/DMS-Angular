@@ -9,9 +9,7 @@ export class CloseDateComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void { }
-  refresh(): void {
-    this.ngOnInit();
+  ngOnInit(): void {
   }
 
 }

@@ -24,14 +24,10 @@ export class DealerMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getDealersList();
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
   getDealersList() {
     let data = {useType: "ALL"};
     this.master.getDealers(data).subscribe((res: any)=> {
       this.dealerData = res.msg;
-      this.dealerStatus = 'Active';
       if(this.dealerData.length > 0) {
         this.showInActive();
         this.isExcelDownload = true;
@@ -54,7 +50,7 @@ export class DealerMasterComponent implements OnInit {
       "_id": this.dealerDeleteId
     };
     this.master.changeDealerStatus(data).subscribe((res: any) => {
-      if(res.status) {
+      if(res.status == 'true') {
         this.toaster.showSuccess("Data", "Status successfully changed.");
         this.getDealersList();
       } else {

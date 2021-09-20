@@ -30,9 +30,6 @@ export class HistoryReportComponent implements OnInit {
    }
 
   ngOnInit(): void { }
-  refresh(): void {
-    this.ngOnInit();
-  }
   search(): void {
     const data = { chassisNo : this.chassisNo };
     if(this.chassisNo.length > 13) {

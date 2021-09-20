@@ -36,9 +36,6 @@ export class ReportAdvanceComponent implements OnInit {
     this.getadvReportList();
     this.getZoneList();
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
   getadvReportList(): void {
     if (this.selectedZone) {
       this.data.zone = this.selectedZone;

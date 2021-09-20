@@ -21,24 +21,16 @@ export class StateMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getStateList();
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
   getStateList() {
-    this.master.getState().subscribe((res: any)=> {
-      if(res.status) {
-        this.stateData=res.data;
-        this.stateStatus = 'Active';
-        this.showInActive();
-        if(this.stateData.length > 0) {
-          this.isExcelDownload = true;
-          this.limits.push({ "key": "ALL", value: this.stateData.length });
-          this.toaster.showSuccess("Data", "Report successfully Open.");
-        } else {
-          this.toaster.showInfo("Data", "No record found.");
-        }
+    this.master.getState().subscribe(res=> {
+      this.stateData=res.data;
+      this.showInActive();
+      if(this.stateData.length > 0) {
+        this.isExcelDownload = true;
+        this.limits.push({ "key": "ALL", value: this.stateData.length });
+        this.toaster.showSuccess("Data", "Report successfully Open.");
       } else {
-        this.toaster.showError("Data", "No record found.");
+        this.toaster.showInfo("Data", "No record found.");
       }
     }, (error) => {
       this.toaster.showError('Data', error);;

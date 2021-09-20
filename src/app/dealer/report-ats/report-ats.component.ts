@@ -19,9 +19,6 @@ export class ReportAtsComponent implements OnInit {
   ngOnInit(): void {
     this.getatsList();
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
   getatsList(): void {
     const data = {isRetailed: false, useType: 'ALL'};
     this.dealer.getAtsReports(data).subscribe((res: { data: any; }) => {

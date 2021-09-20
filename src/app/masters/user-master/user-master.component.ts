@@ -22,14 +22,10 @@ export class UserMasterComponent implements OnInit {
   ngOnInit(): void {
     this.getUserList();
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
 
   getUserList() {
-    this.master.getusers().subscribe((res: any) => {
+    this.master.getusers().subscribe((res) => {
       this.usersData=res.data;
-      this.userStatus = 'Active';
       this.showInActive();
       if(this.usersData.length > 0) {
         this.isExcelDownload = true;

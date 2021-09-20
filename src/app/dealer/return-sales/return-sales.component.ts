@@ -9,9 +9,7 @@ export class ReturnSalesComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void { }
-  refresh(): void {
-    this.ngOnInit();
+  ngOnInit(): void {
   }
 
 }

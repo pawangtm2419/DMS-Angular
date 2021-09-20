@@ -20,9 +20,6 @@ export class ReportAgingFromRecievedComponent implements OnInit {
   ngOnInit(): void {
     this.getAgingProdList();
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
   getAgingProdList() {
     let data = {"locationType":"DEALER","useType":"ALL"};
     this.dealer.getAgingRec(data).subscribe(res=> {

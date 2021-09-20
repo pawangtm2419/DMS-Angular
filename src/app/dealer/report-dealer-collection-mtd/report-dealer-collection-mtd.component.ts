@@ -24,9 +24,6 @@ export class ReportDealerCollectionMTDComponent implements OnInit {
   ngOnInit(): void {
     this.getCollectionList();
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
   getCollectionList(): void {
     const data = {year: this.year, month: this.month, useType: 'ALL'};
     this.dealer.getCollectionMtd(data).subscribe(res => {

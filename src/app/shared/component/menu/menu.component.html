@@ -6,7 +6,7 @@
         <div class="">
           <ul class="navbar-nav justify-content-end w-100">
             <li class="nav-item">
-              <a class="nav-link" href="#" (click)="getLogout()"><i class="fa fa-power-off"></i></a>
+              <a class="nav-link" href="#" (click)="getLogout()"><i class="fa fa-cog"></i></a>
             </li>
           </ul>
         </div>
@@ -130,16 +130,16 @@
       <a class="navLink dashboard" (click)="openDashboardNav()" title="Dashboard"><i class="fa fa-th-large"></i>
           <span class="d-block menuTxt">Dashboard</span>
       </a>
-      <a class="navLink masters" *ngIf="roles?.masters_main?.link" (click)="openMasterNav()" title="Masters"><i class="fa fa-users"></i>
+      <a class="navLink masters" *ngIf="roles?.masters_main?.link" (click)="openMasterNav()" title="Masters"><i class="fa fa-cogs"></i>
           <span class="d-block menuTxt">Master</span>
       </a>
       <a class="navLink plant" *ngIf="roles?.plant_main?.link" (click)="openPlantNav()" title="Plant"><i class="fa fa-industry"></i>
           <span class="d-block menuTxt">Plant</span>
       </a>
-      <a class="navLink depot" *ngIf="roles?.depot_main?.link" (click)="openDepotNav()" title="Depot"><i class="fa fa-cube"></i>
+      <a class="navLink depot" *ngIf="roles?.depot_main?.link" (click)="openDepotNav()" title="Depot"><i class="fas fa-dolly-flatbed"></i>
           <span class="d-block menuTxt">Depot</span>
       </a>
-      <a class="navLink dealers" *ngIf="roles?.dealers_main?.link" (click)="openDealerNav()" title="Dealers"><i class="fa fa-cubes"></i>
+      <a class="navLink dealers" *ngIf="roles?.dealers_main?.link" (click)="openDealerNav()" title="Dealers"><i class="fas fa-user-friends"></i>
           <span class="d-block menuTxt">Dealers</span>
        </a>
   </nav>
@@ -158,7 +158,7 @@
             </ul>
         </li>
         <li class="dropdown drop-down01">
-            <a title="Masters" id="navbarDropdown" *ngIf="roles?.masters_main?.link" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-users"></i></a>
+            <a title="Masters" id="navbarDropdown" *ngIf="roles?.masters_main?.link" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-cogs"></i></a>
             <ul class="dropdown-menu sub-menu01">
                 <li *ngIf="roles?.depot_master_sub?.link"><a routerLink="/m-depot">Depot Master</a></li>
                 <li *ngIf="roles?.dealer_master_sub?.link"><a routerLink="/m-dealer">Dealer Master</a></li>
@@ -184,7 +184,7 @@
             </ul>
         </li>
         <li class="dropdown drop-down01">
-            <a title="Depot" id="navbarDropdown" *ngIf="roles?.depot_main?.link" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-cube"></i></a>
+            <a title="Depot" id="navbarDropdown" *ngIf="roles?.depot_main?.link" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-dolly-flatbed"></i></a>
             <ul class="dropdown-menu sub-menu01">
                 <li *ngIf="roles?.generate_transfer_note_sub?.link"><a routerLink="/gr-note">Generate Transfer Note</a></li>
                 <li *ngIf="roles?.depot_stock_sub?.link"><a routerLink="/depot-stock">Depot Stock</a></li>
@@ -202,7 +202,7 @@
             </ul>
         </li>
         <li class="dropdown drop-down01">
-          <a title="Dealers" id="navbarDropdown" *ngIf="roles?.dealers_main?.link" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-cubes"></i></a>
+          <a title="Dealers" id="navbarDropdown" *ngIf="roles?.dealers_main?.link" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-friends"></i></a>
           <ul class="dropdown-menu sub-menu01">
           <li *ngIf="roles?.view_dealer_reports_sub?.link">
             <a>View Report<span class="rgt-arrow">&rsaquo;</span></a>
@@ -275,7 +275,7 @@
       <div class="settingArea">
         <ul class="menu-area" *ngIf="isMenuLoad">
           <li class="dropdown drop-down01">
-            <a title="Dashboard" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-power-off"></i></a>
+            <a title="Dashboard" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-cog"></i></a>
             <ul class="dropdown-menu sub-menu01">
               <li><a routerLink="/change-pass">Change Password</a></li>
               <li><a routerLink="/user-profile">User Profile</a></li>

@@ -21,9 +21,6 @@ export class ReportTehsilBasedComponent implements OnInit {
   ngOnInit(): void {
     this.gettehsilReportList();
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
   gettehsilReportList() {
     let data = {"year": this.year,"month": this.month,"useType":"ALL"};
     this.dealer.getTehsilReports(data).subscribe(res=> {

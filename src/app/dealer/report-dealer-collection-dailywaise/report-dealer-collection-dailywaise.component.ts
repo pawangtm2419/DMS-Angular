@@ -19,9 +19,6 @@ export class ReportDealerCollectionDailywaiseComponent implements OnInit {
   ngOnInit(): void {
     this.getcolDayWiseList();
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
   getcolDayWiseList(): void {
     const data = {fromDate: '2020-01-30T18:30:00.000Z', toDate: '2021-02-19T18:30:00.000Z', useType: 'ALL'};
     this.dealer.getCollectionDaywise(data).subscribe(res => {

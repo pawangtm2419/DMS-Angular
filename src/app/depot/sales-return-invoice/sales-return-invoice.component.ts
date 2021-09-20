@@ -19,9 +19,6 @@ export class SalesReturnInvoiceComponent implements OnInit {
   ngOnInit(): void {
     this.getSalesInvoiceList();
   }
-  refresh(): void {
-    this.ngOnInit();
-  }
   getSalesInvoiceList() {
     let data = {"type":"ALL","fromDate":"2021-01-01T00:00:00.000Z","toDate":"2021-07-27T00:00:00.000Z","useType":"ALL"};
     this.dealer.salesRetInvoices(data).subscribe(res=> {
