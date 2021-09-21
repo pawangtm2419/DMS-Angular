@@ -23,8 +23,6 @@ export class UserProfileComponent implements OnInit {
   }
 
   updateUser(user: any): void {
-    console.log(user);
-    this.profile = [user];
     const data ={
       "useType" : user.useType,
       "role" : user.role,
@@ -67,8 +65,6 @@ export class UserProfileComponent implements OnInit {
       },
       (error: any) => this.toster.showError("Error", error.error.error)
     );
-
-    console.log(data);
     this.isEditProfile = false;
   }
 
