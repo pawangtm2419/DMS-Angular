@@ -50,6 +50,10 @@ export class MastersService {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
     return this._http.post<any[]>(`${environment._url}/viewCustomer`, data, httpOptions);
   }
+  updateCustomer(data: any): Observable<any[]> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
+    return this._http.post<any[]>(`${environment._url}/updateCustomer`, data, httpOptions);
+  }
   deleteCustomer(data: any): Observable<any[]> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
     return this._http.post<any[]>(`${environment._url}/deleteCustomer`, data, httpOptions);

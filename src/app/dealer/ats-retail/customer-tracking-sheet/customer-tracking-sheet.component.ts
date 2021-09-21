@@ -59,20 +59,28 @@ export class CustomerTrackingSheetComponent implements OnInit {
   vehicleData(): void {
     const data = { chassisNo: this.params.id };
     this.service.getVehicleDetails(data).subscribe((res: any) => {
-      if(res.status === "true"){
-        this.vehicleDetails = res.data;
-        /* if (this.vehicleDetails.isRetailed === false) {
-          this.amtReceived = this.vehicleDetails.customer.dealPrice - this.vehicleDetails.customer.balanceAmount;
+      if(res.status) {
+        if(res.data.length > 0) {
+          this.vehicleDetails = res.data;
+          /* if (this.vehicleDetails.isRetailed === false) {
+            this.amtReceived = this.vehicleDetails.customer.dealPrice - this.vehicleDetails.customer.balanceAmount;
+          } else {
+            this.toaster.showInfo("Info", "This is a retail vehicle");
+            setTimeout(() => {
+              this.router.navigate(['/ats-retail']);
+            }, 3000);
+          } */
+          this.getPaymentsList(this.vehicleDetails[0].chassisNo, this.vehicleDetails[0].customer.code, this.vehicleDetails[0].customer.invoiceNumber);
+          this.getBankCategoryData();
         } else {
-          this.toaster.showInfo("Info", "This is a retail vehicle");
-          setTimeout(() => {
-            this.router.navigate(['/ats-retail']);
-          }, 3000);
-        } */
-        this.getPaymentsList(this.vehicleDetails[0].chassisNo, this.vehicleDetails[0].customer.code, this.vehicleDetails[0].customer.invoiceNumber);
-        this.getBankCategoryData();
+          this.toaster.showInfo("Data", "No record found.");
+        }
+      } else {
+        this.toaster.showError("Error",  "No record found.");
       }
-    });
+    }), (error: any) => {
+      this.toaster.showError("Error", "Error "+error);
+    }
   }
 
   getPaymentsList(chassisNo: any, customerId: any, invoiceNumber: any): void {
@@ -82,7 +90,7 @@ export class CustomerTrackingSheetComponent implements OnInit {
       invoiceNumber: invoiceNumber
     };
     this.dealer.getPayments(data).subscribe((res: any) => {
-      if(res.status === "true"){
+      if(res.status){
         this.paymentsList = res.data;
       }
     });
@@ -90,7 +98,7 @@ export class CustomerTrackingSheetComponent implements OnInit {
 
   getBankCategoryData(): void {
     this.service.getBankCategories().subscribe((res: any) => {
-      if(res.status === "true"){
+      if(res.status){
         this.bankCategoryList = res.data;
       }
     });

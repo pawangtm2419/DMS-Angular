@@ -31,17 +31,19 @@ export class CustomerMasterComponent implements OnInit {
   getCustomerList(): void{
     const data = {useType: 'ALL'};
     this.master.getCustomers(data).subscribe((res: any) => {
-      this.customersData = res.data;
-      this.custStatus = false;
-      this.showInActive();
-      if(res.status === 'true') {
-        this.limits.push({ key: 'ALL', value: this.customersData.length });
+      if(res.status) {
+        this.customersData = res.data;
         if (this.customersData.length > 0) {
           this.isExcelDownload = true;
+          this.custStatus = false;
+          this.showInActive();
+          this.limits.push({ key: 'ALL', value: this.customersData.length });
           this.toaster.showSuccess('Data', 'Report successfully Open.');
         } else {
           this.toaster.showInfo('Data', 'No record found.');
         }
+      } else {
+        this.toaster.showError('Error', 'No record found.');
       }
     }, (error: any) => {
       this.toaster.showError('Error', error);
@@ -60,7 +62,7 @@ export class CustomerMasterComponent implements OnInit {
   deleteCustomerIndo(id: string): void{
     const data = {_id: id};
     this.master.deleteCustomer(data).subscribe((res: any) => {
-      if (res.status === 'true') {
+      if (res.status) {
         this.getCustomerList();
         this.toaster.showSuccess('Success', res.msg);
       } else {
