@@ -17,6 +17,9 @@ export class UserProfileComponent implements OnInit {
   refresh(): void {
     this.ngOnInit();
   }
+  cancelUpdate(): void {
+    this.isEditProfile = false;
+  }
 
   editProfile(): void {
     this.isEditProfile = true;
