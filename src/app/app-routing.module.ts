@@ -91,6 +91,7 @@ const routes: Routes = [
   { path: 'user-profile', loadChildren: () => import('./user/user-profile/user-profile.module').then(m => m.UserProfileModule), canActivate: [AppGuard] },
   // page not found
   { path: '', loadChildren: () => import('./user/login/login.module').then(m => m.LoginModule) },
+  { path: 'forget-password', loadChildren: () => import('./user/forget-password/forget-password.module').then(m => m.ForgetPasswordModule) },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

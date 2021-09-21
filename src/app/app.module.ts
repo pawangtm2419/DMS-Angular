@@ -12,6 +12,7 @@ import { ToasterService } from './shared/services/toster.service';
 import { AppGuard } from './shared/app.guard';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CookieService } from 'ngx-cookie-service';
+import { ForgetPasswordModule } from './user/forget-password/forget-password.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { CookieService } from 'ngx-cookie-service';
   ],
   imports: [
     SharedModule,
+    ForgetPasswordModule,
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
