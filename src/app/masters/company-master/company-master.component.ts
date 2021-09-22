@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MastersService, ToasterService } from 'src/app/shared/services';
+import { MastersService, ToasterService, UserService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-company-master',
@@ -15,7 +15,7 @@ export class CompanyMasterComponent implements OnInit {
   filterCompanyData: any = [];
   companyData: any;
   companyStatus: boolean = false;
-  constructor(private master: MastersService, public toaster: ToasterService) { }
+  constructor(private master: MastersService, private toaster: ToasterService, private user: UserService) { }
 
   ngOnInit(): void {
     this.getCompanyList();

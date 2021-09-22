@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
-import { CommonService, ToasterService } from 'src/app/shared/services';
+import { CommonService, ToasterService, UserService } from 'src/app/shared/services';
 import * as XLSX from 'xlsx';
 
 interface selectedObject {
@@ -29,7 +29,7 @@ export class AtsRetailComponent implements OnInit {
   toDate: string;
   currentDate: any;
   isRetailData: boolean = false;
-  constructor(private service: CommonService, public toaster: ToasterService) {
+  constructor(private service: CommonService, private toaster: ToasterService, private user: UserService) {
     var date = this.date.getDate();
     var month = 1+this.date.getMonth();
     var year = this.date.getFullYear();

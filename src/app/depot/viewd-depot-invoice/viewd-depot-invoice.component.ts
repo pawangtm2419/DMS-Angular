@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { CommonService, DepotService, ToasterService } from 'src/app/shared/services';
+import { CommonService, DepotService, ToasterService, UserService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-viewd-depot-invoice',
@@ -15,7 +15,7 @@ export class ViewdDepotInvoiceComponent implements OnInit {
     private route: ActivatedRoute,
     private service: CommonService,
     private depot: DepotService,
-    public toaster: ToasterService,
+    private toaster: ToasterService, private user: UserService,
     private router: Router) {
     this.route.params.subscribe((params: Params) => { this.params = params;});
   }

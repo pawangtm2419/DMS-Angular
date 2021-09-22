@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { CommonService, DealerService, ToasterService } from 'src/app/shared/services';
+import { CommonService, DealerService, ToasterService, UserService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-advance-delivery-details',
@@ -46,7 +46,8 @@ export class AdvanceDeliveryDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private service: CommonService,
     private dealer: DealerService,
-    public toaster: ToasterService,
+    private toaster: ToasterService, 
+    private user: UserService,
     private router: Router
   ) {
     this.route.params.subscribe((params: Params) => {

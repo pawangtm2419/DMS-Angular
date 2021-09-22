@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MastersService, ToasterService } from 'src/app/shared/services';
+import { MastersService, ToasterService, UserService } from 'src/app/shared/services';
 import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-dealer-master',
@@ -19,7 +19,7 @@ export class DealerMasterComponent implements OnInit {
   dealerDeleteId: any;
   filterDealerData: any;
   dealerStatus: string = 'Active';
-  constructor(private master: MastersService, public toaster: ToasterService) { }
+  constructor(private master: MastersService, private toaster: ToasterService, private user: UserService) { }
 
   ngOnInit(): void {
     this.getDealersList();

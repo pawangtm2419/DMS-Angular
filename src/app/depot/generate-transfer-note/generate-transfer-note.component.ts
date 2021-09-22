@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonService, DepotService, ToasterService } from 'src/app/shared/services';
+import { CommonService, DepotService, ToasterService, UserService } from 'src/app/shared/services';
 import * as XLSX from 'xlsx';
 
 interface InvoiceObject {
@@ -49,7 +49,7 @@ export class GenerateTransferNoteComponent implements OnInit {
   isDollerCheckBox: boolean = false;
   dollarvalue: any;
   isExcelDownload: boolean = false;
-  constructor(private depot: DepotService, public toaster: ToasterService, public service: CommonService) { }
+  constructor(private depot: DepotService, private toaster: ToasterService, private user: UserService, public service: CommonService) { }
 
   ngOnInit(): void {
     this.checkInvoiceNo();

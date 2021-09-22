@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MastersService, ToasterService } from 'src/app/shared/services';
+import { MastersService, ToasterService, UserService } from 'src/app/shared/services';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -18,7 +18,7 @@ export class RoleMasterComponent implements OnInit {
   financialInstsData: any;
   filterRolesData: any;
   roleStatus: boolean = false;
-  constructor(private master: MastersService, public toaster: ToasterService) { }
+  constructor(private master: MastersService, private toaster: ToasterService, private user: UserService) { }
 
   ngOnInit(): void {
     this.getRolessList();

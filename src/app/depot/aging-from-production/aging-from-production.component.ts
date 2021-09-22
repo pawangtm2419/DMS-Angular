@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonService, DepotService, ToasterService } from 'src/app/shared/services';
+import { CommonService, DepotService, ToasterService, UserService } from 'src/app/shared/services';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -21,7 +21,7 @@ export class AgingFromProductionComponent implements OnInit {
   total: any = { count30: 0, count3060: 0, count6090: 0, count90120: 0, count120180: 0, count180: 0, count: 0 };
   filterDataRange: [] = [];
   isExcelDownload: boolean = false;
-  constructor(private depotService: DepotService, public toaster: ToasterService, public service: CommonService) { }
+  constructor(private depotService: DepotService, private toaster: ToasterService, private user: UserService, public service: CommonService) { }
 
   ngOnInit(): void {
     this.getagingProdList();

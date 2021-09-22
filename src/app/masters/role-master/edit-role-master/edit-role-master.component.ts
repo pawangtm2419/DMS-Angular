@@ -22,7 +22,12 @@ export class EditRoleMasterComponent implements OnInit, OnDestroy {
   subSub: any[] = [];
   updateRoles!: FormGroup;
 
-  constructor(private service: UserService, private route: ActivatedRoute, private fb: FormBuilder, public toaster: ToasterService, private router: Router) { }
+  constructor(
+    private service: UserService, 
+    private route: ActivatedRoute, 
+    private fb: FormBuilder, 
+    private toaster: ToasterService
+  ) { }
   form = this.fb.group({
     pageName: ['', Validators.required],
     link: [false],

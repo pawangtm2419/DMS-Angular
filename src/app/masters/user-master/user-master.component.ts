@@ -18,7 +18,7 @@ export class UserMasterComponent implements OnInit {
   isExcelDownload: boolean = false;
   filterUserData: any;
   userStatus: string ='Active';
-  constructor(private master: MastersService, public toaster: ToasterService, private user: UserService, private router: Router) { }
+  constructor(private master: MastersService, private toaster: ToasterService, private user: UserService) { }
 
   ngOnInit(): void {
     this.getUserList();

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DealerReportService, ToasterService } from 'src/app/shared/services';
+import { DealerReportService, ToasterService, UserService } from 'src/app/shared/services';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -14,7 +14,7 @@ export class ReportDealerStockVariantWiseComponent implements OnInit {
   limits = [{ "key": "50", "value": 50 }, { "key": 100, "value": 100 }, { "key": 250, "value": 250 }, { "key": 500, "value": 500 }];
   limit: any = 50;
   isExcelDownload:boolean = false;
-  constructor(private dealer: DealerReportService, public toaster: ToasterService) { }
+  constructor(private dealer: DealerReportService, private toaster: ToasterService, private user: UserService) { }
 
   ngOnInit(): void {
     this.getstockVarWiseList();

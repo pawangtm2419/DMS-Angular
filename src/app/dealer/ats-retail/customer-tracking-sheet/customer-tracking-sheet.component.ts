@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { CommonService, DealerService, ToasterService } from 'src/app/shared/services';
+import { CommonService, DealerService, ToasterService, UserService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-customer-tracking-sheet',
@@ -35,7 +35,7 @@ export class CustomerTrackingSheetComponent implements OnInit {
     private route: ActivatedRoute,
     private service: CommonService,
     private dealer: DealerService,
-    public toaster: ToasterService,
+    private toaster: ToasterService, private user: UserService,
     private router: Router
   ) {
     this.route.params.subscribe((params: Params) => { this.params = params;});

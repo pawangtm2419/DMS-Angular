@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonService, DealerReportService, ToasterService } from 'src/app/shared/services';
+import { CommonService, DealerReportService, ToasterService, UserService } from 'src/app/shared/services';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -23,7 +23,7 @@ export class ReportAdvanceComponent implements OnInit {
   selectedZone: any;
   data: any = {useType: 'ALL'};
   isExcelDownload: boolean = false;
-  constructor(private dealer: DealerReportService, public toaster: ToasterService, private service: CommonService) {
+  constructor(private dealer: DealerReportService, private toaster: ToasterService, private user: UserService, private service: CommonService) {
     var date = this.date.getDate();
     var month = 1+this.date.getMonth();
     var year = this.date.getFullYear();

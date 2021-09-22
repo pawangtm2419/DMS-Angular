@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DepotService, ToasterService } from 'src/app/shared/services';
+import { DepotService, ToasterService, UserService } from 'src/app/shared/services';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -14,7 +14,7 @@ export class VariantDepotStockComponent implements OnInit {
   limits: any;
   limit: any = 50;
   isExcelDownload: boolean = false;
-  constructor(private dealer: DepotService, public toaster: ToasterService) { }
+  constructor(private dealer: DepotService, private toaster: ToasterService, private user: UserService) { }
 
   ngOnInit(): void {
     this.getstockVarList();

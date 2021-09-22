@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { DealerReportService, ToasterService } from 'src/app/shared/services';
+import { DealerReportService, ToasterService, UserService } from 'src/app/shared/services';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -19,7 +19,7 @@ export class ReportDealerCollectionMTDComponent implements OnInit {
   month: number = new Date().getMonth() + 1;
   isExcelDownload: boolean = false;
 
-  constructor(private dealer: DealerReportService, public toaster: ToasterService, private route: Router) { }
+  constructor(private dealer: DealerReportService, private toaster: ToasterService, private user: UserService, private route: Router) { }
 
   ngOnInit(): void {
     this.getCollectionList();

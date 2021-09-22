@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { PlantService, ToasterService } from 'src/app/shared/services';
+import { PlantService, ToasterService, UserService } from 'src/app/shared/services';
 import { environment } from 'src/environments/environment';
 import * as XLSX from 'xlsx';
 
@@ -22,7 +22,7 @@ export class PlantStockComponent implements OnInit {
   data: AOA = [];
   filesToUpload!: File[];
   file: any;
-  constructor(private service: PlantService, public toaster: ToasterService, private http: HttpClient) { }
+  constructor(private service: PlantService, private toaster: ToasterService, private user: UserService) { }
 
   ngOnInit(): void {
     this.plantStockData();

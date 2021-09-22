@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DepotService, ToasterService } from 'src/app/shared/services';
+import { DepotService, ToasterService, UserService } from 'src/app/shared/services';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -18,7 +18,7 @@ export class DepotInvoiceComponent implements OnInit {
   fromDate: any;
   toDate: any;
   isExcelDownload: boolean = false;
-  constructor(private depot: DepotService, public toaster: ToasterService) {
+  constructor(private depot: DepotService, private toaster: ToasterService, private user: UserService) {
     var date = this.date.getDate();
     var month = 1+this.date.getMonth();
     var year = this.date.getFullYear();

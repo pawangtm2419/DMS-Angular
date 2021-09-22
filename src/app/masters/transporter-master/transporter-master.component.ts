@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MastersService, ToasterService } from 'src/app/shared/services';
+import { MastersService, ToasterService, UserService } from 'src/app/shared/services';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -17,7 +17,7 @@ export class TransporterMasterComponent implements OnInit {
   isExcelDownload:boolean = false;
   filterTransportData: any;
   transportStatus: boolean = false;
-  constructor(private master: MastersService, public toaster: ToasterService) { }
+  constructor(private master: MastersService, private toaster: ToasterService, private user: UserService) { }
 
   ngOnInit(): void {
     this.getTransporterList();

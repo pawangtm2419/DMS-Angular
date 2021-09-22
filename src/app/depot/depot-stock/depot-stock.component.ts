@@ -1,6 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { DepotService, ToasterService, CommonService } from 'src/app/shared/services';
+import { DepotService, ToasterService, CommonService, UserService } from 'src/app/shared/services';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -20,7 +20,7 @@ export class DepotStockComponent implements OnInit {
   modelList: any;
   data: any = {type: 'DEPOTSTOCK', useType: 'ALL'};
   isExcelDownload:boolean = false;
-  constructor(private depot: DepotService, public toaster: ToasterService,  public service: CommonService) { }
+  constructor(private depot: DepotService, private toaster: ToasterService, private user: UserService,  public service: CommonService) { }
 
   ngOnInit(): void {
     this.getdepotStockList();

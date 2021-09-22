@@ -1,6 +1,6 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { MastersService } from 'src/app/shared/services';
+import { MastersService, UserService } from 'src/app/shared/services';
 import { ToasterService } from 'src/app/shared/services';
 import * as XLSX from 'xlsx';
 
@@ -20,7 +20,7 @@ export class CustomerMasterComponent implements OnInit {
   isExcelDownload: boolean = false;
   custStatus: boolean = false;
 
-  constructor(private master: MastersService, public toaster: ToasterService) { }
+  constructor(private master: MastersService, private toaster: ToasterService, private user: UserService) { }
 
   ngOnInit(): void {
     this.getCustomerList();

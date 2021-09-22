@@ -17,7 +17,7 @@ export interface Users {
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private _http: HttpClient, private router: Router, public toaster: ToasterService, private _cookie: CookieService) { }
+  constructor(private _http: HttpClient, private router: Router, private toaster: ToasterService, private _cookie: CookieService) { }
   userLogIn(data: Users): Observable<any[]> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', companyCode: environment.companyCode }) };
     return this._http.post<any[]>(`${environment._url}/authLog`, data, httpOptions).pipe(map((userData: any) => {

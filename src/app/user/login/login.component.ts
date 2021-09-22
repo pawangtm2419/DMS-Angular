@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   userInfo: any;
   submit = false;
   logIntryCount = 0;
-  constructor(private service: UserService, private router: Router, public toaster: ToasterService, private cookie: CookieService) { }
+  constructor(private service: UserService, private router: Router, private toaster: ToasterService, private cookie: CookieService) { }
 
   ngOnInit(): void {
     if (this.service.gettoken()) {

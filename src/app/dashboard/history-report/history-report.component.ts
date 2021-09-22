@@ -20,7 +20,7 @@ export class HistoryReportComponent implements OnInit {
   currentDate: any;
   isExcelDownload: boolean = false;
   vehicleData: any;
-  constructor(private service : CommonService, public toaster : ToasterService, public user : UserService) {
+  constructor(private service : CommonService, private toaster : ToasterService, public user : UserService) {
     var date = this.date.getDate();
     var month = 1+this.date.getMonth();
     var year = this.date.getFullYear();

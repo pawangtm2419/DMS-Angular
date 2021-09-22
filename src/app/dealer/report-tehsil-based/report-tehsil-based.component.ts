@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DealerReportService, ToasterService } from 'src/app/shared/services';
+import { DealerReportService, ToasterService, UserService } from 'src/app/shared/services';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -16,7 +16,7 @@ export class ReportTehsilBasedComponent implements OnInit {
   year: Number = new Date().getFullYear();
   month: Number = new Date().getMonth()+1;
   isExcelDownload: boolean = false;
-  constructor(private dealer: DealerReportService, public toaster: ToasterService) { }
+  constructor(private dealer: DealerReportService, private toaster: ToasterService, private user: UserService) { }
 
   ngOnInit(): void {
     this.gettehsilReportList();
