@@ -78,7 +78,7 @@
                             <td data-title="Email">{{customer?.customerEmail}}</td>
                             <td data-title="Aadhar No">{{customer?.aadharNo}}</td>
                             <td data-title="Pan No">{{customer?.panNo}}</td>
-                            <td data-title="Created On">{{customer?.CreatedDate |  date:'dd-MM-yyyy'}}</td>
+                            <td data-title="Created On">{{customer?.CreatedDate | date:'dd-MM-yyyy hh:mm:ss aa'}}</td>
                             <td data-title="Status"><span *ngIf="!customer?.isDeleted">Active</span><span *ngIf="customer?.isDeleted">inactive</span> </td>
                             <td data-title="Options" class="text-center">
                               <!-- <a class="editIcon icon mb-1"><i class="fa fa-edit"></i></a> -->

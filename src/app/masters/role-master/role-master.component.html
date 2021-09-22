@@ -57,7 +57,7 @@
                 <td data-title="Role Name">{{role?.roleName}}</td>
                 <td data-title="Description">{{role?.description}}</td>
                 <td data-title="Status"><span *ngIf="!role?.isDeleted">Active</span><span *ngIf="role?.isDeleted">inactive</span></td>
-                <td data-title="Created Date">{{role?.CreatedDate | date:'dd-MM-yyyy'}}</td>
+                <td data-title="Created Date">{{role?.CreatedDate | date:'dd-MM-yyyy hh:mm:ss aa'}}</td>
                 <td data-title="Edit" class="text-center">
                   <a class="bg-primary editIcon btn" routerLink="/edit-roles/{{role?.roleCode}}"><i class="fa fa-edit"></i></a>
                 </td>
@@ -109,7 +109,7 @@
               <div class="row mt-1">
                 <div class="col-5"><b>Created Date</b></div>
                 <div class="col-1"><b>:</b></div>
-                <div class="col-6">{{role?.CreatedDate | date:'dd-MM-yyyy'}}</div>
+                <div class="col-6">{{role?.CreatedDate | date:'dd-MM-yyyy hh:mm:ss aa'}}</div>
               </div>
             </div>
           </div>
