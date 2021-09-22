@@ -13,39 +13,39 @@ export class DealerService {
   constructor(private _http: HttpClient, private _cookie: CookieService) { }
 
   invoiceReport(data: any): Observable<any[]> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token'), companyCode: environment.companyCode}) };
     return this._http.post<Invoice[]>(`${environment._url}/vehicle/dealerInvoicesReport`, data, httpOptions);
   }
   getvehInsurance(data: any): Observable<any[]> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token'), companyCode: environment.companyCode}) };
     return this._http.post<any[]>(`${environment._url}/ats/ATSDetails`, data, httpOptions);
   }
   getTransactionClose(data: any): Observable<any[]> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token'), companyCode: environment.companyCode}) };
     return this._http.post<any[]>(`${environment._url}/systemSetting/getTransactionClose`, data, httpOptions);
   }
   getCustomerByDealer(data: any): Observable<any[]> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token'), companyCode: environment.companyCode}) };
     return this._http.get<any[]>(`${environment._url}/customer/customersByDealer?dealerCode=${data}`, httpOptions);
   }
   updateVehicleDetails(data: any): Observable<any[]> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token'), companyCode: environment.companyCode}) };
     return this._http.post<any[]>(`${environment._url}/vehicle/updateVehicleDetails`, data, httpOptions);
   }
   getFinancialInstitutionsList(data: any): Observable<any[]> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token'), companyCode: environment.companyCode}) };
     return this._http.get<any[]>(`${environment._url}/financial/getFinancialInstitutionsList?category=${data}`, httpOptions);
   }
   getPayments(data: any): Observable<any[]> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token'), companyCode: environment.companyCode}) };
     return this._http.post<any[]>(`${environment._url}/customer/payments`, data, httpOptions);
   }
   savePayment(data: any): Observable<any[]> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token'), companyCode: environment.companyCode}) };
     return this._http.post<any[]>(`${environment._url}/vehicle/customerPayment`, data, httpOptions);
   }
   saveRetail(data: any) {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token'), companyCode: environment.companyCode}) };
     return this._http.post<any[]>(`${environment._url}/vehicle/retailVehicle`, data, httpOptions);
   }
 }

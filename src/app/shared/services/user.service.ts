@@ -24,7 +24,7 @@ export class UserService {
     this.user = this.userSubject.asObservable();
   }
   userUogIn(data: Users): Observable<any[]> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})};
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', companyCode: environment.companyCode}) };
     return this._http.post<any[]>(`${environment._url}/authLog`, data, httpOptions).pipe(map((userData: any) => {
       if(userData.status) {
         localStorage.setItem('user', JSON.stringify(userData));
@@ -51,19 +51,19 @@ export class UserService {
     this.router.navigate(['/']);
   }
   getRoleData(role: any): Observable<any[]> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token'), companyCode: environment.companyCode}) };
     return this._http.post<any[]>(`${environment._url}/role`, role, httpOptions);
   }
   updateRole(role: any): Observable<any[]> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token'), companyCode: environment.companyCode}) };
     return this._http.post<any[]>(`${environment._url}/updateRoles`, role, httpOptions);
   }
   updateUser(user: any): Observable<any[]> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token'), companyCode: environment.companyCode}) };
     return this._http.post<any[]>(`${environment._url}/updateUser`, user, httpOptions);
   }
   changePassword(user: any): Observable<any[]> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token'), companyCode: environment.companyCode}) };
     return this._http.get<any[]>(`${environment._url}/changePassword?id=${user.id}&newPassword=${user.newPassword}&oldPassword=${user.oldPassword}`, httpOptions);
   }
 }

@@ -12,27 +12,27 @@ export class PlantService {
   constructor(private _http: HttpClient, private _cookie: CookieService) { }
 
   plantStock(data: any): Observable<any[]> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token'), companyCode: environment.companyCode}) };
     return this._http.post<any[]>(`${environment._url}/vehicle/getVehicles`, data, httpOptions);
   }
 
   cStock(data: any): Observable<any[]> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token'), companyCode: environment.companyCode}) };
     return this._http.post<any[]>(`${environment._url}/vehicle/getCVehicles`, data, httpOptions);
   }
 
   moveToCapital(data: any): Observable<any[]> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token'), companyCode: environment.companyCode}) };
     return this._http.post<any[]>(`${environment._url}/vehicle/movetoCapital`, data, httpOptions);
   }
 
   moveToPlant(data: any): Observable<any[]> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token'), companyCode: environment.companyCode}) };
     return this._http.post<any[]>(`${environment._url}/vehicle/movetoPlant`, data, httpOptions);
   }
   // /vehicle/depotStockUpload
   depotStockUpload(data: any): Observable<any[]> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token')}) };
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: this._cookie.get('token'), companyCode: environment.companyCode}) };
     return this._http.post<any[]>(`${environment._url}/vehicle/depotStockUpload`, data, httpOptions);
   }
 }
