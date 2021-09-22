@@ -1,0 +1,113 @@
+<section>
+    <div class="container-fluid wrapper">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="model-menu">
+                    <li onclick="goBack()"><button class="btn badge bg-dark"><i class="fas fa-arrow-left"></i> Back</button></li>
+                    <li (click)="refresh()"><button class="btn badge bg-primary" title="Refresh"><i class="fas fa-sync-alt"></i></button></li> |
+                    <li><a routerLink="/">Home</a></li>/
+                    <li><a>company-master</a></li>
+                </ul>
+            </div>
+            <div class="col-md-12 card">
+                <!-- searchbar-row -->
+                <div class="sidebarMain-1">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="searchBar d-flex justify-content-center align-items-center">
+                                <i class="fas fa-search"></i><input class="form-control" type="search" [(ngModel)]="searchData" placeholder="Search" aria-label="Search">
+                            </div>
+                        </div>
+                        <div class="col-md-2 d-flex justify-content-center align-items-center">
+                            <div class="checkboxMain d-flex justify-content-center align-items-center">
+                              <input class="me-2" type="checkbox" (click)="showInActive()" name="status" id="custStatus">
+                              <label for="status">Show Inactive</label>
+                            </div>
+                        </div>
+                        <div class="col-md-5 align-self-end text-end">
+                            <div class="modelBtnMain">
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#addCompany" class="btn btn-primary text-uppercase me-2">+ Add Company</button>
+                                <button type="button" class="btn btn-primary" *ngIf="isExcelDownload" (click)="download()" title="Download selected records"><i class="fa fa-download"></i></button>
+                            </div>
+                            <label for="limit">
+                                <select id="limit" name="limit" class="form-select" (click)="dataLimit()">
+                                    <option *ngFor="let limit of limits" value="{{limit.value}}">{{limit.key}}</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- searchbar-row -->
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle" id="export">
+                        <thead class="text-white sticky-top theadbg">
+                            <tr>
+                              <th>#</th>
+                              <th>Company_name</th>
+                              <th>Company_code</th>
+                              <th>Company_Description</th>
+                              <th>Country</th>
+                              <th>Company_Address</th>
+                              <th>State_Name</th>
+                              <th>City_Name</th>
+                              <th>Village_Name</th>
+                              <th>Pin_Code</th>
+                              <th>Company_CSTDate</th>
+                              <th>Company_LSTDate</th>
+                              <th>Company_PLADate</th>
+                              <th>Company_Longitude</th>
+                              <th>Company_Lattitude</th>
+                              <th>Company_LSTNO</th>
+                              <th>Company_CSTNO</th>
+                              <th>Ref._No.</th>
+                              <th>Tariff_Heading_No</th>
+                              <th>Created_By</th>
+                              <th>Created_Date</th>
+                              <th>Status</th>
+                              <th>Edit</th>
+                              <th>De-Activate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let company of filterCompanyData | filter: searchData | paginate: { itemsPerPage: limit, currentPage: pageData }; let i = index">
+                              <td data-title="Sr. No.">{{limit*(pageData-1)+i+1}}</td>
+                              <td data-title="Company Name">{{company.companyName}}</td>
+                              <td data-title="Company Code">{{company.companyCode}}</td>
+                              <td data-title="Company Description">{{company.companyDescription}}</td>
+                              <td data-title="Company Name">{{company.address.countryName}}</td>
+                              <td data-title="Company Name">{{company.address.companyAddress1}}</td>
+                              <td data-title="Company Name">{{company.address.stateName}}</td>
+                              <td data-title="Company Name">{{company.address.cityName}}</td>
+                              <td data-title="Company Name">{{company.address.villageName}}</td>
+                              <td data-title="Company Name">{{company.address.pinCode}}</td>
+                              <td data-title="Company Name">{{company.companyCSTDate | date:'dd-MM-yyyy'}}</td>
+                              <td data-title="Company Name">{{company.companyLSTDate | date:'dd-MM-yyyy'}}</td>
+                              <td data-title="Company Name">{{company.PLADate | date:'dd-MM-yyyy'}}</td>
+                              <td data-title="Company Name">{{company.companyLongitude}}</td>
+                              <td data-title="Company Name">{{company.companyLattitude}}</td>
+                              <td data-title="Company Name">{{company.companyLSTNO}}</td>
+                              <td data-title="Company Name">{{company.companyCSTNO}}</td>
+                              <td data-title="Company Name">{{company.REFNo}}</td>
+                              <td data-title="Company Name">{{company.tariffHeadingNo}}</td>
+                              <td data-title="Company Name">{{company.createdBy}}</td>
+                              <td data-title="Company Name">{{company.createdDate | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+                              <td data-title="Status">{{company.isDeleted ? 'InActive' : 'Active'}}</td>
+                              <td data-title="Edit" class="text-center">
+                                <a class="btn bg-primary editIcon"><i class="fa fa-edit"></i></a>
+                              </td>
+                              <td data-title="Delete" class="text-center">
+                                <a class="btn deleteIcon" [ngClass]="(company?.isDeleted) ? 'bg-danger' : 'bg-success'"><i [ngClass]="!(company?.isDeleted) ? 'fa fa-toggle-on' : 'fa fa-toggle-off'"></i></a>
+                              </td>
+                            </tr>
+                            <tr *ngIf="companyData == 0" class="text-center">Data Not Found</tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="input-group-icon input-group-icon-right text-center mt-2">
+                    <pagination-controls (pageChange)="pageData = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

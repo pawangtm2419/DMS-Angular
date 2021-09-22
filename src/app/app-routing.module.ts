@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'history-report', loadChildren: () => import('./dashboard/history-report/history-report.module').then(m => m.HistoryReportModule), canActivate: [AppGuard] },
   { path: 'vehicle-history', loadChildren: () => import('./dashboard/vehicle-history/vehicle-history.module').then(m => m.VehicleHistoryModule), canActivate: [AppGuard] },
   // master's modules
+  { path: 'm-company', loadChildren: () => import('./masters/company-master/company-master.module').then(m => m.CompanyMasterModule), canActivate: [AppGuard] },
   { path: 'm-city', loadChildren: () => import('./masters/city-master/city-master.module').then(m => m.CityMasterModule), canActivate: [AppGuard] },
   { path: 'm-customer', loadChildren: () => import('./masters/customer-master/customer-master.module').then(m => m.CustomerMasterModule), canActivate: [AppGuard] },
   { path: 'm-dealer', loadChildren: () => import('./masters/dealer-master/dealer-master.module').then(m => m.DealerMasterModule), canActivate: [AppGuard] },

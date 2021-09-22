@@ -160,6 +160,7 @@
         <li class="dropdown drop-down01">
             <a title="Masters" id="navbarDropdown" *ngIf="roles?.masters_main?.link" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-cogs"></i></a>
             <ul class="dropdown-menu sub-menu01">
+                <li><a routerLink="/m-company">Company Master</a></li>
                 <li *ngIf="roles?.depot_master_sub?.link"><a routerLink="/m-depot">Depot Master</a></li>
                 <li *ngIf="roles?.dealer_master_sub?.link"><a routerLink="/m-dealer">Dealer Master</a></li>
                 <li *ngIf="roles?.variant_master_sub?.link"><a routerLink="/m-variant">Variant Master</a></li>
