@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { UserService } from './shared/services';
 
 @Component({
@@ -8,12 +9,7 @@ import { UserService } from './shared/services';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  user = false;
-  constructor(private service: UserService, public router: Router) { }
+  constructor(public service: UserService) { }
 
-  ngOnInit(): void {
-    this.service.user.subscribe((x) => {
-      this.user = x;
-    });
-  }
+  ngOnInit(): void { }
 }

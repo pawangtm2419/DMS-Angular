@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MastersService, ToasterService } from 'src/app/shared/services';
+import { Router, RouterModule } from '@angular/router';
+import { MastersService, ToasterService, UserService } from 'src/app/shared/services';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -17,7 +18,7 @@ export class UserMasterComponent implements OnInit {
   isExcelDownload: boolean = false;
   filterUserData: any;
   userStatus: string ='Active';
-  constructor(private master: MastersService, public toaster: ToasterService) { }
+  constructor(private master: MastersService, public toaster: ToasterService, private user: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.getUserList();
@@ -28,18 +29,23 @@ export class UserMasterComponent implements OnInit {
 
   getUserList() {
     this.master.getusers().subscribe((res: any) => {
-      this.usersData=res.data;
-      this.userStatus ='Active';
-      this.showInActive();
-      if(this.usersData.length > 0) {
-        this.isExcelDownload = true;
-        this.limits.push({ "key": "ALL", value: this.usersData.length });
-        this.toaster.showSuccess("Data", "Report successfully Open.");
+      if(res.status) {
+        this.usersData=res.data;
+        this.userStatus ='Active';
+        this.showInActive();
+        if(this.usersData.length > 0) {
+          this.isExcelDownload = true;
+          this.limits.push({ "key": "ALL", value: this.usersData.length });
+          this.toaster.showSuccess("Data", "Report successfully Open.");
+        } else {
+          this.toaster.showInfo("Data", "No record found.");
+        }
       } else {
-        this.toaster.showInfo("Data", "No record found.");
+        this.user.logout();
+        this.toaster.showError("Error", res.message);
       }
     }, (error: any) => {
-      this.toaster.showError('Data', error);;
+      this.toaster.showError('Error', error);;
     });
   }
   viewFullInfo(user: any) {

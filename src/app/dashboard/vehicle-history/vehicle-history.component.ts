@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonService, ToasterService } from 'src/app/shared/services';
+import { CommonService, ToasterService, UserService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-vehicle-history',
@@ -12,7 +12,7 @@ export class VehicleHistoryComponent implements OnInit {
   dataChassisNo: String = '';
   vehiData: any;
   location: String = '';
-  constructor(private service: CommonService, public toaster: ToasterService) { }
+  constructor(private service: CommonService, private toaster: ToasterService, private user: UserService) { }
 
   ngOnInit(): void { }
   refresh(): void {
@@ -24,11 +24,16 @@ export class VehicleHistoryComponent implements OnInit {
     if (this.chassisNo.length > 13) {
       this.service.vehicleHist(data).subscribe((res: any) => {
         if (res.status) {
-          this.vehiData = res.data;
-          this.location = res.currentLocation;
-          this.dataChassisNo = this.chassisNo;
+          if(res.data.length > 0){
+            this.vehiData = res.data;
+            this.location = res.currentLocation;
+            this.dataChassisNo = this.chassisNo;
+          } else {
+            this.toaster.showInfo('Error', 'Data not found!');
+          }
         } else {
-          this.toaster.showInfo('Error', 'Data not found!');
+          this.user.logout();
+          this.toaster.showError("Error", res.message);
         }
       }), (err: any) => {
         this.toaster.showError('Error', err);

@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.service.gettoken()) {
-      this.router.navigate(['home']);
+      this.router.navigate(['/home']);
     }
   }
   refresh(): void {
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     }
     if (this.logIntryCount < 3 || this.cookie.get('LogInUser') !== logIn.value.empID) {
       if (this.submit) {
-        this.service.userUogIn(logIn.value).subscribe((res: any) => {
+        this.service.userLogIn(logIn.value).subscribe((res: any) => {
           if (res.status) {
             this.toaster.showSuccess('Success', 'Log in successfull');
             this.cookie.set('token', res.token);

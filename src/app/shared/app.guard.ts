@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanDeactivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
-import { UserService } from './services';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppGuard implements CanActivate, CanActivateChild, CanDeactivate<unknown>, CanLoad {
-  constructor(private router: Router, private service: UserService) { }
+  constructor(private router: Router, private _cookie: CookieService) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.service.gettoken()) {
+    if (!!localStorage.getItem('user') && !!this._cookie.get('token')) {
       return true;
     } else {
       this.router.navigateByUrl('/');

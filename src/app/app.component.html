@@ -1,4 +1,4 @@
-<div class="container-fluid px-0 wrapMain" *ngIf="user">
+<div class="container-fluid px-0 wrapMain" *ngIf="service.gettoken()">
   <div class="row" style="height: 100%; bottom: 0">
     <div class="sub-menu">
       <div class="sidebar_menu">
@@ -18,6 +18,6 @@
     </div>
   </div>
 </div>
-<div *ngIf="!user">
+<div *ngIf="!service.gettoken()">
   <router-outlet></router-outlet>
 </div>

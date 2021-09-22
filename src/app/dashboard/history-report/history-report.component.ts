@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
-import { CommonService, ToasterService } from 'src/app/shared/services';
+import { CommonService, ToasterService, UserService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-history-report',
@@ -20,7 +20,7 @@ export class HistoryReportComponent implements OnInit {
   currentDate: any;
   isExcelDownload: boolean = false;
   vehicleData: any;
-  constructor(private service : CommonService, public toaster : ToasterService) {
+  constructor(private service : CommonService, public toaster : ToasterService, public user : UserService) {
     var date = this.date.getDate();
     var month = 1+this.date.getMonth();
     var year = this.date.getFullYear();
@@ -37,12 +37,17 @@ export class HistoryReportComponent implements OnInit {
     const data = { chassisNo : this.chassisNo };
     if(this.chassisNo.length > 13) {
       this.service.histReports(data).subscribe((res: any) => {
-        if(res.status && res.data.length === 1) {
-          this.histReportData = res.data;
-          this.dataChassisNo =this.chassisNo;
+        if(res.status) {
+          if(res.data.length === 1) {
+            this.histReportData = res.data;
+            this.dataChassisNo =this.chassisNo;
+          } else {
+            this.histReportData = [];
+            this.toaster.showInfo('Data', 'No record found.');
+          }
         } else {
-          this.histReportData = [];
-          this.toaster.showInfo('Data', 'No record found.');
+          this.user.logout();
+          this.toaster.showError("Error", res.message);
         }
       }), (error: any) => {
         this.toaster.showError('Error', error);
@@ -71,7 +76,8 @@ export class HistoryReportComponent implements OnInit {
             this.toaster.showInfo('Data', 'No record found.');
           }
         } else {
-          this.toaster.showInfo('Data', 'No record found.');
+          this.user.logout();
+          this.toaster.showError("Error", res.message);
         }
       }, (error: any) => {
         this.toaster.showError('Error', error);
@@ -90,8 +96,14 @@ export class HistoryReportComponent implements OnInit {
     this.service.getVehHistory(data).subscribe((res: any) => {
       if(res.status) {
         this.vehicleData = res.data;
+        if(this.vehicleData.length > 0) {
+          this.toaster.showSuccess('Data', 'Report successfully Open.');
+        } else {
+          this.toaster.showInfo('Data', 'No record found.');
+        }
       } else {
-        this.toaster.showInfo('Data', 'No record found.');
+        this.user.logout();
+        this.toaster.showError("Error", res.message);
       }
     }), (error: any) => {
       this.toaster.showError('Error', error);
